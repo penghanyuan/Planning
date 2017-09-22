@@ -1,4 +1,4 @@
-package com.polytech.planning.controller;
+package com.polytech.planning.model;
 
 public class Teacher {
 	
@@ -10,8 +10,9 @@ public class Teacher {
 	private int hoursTP;
 	private int hoursCT;
 	
-	public Teacher() {
-		
+	public Teacher(String lastName, String firstName) {
+		this.lastName = lastName;
+		this.firstName = firstName;
 	}
 
 	/**

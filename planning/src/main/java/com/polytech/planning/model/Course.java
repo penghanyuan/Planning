@@ -1,11 +1,11 @@
-package com.polytech.planning.controller;
+package com.polytech.planning.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
 	
-	private String Name;
+	private String name;
 	
 	private List<Teacher> listTeachers;
 	
@@ -14,15 +14,20 @@ public class Course {
 	private int totalTP;
 	private int totalCT;
 	
-	public Course() {
+	/**
+	 * Course's Constructor
+	 * @param name
+	 */
+	public Course(String name) {
 		listTeachers = new ArrayList<Teacher>();
+		this.name = name;
 	}
 
 	/**
 	 * @return the name
 	 */
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	/**
