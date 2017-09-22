@@ -10,6 +10,11 @@ public class Teacher {
 	private int hoursTP;
 	private int hoursCT;
 	
+	/**
+	 * Teacher's Constructor
+	 * @param lastName
+	 * @param firstName
+	 */
 	public Teacher(String lastName, String firstName) {
 		this.lastName = lastName;
 		this.firstName = firstName;

@@ -6,6 +6,11 @@ public class Holiday {
 	private Date startDate;
 	private Date endDate;
 	
+	/**
+	 * Holiday's Constructor
+	 * @param startDate
+	 * @param endDate
+	 */
 	public Holiday(Date startDate, Date endDate) {
 		this.startDate = startDate;
 		this.endDate = endDate;

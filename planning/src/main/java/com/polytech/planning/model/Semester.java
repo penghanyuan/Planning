@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class Semester {
+	
 	private String name;
 	
 	private Date startDate;
@@ -11,4 +12,12 @@ public class Semester {
 	
 	private List<Date> listPublicHoliday;
 	private List<Holiday> listHoliday;
+	
+	/**
+	 * Semester's Constructor
+	 * @param name
+	 */
+	public Semester(String name) {
+		this.name = name;
+	}
 }
