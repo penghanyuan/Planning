@@ -20,4 +20,74 @@ public class Semester {
 	public Semester(String name) {
 		this.name = name;
 	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * @return the startDate
+	 */
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	/**
+	 * @param startDate the startDate to set
+	 */
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	/**
+	 * @return the endDate
+	 */
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	/**
+	 * @param endDate the endDate to set
+	 */
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	/**
+	 * @return the listPublicHoliday
+	 */
+	public List<Date> getListPublicHoliday() {
+		return listPublicHoliday;
+	}
+
+	/**
+	 * @param listPublicHoliday the listPublicHoliday to set
+	 */
+	public void setListPublicHoliday(List<Date> listPublicHoliday) {
+		this.listPublicHoliday = listPublicHoliday;
+	}
+
+	/**
+	 * @return the listHoliday
+	 */
+	public List<Holiday> getListHoliday() {
+		return listHoliday;
+	}
+
+	/**
+	 * @param listHoliday the listHoliday to set
+	 */
+	public void setListHoliday(List<Holiday> listHoliday) {
+		this.listHoliday = listHoliday;
+	}
 }
