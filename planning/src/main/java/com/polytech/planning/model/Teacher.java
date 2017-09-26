@@ -61,46 +61,4 @@ public class Teacher {
 	public int getHoursCT() {
 		return hoursCT;
 	}
-
-	/**
-	 * @param lastName the lastName to set
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	/**
-	 * @param firstName the firstName to set
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	/**
-	 * @param hoursCM the hoursCM to set
-	 */
-	public void setHoursCM(int hoursCM) {
-		this.hoursCM = hoursCM;
-	}
-
-	/**
-	 * @param hoursTD the hoursTD to set
-	 */
-	public void setHoursTD(int hoursTD) {
-		this.hoursTD = hoursTD;
-	}
-
-	/**
-	 * @param hoursTP the hoursTP to set
-	 */
-	public void setHoursTP(int hoursTP) {
-		this.hoursTP = hoursTP;
-	}
-
-	/**
-	 * @param hoursCT the hoursCT to set
-	 */
-	public void setHoursCT(int hoursCT) {
-		this.hoursCT = hoursCT;
-	}
 }

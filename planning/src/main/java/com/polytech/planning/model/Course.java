@@ -57,54 +57,5 @@ public class Course {
 	public int getTotalCT() {
 		return totalCT;
 	}
-
-	/**
-	 * @return the listTeachers
-	 */
-	public List<Teacher> getListTeachers() {
-		return listTeachers;
-	}
-
-	/**
-	 * @param listTeachers the listTeachers to set
-	 */
-	public void setListTeachers(List<Teacher> listTeachers) {
-		this.listTeachers = listTeachers;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * @param totalCM the totalCM to set
-	 */
-	public void setTotalCM(int totalCM) {
-		this.totalCM = totalCM;
-	}
-
-	/**
-	 * @param totalTD the totalTD to set
-	 */
-	public void setTotalTD(int totalTD) {
-		this.totalTD = totalTD;
-	}
-
-	/**
-	 * @param totalTP the totalTP to set
-	 */
-	public void setTotalTP(int totalTP) {
-		this.totalTP = totalTP;
-	}
-
-	/**
-	 * @param totalCT the totalCT to set
-	 */
-	public void setTotalCT(int totalCT) {
-		this.totalCT = totalCT;
-	}
 	
 }
