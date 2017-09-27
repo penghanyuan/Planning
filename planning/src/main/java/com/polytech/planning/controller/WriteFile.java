@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.polytech.planning.model;
+package com.polytech.planning.controller;
 
 import java.io.FileOutputStream;
 
@@ -11,6 +11,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.polytech.planning.model.Planning;
 
 public class WriteFile {
 
