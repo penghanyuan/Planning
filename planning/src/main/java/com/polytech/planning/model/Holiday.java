@@ -29,4 +29,18 @@ public class Holiday {
 	public Date getEndDate() {
 		return endDate;
 	}
+
+	/**
+	 * @param startDate the startDate to set
+	 */
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	/**
+	 * @param endDate the endDate to set
+	 */
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 }
