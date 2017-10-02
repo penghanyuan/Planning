@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Planning {
 	
-	private int year;
+	private String year;
 	
 	private List<TeachingUnit> teachingUnits;
 	private List<Semester> semesters;
@@ -13,7 +13,7 @@ public class Planning {
 	 * @param teachingUnits
 	 * @param semesters
 	 */
-	public Planning(int year, List<TeachingUnit> teachingUnits, List<Semester> semesters) {
+	public Planning(String year, List<TeachingUnit> teachingUnits, List<Semester> semesters) {
 		this.year = year;
 		this.teachingUnits = teachingUnits;
 		this.semesters = semesters;
@@ -21,13 +21,13 @@ public class Planning {
 	/**
 	 * @return the year
 	 */
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
 	/**
 	 * @param year the year to set
 	 */
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 	/**

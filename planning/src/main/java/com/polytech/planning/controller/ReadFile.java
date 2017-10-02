@@ -32,7 +32,6 @@ public class ReadFile {
 	}
 
 	protected String readCell(int line, int row, int sheet) {
-
 		return null;
 	}
 
