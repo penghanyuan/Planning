@@ -71,15 +71,18 @@ public class ReadFile {
 	 * @param sheetNb
 	 */
 	protected String[] readRow(int rowNb, int sheetNb) {
-		String[] readingValues = null;
+		List<String> readingValues = new ArrayList<String>();
 		int i = 0;
 		int j = 0;
 		
 		int blankCells = 10;
 		
+		if(rowIsEmpty(rowNb, sheetNb))
+			return null;
+		
 		while(i <= blankCells) {
-			readingValues[j] = readCell(rowNb, j, sheetNb);
-			if(readingValues[j].isEmpty()) {
+			readingValues.add(readCell(rowNb, j, sheetNb));
+			if(readingValues.get(j).isEmpty()) {
 				i++;
 			} else {
 				i = 0;
