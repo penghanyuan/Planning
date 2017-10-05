@@ -70,7 +70,7 @@ public class ReadFile {
 	 * @param rowNb
 	 * @param sheetNb
 	 */
-	protected String[] readRow(int rowNb, int sheetNb) {
+	protected List<String> readRow(int rowNb, int sheetNb) {
 		List<String> readingValues = new ArrayList<String>();
 		int i = 0;
 		int j = 0;
