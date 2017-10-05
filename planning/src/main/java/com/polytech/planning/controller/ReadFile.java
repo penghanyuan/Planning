@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.codec.binary.StringUtils;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -17,15 +16,13 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 
 public class ReadFile {
 
-	private String filePath;
 	private Workbook wb;
 	private File file;
 
 	/**
-	 * @param filePath
+	 * @param filePath full path of the file to read
 	 */
 	public ReadFile(String filePath) {
-		this.filePath = filePath;
 		this.file = new File(filePath);
 		try {
 			this.wb = WorkbookFactory.create(file);
@@ -39,11 +36,11 @@ public class ReadFile {
 	}
 
 	/**
-	 * @param rowNb
-	 * @param columnNb
-	 * @param sheetNb
+	 * @param rowNb Number of row to be readed
+	 * @param columnNb Number of column to be readed
+	 * @param sheetNb Number of the sheet to be readed
 	 */
-	protected String readCell(int rowNb, int lineNb, int sheetNb) {
+	protected String readCell(int rowNb, int columnNb, int sheetNb) {
 		try {
 			wb = WorkbookFactory.create(file);
 
@@ -51,7 +48,7 @@ public class ReadFile {
 			Sheet sheet = wb.getSheetAt(sheetNb);
 			Row row = sheet.getRow(rowNb);
 
-			Cell cell = row.getCell(lineNb);
+			Cell cell = row.getCell(columnNb);
 			
 			return cell.getStringCellValue();
 
@@ -63,7 +60,7 @@ public class ReadFile {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return "";
 	}
 
 	/**
@@ -72,25 +69,41 @@ public class ReadFile {
 	 */
 	protected List<String> readRow(int rowNb, int sheetNb) {
 		List<String> readingValues = new ArrayList<String>();
-		int i = 0;
-		int j = 0;
+		int lastCell;
+		int numberCell;
 		
-		int blankCells = 10;
+		// Sheet, row and cell where read the content
+		Sheet sheet = wb.getSheetAt(sheetNb);
+		Row row = sheet.getRow(rowNb);
 		
 		if(rowIsEmpty(rowNb, sheetNb))
 			return null;
 		
-		while(i <= blankCells) {
-			readingValues.add(readCell(rowNb, j, sheetNb));
-			if(readingValues.get(j).isEmpty()) {
-				i++;
-			} else {
-				i = 0;
-			}
-			j++;
+		numberCell = row.getFirstCellNum(); 
+		lastCell = row.getLastCellNum(); 
+	    
+		while(numberCell <= lastCell) {
+			readingValues.add(readCell(rowNb, numberCell, sheetNb));
+			numberCell++;
 		}
 
 		return readingValues;
+	}
+	
+	/**
+	 * @param sheetNb
+	 */
+	protected int getNbRows(int sheetNb) {
+		// TODO
+		return 0;
+	}
+	
+	/**
+	 * @param sheetNb
+	 */
+	protected int getNbColumn(int sheetNb) {
+		// TODO
+		return 0;
 	}
 	
 	/**
@@ -101,18 +114,18 @@ public class ReadFile {
 		Sheet sheet = wb.getSheetAt(sheetNb);
 		Row row = sheet.getRow(rowNb);
 		
-	    if (row == null) {
+	    if (row == null)
 	        return true;
-	    }
-	    if (row.getLastCellNum() <= 0) {
+	    
+	    if (row.getLastCellNum() <= 0)
 	        return true;
-	    }
+	    
 	    for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
 	        Cell cell = row.getCell(cellNum);
-	        if (cell != null && cell.getCellTypeEnum() != CellType.BLANK && !cell.toString().isEmpty()) {
+	        if (cell != null && cell.getCellTypeEnum() != CellType.BLANK && !cell.toString().isEmpty())
 	            return false;
-	        }
 	    }
+	    
 	    return true;
 	}
 }
