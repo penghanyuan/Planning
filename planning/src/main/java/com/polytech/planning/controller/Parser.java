@@ -41,6 +41,11 @@ public class Parser {
 		return teachingUnits;
 	}
 
+	/**
+	 * 
+	 * @param courses
+	 * @return list of course objects
+	 */
 	private List<Course> createCourses(List<OriginalCourse> courses) {
 		List<Course> coursesList = new ArrayList<Course>();
 		for (int i = 0; i < courses.size(); i++) {
@@ -55,22 +60,37 @@ public class Parser {
 			if (oc.getHoursTP() != null) {
 				c.setTotalTP(Integer.parseInt(oc.getHoursTP()));
 			}
-			//il manque hoursCC & mundus
-			if(oc.getHoursCT()!=null){
+			// il manque hoursCC & mundus
+			if (oc.getHoursCT() != null) {
 				c.setTotalCT(Integer.parseInt(oc.getHoursCT()));
 			}
-			if(oc.getTeachers()!=null){
+			if (oc.getTeachers() != null) {
 				c.setListTeachers(this.createTeachers(oc.getTeachers()));
 			}
 			coursesList.add(c);
 		}
-		if(coursesList.isEmpty())
+		if (coursesList.isEmpty())
 			return null;
 		else
 			return coursesList;
 	}
 
-	private List<Teacher> createTeachers(String oriTeachers) {
+	public List<Teacher> createTeachers(String oriTeachers) {
+		oriTeachers = "C.Tacquard 16hCM, 20hTD x3gr + Mundus, 16hTP x3gr + Mundus  ; M. Martineau 12hTP x3gr + Mundus";
+		String sTemp = oriTeachers.replace(",", "/");
+		sTemp = sTemp.replace(";", "/");
+		sTemp = sTemp.replace(". ", ".");
+		sTemp = sTemp.replace(" ", "/");
+		sTemp = sTemp.replace("+", "/");
+		//sTemp = sTemp.replace("", "/");
+		String[] teacherInit = sTemp.split("/");
+
+		for (int i = 0; i < teacherInit.length; i++) {
+			teacherInit[i] = teacherInit[i].trim();// delete space
+			if (teacherInit[i].compareTo("") != 0)
+				System.out.println(teacherInit[i]);
+		}
+		System.out.println(sTemp);
 		return null;
 	}
 }
