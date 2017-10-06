@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.polytech.planning.model.Course;
 import com.polytech.planning.model.OriginalCourse;
@@ -48,9 +50,8 @@ public class Parser {
 	 */
 	private List<Course> createCourses(List<OriginalCourse> courses) {
 		List<Course> coursesList = new ArrayList<Course>();
-		for (int i = 0; i < courses.size(); i++) {
-			Course c = new Course(courses.get(i).getCourseName());
-			OriginalCourse oc = courses.get(i);
+		for (OriginalCourse oc : courses) {
+			Course c = new Course(oc.getCourseName());
 			if (oc.getHoursCM() != null) {
 				c.setTotalCM(Integer.parseInt(oc.getHoursCM()));
 			}
@@ -77,20 +78,24 @@ public class Parser {
 
 	public List<Teacher> createTeachers(String oriTeachers) {
 		oriTeachers = "C.Tacquard 16hCM, 20hTD x3gr + Mundus, 16hTP x3gr + Mundus  ; M. Martineau 12hTP x3gr + Mundus";
-		String sTemp = oriTeachers.replace(",", "/");
-		sTemp = sTemp.replace(";", "/");
-		sTemp = sTemp.replace(". ", ".");
-		sTemp = sTemp.replace(" ", "/");
-		sTemp = sTemp.replace("+", "/");
-		//sTemp = sTemp.replace("", "/");
-		String[] teacherInit = sTemp.split("/");
+		String reg = "([a-z]|[A-Z])\\.(\\s*)(\\w+)";
+		/*
+		 * String sTemp = oriTeachers.replace(",", "/"); sTemp =
+		 * sTemp.replace(";", "/"); sTemp = sTemp.replace(". ", "."); sTemp =
+		 * sTemp.replace(" ", "/"); sTemp = sTemp.replace("+", "/"); //sTemp =
+		 * sTemp.replace("", "/"); String[] teacherInit = sTemp.split("/");
+		 * 
+		 * for (int i = 0; i < teacherInit.length; i++) { teacherInit[i] =
+		 * teacherInit[i].trim();// delete space if
+		 * (teacherInit[i].compareTo("") != 0)
+		 * System.out.println(teacherInit[i]); } System.out.println(sTemp);
+		 */
+		Pattern pattern = Pattern.compile(reg);
+		Matcher matcher = pattern.matcher(oriTeachers);
 
-		for (int i = 0; i < teacherInit.length; i++) {
-			teacherInit[i] = teacherInit[i].trim();// delete space
-			if (teacherInit[i].compareTo("") != 0)
-				System.out.println(teacherInit[i]);
+		while (matcher.find()) {
+			System.out.println(matcher.group());
 		}
-		System.out.println(sTemp);
 		return null;
 	}
 }
