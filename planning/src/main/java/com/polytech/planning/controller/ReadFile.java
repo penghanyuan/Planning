@@ -91,22 +91,6 @@ public class ReadFile {
 	}
 	
 	/**
-	 * @param sheetNb
-	 */
-	protected int getNbRows(int sheetNb) {
-		// TODO
-		return 0;
-	}
-	
-	/**
-	 * @param sheetNb
-	 */
-	protected int getNbColumn(int sheetNb) {
-		// TODO
-		return 0;
-	}
-	
-	/**
 	 * @param rowNb
 	 * @param sheetNb
 	 */

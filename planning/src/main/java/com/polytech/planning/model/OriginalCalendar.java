@@ -4,44 +4,31 @@ import java.util.HashMap;
 
 public class OriginalCalendar {
 	
-	private String[] semstersStartDate;
-	private String[] semstersEndDate;
+	private HashMap<String,String[]> semesters;
 	private HashMap<String,String[]> holidays;
 	private HashMap<String,String[]> freeDays;
 
 	public OriginalCalendar() {
-		this.semstersStartDate = null;
-		this.semstersEndDate = null;
+		this.semesters = new HashMap<String,String[]>();
 		this.holidays = new HashMap<String,String[]>();
 		this.freeDays = new HashMap<String,String[]>();
 	}
 
 	/**
-	 * @return the semstersStartDate
+	 * @return the semesters
 	 */
-	public String[] getSemstersStartDate() {
-		return semstersStartDate;
+	public HashMap<String, String[]> getSemesters() {
+		return semesters;
 	}
 
 	/**
-	 * @param semstersStartDate the semstersStartDate to set
+	 * @param semsters the semesters to set
 	 */
-	public void setSemstersStartDate(String[] semstersStartDate) {
-		this.semstersStartDate = semstersStartDate;
-	}
-
-	/**
-	 * @return the semstersEndDate
-	 */
-	public String[] getSemstersEndDate() {
-		return semstersEndDate;
-	}
-
-	/**
-	 * @param semstersEndDate the semstersEndDate to set
-	 */
-	public void setSemstersEndDate(String[] semstersEndDate) {
-		this.semstersEndDate = semstersEndDate;
+	public void addSemesters(String name, String start, String end) {
+		String[] dates = new String[2];
+		dates[0] = start;
+		dates[1] = end;
+		this.semesters.put(name, dates);
 	}
 
 	/**
