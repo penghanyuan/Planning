@@ -14,7 +14,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
-public class ReadFile {
+public abstract class ReadFile {
 
 	private Workbook wb;
 	private File file;
@@ -76,8 +76,13 @@ public class ReadFile {
 		Sheet sheet = wb.getSheetAt(sheetNb);
 		Row row = sheet.getRow(rowNb);
 		
-		if(rowIsEmpty(rowNb, sheetNb))
-			return null;
+		try {
+			if(rowIsEmpty(rowNb, sheetNb))
+				return null;
+		} catch (Exception e) {
+			System.out.println("Cet onglet n'existe pas.");
+			e.printStackTrace();
+		}
 		
 		numberCell = row.getFirstCellNum(); 
 		lastCell = row.getLastCellNum(); 
@@ -94,22 +99,54 @@ public class ReadFile {
 	 * @param rowNb
 	 * @param sheetNb
 	 */
-	protected boolean rowIsEmpty(int rowNb, int sheetNb) {
+	protected boolean rowIsEmpty(int rowNb, int sheetNb) throws Exception {
 		Sheet sheet = wb.getSheetAt(sheetNb);
 		Row row = sheet.getRow(rowNb);
 		
-	    if (row == null)
-	        return true;
-	    
-	    if (row.getLastCellNum() <= 0)
-	        return true;
-	    
-	    for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
-	        Cell cell = row.getCell(cellNum);
-	        if (cell != null && cell.getCellTypeEnum() != CellType.BLANK && !cell.toString().isEmpty())
-	            return false;
-	    }
-	    
-	    return true;
+		if(sheet.equals(null)) {
+			throw new Exception();
+		} else {		
+		    if (row == null)
+		        return true;
+		    
+		    if (row.getLastCellNum() <= 0)
+		        return true;
+		    
+		    for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
+		        Cell cell = row.getCell(cellNum);
+		        if (cell != null && cell.getCellTypeEnum() != CellType.BLANK && !cell.toString().isEmpty())
+		            return false;
+		    }
+		    
+		    return true;
+		}
+	}
+	
+	/**
+	 * @param lineNb
+	 * @param rowNb
+	 * @param sheetNb
+	 */
+	protected boolean cellIsEmpty(int lineNb, int rowNb, int sheetNb) throws Exception {
+		Sheet sheet = wb.getSheetAt(sheetNb);
+		Row row = sheet.getRow(rowNb);
+		
+		if(sheet.equals(null)) {
+			throw new Exception();
+		} else {
+			if (row.equals(null))
+		        return true;
+		    
+		    if (row.getLastCellNum() <= 0)
+		        return true;
+		    
+		    for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
+		        Cell cell = row.getCell(cellNum);
+		        if (cell != null && cell.getCellTypeEnum() != CellType.BLANK && !cell.toString().isEmpty())
+		            return false;
+		    }
+		    
+		    return true;
+		}
 	}
 }

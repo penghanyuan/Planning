@@ -41,8 +41,11 @@ public class OriginalCalendar {
 	/**
 	 * @param holidays the holidays to set
 	 */
-	public void setHolidays(HashMap<String, String[]> holidays) {
-		this.holidays = holidays;
+	public void addHolidays(String name, String start, String end) {
+		String[] dates = new String[2];
+		dates[0] = start;
+		dates[1] = end;
+		this.holidays.put(name, dates);
 	}
 
 	/**
@@ -55,10 +58,16 @@ public class OriginalCalendar {
 	/**
 	 * @param freeDays the freeDays to set
 	 */
-	public void setFreeDays(HashMap<String, String[]> freeDays) {
-		this.freeDays = freeDays;
+	public void addFreeDays(String name, String date, String creneaux) throws Exception {
+		String[] infos = new String[2];
+		infos[0] = date;
+		infos[1] = creneaux;
+		
+		int creneauxNb = Integer.parseInt(creneaux);
+		
+		if(creneauxNb < 0 && creneauxNb > 4)
+			throw new Exception("creaneaux doit etre compris entre 0 et 4");
+		
+		this.holidays.put(name, infos);
 	}
-	
-	
-
 }

@@ -15,18 +15,60 @@ public class ReadCalendar extends ReadFile {
 		int blank = 0;
 		int columnNb = 2;
 		int i = 3;
+		
 		String[] buffer = new String[3];
 		
 		while(blank < 1) {
 			// if empty
-			if(rowIsEmpty(i, sheetNb))
-				blank++;
+			try {
+				if(rowIsEmpty(i, sheetNb))
+					blank++;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 						
-			for(int j = 0; j < 3; j++)
-				buffer[j] = readCell(i, j+columnNb,  sheetNb);
+			for(int j = 0; j < 3; j++) {
+				try {
+					if(cellIsEmpty(i, j+columnNb,  sheetNb)) {
+						new Exception("La cellule ligne "+i+1+" et colonne "+j+columnNb+1+" est vide.");
+					} else {
+						buffer[j] = readCell(i, j+columnNb,  sheetNb);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 			
 			// Store semester
 			calendar.addSemesters(buffer[0],buffer[1],buffer[2]);
+			
+			i++;
+		}
+	}
+	
+	public void readHolidays(int sheetNb) throws Exception {
+		int blank = 0;
+		int columnNb = 1;
+		int i = 3;
+		
+		String[] buffer = new String[3];
+		
+		while(blank < 1) {
+					
+			for(int j = 0; j < 3; j++) {
+				try {
+					if(cellIsEmpty(i, j+columnNb,  sheetNb)) {
+						new Exception("La cellule ligne "+i+1+" et colonne "+j+columnNb+1+" est vide.");
+					} else {
+						buffer[j] = readCell(i, j+columnNb,  sheetNb);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			
+			// Store Holiday
+			calendar.addHolidays(buffer[0],buffer[1],buffer[2]);
 			
 			i++;
 		}
