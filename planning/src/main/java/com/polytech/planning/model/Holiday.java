@@ -3,6 +3,7 @@ package com.polytech.planning.model;
 import java.util.Date;
 
 public class Holiday {
+	private String name;
 	private Date startDate;
 	private Date endDate;
 	

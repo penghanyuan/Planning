@@ -78,7 +78,7 @@ public class Parser {
 
 	public List<Teacher> createTeachers(String oriTeachers) {
 		oriTeachers = "C.Tacquard 16hCM, 20hTD x3gr + Mundus, 16hTP x3gr + Mundus  ; M. Martineau 12hTP x3gr + Mundus";
-		String reg = "([a-z]|[A-Z])\\.(\\s*)(\\w+)";
+		String reg = "([a-z]+|[A-Z]+)\\.(\\s*)(\\w+)";
 		/*
 		 * String sTemp = oriTeachers.replace(",", "/"); sTemp =
 		 * sTemp.replace(";", "/"); sTemp = sTemp.replace(". ", "."); sTemp =

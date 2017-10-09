@@ -10,7 +10,7 @@ public class Semester {
 	private Date startDate;
 	private Date endDate;
 	
-	private List<Date> listPublicHoliday;
+	private List<Date> listFreeDays;
 	private List<Holiday> listHoliday;
 	
 	/**
@@ -67,14 +67,14 @@ public class Semester {
 	 * @return the listPublicHoliday
 	 */
 	public List<Date> getListPublicHoliday() {
-		return listPublicHoliday;
+		return listFreeDays;
 	}
 
 	/**
 	 * @param listPublicHoliday the listPublicHoliday to set
 	 */
-	public void setListPublicHoliday(List<Date> listPublicHoliday) {
-		this.listPublicHoliday = listPublicHoliday;
+	public void setListPublicHoliday(List<Date> listFreeDays) {
+		this.listFreeDays = listFreeDays;
 	}
 
 	/**
