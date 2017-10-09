@@ -6,5 +6,5 @@ public class ReadMockUp extends ReadFile {
 		super(filePath);
 	}
 	
-	
+	// TODO finir les methodes
 }
