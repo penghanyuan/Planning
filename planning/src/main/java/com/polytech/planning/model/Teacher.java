@@ -1,37 +1,47 @@
 package com.polytech.planning.model;
 
 public class Teacher {
-	
-	private String lastName;
-	private String firstName;
+
+	private String name;
 	
 	private int hoursCM;
 	private int hoursTD;
 	private int hoursTP;
 	private int hoursCT;
 	
+	private boolean TDMundus;
+	private boolean TPMundus;
+	
+	public Teacher() {
+		this.TDMundus = false;
+		this.TPMundus = false;
+		this.hoursCM = 0;
+		this.hoursCT = 0;
+		this.hoursTD = 0;
+		this.hoursTP = 0;
+	}
+	
 	/**
 	 * Teacher's Constructor
 	 * @param lastName
 	 * @param firstName
 	 */
-	public Teacher(String lastName, String firstName) {
-		this.lastName = lastName;
-		this.firstName = firstName;
+	public Teacher(String name) {
+		this.name = name;
+		this.TDMundus = false;
+		this.TPMundus = false;
+		this.hoursCM = 0;
+		this.hoursCT = 0;
+		this.hoursTD = 0;
+		this.hoursTP = 0;
 	}
-
+	
+	
 	/**
-	 * @return the lastName
+	 * @return the name
 	 */
-	public String getLastName() {
-		return lastName;
-	}
-
-	/**
-	 * @return the firstName
-	 */
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
 
 	/**
@@ -63,19 +73,12 @@ public class Teacher {
 	}
 
 	/**
-	 * @param lastName the lastName to set
+	 * @param name the name to set
 	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-	/**
-	 * @param firstName the firstName to set
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
+	
 	/**
 	 * @param hoursCM the hoursCM to set
 	 */
@@ -102,5 +105,33 @@ public class Teacher {
 	 */
 	public void setHoursCT(int hoursCT) {
 		this.hoursCT = hoursCT;
+	}
+
+	/**
+	 * @return the tDMundus
+	 */
+	public boolean isTDMundus() {
+		return TDMundus;
+	}
+
+	/**
+	 * @param tDMundus the tDMundus to set
+	 */
+	public void setTDMundus(boolean tDMundus) {
+		TDMundus = tDMundus;
+	}
+
+	/**
+	 * @return the tPMundus
+	 */
+	public boolean isTPMundus() {
+		return TPMundus;
+	}
+
+	/**
+	 * @param tPMundus the tPMundus to set
+	 */
+	public void setTPMundus(boolean tPMundus) {
+		TPMundus = tPMundus;
 	}
 }

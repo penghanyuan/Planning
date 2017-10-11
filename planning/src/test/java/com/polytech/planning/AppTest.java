@@ -1,6 +1,10 @@
 package com.polytech.planning;
 
+import java.util.List;
+
 import com.polytech.planning.controller.Parser;
+import com.polytech.planning.controller.ReadCalendar;
+import com.polytech.planning.model.Teacher;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -40,7 +44,23 @@ public class AppTest
     
     public void testCreateTeachers(){
     	Parser p = new Parser();
-    	p.createTeachers(" ");
+    	List<Teacher> ts = p.createTeachers(" ");
     	
+    }
+    
+    public void testCreateCalendar(){
+    	ReadCalendar readCalendar = new ReadCalendar("/Users/penghanyuan/Desktop/Calendar.xlsx");
+    	
+    	try {
+    		readCalendar.readSemesters(1);
+			readCalendar.readHolidays(2);
+			readCalendar.readFreeDays(3);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	Parser p = new Parser(readCalendar.getCalendar());
+    	System.out.println(p.createCalendar().getListSemester());
     }
 }

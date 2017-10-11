@@ -9,13 +9,13 @@ import java.util.Date;
  * @author penghanyuan
  *
  */
-public class FreeDays {
+public class FreeDay {
 
 	private String name;
 	private Date date;
 	private int timeslot;
 
-	public FreeDays() {
+	public FreeDay() {
 		
 	}
 
