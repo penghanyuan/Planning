@@ -189,13 +189,14 @@ public class Parser {
 				edate = format.parse(this.originalCalendar.getSemesters().get(key)[1]);
 				semester.setStartDate(sdate);
 				semester.setEndDate(edate);
+				
+				semester.setListHoliday(this.createHolidays());
+				semester.setListFreeDays(this.createFreeDays());
+				semesters.add(semester);
 			} catch (ParseException e) {
 				System.out.println(e.getMessage());
 			}
 
-			semester.setListHoliday(this.createHolidays());
-			semester.setListFreeDays(this.createFreeDays());
-			semesters.add(semester);
 		}
 		return semesters;
 	}
@@ -211,14 +212,14 @@ public class Parser {
 			try {
 				date = format.parse(this.originalCalendar.getFreeDays().get(name)[0]);
 				freeDay.setDate(date);
+				
+				int timeSlot = Integer.parseInt(this.originalCalendar.getFreeDays().get(name)[1]);
+				freeDay.setTimeslot(timeSlot);
+
+				freeDays.add(freeDay);
 			} catch (ParseException e) {
 				System.out.println(e.getMessage());
 			}
-
-			int timeSlot = Integer.parseInt(this.originalCalendar.getFreeDays().get(name)[1]);
-			freeDay.setTimeslot(timeSlot);
-
-			freeDays.add(freeDay);
 		}
 		return freeDays;
 	}
