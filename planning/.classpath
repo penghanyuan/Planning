@@ -22,9 +22,13 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/usr/lib/eclipse/plugins/org.junit_4.12.0.v201504281640/junit.jar">
+	<classpathentry exported="true" kind="lib" path="/Users/stephane/.m2/repository/junit/junit/4.12/junit-4.12.jar">
 		<attributes>
-			<attribute name="javadoc_location" value="http://junit.org/junit4/javadoc/latest/"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="junit"/>
+			<attribute name="maven.artifactId" value="junit"/>
+			<attribute name="maven.version" value="4.12"/>
+			<attribute name="maven.scope" value="test"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>

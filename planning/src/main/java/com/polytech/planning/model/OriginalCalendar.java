@@ -1,17 +1,19 @@
 package com.polytech.planning.model;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class OriginalCalendar {
-	
-	private HashMap<String,String[]> semesters;
-	private HashMap<String,String[]> holidays;
-	private HashMap<String,String[]> freeDays;
+
+	private HashMap<String, String[]> semesters;
+	private HashMap<String, String[]> holidays;
+	private HashMap<String, String[]> freeDays;
 
 	public OriginalCalendar() {
-		this.semesters = new HashMap<String,String[]>();
-		this.holidays = new HashMap<String,String[]>();
-		this.freeDays = new HashMap<String,String[]>();
+		this.semesters = new HashMap<String, String[]>();
+		this.holidays = new HashMap<String, String[]>();
+		this.freeDays = new HashMap<String, String[]>();
 	}
 
 	/**
@@ -22,7 +24,8 @@ public class OriginalCalendar {
 	}
 
 	/**
-	 * @param semsters the semesters to set
+	 * @param semsters
+	 *            the semesters to set
 	 */
 	public void addSemesters(String name, String start, String end) {
 		String[] dates = new String[2];
@@ -39,7 +42,8 @@ public class OriginalCalendar {
 	}
 
 	/**
-	 * @param holidays the holidays to set
+	 * @param holidays
+	 *            the holidays to set
 	 */
 	public void addHolidays(String name, String start, String end) {
 		String[] dates = new String[2];
@@ -56,36 +60,62 @@ public class OriginalCalendar {
 	}
 
 	/**
-	 * @param freeDays the freeDays to set
+	 * @param freeDays
+	 *            the freeDays to set
 	 */
 	public void addFreeDays(String name, String date, String creneaux) throws Exception {
 		String[] infos = new String[2];
 		infos[0] = date;
 		infos[1] = creneaux;
-		
+
 		int creneauxNb = Integer.parseInt(creneaux);
-		
-		if(creneauxNb < 0 && creneauxNb > 4)
+
+		if (creneauxNb < 0 && creneauxNb > 4)
 			throw new Exception("creaneaux doit etre compris entre 0 et 4");
-		
+
 		this.holidays.put(name, infos);
 	}
-	
+
 	public String semesterShow() {
 		int size = this.semesters.size();
-		String retour = "Size = "+size+"\n";
-		
-		for (String name: semesters.keySet()){
+		String retour = "Size = " + size;
 
-            String key =name.toString();
-            String dateStart = semesters.get(name)[0].toString();
-            String dateEnd = semesters.get(name)[1].toString();
+		for (String name : semesters.keySet()) {
 
-            retour = retour+"\n"+key + " - " + dateStart+" / "+dateEnd;
+			String key = name.toString();
+			String dateStart = semesters.get(name)[0].toString();
+			String dateEnd = semesters.get(name)[1].toString();
+
+			retour = retour + "\n" + key + " - " + dateStart + " / " + dateEnd;
 		}
-		
+
 		return retour;
 	}
-	
-	
+
+	public boolean semestersAreEquals(HashMap<String, String[]> input) {
+		if (this.semesters.size() != input.size()) {
+			return false;
+		}
+
+		Set keysSemesters = this.semesters.keySet();
+		Set keysInput = input.keySet();
+		
+		Iterator itSemester = keysSemesters.iterator();
+		Iterator itInput = keysInput.iterator();
+
+		while (itSemester.hasNext()) {
+			
+			Object keySemester = itSemester.next();
+			String[] valueSemester = this.semesters.get(keySemester);
+			
+			Object keyInput = itInput.next();
+			String[] valueInput = input.get(keyInput);
+			
+			if(!keySemester.equals(keyInput) && !valueSemester.equals(valueInput)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }
