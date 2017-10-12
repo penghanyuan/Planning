@@ -228,20 +228,21 @@ public class Parser {
 
 		for (String name : this.originalCalendar.getSemesters().keySet()) {
 
-			Holiday holiday = new Holiday(name);
-
 			DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
 			Date sdate, edate;
 			try {
+				Holiday holiday;
+				
 				sdate = format.parse(this.originalCalendar.getHolidays().get(name)[0]);
 				edate = format.parse(this.originalCalendar.getHolidays().get(name)[1]);
-				holiday.setStartDate(sdate);
-				holiday.setEndDate(edate);
+				
+				holiday = new Holiday(name, sdate, edate);
+				
+				holidays.add(holiday);
+				
 			} catch (ParseException e) {
 				System.out.println(e.getMessage());
 			}
-
-			holidays.add(holiday);
 		}
 		return holidays;
 	}

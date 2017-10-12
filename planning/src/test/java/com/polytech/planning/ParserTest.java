@@ -13,7 +13,7 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class ParserTest 
     extends TestCase
 {
     /**
@@ -21,7 +21,7 @@ public class AppTest
      *
      * @param testName name of the test case
      */
-    public AppTest( String testName )
+    public ParserTest( String testName )
     {
         super( testName );
     }
@@ -31,7 +31,7 @@ public class AppTest
      */
     public static Test suite()
     {
-        return new TestSuite( AppTest.class );
+        return new TestSuite( ParserTest.class );
     }
 
     /**
@@ -56,7 +56,6 @@ public class AppTest
 			readCalendar.readHolidays(2);
 			readCalendar.readFreeDays(3);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	

@@ -14,7 +14,8 @@ public class ReadCalendar extends ReadFile {
 	public void readSemesters(int sheetNb) {
 		int blank = 0;
 		int columnNb = 2;
-		int i = 3;
+		sheetNb--;
+		int i = 2;
 
 		String[] buffer = new String[3];
 
@@ -30,9 +31,11 @@ public class ReadCalendar extends ReadFile {
 			for (int j = 0; j < 3; j++) {
 				try {
 					if (cellIsEmpty(i, j + columnNb, sheetNb)) {
-						new Exception("La cellule ligne " + i + 1 + " et colonne " + j + columnNb + 1 + " est vide.");
+						new NullPointerException("La cellule ligne " + i + 1 + " et colonne " + j + columnNb + 1 + " est vide.");
+						blank++;
 					} else {
-						buffer[j] = readCell(i, j + columnNb, sheetNb);
+						if(blank < 1)
+							buffer[j] = readCell(i, j + columnNb, sheetNb);
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

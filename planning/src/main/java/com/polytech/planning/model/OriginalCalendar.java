@@ -70,4 +70,22 @@ public class OriginalCalendar {
 		
 		this.holidays.put(name, infos);
 	}
+	
+	public String semesterShow() {
+		int size = this.semesters.size();
+		String retour = "Size = "+size+"\n";
+		
+		for (String name: semesters.keySet()){
+
+            String key =name.toString();
+            String dateStart = semesters.get(name)[0].toString();
+            String dateEnd = semesters.get(name)[1].toString();
+
+            retour = retour+"\n"+key + " - " + dateStart+" / "+dateEnd;
+		}
+		
+		return retour;
+	}
+	
+	
 }

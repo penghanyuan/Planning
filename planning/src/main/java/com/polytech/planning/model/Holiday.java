@@ -8,8 +8,10 @@ public class Holiday {
 	private Date endDate;
 	
 
-	public Holiday(String name) {
+	public Holiday(String name, Date startDate, Date endDate) {
 		this.name = name;
+		this.startDate = startDate;
+		this.endDate = endDate;
 	}
 
 	/**
@@ -38,5 +40,12 @@ public class Holiday {
 	 */
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
 	}
 }
