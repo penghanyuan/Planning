@@ -1,25 +1,30 @@
 package com.polytech.planning.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
 public class OriginalCalendar {
 
-	private HashMap<String, String[]> semesters;
-	private HashMap<String, String[]> holidays;
+	private HashMap<String, Date[]> semesters;
+	private HashMap<String, Date[]> holidays;
 	private HashMap<String, String[]> freeDays;
+	private SimpleDateFormat dateFormatter;
 
 	public OriginalCalendar() {
-		this.semesters = new HashMap<String, String[]>();
-		this.holidays = new HashMap<String, String[]>();
+		this.semesters = new HashMap<String, Date[]>();
+		this.holidays = new HashMap<String, Date[]>();
 		this.freeDays = new HashMap<String, String[]>();
+		this.dateFormatter = new SimpleDateFormat("mm/dd/yy");
 	}
 
 	/**
 	 * @return the semesters
 	 */
-	public HashMap<String, String[]> getSemesters() {
+	public HashMap<String, Date[]> getSemesters() {
 		return semesters;
 	}
 
@@ -27,17 +32,38 @@ public class OriginalCalendar {
 	 * @param semsters
 	 *            the semesters to set
 	 */
-	public void addSemesters(String name, String start, String end) {
-		String[] dates = new String[2];
+	public void addSemesters(String name, Date start, Date end) {
+		Date[] dates = new Date[2];
 		dates[0] = start;
 		dates[1] = end;
-		this.semesters.put(name, dates);
+		this.semesters.put(name, dates);		
+	}
+	
+	/**
+	 * @param semsters
+	 *            the semesters to set
+	 */
+	public void addSemesters(String name, String start, String end) {
+		Date[] dates = new Date[2];
+		Date startDate;
+		Date endDate;
+		
+		try {
+			startDate = this.dateFormatter.parse(start);
+			endDate = this.dateFormatter.parse(start);
+			dates[0] = startDate;
+			dates[1] = endDate;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		this.semesters.put(name, dates);		
 	}
 
 	/**
 	 * @return the holidays
 	 */
-	public HashMap<String, String[]> getHolidays() {
+	public HashMap<String, Date[]> getHolidays() {
 		return holidays;
 	}
 
@@ -46,9 +72,18 @@ public class OriginalCalendar {
 	 *            the holidays to set
 	 */
 	public void addHolidays(String name, String start, String end) {
-		String[] dates = new String[2];
-		dates[0] = start;
-		dates[1] = end;
+		Date[] dates = new Date[2];
+		Date startDate;
+		Date endDate;
+		try {
+			startDate = this.dateFormatter.parse(start);
+			endDate = this.dateFormatter.parse(start);
+			dates[0] = startDate;
+			dates[1] = endDate;
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
 		this.holidays.put(name, dates);
 	}
 
@@ -73,7 +108,7 @@ public class OriginalCalendar {
 		if (creneauxNb < 0 && creneauxNb > 4)
 			throw new Exception("creaneaux doit etre compris entre 0 et 4");
 
-		this.holidays.put(name, infos);
+		this.freeDays.put(name, infos);
 	}
 
 	public String semesterShow() {
@@ -83,8 +118,8 @@ public class OriginalCalendar {
 		for (String name : semesters.keySet()) {
 
 			String key = name.toString();
-			String dateStart = semesters.get(name)[0].toString();
-			String dateEnd = semesters.get(name)[1].toString();
+			Date dateStart = semesters.get(name)[0];
+			Date dateEnd = semesters.get(name)[1];
 
 			retour = retour + "\n" + key + " - " + dateStart + " / " + dateEnd;
 		}
@@ -92,7 +127,7 @@ public class OriginalCalendar {
 		return retour;
 	}
 
-	public boolean semestersAreEquals(HashMap<String, String[]> input) {
+	public boolean semestersAreEquals(HashMap<String, Date[]> input) {
 		if (this.semesters.size() != input.size()) {
 			return false;
 		}
@@ -106,10 +141,25 @@ public class OriginalCalendar {
 		while (itSemester.hasNext()) {
 			
 			Object keySemester = itSemester.next();
-			String[] valueSemester = this.semesters.get(keySemester);
+			Date[] valueSemester = this.semesters.get(keySemester);
 			
 			Object keyInput = itInput.next();
-			String[] valueInput = input.get(keyInput);
+			Date[] valueInput = input.get(keyInput);
+			
+			System.out.println(keySemester+" - "+keyInput);
+			
+			if(valueSemester.length == valueInput.length) {
+				for(int i=0 ; i < valueSemester.length ; i++) {
+					System.out.println(valueSemester[i].toString());
+					System.out.println(valueInput[i].toString());
+					if(!valueSemester[i].equals(valueInput[i])) {
+						return false;
+					}
+				}
+			} else {
+				return false;
+			}
+			System.out.println(valueSemester.length+" - "+valueInput.length);
 			
 			if(!keySemester.equals(keyInput) && !valueSemester.equals(valueInput)) {
 				return false;

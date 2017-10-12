@@ -12,17 +12,18 @@ public class ReadCalendar extends ReadFile {
 	}
 
 	public void readSemesters(int sheetNb) {
+		int[] coordinate = this.getFirstCellNotEmpty(sheetNb);
 		int blank = 0;
-		int columnNb = 2;
-		sheetNb--;
-		int i = 2;
+		
+		int colNum = coordinate[0];
+		int lineNum = coordinate[1]-1;
 
 		String[] buffer = new String[3];
 
 		while (blank < 1) {
 			// if empty
 			try {
-				if (rowIsEmpty(i, sheetNb))
+				if (rowIsEmpty(lineNum, sheetNb))
 					blank++;
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -30,22 +31,25 @@ public class ReadCalendar extends ReadFile {
 
 			for (int j = 0; j < 3; j++) {
 				try {
-					if (cellIsEmpty(i, j + columnNb, sheetNb)) {
-						new NullPointerException("La cellule ligne " + i + 1 + " et colonne " + j + columnNb + 1 + " est vide.");
+					if (cellIsEmpty(lineNum, j + colNum, sheetNb)) {
 						blank++;
 					} else {
 						if(blank < 1)
-							buffer[j] = readCell(i, j + columnNb, sheetNb);
+							buffer[j] = readCell(lineNum, j + colNum, sheetNb);
 					}
+				} catch (NullPointerException e) {
+					e.printStackTrace();
+					System.out.println(e.getMessage());
 				} catch (Exception e) {
 					e.printStackTrace();
+					System.out.println(e.getMessage());
 				}
 			}
 
 			// Store semester
 			calendar.addSemesters(buffer[0], buffer[1], buffer[2]);
 
-			i++;
+			lineNum++;
 		}
 	}
 
