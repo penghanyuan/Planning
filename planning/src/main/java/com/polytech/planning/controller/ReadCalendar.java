@@ -3,6 +3,8 @@ package com.polytech.planning.controller;
 import java.util.Date;
 import java.util.HashMap;
 
+import javax.naming.NameNotFoundException;
+
 import com.polytech.planning.model.OriginalCalendar;
 
 public class ReadCalendar extends ReadFile {
@@ -14,7 +16,7 @@ public class ReadCalendar extends ReadFile {
 		calendar = new OriginalCalendar();
 	}
 
-	private HashMap<String, Date[]> readSemester(int sheetNum, String name) throws Exception {
+	private HashMap<String, Date[]> readSemester(int sheetNum, String name) throws NameNotFoundException {
 		String nameSemester;
 		Date[] dates = new Date[2];
 		HashMap<String, Date[]> output = new HashMap<String, Date[]>();
@@ -33,13 +35,14 @@ public class ReadCalendar extends ReadFile {
 			calendar.addSemesters(nameSemester, dates[0], dates[1]);
 			
 		} else {
-			throw new Exception(name + " : not found");
+			throw new NameNotFoundException(name + " : not found");
 		}
 
 		return output;
 	}
 
 	public void readSemesters(int sheetNum) {
+		@SuppressWarnings("unused")
 		HashMap<String, Date[]> buffer;
 		String[] semesterNames = { "S5", "S6", "S7", "S8", "S9", "S10" };
 		this.calendar.clearSemesters();
@@ -47,9 +50,10 @@ public class ReadCalendar extends ReadFile {
 		for (String name : semesterNames) {
 			try {
 				buffer = readSemester(sheetNum, name);
-			} catch (Exception e) {
+			} catch (NameNotFoundException e) {
 				e.printStackTrace();
 				e.getMessage();
+				break;
 			}
 		}
 	}

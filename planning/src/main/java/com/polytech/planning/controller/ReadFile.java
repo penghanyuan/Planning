@@ -86,6 +86,7 @@ public abstract class ReadFile {
 	 * @param sheetNum
 	 *            Number of the sheet to be readed
 	 */
+	@SuppressWarnings("unused")
 	protected Date readCellDate(int rowNum, int colNum, int sheetNum) {
 		try {
 			wb = WorkbookFactory.create(file);
