@@ -11,11 +11,23 @@ public class ReadCalendar extends ReadFile {
 
 	private OriginalCalendar calendar;
 
+	/**
+	 * @param filePath
+	 *            The path of the excel file
+	 */
 	public ReadCalendar(String filePath) {
 		super(filePath);
 		calendar = new OriginalCalendar();
 	}
 
+	/**
+	 * @param sheetNum
+	 *            The number of the selected sheet
+	 * @param name
+	 *            Name of the search semester
+	 * @return A HashMap<String, Date[]> of a Semester
+	 * @throws NameNotFoundException
+	 */
 	private HashMap<String, Date[]> readSemester(int sheetNum, String name) throws NameNotFoundException {
 		String nameSemester;
 		Date[] dates = new Date[2];
@@ -27,13 +39,13 @@ public class ReadCalendar extends ReadFile {
 			nameSemester = readCell(coordinate[0], coordinate[1], sheetNum);
 
 			// Date de début
-			dates[0] = readCellDate(coordinate[0], coordinate[1]+1, sheetNum);
+			dates[0] = readCellDate(coordinate[0], coordinate[1] + 1, sheetNum);
 
 			// Date de fin
-			dates[1] = readCellDate(coordinate[0], coordinate[1]+2, sheetNum);
-			
+			dates[1] = readCellDate(coordinate[0], coordinate[1] + 2, sheetNum);
+
 			calendar.addSemesters(nameSemester, dates[0], dates[1]);
-			
+
 		} else {
 			throw new NameNotFoundException(name + " : not found");
 		}
@@ -41,6 +53,10 @@ public class ReadCalendar extends ReadFile {
 		return output;
 	}
 
+	/**
+	 * @param sheetNum
+	 *            The number of the selected sheet
+	 */
 	public void readSemesters(int sheetNum) {
 		@SuppressWarnings("unused")
 		HashMap<String, Date[]> buffer;
@@ -59,7 +75,7 @@ public class ReadCalendar extends ReadFile {
 	}
 
 	/**
-	 * @return the calendar
+	 * @return the calendar object
 	 */
 	public OriginalCalendar getCalendar() {
 		return calendar;

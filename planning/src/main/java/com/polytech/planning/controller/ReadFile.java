@@ -124,7 +124,9 @@ public abstract class ReadFile {
 
 	/**
 	 * @param rowNb
+	 *            Number of row to be readed
 	 * @param sheetNb
+	 *            Number of the sheet to be readed
 	 */
 	protected List<String> readRow(int rowNb, int sheetNb) {
 		List<String> readingValues = new ArrayList<String>();
@@ -156,7 +158,9 @@ public abstract class ReadFile {
 
 	/**
 	 * @param rowNb
+	 *            Number of row to be readed
 	 * @param sheetNb
+	 *            Number of the sheet to be readed
 	 */
 	protected boolean rowIsEmpty(int rowNb, int sheetNb) throws NullPointerException {
 		Sheet sheet = wb.getSheetAt(sheetNb);
@@ -182,9 +186,12 @@ public abstract class ReadFile {
 	}
 
 	/**
-	 * @param lineNb
-	 * @param rowNb
-	 * @param sheetNb
+	 * @param colNum
+	 *            Number of column to be readed
+	 * @param rowNum
+	 *            Number of row to be readed
+	 * @param sheetNum
+	 *            Number of the sheet to be readed
 	 */
 	protected boolean cellIsEmpty(int colNum, int rowNum, int sheetNum) throws NullPointerException {
 		Sheet sheet = wb.getSheetAt(sheetNum);
@@ -213,6 +220,7 @@ public abstract class ReadFile {
 
 	/**
 	 * @param sheetNb
+	 *            Number of the sheet to be readed
 	 * @return A tqble with two values, the first the row number and the second the
 	 *         column number of the first non-empty cell
 	 */
@@ -239,7 +247,9 @@ public abstract class ReadFile {
 
 	/**
 	 * @param sheetNb
+	 *            Number of the sheet to be readed
 	 * @param content
+	 *            the search String
 	 * @return A tqble with two values, the first the row number and the second the
 	 *         column number of the first content find
 	 */
