@@ -1,5 +1,7 @@
 diagramme de classes.asta.lock
-
+.DS_Store
+*/.DS_Store
+planing/target/*
 \.metadata/
 
 \.recommenders/
