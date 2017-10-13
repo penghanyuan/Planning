@@ -146,7 +146,7 @@ public abstract class ReadFile {
 		Row row = sheet.getRow(rowNum);
 		Cell cell;
 
-		//DataFormatter formatter = new DataFormatter();
+		// DataFormatter formatter = new DataFormatter();
 		String cellContent;
 
 		if (sheet.equals(null)) {
@@ -195,7 +195,7 @@ public abstract class ReadFile {
 
 	/**
 	 * @param sheetNb
-	 * @param sheetNb
+	 * @param content
 	 * @return A tqble with two values, the first the row number and the second the
 	 *         column number of the first content find
 	 */
@@ -206,31 +206,21 @@ public abstract class ReadFile {
 
 		Sheet sheet = wb.getSheetAt(sheetNb);
 		int lineNum = 0;
-		Row row = sheet.getRow(lineNum);
+		// Row row = sheet.getRow(lineNum);
 
 		if (sheet.equals(null))
 			throw new NullPointerException("L'onglet " + sheetNb + " n'existe pas");
 
-		while (i < 100 && find == false) { // IF la ligne est vide rowIsEmpty ALORS
-			if (this.rowIsEmpty(row.getRowNum(), sheetNb)) {
-				// elle est vide i++ et passer a la suivante
-				lineNum++;
-				row = sheet.getRow(lineNum);
-			} else { // SINON parcourir les valeurs de la premiere a la derniere
-				for (Cell cell : row) {
-					this.readCell(lineNum, cell.getRowIndex(), sheetNb);
-					if (content == cell.getStringCellValue()) {
+		for (Row row : sheet) {
+			for (Cell cell : row) {
+				if (cell.getCellTypeEnum() == CellType.STRING) {
+					if (cell.getRichStringCellValue().getString().trim().equals(content)) {
 						coordonates[0] = cell.getRowIndex();
 						coordonates[1] = cell.getColumnIndex();
-						break;
-					} else {
-						lineNum++;
-						row = sheet.getRow(lineNum);
 					}
 				}
 			}
 		}
-
 		return coordonates;
 	}
 }

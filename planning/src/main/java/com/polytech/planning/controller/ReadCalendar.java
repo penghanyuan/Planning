@@ -1,5 +1,8 @@
 package com.polytech.planning.controller;
 
+import java.util.Date;
+import java.util.HashMap;
+
 import com.polytech.planning.model.OriginalCalendar;
 
 public class ReadCalendar extends ReadFile {
@@ -11,12 +14,19 @@ public class ReadCalendar extends ReadFile {
 		calendar = new OriginalCalendar();
 	}
 
+	public void readSemester(int sheetNum, int colNum, int lineNum){
+		System.out.println(searchContent(sheetNum, "S5")[0]);
+		System.out.println(searchContent(sheetNum, "S5")[1]);
+	}
+	
 	public void readSemesters(int sheetNb) {
 		int[] coordinate = this.getFirstCellNotEmpty(sheetNb);
 		int blank = 0;
 		
 		int colNum = coordinate[0];
-		int lineNum = coordinate[1]-1;
+		int lineNum = coordinate[1]+1;
+		
+		System.out.println(colNum+" - "+lineNum);
 
 		String[] buffer = new String[3];
 
@@ -50,64 +60,6 @@ public class ReadCalendar extends ReadFile {
 			calendar.addSemesters(buffer[0], buffer[1], buffer[2]);
 
 			lineNum++;
-		}
-	}
-
-	public void readHolidays(int sheetNb) throws Exception {
-		int blank = 0;
-		int columnNb = 1;
-		int i = 3;
-
-		String[] buffer = new String[3];
-
-		while (blank < 1) {
-
-			for (int j = 0; j < 3; j++) {
-				try {
-					if (cellIsEmpty(i, j + columnNb, sheetNb)) {
-						new Exception("La cellule ligne " + i + 1 + " et colonne " + j + columnNb + 1 + " est vide.");
-					} else {
-						buffer[j] = readCell(i, j + columnNb, sheetNb);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			// Store Holiday
-			calendar.addHolidays(buffer[0], buffer[1], buffer[2]);
-
-			i++;
-		}
-	}
-
-	public void readFreeDays(int sheetNb) {
-		int blank = 0;
-		int columnNb = 1;
-		int i = 3;
-
-		String[] buffer = new String[3];
-		while (blank < 1) {
-			for (int j = 0; j < 3; j++) {
-				try {
-					if (cellIsEmpty(i, j + columnNb, sheetNb)) {
-						new Exception("La cellule ligne " + i + 1 + " et colonne " + j + columnNb + 1 + " est vide.");
-					} else {
-						buffer[j] = readCell(i, j + columnNb, sheetNb);
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			// Store free days
-			try {
-				calendar.addFreeDays(buffer[0], buffer[1], buffer[2]);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			i++;
 		}
 	}
 

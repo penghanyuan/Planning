@@ -8,11 +8,7 @@ import com.polytech.planning.controller.ReadCalendar;
  */
 public class App {
 	public static void main(String[] args) {
-		ReadCalendar readEmptyCalendar = new ReadCalendar("CalendarEmpty.xlsx");
-		//readEmptyCalendar.readSemesters(1);
-		
-		readEmptyCalendar.getFirstCellNotEmpty(1);
-		System.out.println(readEmptyCalendar.getFirstCellNotEmpty(1)[0]);
-		System.out.println(readEmptyCalendar.getFirstCellNotEmpty(1)[1]);
+		ReadCalendar readCalendar = new ReadCalendar("Calendar.xlsx");
+		readCalendar.readSemester(0, 0, 0);
 	}
 }
