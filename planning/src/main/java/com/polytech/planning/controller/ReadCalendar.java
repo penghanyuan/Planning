@@ -31,7 +31,8 @@ public class ReadCalendar extends ReadFile {
 
 			for (int j = 0; j < 3; j++) {
 				try {
-					if (cellIsEmpty(lineNum, j + colNum, sheetNb)) {
+					if (cellIsEmpty(lineNum, j + colNum, sheetNb)) { // Génère une exception NullPointerException
+						System.out.println("toto");
 						blank++;
 					} else {
 						if(blank < 1)
@@ -39,10 +40,9 @@ public class ReadCalendar extends ReadFile {
 					}
 				} catch (NullPointerException e) {
 					e.printStackTrace();
-					System.out.println(e.getMessage());
+					System.out.println("43 - ReadCalendar");
 				} catch (Exception e) {
 					e.printStackTrace();
-					System.out.println(e.getMessage());
 				}
 			}
 

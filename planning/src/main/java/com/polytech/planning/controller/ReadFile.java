@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.poi.EncryptedDocumentException;
-import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -58,7 +57,12 @@ public abstract class ReadFile {
 
 			Cell cell = row.getCell(colNum);
 
-			String cellContent = formatter.formatCellValue(cell);
+			String cellContent;
+			if (cell != null) {
+				cellContent = formatter.formatCellValue(cell);
+			} else {
+				cellContent = null;
+			}
 
 			return cellContent;
 
@@ -142,15 +146,21 @@ public abstract class ReadFile {
 		Row row = sheet.getRow(rowNum);
 		Cell cell;
 
-		DataFormatter formatter = new DataFormatter();
+		//DataFormatter formatter = new DataFormatter();
 		String cellContent;
 
 		if (sheet.equals(null)) {
 			throw new NullPointerException("L'onglet " + sheetNum + " n'existe pas");
 		} else {
-			cellContent = this.readCell(rowNum, colNum, sheetNum);
-			if (cellContent == null) {
-				return true;
+			cell = row.getCell(rowNum);
+			System.out.println(cell);
+			if (cell != null) {
+				cellContent = this.readCell(rowNum, colNum, sheetNum);
+				if (cellContent == null) {
+					return true;
+				} else {
+					return false;
+				}
 			} else {
 				return false;
 			}

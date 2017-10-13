@@ -184,20 +184,17 @@ public class Parser {
 
 			DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
 			Date sdate, edate;
-			try {
-				sdate = format.parse(this.originalCalendar.getSemesters().get(key)[0]);
-				edate = format.parse(this.originalCalendar.getSemesters().get(key)[1]);
-				semester = new Semester(key);
-				semester.setStartDate(sdate);
-				semester.setEndDate(edate);
-				
-				semester.setListHoliday(this.createHolidays());
-				semester.setListFreeDays(this.createFreeDays());
-				semesters.add(semester);
-				
-			} catch (ParseException e) {
-				System.out.println(e.getMessage());
-			}
+			sdate = this.originalCalendar.getSemesters().get(key)[0];
+			edate = this.originalCalendar.getSemesters().get(key)[1];
+			//sdate = format.parse(this.originalCalendar.getSemesters().get(key)[0]);
+			//edate = format.parse(this.originalCalendar.getSemesters().get(key)[1]);
+			semester = new Semester(key);
+			semester.setStartDate(sdate);
+			semester.setEndDate(edate);
+			
+			semester.setListHoliday(this.createHolidays());
+			semester.setListFreeDays(this.createFreeDays());
+			semesters.add(semester);
 
 		}
 		return semesters;
@@ -235,18 +232,14 @@ public class Parser {
 			Holiday holiday;
 			DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
 			Date sdate, edate;
-			try {
-
-				sdate = format.parse(this.originalCalendar.getHolidays().get(name)[0]);
-				edate = format.parse(this.originalCalendar.getHolidays().get(name)[1]);
-				
-				holiday = new Holiday(name, sdate, edate);
-				
-				holidays.add(holiday);
-				
-			} catch (ParseException e) {
-				System.out.println(e.getMessage());
-			}
+			sdate = this.originalCalendar.getHolidays().get(name)[0];
+			edate = this.originalCalendar.getHolidays().get(name)[1];
+			//sdate = format.parse(this.originalCalendar.getHolidays().get(name)[0]);
+			//edate = format.parse(this.originalCalendar.getHolidays().get(name)[1]);
+			
+			holiday = new Holiday(name, sdate, edate);
+			
+			holidays.add(holiday);
 		}
 		return holidays;
 	}
