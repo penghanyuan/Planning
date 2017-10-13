@@ -43,6 +43,15 @@ public class OriginalCalendar {
 	 * @param semsters
 	 *            the semesters to set
 	 */
+	public void clearSemesters() {
+		this.semesters.clear();	
+		this.semesters = new HashMap<String, Date[]>();
+	}
+	
+	/**
+	 * @param semsters
+	 *            the semesters to set
+	 */
 	public void addSemesters(String name, String start, String end) {
 		Date[] dates = new Date[2];
 		Date startDate;
@@ -132,11 +141,11 @@ public class OriginalCalendar {
 			return false;
 		}
 
-		Set keysSemesters = this.semesters.keySet();
-		Set keysInput = input.keySet();
+		Set<String> keysSemesters = this.semesters.keySet();
+		Set<String> keysInput = input.keySet();
 		
-		Iterator itSemester = keysSemesters.iterator();
-		Iterator itInput = keysInput.iterator();
+		Iterator<String> itSemester = keysSemesters.iterator();
+		Iterator<String> itInput = keysInput.iterator();
 
 		while (itSemester.hasNext()) {
 			
@@ -146,12 +155,8 @@ public class OriginalCalendar {
 			Object keyInput = itInput.next();
 			Date[] valueInput = input.get(keyInput);
 			
-			System.out.println(keySemester+" - "+keyInput);
-			
 			if(valueSemester.length == valueInput.length) {
 				for(int i=0 ; i < valueSemester.length ; i++) {
-					System.out.println(valueSemester[i].toString());
-					System.out.println(valueInput[i].toString());
 					if(!valueSemester[i].equals(valueInput[i])) {
 						return false;
 					}
@@ -159,7 +164,6 @@ public class OriginalCalendar {
 			} else {
 				return false;
 			}
-			System.out.println(valueSemester.length+" - "+valueInput.length);
 			
 			if(!keySemester.equals(keyInput) && !valueSemester.equals(valueInput)) {
 				return false;

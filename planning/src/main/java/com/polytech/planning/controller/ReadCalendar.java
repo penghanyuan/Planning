@@ -14,52 +14,43 @@ public class ReadCalendar extends ReadFile {
 		calendar = new OriginalCalendar();
 	}
 
-	public void readSemester(int sheetNum, int colNum, int lineNum){
-		System.out.println(searchContent(sheetNum, "S5")[0]);
-		System.out.println(searchContent(sheetNum, "S5")[1]);
+	private HashMap<String, Date[]> readSemester(int sheetNum, String name) throws Exception {
+		String nameSemester;
+		Date[] dates = new Date[2];
+		HashMap<String, Date[]> output = new HashMap<String, Date[]>();
+		int[] coordinate = searchContent(sheetNum, name);
+
+		if (coordinate[0] != -1 || coordinate[1] != -1) {
+			// Name
+			nameSemester = readCell(coordinate[0], coordinate[1], sheetNum);
+
+			// Date de début
+			dates[0] = readCellDate(coordinate[0], coordinate[1]+1, sheetNum);
+
+			// Date de fin
+			dates[1] = readCellDate(coordinate[0], coordinate[1]+2, sheetNum);
+			
+			calendar.addSemesters(nameSemester, dates[0], dates[1]);
+			
+		} else {
+			throw new Exception(name + " : not found");
+		}
+
+		return output;
 	}
-	
-	public void readSemesters(int sheetNb) {
-		int[] coordinate = this.getFirstCellNotEmpty(sheetNb);
-		int blank = 0;
-		
-		int colNum = coordinate[0];
-		int lineNum = coordinate[1]+1;
-		
-		System.out.println(colNum+" - "+lineNum);
 
-		String[] buffer = new String[3];
+	public void readSemesters(int sheetNum) {
+		HashMap<String, Date[]> buffer;
+		String[] semesterNames = { "S5", "S6", "S7", "S8", "S9", "S10" };
+		this.calendar.clearSemesters();
 
-		while (blank < 1) {
-			// if empty
+		for (String name : semesterNames) {
 			try {
-				if (rowIsEmpty(lineNum, sheetNb))
-					blank++;
+				buffer = readSemester(sheetNum, name);
 			} catch (Exception e) {
 				e.printStackTrace();
+				e.getMessage();
 			}
-
-			for (int j = 0; j < 3; j++) {
-				try {
-					if (cellIsEmpty(lineNum, j + colNum, sheetNb)) { // Génère une exception NullPointerException
-						System.out.println("toto");
-						blank++;
-					} else {
-						if(blank < 1)
-							buffer[j] = readCell(lineNum, j + colNum, sheetNb);
-					}
-				} catch (NullPointerException e) {
-					e.printStackTrace();
-					System.out.println("43 - ReadCalendar");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-
-			// Store semester
-			calendar.addSemesters(buffer[0], buffer[1], buffer[2]);
-
-			lineNum++;
 		}
 	}
 

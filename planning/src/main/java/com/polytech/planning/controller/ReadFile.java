@@ -3,6 +3,7 @@ package com.polytech.planning.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.poi.EncryptedDocumentException;
@@ -78,6 +79,49 @@ public abstract class ReadFile {
 	}
 
 	/**
+	 * @param rowNum
+	 *            Number of row to be readed
+	 * @param colNum
+	 *            Number of column to be readed
+	 * @param sheetNum
+	 *            Number of the sheet to be readed
+	 */
+	protected Date readCellDate(int rowNum, int colNum, int sheetNum) {
+		try {
+			wb = WorkbookFactory.create(file);
+
+			Sheet sheet = wb.getSheetAt(sheetNum);
+			Row row = sheet.getRow(rowNum);
+
+			Cell cell = row.getCell(colNum);
+
+			Date cellContent = null;
+
+			if (cell.getCellTypeEnum() == CellType.NUMERIC) {
+				if (cell != null) {
+					cellContent = cell.getDateCellValue();
+					return cellContent;
+				} else {
+					throw new Exception("La cellule est vide");
+				}
+			} else {
+				throw new Exception("La cellule n'est pas une date");
+			}
+
+		} catch (EncryptedDocumentException e) {
+			e.printStackTrace();
+		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	/**
 	 * @param rowNb
 	 * @param sheetNb
 	 */
@@ -94,8 +138,8 @@ public abstract class ReadFile {
 			if (rowIsEmpty(rowNb, sheetNb))
 				return null;
 		} catch (Exception e) {
-			System.out.println("Cet onglet n'existe pas.");
 			e.printStackTrace();
+			e.getMessage();
 		}
 
 		numberCell = row.getFirstCellNum();
@@ -153,7 +197,6 @@ public abstract class ReadFile {
 			throw new NullPointerException("L'onglet " + sheetNum + " n'existe pas");
 		} else {
 			cell = row.getCell(rowNum);
-			System.out.println(cell);
 			if (cell != null) {
 				cellContent = this.readCell(rowNum, colNum, sheetNum);
 				if (cellContent == null) {
@@ -199,14 +242,12 @@ public abstract class ReadFile {
 	 * @return A tqble with two values, the first the row number and the second the
 	 *         column number of the first content find
 	 */
-	public int[] searchContent(int sheetNb, String content) {
+	public int[] searchContent(int sheetNb, String content) throws NullPointerException {
 		int[] coordonates = new int[2];
-		boolean find = false;
-		int i = 0;
+		coordonates[0] = -1;
+		coordonates[1] = -1;
 
 		Sheet sheet = wb.getSheetAt(sheetNb);
-		int lineNum = 0;
-		// Row row = sheet.getRow(lineNum);
 
 		if (sheet.equals(null))
 			throw new NullPointerException("L'onglet " + sheetNb + " n'existe pas");
