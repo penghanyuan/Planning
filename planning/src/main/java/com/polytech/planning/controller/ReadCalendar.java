@@ -1,8 +1,6 @@
 package com.polytech.planning.controller;
 
 import java.util.Date;
-import java.util.HashMap;
-
 import javax.naming.NameNotFoundException;
 
 import com.polytech.planning.model.OriginalCalendar;
@@ -28,10 +26,9 @@ public class ReadCalendar extends ReadFile {
 	 * @return A HashMap<String, Date[]> of a Semester
 	 * @throws NameNotFoundException
 	 */
-	private HashMap<String, Date[]> readSemester(int sheetNum, String name) throws NameNotFoundException {
+	private void readSemester(int sheetNum, String name) throws NameNotFoundException {
 		String nameSemester;
 		Date[] dates = new Date[2];
-		HashMap<String, Date[]> output = new HashMap<String, Date[]>();
 		int[] coordinate = searchContent(sheetNum, name);
 
 		if (coordinate[0] != -1 || coordinate[1] != -1) {
@@ -49,8 +46,6 @@ public class ReadCalendar extends ReadFile {
 		} else {
 			throw new NameNotFoundException(name + " : not found");
 		}
-
-		return output;
 	}
 
 	/**
@@ -58,14 +53,12 @@ public class ReadCalendar extends ReadFile {
 	 *            The number of the selected sheet
 	 */
 	public void readSemesters(int sheetNum) {
-		@SuppressWarnings("unused")
-		HashMap<String, Date[]> buffer;
 		String[] semesterNames = { "S5", "S6", "S7", "S8", "S9", "S10" };
 		this.calendar.clearSemesters();
 
 		for (String name : semesterNames) {
 			try {
-				buffer = readSemester(sheetNum, name);
+				readSemester(sheetNum, name);
 			} catch (NameNotFoundException e) {
 				e.printStackTrace();
 				e.getMessage();
@@ -74,6 +67,83 @@ public class ReadCalendar extends ReadFile {
 		}
 	}
 
+	/**
+	 * @param sheetNum
+	 *            The number of the selected sheet
+	 * @param name
+	 *            Name of the search semester
+	 * @return A HashMap<String, Date[]> of a Semester
+	 * @throws NameNotFoundException
+	 */
+	private void readHoliday(int sheetNum, int rowNum, int colNum) {
+		String nameHoliday;
+		Date[] dates = new Date[2];
+
+		nameHoliday = readCell(rowNum, colNum, sheetNum);
+		dates[0] = readCellDate(rowNum, colNum + 1, sheetNum);
+		dates[1] = readCellDate(rowNum, colNum + 2, sheetNum);
+
+		this.calendar.addHolidays(nameHoliday, dates[0], dates[1]);
+	}
+
+	/**
+	 * @param sheetNum
+	 *            The number of the selected sheet
+	 */
+	public void readHolidays(int sheetNum) {
+		String searchString = "Nom";
+		boolean emptyRow = false;
+		this.calendar.clearHolidays();
+
+		int[] coordonates = searchContent(sheetNum, searchString);
+
+		int rowNum = 1 + coordonates[0];
+		int colNum = coordonates[1];
+
+		while (!emptyRow) {
+			if (!rowIsEmpty(rowNum, sheetNum)) {
+				readHoliday(sheetNum, rowNum, colNum);
+			} else {
+				emptyRow = true;
+			}
+			rowNum++;
+		}
+	}
+
+	private void readFreeDay(int sheetNum, int rowNum, int colNum) {
+		String[] nameHoliday = new String[2];
+		Date date;
+
+		nameHoliday[0] = readCell(rowNum, colNum, sheetNum);
+		date = readCellDate(rowNum, colNum + 1, sheetNum);
+		nameHoliday[1] = readCell(rowNum, colNum + 2, sheetNum);
+
+		this.calendar.addFreeDays(nameHoliday[0], date, nameHoliday[1]);
+	}
+	
+	/**
+	 * @param sheetNum
+	 *            The number of the selected sheet
+	 */
+	public void readFreeDays(int sheetNum) {
+		String searchString = "Nom";
+		boolean emptyRow = false;
+		this.calendar.clearFreeDays();
+
+		int[] coordonates = searchContent(sheetNum, searchString);
+
+		int rowNum = 1 + coordonates[0];
+		int colNum = coordonates[1];
+
+		while (!emptyRow) {
+			if (!rowIsEmpty(rowNum, sheetNum)) {
+				readFreeDay(sheetNum, rowNum, colNum);
+			} else {
+				emptyRow = true;
+			}
+			rowNum++;
+		}
+	}
 	/**
 	 * @return the calendar object
 	 */
