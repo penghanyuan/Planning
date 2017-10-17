@@ -202,25 +202,21 @@ public class Parser {
 
 	private List<FreeDay> createFreeDays() {
 		List<FreeDay> freeDays = new ArrayList<FreeDay>();
-		for (String name : this.originalCalendar.getFreeDays().keySet()) {
+		for (Date date : this.originalCalendar.getFreeDays().keySet()) {
 			FreeDay freeDay;
 			DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
-			Date date;
+			String name;
 			
-			try {
-				date = format.parse(this.originalCalendar.getFreeDays().get(name)[0]);
-				
-				freeDay = new FreeDay();
-				freeDay.setName(name);
-				freeDay.setDate(date);
-				
-				int timeSlot = Integer.parseInt(this.originalCalendar.getFreeDays().get(name)[1]);
-				freeDay.setTimeslot(timeSlot);
+			name = this.originalCalendar.getFreeDays().get(date)[0];
+			
+			freeDay = new FreeDay();
+			freeDay.setName(name);
+			freeDay.setDate(date);
+			
+			int timeSlot = Integer.parseInt(this.originalCalendar.getFreeDays().get(date)[1]);
+			freeDay.setTimeslot(timeSlot);
 
-				freeDays.add(freeDay);
-			} catch (ParseException e) {
-				System.out.println(e.getMessage());
-			}
+			freeDays.add(freeDay);
 		}
 		return freeDays;
 	}
@@ -228,12 +224,15 @@ public class Parser {
 	private List<Holiday> createHolidays() {
 		List<Holiday> holidays = new ArrayList<Holiday>();
 
-		for (String name : this.originalCalendar.getSemesters().keySet()) {
+		for (String name : this.originalCalendar.getHolidays().keySet()) {
 			Holiday holiday;
-			DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
+			//DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
+			
 			Date sdate, edate;
+			//System.out.println(originalCalendar.getHolidays().get(name));
 			sdate = this.originalCalendar.getHolidays().get(name)[0];
 			edate = this.originalCalendar.getHolidays().get(name)[1];
+			
 			//sdate = format.parse(this.originalCalendar.getHolidays().get(name)[0]);
 			//edate = format.parse(this.originalCalendar.getHolidays().get(name)[1]);
 			
