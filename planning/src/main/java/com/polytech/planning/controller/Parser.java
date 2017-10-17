@@ -81,18 +81,15 @@ public class Parser {
 		for (OriginalCourse oc : courses) {
 			Course c = new Course(oc.getCourseName());
 			if (oc.getHoursCM() != null) {
-				c.setTotalCM(Integer.parseInt(oc.getHoursCM()));
+				c.setTotalCM(oc.getHoursCM());
 			}
 			if (oc.getHoursTD() != null) {
-				c.setTotalTD(Integer.parseInt(oc.getHoursTD()));
+				c.setTotalTD(oc.getHoursTD());
 			}
 			if (oc.getHoursTP() != null) {
-				c.setTotalTP(Integer.parseInt(oc.getHoursTP()));
+				c.setTotalTP(oc.getHoursTP());
 			}
-			// il manque hoursCC & mundus
-			if (oc.getHoursCT() != null) {
-				c.setTotalCT(Integer.parseInt(oc.getHoursCT()));
-			}
+	
 			if (oc.getTeachers() != null) {
 				c.setListTeachers(this.createTeachers(oc.getTeachers()));
 			}

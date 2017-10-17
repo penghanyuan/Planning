@@ -9,10 +9,10 @@ public class Course {
 	
 	private List<Teacher> listTeachers;
 	
-	private int totalCM;
-	private int totalTD;
-	private int totalTP;
-	private int totalProject;
+	private double totalCM;
+	private double totalTD;
+	private double totalTP;
+	private double totalProject;
 	
 	/**
 	 * Course's Constructor
@@ -33,21 +33,21 @@ public class Course {
 	/**
 	 * @return the totalCM
 	 */
-	public int getTotalCM() {
+	public double getTotalCM() {
 		return totalCM;
 	}
 
 	/**
 	 * @return the totalTD
 	 */
-	public int getTotalTD() {
+	public double getTotalTD() {
 		return totalTD;
 	}
 
 	/**
 	 * @return the totalTP
 	 */
-	public int getTotalTP() {
+	public double getTotalTP() {
 		return totalTP;
 	}
 
@@ -75,35 +75,35 @@ public class Course {
 	/**
 	 * @param totalCM the totalCM to set
 	 */
-	public void setTotalCM(int totalCM) {
+	public void setTotalCM(double totalCM) {
 		this.totalCM = totalCM;
 	}
 
 	/**
 	 * @param totalTD the totalTD to set
 	 */
-	public void setTotalTD(int totalTD) {
+	public void setTotalTD(double totalTD) {
 		this.totalTD = totalTD;
 	}
 
 	/**
 	 * @param totalTP the totalTP to set
 	 */
-	public void setTotalTP(int totalTP) {
+	public void setTotalTP(double totalTP) {
 		this.totalTP = totalTP;
 	}
 
 	/**
 	 * @return the totalProject
 	 */
-	public int getTotalProject() {
+	public double getTotalProject() {
 		return totalProject;
 	}
 
 	/**
 	 * @param totalProject the totalProject to set
 	 */
-	public void setTotalProject(int totalProject) {
+	public void setTotalProject(double totalProject) {
 		this.totalProject = totalProject;
 	}	
 }
