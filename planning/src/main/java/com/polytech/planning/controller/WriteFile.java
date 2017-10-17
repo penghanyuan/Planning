@@ -1,14 +1,6 @@
-/**
- * 
- */
 package com.polytech.planning.controller;
 
-import java.io.FileOutputStream;
-
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -39,19 +31,7 @@ public class WriteFile {
 			workbook = new XSSFWorkbook();
 		}
 
-		try {
-			// Create 2 sheets
-			Sheet sheet1 = workbook.createSheet(planning.getSemesters().get(0).getName());
-			Sheet sheet2 = workbook.createSheet(planning.getSemesters().get(1).getName());
-
-			// ....
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void wrintingFile(String file) {
-
+		// ecriture dans le fichier (creation des sheets)
 	}
 
 }

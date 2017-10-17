@@ -12,7 +12,7 @@ public class Course {
 	private int totalCM;
 	private int totalTD;
 	private int totalTP;
-	private int totalCT;
+	private int totalProject;
 	
 	/**
 	 * Course's Constructor
@@ -49,13 +49,6 @@ public class Course {
 	 */
 	public int getTotalTP() {
 		return totalTP;
-	}
-
-	/**
-	 * @return the totalCT
-	 */
-	public int getTotalCT() {
-		return totalCT;
 	}
 
 	/**
@@ -101,10 +94,16 @@ public class Course {
 	}
 
 	/**
-	 * @param totalCT the totalCT to set
+	 * @return the totalProject
 	 */
-	public void setTotalCT(int totalCT) {
-		this.totalCT = totalCT;
+	public int getTotalProject() {
+		return totalProject;
 	}
-	
+
+	/**
+	 * @param totalProject the totalProject to set
+	 */
+	public void setTotalProject(int totalProject) {
+		this.totalProject = totalProject;
+	}	
 }

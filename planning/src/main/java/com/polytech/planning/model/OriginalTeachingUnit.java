@@ -48,4 +48,17 @@ public class OriginalTeachingUnit {
 	public void setCourses(List<OriginalCourse> courses) {
 		this.courses = courses;
 	}
+	
+	public boolean equals(OriginalTeachingUnit obj) {
+		if(!obj.getName().equals(getName())) {
+			return false;
+		}
+		
+		if(obj.getCourses().size() != getCourses().size()) {
+			return false;
+		}
+		
+		
+		return true;
+	}
 }

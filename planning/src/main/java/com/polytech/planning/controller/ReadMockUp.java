@@ -1,5 +1,7 @@
 package com.polytech.planning.controller;
 
+import org.omg.CORBA.DynAnyPackage.InvalidValue;
+
 import com.polytech.planning.model.OriginalCourse;
 import com.polytech.planning.model.OriginalTeachingUnit;
 
@@ -17,7 +19,7 @@ public class ReadMockUp extends ReadFile {
 	 * @param rowNum
 	 * @param colNum
 	 */
-	private boolean readCourse(int sheetNum, int rowNum, int colNum) {
+	private boolean readCourse(int rowNum, int colNum, int sheetNum) {
 		OriginalCourse buffer = new OriginalCourse();
 		String mundus = "Mundus";
 		String readMundus;
@@ -47,14 +49,37 @@ public class ReadMockUp extends ReadFile {
 	}
 
 	/**
+	 * 
+	 * @param rowNum
+	 * @param colNum
 	 * @param sheetNum
+	 * @throws InvalidValue
 	 */
-	public void readCourses(int sheetNum) {
-		int[] coordinates = new int[2]; // [0] ligne -[1] colonne
-		coordinates = searchContent(sheetNum, "UNITE D'ENSEIGNEMENT");
-		
-		// Tant que deux lignes de suites ne sont pas vide alors
-			// Ligne ++ et if (!cell is empty || !cell is numeric) 
-				// readCourse()
-	}	
+	public void readCourses(int rowNum, int colNum, int sheetNum) throws InvalidValue {
+		int blankLines = 0;
+
+		if(rowNum >= 0 && colNum >= 0) {
+			while(blankLines < 2) {
+				
+				System.out.println(blankLines);
+				if(!cellIsEmpty(rowNum, colNum, sheetNum)) {
+					blankLines = 0;
+					readCourse(rowNum, colNum, sheetNum);
+				} else {
+					blankLines++;
+				}
+				rowNum++;
+			}
+		} else {
+			throw new InvalidValue("Les coordonnées ne peuvent être inferieurs à 0");
+		}
+	}
+
+	/**
+	 * @return the courses
+	 */
+	public OriginalTeachingUnit getTeachingUnit() {
+		return courses;
+	}
+
 }

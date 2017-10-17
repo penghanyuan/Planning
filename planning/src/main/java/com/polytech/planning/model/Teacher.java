@@ -7,7 +7,7 @@ public class Teacher {
 	private int hoursCM;
 	private int hoursTD;
 	private int hoursTP;
-	private int hoursCT;
+	private int hoursProjet;
 	
 	private boolean TDMundus;
 	private boolean TPMundus;
@@ -16,7 +16,7 @@ public class Teacher {
 		this.TDMundus = false;
 		this.TPMundus = false;
 		this.hoursCM = 0;
-		this.hoursCT = 0;
+		this.hoursProjet = 0;
 		this.hoursTD = 0;
 		this.hoursTP = 0;
 	}
@@ -31,7 +31,7 @@ public class Teacher {
 		this.TDMundus = false;
 		this.TPMundus = false;
 		this.hoursCM = 0;
-		this.hoursCT = 0;
+		this.hoursProjet = 0;
 		this.hoursTD = 0;
 		this.hoursTP = 0;
 	}
@@ -66,13 +66,6 @@ public class Teacher {
 	}
 
 	/**
-	 * @return the hoursCT
-	 */
-	public int getHoursCT() {
-		return hoursCT;
-	}
-
-	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
@@ -101,13 +94,6 @@ public class Teacher {
 	}
 
 	/**
-	 * @param hoursCT the hoursCT to set
-	 */
-	public void setHoursCT(int hoursCT) {
-		this.hoursCT = hoursCT;
-	}
-
-	/**
 	 * @return the tDMundus
 	 */
 	public boolean isTDMundus() {
@@ -133,5 +119,19 @@ public class Teacher {
 	 */
 	public void setTPMundus(boolean tPMundus) {
 		TPMundus = tPMundus;
+	}
+
+	/**
+	 * @return the hoursProjet
+	 */
+	public int getHoursProjet() {
+		return hoursProjet;
+	}
+
+	/**
+	 * @param hoursProjet the hoursProjet to set
+	 */
+	public void setHoursProjet(int hoursProjet) {
+		this.hoursProjet = hoursProjet;
 	}
 }

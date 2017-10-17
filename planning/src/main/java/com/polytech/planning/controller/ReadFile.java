@@ -108,8 +108,8 @@ public abstract class ReadFile {
 				cellContent = cell.getNumericCellValue();
 				return cellContent;
 			} else {
-				throw new NumberFormatException("La cellule ligne " + rowNum + " / colonne " + colNum + " et onglet "
-						+ sheetNum + ", n'est de type numerique");
+				throw new NumberFormatException("La cellule ligne " + rowNum + " / colonne " + colNum + " de l'onglet "
+						+ sheetNum + ", n'est pas de type numerique");
 			}
 
 		} catch (NumberFormatException e) {
@@ -231,12 +231,11 @@ public abstract class ReadFile {
 	 * @param sheetNum
 	 *            Number of the sheet to be readed
 	 */
-	protected boolean cellIsEmpty(int colNum, int rowNum, int sheetNum) throws NullPointerException {
+	protected boolean cellIsEmpty(int rowNum, int colNum, int sheetNum) throws NullPointerException {
 		Sheet sheet = wb.getSheetAt(sheetNum);
 		Row row = sheet.getRow(rowNum);
 		Cell cell;
 
-		// DataFormatter formatter = new DataFormatter();
 		String cellContent;
 
 		if (sheet.equals(null)) {
@@ -245,7 +244,7 @@ public abstract class ReadFile {
 			cell = row.getCell(rowNum);
 			if (cell != null) {
 				cellContent = this.readCell(rowNum, colNum, sheetNum);
-				if (cellContent == null) {
+				if (cellContent == null || cellContent.equals("")) {
 					return true;
 				} else {
 					return false;
@@ -257,6 +256,34 @@ public abstract class ReadFile {
 	}
 
 	/**
+	 * To know if a cell is numeric type or not
+	 * 
+	 * @param rowNum
+	 * @param colNum
+	 * @param sheetNum
+	 * @return
+	 * @throws NullPointerException
+	 */
+	protected boolean cellIsNumeric(int rowNum, int colNum, int sheetNum) throws NullPointerException {
+		return false;
+	}
+
+	/**
+	 * To know if a cell is string type or not
+	 * 
+	 * @param rowNum
+	 * @param colNum
+	 * @param sheetNum
+	 * @return
+	 * @throws NullPointerException
+	 */
+	protected boolean cellIsString(int rowNum, int colNum, int sheetNum) throws NullPointerException {
+		return false;
+	}
+
+	/**
+	 * Get the coordonates of first cell not empty
+	 * 
 	 * @param sheetNb
 	 *            Number of the sheet to be readed
 	 * @return A tqble with two values, the first the row number and the second the
@@ -284,6 +311,8 @@ public abstract class ReadFile {
 	}
 
 	/**
+	 * Get the coordonates of cell who contain the search content
+	 * 
 	 * @param sheetNb
 	 *            Number of the sheet to be readed
 	 * @param content
