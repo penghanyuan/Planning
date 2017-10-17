@@ -2,6 +2,7 @@ package com.polytech.planning.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -80,13 +81,52 @@ public abstract class ReadFile {
 
 	/**
 	 * @param rowNum
+	 * @param colNum
+	 * @param sheetNum
+	 * @return
+	 */
+	protected Double readNumericCell(int rowNum, int colNum, int sheetNum) {
+		try {
+			try {
+				wb = WorkbookFactory.create(file);
+			} catch (EncryptedDocumentException e) {
+				e.printStackTrace();
+			} catch (InvalidFormatException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			Sheet sheet = wb.getSheetAt(sheetNum);
+			Row row = sheet.getRow(rowNum);
+
+			Cell cell = row.getCell(colNum);
+
+			Double cellContent = null;
+
+			if (cell.getCellTypeEnum() == CellType.NUMERIC) {
+				cellContent = cell.getNumericCellValue();
+				return cellContent;
+			} else {
+				throw new NumberFormatException("La cellule ligne " + rowNum + " / colonne " + colNum + " et onglet "
+						+ sheetNum + ", n'est de type numerique");
+			}
+
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	/**
+	 * @param rowNum
 	 *            Number of row to be readed
 	 * @param colNum
 	 *            Number of column to be readed
 	 * @param sheetNum
 	 *            Number of the sheet to be readed
 	 */
-	@SuppressWarnings("unused")
 	protected Date readCellDate(int rowNum, int colNum, int sheetNum) {
 		try {
 			wb = WorkbookFactory.create(file);
@@ -102,8 +142,6 @@ public abstract class ReadFile {
 				if (cell != null) {
 					cellContent = cell.getDateCellValue();
 					return cellContent;
-				} else {
-					throw new Exception("La cellule est vide");
 				}
 			} else {
 				throw new Exception("La cellule n'est pas une date");
@@ -255,8 +293,11 @@ public abstract class ReadFile {
 	 */
 	public int[] searchContent(int sheetNb, String content) throws NullPointerException {
 		int[] coordonates = new int[2];
+		String buffer;
 		coordonates[0] = -1;
 		coordonates[1] = -1;
+
+		content = normalizeText(content);
 
 		Sheet sheet = wb.getSheetAt(sheetNb);
 
@@ -266,7 +307,9 @@ public abstract class ReadFile {
 		for (Row row : sheet) {
 			for (Cell cell : row) {
 				if (cell.getCellTypeEnum() == CellType.STRING) {
-					if (cell.getRichStringCellValue().getString().trim().equals(content)) {
+					buffer = cell.getRichStringCellValue().getString().trim().toUpperCase();
+					buffer = normalizeText(buffer);
+					if (buffer.equals(content)) {
 						coordonates[0] = cell.getRowIndex();
 						coordonates[1] = cell.getColumnIndex();
 					}
@@ -274,5 +317,18 @@ public abstract class ReadFile {
 			}
 		}
 		return coordonates;
+	}
+
+	/**
+	 * @param input
+	 *            string to normalize
+	 * @return the string normalizes
+	 */
+	protected String normalizeText(String input) {
+		input = input.toLowerCase();
+		input = Normalizer.normalize(input, Normalizer.Form.NFD);
+		input = input.replaceAll("[^\\p{ASCII}]", "");
+
+		return input;
 	}
 }

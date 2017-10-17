@@ -3,11 +3,12 @@ package com.polytech.planning.model;
 public class OriginalCourse {
 	
 	private String courseName;
-	private String hoursCM;
-	private String hoursTD;
-	private String hoursTP;
-	private String hoursCC;
-	private String hoursCT;
+	
+	private Double hoursCM;
+	private Double hoursTD;
+	private Double hoursTP;
+	private Double hoursProject;
+	
 	private String teachers;
 	
 	private boolean mundus;
@@ -17,8 +18,7 @@ public class OriginalCourse {
 		this.hoursCM = null;
 		this.hoursTD = null;
 		this.hoursTP = null;
-		this.hoursCC = null;
-		this.hoursCT = null;
+		this.setHoursProject(null);
 		this.teachers = null;
 		this.mundus = false;
 	}
@@ -40,71 +40,58 @@ public class OriginalCourse {
 	/**
 	 * @return the hoursCM
 	 */
-	public String getHoursCM() {
+	public Double getHoursCM() {
 		return hoursCM;
 	}
 
 	/**
 	 * @param hoursCM the hoursCM to set
 	 */
-	public void setHoursCM(String hoursCM) {
+	public void setHoursCM(Double hoursCM) {
 		this.hoursCM = hoursCM;
 	}
 
 	/**
 	 * @return the hoursTD
 	 */
-	public String getHoursTD() {
+	public Double getHoursTD() {
 		return hoursTD;
 	}
 
 	/**
 	 * @param hoursTD the hoursTD to set
 	 */
-	public void setHoursTD(String hoursTD) {
+	public void setHoursTD(Double hoursTD) {
 		this.hoursTD = hoursTD;
 	}
 
 	/**
 	 * @return the hoursTP
 	 */
-	public String getHoursTP() {
+	public Double getHoursTP() {
 		return hoursTP;
 	}
 
 	/**
 	 * @param hoursTP the hoursTP to set
 	 */
-	public void setHoursTP(String hoursTP) {
+	public void setHoursTP(Double hoursTP) {
 		this.hoursTP = hoursTP;
 	}
+	
 
 	/**
-	 * @return the hoursCC
+	 * @return the hoursProject
 	 */
-	public String getHoursCC() {
-		return hoursCC;
+	public Double getHoursProject() {
+		return hoursProject;
 	}
 
 	/**
-	 * @param hoursCC the hoursCC to set
+	 * @param hoursProject the hoursProject to set
 	 */
-	public void setHoursCC(String hoursCC) {
-		this.hoursCC = hoursCC;
-	}
-
-	/**
-	 * @return the hoursCT
-	 */
-	public String getHoursCT() {
-		return hoursCT;
-	}
-
-	/**
-	 * @param hoursCT the hoursCT to set
-	 */
-	public void setHoursCT(String hoursCT) {
-		this.hoursCT = hoursCT;
+	public void setHoursProject(Double hoursProject) {
+		this.hoursProject = hoursProject;
 	}
 
 	/**
@@ -134,6 +121,4 @@ public class OriginalCourse {
 	public void setMundus(boolean mundus) {
 		this.mundus = mundus;
 	}
-	
-	
 }
