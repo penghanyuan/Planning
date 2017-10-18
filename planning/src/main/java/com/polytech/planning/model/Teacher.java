@@ -3,15 +3,15 @@ package com.polytech.planning.model;
 public class Teacher {
 
 	private String name;
-	
+
 	private int hoursCM;
 	private int hoursTD;
 	private int hoursTP;
 	private int hoursProjet;
-	
+
 	private boolean TDMundus;
 	private boolean TPMundus;
-	
+
 	public Teacher() {
 		this.TDMundus = false;
 		this.TPMundus = false;
@@ -20,9 +20,10 @@ public class Teacher {
 		this.hoursTD = 0;
 		this.hoursTP = 0;
 	}
-	
+
 	/**
 	 * Teacher's Constructor
+	 * 
 	 * @param lastName
 	 * @param firstName
 	 */
@@ -35,8 +36,7 @@ public class Teacher {
 		this.hoursTD = 0;
 		this.hoursTP = 0;
 	}
-	
-	
+
 	/**
 	 * @return the name
 	 */
@@ -66,28 +66,32 @@ public class Teacher {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	/**
-	 * @param hoursCM the hoursCM to set
+	 * @param hoursCM
+	 *            the hoursCM to set
 	 */
 	public void setHoursCM(int hoursCM) {
 		this.hoursCM = hoursCM;
 	}
 
 	/**
-	 * @param hoursTD the hoursTD to set
+	 * @param hoursTD
+	 *            the hoursTD to set
 	 */
 	public void setHoursTD(int hoursTD) {
 		this.hoursTD = hoursTD;
 	}
 
 	/**
-	 * @param hoursTP the hoursTP to set
+	 * @param hoursTP
+	 *            the hoursTP to set
 	 */
 	public void setHoursTP(int hoursTP) {
 		this.hoursTP = hoursTP;
@@ -101,7 +105,8 @@ public class Teacher {
 	}
 
 	/**
-	 * @param tDMundus the tDMundus to set
+	 * @param tDMundus
+	 *            the tDMundus to set
 	 */
 	public void setTDMundus(boolean tDMundus) {
 		TDMundus = tDMundus;
@@ -115,7 +120,8 @@ public class Teacher {
 	}
 
 	/**
-	 * @param tPMundus the tPMundus to set
+	 * @param tPMundus
+	 *            the tPMundus to set
 	 */
 	public void setTPMundus(boolean tPMundus) {
 		TPMundus = tPMundus;
@@ -129,9 +135,46 @@ public class Teacher {
 	}
 
 	/**
-	 * @param hoursProjet the hoursProjet to set
+	 * @param hoursProjet
+	 *            the hoursProjet to set
 	 */
 	public void setHoursProjet(int hoursProjet) {
 		this.hoursProjet = hoursProjet;
+	}
+	
+	
+
+	public String toString() {
+		String tdMundus = TDMundus == true ? "(Mundus)" : "";
+		String tpMundus = TPMundus == true ? "(Mundus)" : "";
+		String buffer = "Teacher -> " + this.name + "\n";
+
+		buffer += " CM -> " + hoursCM + " hours\n";
+		buffer += " TD -> " + hoursTD + " hours " + tdMundus + "\n";
+		buffer += " TP -> " + hoursTP + " hours " + tpMundus + "\n";
+		buffer += " Pr -> " + hoursProjet + " hours\n";
+		buffer += "----------------------------------\n";
+
+		return buffer;
+	}
+	
+	public boolean equals(Teacher input) {
+		if(!name.equals(input.getName())) {
+			return false;
+		} else if(hoursCM != input.getHoursCM()) {
+			return false;
+		} else if(hoursTD != input.getHoursTD()) {
+			return false;
+		} else if(hoursTP != input.getHoursTP()) {
+			return false;
+		} else if(hoursProjet != input.getHoursProjet()) {
+			return false;
+		} else if(TDMundus != input.isTDMundus()) {
+			return false;
+		} else if(TPMundus != input.isTPMundus()) {
+			return false;
+		}
+
+		return true;
 	}
 }
