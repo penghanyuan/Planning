@@ -1,25 +1,30 @@
 package com.polytech.planning.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import org.omg.CORBA.DynAnyPackage.InvalidValue;
 
 import com.polytech.planning.model.OriginalCourse;
-import com.polytech.planning.model.OriginalTeachingUnit;
 
 public class ReadMockUp extends ReadFile {
 
-	private OriginalTeachingUnit courses;
+	private HashMap<String, List<OriginalCourse>> teachingUnits;
 
 	public ReadMockUp(String filePath) {
 		super(filePath);
-		courses = new OriginalTeachingUnit();
+		teachingUnits = new HashMap<String, List<OriginalCourse>>();
 	}
 
 	/**
+	 * Method to read one course
+	 * 
 	 * @param sheetNum
 	 * @param rowNum
 	 * @param colNum
 	 */
-	private boolean readCourse(int rowNum, int colNum, int sheetNum) {
+	private OriginalCourse readCourse(int rowNum, int colNum, int sheetNum) {
 		OriginalCourse buffer = new OriginalCourse();
 		String mundus = "Mundus";
 		String readMundus;
@@ -45,26 +50,28 @@ public class ReadMockUp extends ReadFile {
 
 		buffer.setTeachers(readCell(rowNum, ++colNum, sheetNum)); // N -> Teachers
 
-		return courses.addCourse(buffer);
+		return buffer;
 	}
 
 	/**
+	 * Method to read all courses in a Teaching Unit
 	 * 
 	 * @param rowNum
 	 * @param colNum
 	 * @param sheetNum
 	 * @throws InvalidValue
 	 */
-	public void readCourses(int rowNum, int colNum, int sheetNum) throws InvalidValue {
+	public List<OriginalCourse> readCourses(int rowNum, int colNum, int sheetNum) throws InvalidValue {
 		int blankLines = 0;
+		List<OriginalCourse> courses = new ArrayList<OriginalCourse>();
 
-		if(rowNum >= 0 && colNum >= 0) {
-			while(blankLines < 2) {
-				
+		if (rowNum >= 0 && colNum >= 0) {
+			while (blankLines < 2) {
+
 				System.out.println(blankLines);
-				if(!cellIsEmpty(rowNum, colNum, sheetNum)) {
+				if (!cellIsEmpty(rowNum, colNum, sheetNum)) {
 					blankLines = 0;
-					readCourse(rowNum, colNum, sheetNum);
+					courses.add(readCourse(rowNum, colNum, sheetNum));
 				} else {
 					blankLines++;
 				}
@@ -73,12 +80,6 @@ public class ReadMockUp extends ReadFile {
 		} else {
 			throw new InvalidValue("Les coordonnées ne peuvent être inferieurs à 0");
 		}
-	}
-
-	/**
-	 * @return the courses
-	 */
-	public OriginalTeachingUnit getTeachingUnit() {
 		return courses;
 	}
 
