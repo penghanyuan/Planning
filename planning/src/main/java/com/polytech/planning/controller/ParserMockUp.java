@@ -17,38 +17,21 @@ import com.polytech.planning.model.Semester;
 import com.polytech.planning.model.Teacher;
 import com.polytech.planning.model.TeachingUnit;
 
-public class Parser {
+public class ParserMockUp {
 
 	private HashMap<String, List<OriginalCourse>> originalCourses;
-	private OriginalCalendar originalCalendar;
+	
 	// add calendar
 
-	public Parser() {
+	public ParserMockUp() {
 		this.originalCourses = new HashMap<String, List<OriginalCourse>>();
 	}
 
 	/**
 	 * @param originalCourses
 	 */
-	public Parser(HashMap<String, List<OriginalCourse>> originalCourses) {
+	public ParserMockUp(HashMap<String, List<OriginalCourse>> originalCourses) {
 		this.originalCourses = originalCourses;
-	}
-
-	/**
-	 * @param originalCourses
-	 */
-	public Parser(OriginalCalendar originalCalendar) {
-		this.originalCalendar = originalCalendar;
-	}
-
-	/**
-	 * @param originalCourses
-	 * @param originalCalendar
-	 */
-	public Parser(HashMap<String, List<OriginalCourse>> originalCourses, OriginalCalendar originalCalendar) {
-		super();
-		this.originalCourses = originalCourses;
-		this.originalCalendar = originalCalendar;
 	}
 
 	/**
@@ -170,93 +153,5 @@ public class Parser {
 		return teachers;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	public Calendar createCalendar() {
-		Calendar calendar = new Calendar();
-		calendar.setListSemester(this.createSemester());
-		return calendar;
-	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	private List<Semester> createSemester() {
-		List<Semester> semesters = new ArrayList<Semester>();
-
-		for (String key : this.originalCalendar.getSemesters().keySet()) {
-
-			Semester semester;
-
-			// DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
-			Date sdate, edate;
-			sdate = this.originalCalendar.getSemesters().get(key)[0];
-			edate = this.originalCalendar.getSemesters().get(key)[1];
-			// sdate = format.parse(this.originalCalendar.getSemesters().get(key)[0]);
-			// edate = format.parse(this.originalCalendar.getSemesters().get(key)[1]);
-			semester = new Semester(key);
-			semester.setStartDate(sdate);
-			semester.setEndDate(edate);
-
-			semester.setListHoliday(this.createHolidays());
-			semester.setListFreeDays(this.createFreeDays());
-			semesters.add(semester);
-
-		}
-		return semesters;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	private List<FreeDay> createFreeDays() {
-		List<FreeDay> freeDays = new ArrayList<FreeDay>();
-		for (Date date : this.originalCalendar.getFreeDays().keySet()) {
-			FreeDay freeDay;
-			// DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
-			String name;
-
-			name = this.originalCalendar.getFreeDays().get(date)[0];
-
-			freeDay = new FreeDay();
-			freeDay.setName(name);
-			freeDay.setDate(date);
-
-			int timeSlot = Integer.parseInt(this.originalCalendar.getFreeDays().get(date)[1]);
-			freeDay.setTimeslot(timeSlot);
-
-			freeDays.add(freeDay);
-		}
-		return freeDays;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	private List<Holiday> createHolidays() {
-		List<Holiday> holidays = new ArrayList<Holiday>();
-
-		for (String name : this.originalCalendar.getHolidays().keySet()) {
-			Holiday holiday;
-			// DateFormat format = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
-
-			Date sdate, edate;
-			// System.out.println(originalCalendar.getHolidays().get(name));
-			sdate = this.originalCalendar.getHolidays().get(name)[0];
-			edate = this.originalCalendar.getHolidays().get(name)[1];
-
-			// sdate = format.parse(this.originalCalendar.getHolidays().get(name)[0]);
-			// edate = format.parse(this.originalCalendar.getHolidays().get(name)[1]);
-
-			holiday = new Holiday(name, sdate, edate);
-
-			holidays.add(holiday);
-		}
-		return holidays;
-	}
 }

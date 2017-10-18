@@ -8,13 +8,13 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.polytech.planning.controller.Parser;
+import com.polytech.planning.controller.ParserMockUp;
 import com.polytech.planning.model.Teacher;
 
 /**
  * Unit test for simple App.
  */
-public class ParserTest {
+public class ParserMockUpTest {
 
 	private static String inputTeachers;
 	private static List<Teacher> expected;
@@ -43,7 +43,7 @@ public class ParserTest {
 
 	@Test
 	public void testParseTeachers() {
-		Parser parser = new Parser();
+		ParserMockUp parser = new ParserMockUp();
 		List<Teacher> output = parser.createTeachers(inputTeachers);
 
 		Iterator<Teacher> outputIt = output.iterator();
