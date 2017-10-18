@@ -21,8 +21,9 @@ public class GeneratePlanning {
 		readCalendar = new ReadCalendar(this.filePath);
 		readMockUp = new ReadMockUp(this.filePath);
 		
-		ParserMockUp p = new ParserMockUp();
-		Planning planning = new Planning(this.year,null,null);
+		ParserMockUp pMockUp = new ParserMockUp();
+		ParserCalendar pCalendar = new ParserCalendar();
+		Planning planning = new Planning(this.year,pMockUp.createTeachingUnits(),pCalendar.createCalendar());
 		
 		return null;
 	}
