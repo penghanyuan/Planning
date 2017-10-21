@@ -25,7 +25,7 @@ public class GeneratePlanning {
 		ParserCalendar pCalendar = new ParserCalendar();
 		Planning planning = new Planning(this.year,pMockUp.createTeachingUnits(),pCalendar.createCalendar());
 		
-		return null;
+		return planning;
 	}
 
 }

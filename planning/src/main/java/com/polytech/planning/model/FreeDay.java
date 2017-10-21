@@ -14,6 +14,19 @@ public class FreeDay {
 	private String name;
 	private Date date;
 	private int timeslot;
+	
+	
+	
+	/**
+	 * @param name
+	 * @param date
+	 * @param timeslot
+	 */
+	public FreeDay(String name, Date date, int timeslot) {
+		this.name = name;
+		this.date = date;
+		this.timeslot = timeslot;
+	}
 
 	public FreeDay() {
 		

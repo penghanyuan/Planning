@@ -13,6 +13,23 @@ public class Semester {
 	private List<FreeDay> listFreeDays;
 	private List<Holiday> listHoliday;
 	
+	
+	
+	/**
+	 * @param name
+	 * @param startDate
+	 * @param endDate
+	 * @param listFreeDays
+	 * @param listHoliday
+	 */
+	public Semester(String name, Date startDate, Date endDate, List<FreeDay> listFreeDays, List<Holiday> listHoliday) {
+		this.name = name;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.listFreeDays = listFreeDays;
+		this.listHoliday = listHoliday;
+	}
+
 	/**
 	 * Semester's Constructor
 	 * @param name
