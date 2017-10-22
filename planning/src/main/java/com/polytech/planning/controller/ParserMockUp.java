@@ -3,6 +3,7 @@ package com.polytech.planning.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,18 +20,18 @@ import com.polytech.planning.model.TeachingUnit;
 
 public class ParserMockUp {
 
-	private HashMap<String, List<OriginalCourse>> originalCourses;
+	private LinkedHashMap<String, List<OriginalCourse>> originalCourses;
 	
 	// add calendar
 
 	public ParserMockUp() {
-		this.originalCourses = new HashMap<String, List<OriginalCourse>>();
+		this.originalCourses = new LinkedHashMap<String, List<OriginalCourse>>();
 	}
 
 	/**
 	 * @param originalCourses
 	 */
-	public ParserMockUp(HashMap<String, List<OriginalCourse>> originalCourses) {
+	public ParserMockUp(LinkedHashMap<String, List<OriginalCourse>> originalCourses) {
 		this.originalCourses = originalCourses;
 	}
 
@@ -92,7 +93,7 @@ public class ParserMockUp {
 		List<Teacher> teachers = new ArrayList<Teacher>();
 
 		String[] teachersInits = oriTeachers.split(";");
-		HashMap<String, String[]> teacherAndCourses = new HashMap<String, String[]>();
+		LinkedHashMap<String, String[]> teacherAndCourses = new LinkedHashMap<String, String[]>();
 
 		for (int i = 0; i < teachersInits.length; i++) {
 			teacherAndCourses.put(teachersInits[i].split(",")[0], teachersInits[i].split(","));

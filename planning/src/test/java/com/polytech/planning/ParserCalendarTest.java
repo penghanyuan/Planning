@@ -16,7 +16,6 @@ import com.polytech.planning.model.Holiday;
 import com.polytech.planning.model.OriginalCalendar;
 import com.polytech.planning.model.Semester;
 
-
 public class ParserCalendarTest {
 
 	private static Calendar expected;
@@ -28,8 +27,7 @@ public class ParserCalendarTest {
 		List<Holiday> holidays = new ArrayList<Holiday>();
 		List<FreeDay> freedays = new ArrayList<FreeDay>();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		
-		
+
 		try {
 			// Semesters
 			Date startS5Date = dateFormat.parse("11/09/2017");
@@ -65,7 +63,7 @@ public class ParserCalendarTest {
 			freedays.add(new FreeDay("Nuit de l'info", freeDay3, 2));
 
 			semesters.add(new Semester("S5", startS5Date, endS5Date, freedays, holidays));
-			semesters.add(new Semester("S6", startS5Date, endS6Date, freedays, holidays));
+			semesters.add(new Semester("S6", endS5Date, endS6Date, freedays, holidays));
 			// semesters.add(new Semester("S7", startS5Date,
 			// endS5Date,freedays,holidays));
 			// semesters.add(new Semester("S8", startS5Date,
@@ -74,19 +72,19 @@ public class ParserCalendarTest {
 			// endS5Date,freedays,holidays));
 			// semesters.add(new Semester("S10", startS5Date,
 			// endS10Date,freedays,holidays));
-			
+
 			expected = new Calendar();
 			expected.setListSemester(semesters);
 			expected.setName("DI3");
-			
+
 			originalCalendar = new OriginalCalendar();
 			// Add semesters
 			originalCalendar.addSemesters("S5", startS5Date, endS5Date);
 			originalCalendar.addSemesters("S6", endS5Date, endS6Date);
-			originalCalendar.addSemesters("S7", startS5Date, endS5Date);
-			originalCalendar.addSemesters("S8", endS5Date, endS6Date);
-			originalCalendar.addSemesters("S9", startS5Date, endS5Date);
-			originalCalendar.addSemesters("S10", endS5Date, endS10Date);
+			// originalCalendar.addSemesters("S7", startS5Date, endS5Date);
+			// originalCalendar.addSemesters("S8", endS5Date, endS6Date);
+			// originalCalendar.addSemesters("S9", startS5Date, endS5Date);
+			// originalCalendar.addSemesters("S10", endS5Date, endS10Date);
 
 			// Add holidays
 			originalCalendar.addHolidays("Vacances de la Toussaint", holidayStart1, holidayEnd1);
@@ -103,14 +101,79 @@ public class ParserCalendarTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	@Test
-	public void testParserCalendar() {
+	public void testParserSemester() {
 		ParserCalendar pc = new ParserCalendar(this.originalCalendar);
 		Calendar get = pc.createCalendar();
-		Assert.assertEquals("Name equals",expected.getListSemester().get(0).getName(),get.getListSemester().get(0).getName());
+
+		Iterator<Semester> expectedIt = expected.getListSemester().iterator();
+		Iterator<Semester> getIt = get.getListSemester().iterator();
+
+		while (expectedIt.hasNext()) {
+			Semester expectedNow = expectedIt.next();
+			Semester getNow = getIt.next();
+			Assert.assertEquals("Name equals", expectedNow.getName(), getNow.getName());
+			Assert.assertEquals("Start Date equals", expectedNow.getStartDate(), getNow.getStartDate());
+			Assert.assertEquals("End Date equals", expectedNow.getEndDate(), getNow.getEndDate());
+
+		}
+	}
+
+	@Test
+	public void testParserHoliday() {
+		ParserCalendar pc = new ParserCalendar(this.originalCalendar);
+		Calendar get = pc.createCalendar();
+
+		Iterator<Semester> expectedIt = expected.getListSemester().iterator();
+		Iterator<Semester> getIt = get.getListSemester().iterator();
+
+		while (expectedIt.hasNext()) {
+			Semester expectedNow = expectedIt.next();
+			Semester getNow = getIt.next();
+
+			Iterator<Holiday> expectedHolidayIt = expectedNow.getListHoliday().iterator();
+			Iterator<Holiday> getHolidayIt = getNow.getListHoliday().iterator();
+
+			while (expectedHolidayIt.hasNext()) {
+				Holiday expectedHoliday = expectedHolidayIt.next();
+				Holiday getHoliday = getHolidayIt.next();
+				Assert.assertEquals(expectedHoliday.getName(), getHoliday.getName());
+				Assert.assertEquals(expectedHoliday.getStartDate(), getHoliday.getStartDate());
+				Assert.assertEquals(expectedHoliday.getEndDate(), getHoliday.getEndDate());
+
+			}
+
+			Iterator<FreeDay> expextedFreeIt = expectedNow.getListFreeDays().iterator();
+			Iterator<FreeDay> getFreeIt = getNow.getListFreeDays().iterator();
+
+		}
+	}
+
+	@Test
+	public void testParserFreeDay() {
+		ParserCalendar pc = new ParserCalendar(this.originalCalendar);
+		Calendar get = pc.createCalendar();
+
+		Iterator<Semester> expectedIt = expected.getListSemester().iterator();
+		Iterator<Semester> getIt = get.getListSemester().iterator();
+
+		while (expectedIt.hasNext()) {
+			Semester expectedNow = expectedIt.next();
+			Semester getNow = getIt.next();
+
+			Iterator<FreeDay> expextedFreeIt = expectedNow.getListFreeDays().iterator();
+			Iterator<FreeDay> getFreeIt = getNow.getListFreeDays().iterator();
+
+			while (expextedFreeIt.hasNext()) {
+				FreeDay expectedFreeDay = expextedFreeIt.next();
+				FreeDay getFreeDay = getFreeIt.next();
+				Assert.assertEquals(expectedFreeDay.getName(), expectedFreeDay.getName());
+				Assert.assertEquals(expectedFreeDay.getDate(), getFreeDay.getDate());
+				Assert.assertEquals(expectedFreeDay.getTimeslot(), getFreeDay.getTimeslot());
+			}
+		}
 	}
 
 }

@@ -3,28 +3,28 @@ package com.polytech.planning.model;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.Set;
 
 public class OriginalCalendar {
 
-	private HashMap<String, Date[]> semesters;
-	private HashMap<String, Date[]> holidays;
-	private HashMap<Date, String[]> freeDays;
+	private LinkedHashMap<String, Date[]> semesters;
+	private LinkedHashMap<String, Date[]> holidays;
+	private LinkedHashMap<Date, String[]> freeDays;
 	private SimpleDateFormat dateFormatter;
 
 	public OriginalCalendar() {
-		this.semesters = new HashMap<String, Date[]>();
-		this.holidays = new HashMap<String, Date[]>();
-		this.freeDays = new HashMap<Date, String[]>();
+		this.semesters = new LinkedHashMap<String, Date[]>();
+		this.holidays = new LinkedHashMap<String, Date[]>();
+		this.freeDays = new LinkedHashMap<Date, String[]>();
 		this.dateFormatter = new SimpleDateFormat("mm/dd/yy");
 	}
 
 	/**
 	 * @return the semesters
 	 */
-	public HashMap<String, Date[]> getSemesters() {
+	public LinkedHashMap<String, Date[]> getSemesters() {
 		return semesters;
 	}
 
@@ -45,7 +45,7 @@ public class OriginalCalendar {
 	 */
 	public void clearSemesters() {
 		this.semesters.clear();
-		this.semesters = new HashMap<String, Date[]>();
+		this.semesters = new LinkedHashMap<String, Date[]>();
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class OriginalCalendar {
 	/**
 	 * @return the holidays
 	 */
-	public HashMap<String, Date[]> getHolidays() {
+	public LinkedHashMap<String, Date[]> getHolidays() {
 		return holidays;
 	}
 
@@ -127,7 +127,7 @@ public class OriginalCalendar {
 	 */
 	public void clearHolidays() {
 		this.holidays.clear();
-		this.holidays = new HashMap<String, Date[]>();
+		this.holidays = new LinkedHashMap<String, Date[]>();
 	}
 
 	/**
@@ -136,13 +136,13 @@ public class OriginalCalendar {
 	 */
 	public void clearFreeDays() {
 		this.freeDays.clear();
-		this.freeDays = new HashMap<Date, String[]>();
+		this.freeDays = new LinkedHashMap<Date, String[]>();
 	}
 
 	/**
 	 * @return the freeDays
 	 */
-	public HashMap<Date, String[]> getFreeDays() {
+	public LinkedHashMap<Date, String[]> getFreeDays() {
 		return freeDays;
 	}
 
@@ -188,7 +188,7 @@ public class OriginalCalendar {
 	 * @param input
 	 * @return
 	 */
-	public boolean semestersAreEquals(HashMap<String, Date[]> input) {
+	public boolean semestersAreEquals(LinkedHashMap<String, Date[]> input) {
 		if (this.semesters.size() != input.size()) {
 			return false;
 		} else {
@@ -200,7 +200,7 @@ public class OriginalCalendar {
 	 * @param input
 	 * @return
 	 */
-	public boolean holidaysAreEquals(HashMap<String, Date[]> input) {
+	public boolean holidaysAreEquals(LinkedHashMap<String, Date[]> input) {
 		if (this.holidays.size() != input.size()) {
 			return false;
 		} else {
@@ -212,7 +212,7 @@ public class OriginalCalendar {
 	 * @param input
 	 * @return
 	 */
-	public boolean freeDaysAreEquals(HashMap<Date, String[]> input) {
+	public boolean freeDaysAreEquals(LinkedHashMap<Date, String[]> input) {
 
 		Set<Date> keysInput1 = this.freeDays.keySet();
 		Set<Date> keysInput2 = input.keySet();
@@ -254,7 +254,7 @@ public class OriginalCalendar {
 	 * @param
 	 * @return
 	 */
-	private boolean hashMapAreEquals(HashMap<String, Date[]> input1, HashMap<String, Date[]> input2) {
+	private boolean hashMapAreEquals(LinkedHashMap<String, Date[]> input1, LinkedHashMap<String, Date[]> input2) {
 
 		Set<String> keysInput1 = input1.keySet();
 		Set<String> keysInput2 = input2.keySet();

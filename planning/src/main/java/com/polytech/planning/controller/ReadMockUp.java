@@ -1,7 +1,7 @@
 package com.polytech.planning.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.omg.CORBA.DynAnyPackage.InvalidValue;
@@ -10,11 +10,11 @@ import com.polytech.planning.model.OriginalCourse;
 
 public class ReadMockUp extends ReadFile {
 
-	private HashMap<String, List<OriginalCourse>> teachingUnits;
+	private LinkedHashMap<String, List<OriginalCourse>> teachingUnits;
 
 	public ReadMockUp(String filePath) {
 		super(filePath);
-		teachingUnits = new HashMap<String, List<OriginalCourse>>();
+		teachingUnits = new LinkedHashMap<String, List<OriginalCourse>>();
 	}
 
 	/**
