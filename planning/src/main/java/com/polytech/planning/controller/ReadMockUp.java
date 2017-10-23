@@ -11,20 +11,55 @@ import com.polytech.planning.model.OriginalCourse;
 public class ReadMockUp extends ReadFile {
 
 	private LinkedHashMap<String, List<OriginalCourse>> teachingUnits;
+	private int sheetNum;
+	// store the num of actual row and col
+	private int rowNum;
+	private int colNum;
 
-	public ReadMockUp(String filePath) {
+	public ReadMockUp(String filePath, int sheetNum) {
 		super(filePath);
+		String searchString = "Unité d'enseignement";
+		int[] coordinates = searchContent(sheetNum, searchString);
+		
+		this.sheetNum = sheetNum;
+		this.rowNum = coordinates[0];
+		this.colNum = coordinates[1];
+		
 		teachingUnits = new LinkedHashMap<String, List<OriginalCourse>>();
+	}
+
+	/**
+	 * Method to read one Teaching Unit and add it in teachingUnits LinkedHashMap
+	 * 
+	 * @param rowNum
+	 *            The row number
+	 * @param colNum
+	 *            The column number
+	 */
+	public void readTeachingUnit(int rowNum, int colNum) {
+		String name = null;
+		List<OriginalCourse> listCourses;
+
+		name = readCell(rowNum, colNum, sheetNum);
+
+		try {
+			listCourses = readCourses(rowNum, colNum);
+			teachingUnits.put(name, listCourses);
+		} catch (InvalidValue e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
 	 * Method to read one course
 	 * 
-	 * @param sheetNum
 	 * @param rowNum
+	 *            The row number
 	 * @param colNum
+	 *            The column number
 	 */
-	private OriginalCourse readCourse(int rowNum, int colNum, int sheetNum) {
+	private OriginalCourse readCourse(int rowNum, int colNum) {
 		OriginalCourse buffer = new OriginalCourse();
 		String mundus = "Mundus";
 		String readMundus;
@@ -57,11 +92,12 @@ public class ReadMockUp extends ReadFile {
 	 * Method to read all courses in a Teaching Unit
 	 * 
 	 * @param rowNum
+	 *            The row number
 	 * @param colNum
-	 * @param sheetNum
+	 *            The column number
 	 * @throws InvalidValue
 	 */
-	public List<OriginalCourse> readCourses(int rowNum, int colNum, int sheetNum) throws InvalidValue {
+	public List<OriginalCourse> readCourses(int rowNum, int colNum) throws InvalidValue {
 		int blankLines = 0;
 		List<OriginalCourse> courses = new ArrayList<OriginalCourse>();
 
@@ -71,14 +107,14 @@ public class ReadMockUp extends ReadFile {
 				System.out.println(blankLines);
 				if (!cellIsEmpty(rowNum, colNum, sheetNum)) {
 					blankLines = 0;
-					courses.add(readCourse(rowNum, colNum, sheetNum));
+					courses.add(readCourse(rowNum, colNum));
 				} else {
 					blankLines++;
 				}
 				rowNum++;
 			}
 		} else {
-			throw new InvalidValue("Les coordonnées ne peuvent être inferieurs à 0");
+			throw new InvalidValue("Les coordonnées ne peuvent pas être inferieurs à 0");
 		}
 		return courses;
 	}

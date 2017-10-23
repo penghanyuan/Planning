@@ -1,20 +1,13 @@
 package com.polytech.planning.controller;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.polytech.planning.model.Calendar;
 import com.polytech.planning.model.Course;
-import com.polytech.planning.model.FreeDay;
-import com.polytech.planning.model.Holiday;
-import com.polytech.planning.model.OriginalCalendar;
 import com.polytech.planning.model.OriginalCourse;
-import com.polytech.planning.model.Semester;
 import com.polytech.planning.model.Teacher;
 import com.polytech.planning.model.TeachingUnit;
 
