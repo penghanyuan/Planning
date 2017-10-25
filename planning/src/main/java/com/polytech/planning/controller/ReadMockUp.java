@@ -11,7 +11,16 @@ import com.polytech.planning.model.OriginalCourse;
 public class ReadMockUp extends ReadFile {
 
 	private LinkedHashMap<String, List<OriginalCourse>> teachingUnits;
+	private int sheetNum;
+	private int rowNum;
+	private int colNum;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param filePath
+	 * @param sheetNum
+	 */
 	public ReadMockUp(String filePath, int sheetNum) {
 		super(filePath);
 		String searchString = "Unité d'enseignement";
@@ -24,8 +33,17 @@ public class ReadMockUp extends ReadFile {
 		teachingUnits = new LinkedHashMap<String, List<OriginalCourse>>();
 	}
 
+	/**
+	 * Method to read all teaching units
+	 */
 	public void readTeachingUnits() {
+		System.out.println("Ligne " + rowNum + " - Colonne " + colNum);
+		System.out.println(readCell(rowNum, colNum - 1, sheetNum));
+
 		readTeachingUnit();
+
+		System.out.println(readCell(rowNum, colNum - 1, sheetNum));
+		System.out.println("Ligne " + rowNum + " - Colonne " + colNum);
 	}
 
 	/**
@@ -38,8 +56,8 @@ public class ReadMockUp extends ReadFile {
 
 		rowNum++;
 
-		if (cellIsEmpty(rowNum, --colNum, colNum)) {
-			while (cellIsEmpty(rowNum, colNum, colNum)) {
+		if (cellIsEmpty(rowNum, --colNum, sheetNum) || cellIsNumeric(rowNum, --colNum, sheetNum)) {
+			while (cellIsEmpty(rowNum, colNum, colNum) || cellIsNumeric(rowNum, colNum, sheetNum)) {
 				rowNum++;
 			}
 		}
@@ -52,6 +70,7 @@ public class ReadMockUp extends ReadFile {
 		try {
 			listCourses = readCourses();
 			teachingUnits.put(name, listCourses);
+			System.out.println(ToolBox.listToString(listCourses));
 		} catch (InvalidValue e) {
 			e.printStackTrace();
 		}
@@ -98,6 +117,7 @@ public class ReadMockUp extends ReadFile {
 	 */
 	public List<OriginalCourse> readCourses() throws InvalidValue {
 		int blankLines = 0;
+		int rowDiff = 0;
 		List<OriginalCourse> courses = new ArrayList<OriginalCourse>();
 
 		if (rowNum >= 0 && colNum >= 0) {
@@ -105,14 +125,18 @@ public class ReadMockUp extends ReadFile {
 				if (!cellIsEmpty(rowNum, colNum, sheetNum)) {
 					blankLines = 0;
 					courses.add(readCourse());
+					rowDiff = 0;
 				} else {
 					blankLines++;
+					rowDiff++;
 				}
 				rowNum++;
 			}
 		} else {
 			throw new InvalidValue("Les coordonnées ne peuvent pas être inferieurs à 0");
 		}
+
+		rowNum = rowNum - rowDiff;
 		return courses;
 	}
 

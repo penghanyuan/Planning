@@ -16,9 +16,9 @@ public class ReadMockUpTest {
 		// expectedTeachingUnit = new OriginalTeachingUnit();
 		// expectedTeachingUnit.setName(null);
 	}
-
+	
 	@Test
-	public void readMockup() throws InvalidValue {
+	public void readTeachingUnits() {
 		readMockUp.readTeachingUnits();
 	}
 }
