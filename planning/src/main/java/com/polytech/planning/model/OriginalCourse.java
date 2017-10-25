@@ -1,16 +1,16 @@
 package com.polytech.planning.model;
 
 public class OriginalCourse {
-	
+
 	private String courseName;
-	
+
 	private Double hoursCM;
 	private Double hoursTD;
 	private Double hoursTP;
 	private Double hoursProject;
-	
+
 	private String teachers;
-	
+
 	private boolean mundus;
 
 	public OriginalCourse() {
@@ -18,7 +18,7 @@ public class OriginalCourse {
 		this.hoursCM = null;
 		this.hoursTD = null;
 		this.hoursTP = null;
-		this.setHoursProject(null);
+		this.hoursProject = null;
 		this.teachers = null;
 		this.mundus = false;
 	}
@@ -31,7 +31,8 @@ public class OriginalCourse {
 	}
 
 	/**
-	 * @param courseName the courseName to set
+	 * @param courseName
+	 *            the courseName to set
 	 */
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
@@ -45,7 +46,8 @@ public class OriginalCourse {
 	}
 
 	/**
-	 * @param hoursCM the hoursCM to set
+	 * @param hoursCM
+	 *            the hoursCM to set
 	 */
 	public void setHoursCM(Double hoursCM) {
 		this.hoursCM = hoursCM;
@@ -59,7 +61,8 @@ public class OriginalCourse {
 	}
 
 	/**
-	 * @param hoursTD the hoursTD to set
+	 * @param hoursTD
+	 *            the hoursTD to set
 	 */
 	public void setHoursTD(Double hoursTD) {
 		this.hoursTD = hoursTD;
@@ -73,12 +76,12 @@ public class OriginalCourse {
 	}
 
 	/**
-	 * @param hoursTP the hoursTP to set
+	 * @param hoursTP
+	 *            the hoursTP to set
 	 */
 	public void setHoursTP(Double hoursTP) {
 		this.hoursTP = hoursTP;
 	}
-	
 
 	/**
 	 * @return the hoursProject
@@ -88,7 +91,8 @@ public class OriginalCourse {
 	}
 
 	/**
-	 * @param hoursProject the hoursProject to set
+	 * @param hoursProject
+	 *            the hoursProject to set
 	 */
 	public void setHoursProject(Double hoursProject) {
 		this.hoursProject = hoursProject;
@@ -102,7 +106,8 @@ public class OriginalCourse {
 	}
 
 	/**
-	 * @param teachers the teachers to set
+	 * @param teachers
+	 *            the teachers to set
 	 */
 	public void setTeachers(String teachers) {
 		this.teachers = teachers;
@@ -116,9 +121,25 @@ public class OriginalCourse {
 	}
 
 	/**
-	 * @param mundus the mundus to set
+	 * @param mundus
+	 *            the mundus to set
 	 */
 	public void setMundus(boolean mundus) {
 		this.mundus = mundus;
+	}
+
+	public String toString() {
+		String output = "";
+
+		output += "Cours -> " + courseName;
+		output += "\n\tCM = " + hoursCM + " | TP = " + hoursTP + " | TD = " + hoursTD + " | Project = " + hoursProject;
+
+		if (this.mundus)
+			output += " | Mundus";
+
+		output += "\n\tTeachers => " + teachers;
+		output += "\n-----------------------------------------------------------------------\n";
+
+		return output + "\n";
 	}
 }

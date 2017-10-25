@@ -11,58 +11,60 @@ import com.polytech.planning.model.OriginalCourse;
 public class ReadMockUp extends ReadFile {
 
 	private LinkedHashMap<String, List<OriginalCourse>> teachingUnits;
-	private int sheetNum;
-	// store the num of actual row and col
-	private int rowNum;
-	private int colNum;
 
 	public ReadMockUp(String filePath, int sheetNum) {
 		super(filePath);
 		String searchString = "Unité d'enseignement";
 		int[] coordinates = searchContent(sheetNum, searchString);
-		
+
 		this.sheetNum = sheetNum;
 		this.rowNum = coordinates[0];
 		this.colNum = coordinates[1];
-		
+
 		teachingUnits = new LinkedHashMap<String, List<OriginalCourse>>();
+	}
+
+	public void readTeachingUnits() {
+		readTeachingUnit();
 	}
 
 	/**
 	 * Method to read one Teaching Unit and add it in teachingUnits LinkedHashMap
-	 * 
-	 * @param rowNum
-	 *            The row number
-	 * @param colNum
-	 *            The column number
 	 */
-	public void readTeachingUnit(int rowNum, int colNum) {
+	private void readTeachingUnit() {
 		String name = null;
 		List<OriginalCourse> listCourses;
+		int colValue = colNum;
+
+		rowNum++;
+
+		if (cellIsEmpty(rowNum, --colNum, colNum)) {
+			while (cellIsEmpty(rowNum, colNum, colNum)) {
+				rowNum++;
+			}
+		}
 
 		name = readCell(rowNum, colNum, sheetNum);
+		name = ToolBox.capitalize(name);
+
+		colNum = colValue;
 
 		try {
-			listCourses = readCourses(rowNum, colNum);
+			listCourses = readCourses();
 			teachingUnits.put(name, listCourses);
 		} catch (InvalidValue e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
 	 * Method to read one course
-	 * 
-	 * @param rowNum
-	 *            The row number
-	 * @param colNum
-	 *            The column number
 	 */
-	private OriginalCourse readCourse(int rowNum, int colNum) {
+	private OriginalCourse readCourse() {
 		OriginalCourse buffer = new OriginalCourse();
 		String mundus = "Mundus";
 		String readMundus;
+		int colValue = colNum;
 
 		mundus = normalizeText(mundus);
 
@@ -73,7 +75,7 @@ public class ReadMockUp extends ReadFile {
 		buffer.setHoursTP(readNumericCell(rowNum, ++colNum, sheetNum)); // F -> TP
 		buffer.setHoursProject(readNumericCell(rowNum, ++colNum, sheetNum)); // G -> Project
 
-		colNum = colNum + 5;
+		colNum = colNum + 6;
 
 		readMundus = readCell(rowNum, colNum, sheetNum); // M -> Mundus
 		readMundus = normalizeText(readMundus);
@@ -85,29 +87,24 @@ public class ReadMockUp extends ReadFile {
 
 		buffer.setTeachers(readCell(rowNum, ++colNum, sheetNum)); // N -> Teachers
 
+		colNum = colValue;
 		return buffer;
 	}
 
 	/**
 	 * Method to read all courses in a Teaching Unit
 	 * 
-	 * @param rowNum
-	 *            The row number
-	 * @param colNum
-	 *            The column number
 	 * @throws InvalidValue
 	 */
-	public List<OriginalCourse> readCourses(int rowNum, int colNum) throws InvalidValue {
+	public List<OriginalCourse> readCourses() throws InvalidValue {
 		int blankLines = 0;
 		List<OriginalCourse> courses = new ArrayList<OriginalCourse>();
 
 		if (rowNum >= 0 && colNum >= 0) {
 			while (blankLines < 2) {
-
-				System.out.println(blankLines);
 				if (!cellIsEmpty(rowNum, colNum, sheetNum)) {
 					blankLines = 0;
-					courses.add(readCourse(rowNum, colNum));
+					courses.add(readCourse());
 				} else {
 					blankLines++;
 				}
