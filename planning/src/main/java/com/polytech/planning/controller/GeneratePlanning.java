@@ -5,6 +5,7 @@ import com.polytech.planning.model.Planning;
 public class GeneratePlanning {
 	private String filePath;
 	private String year;
+
 	public GeneratePlanning() {
 
 	}
@@ -14,17 +15,17 @@ public class GeneratePlanning {
 		this.year = year;
 	}
 
-	public Planning setPlanning(){
+	public Planning setPlanning() {
 		ReadCalendar readCalendar = null;
 		ReadMockUp readMockUp = null;
-		
+
 		readCalendar = new ReadCalendar(this.filePath);
-		readMockUp = new ReadMockUp(this.filePath);
-		
+		readMockUp = new ReadMockUp(this.filePath, 0);
+
 		ParserMockUp pMockUp = new ParserMockUp();
 		ParserCalendar pCalendar = new ParserCalendar();
-		Planning planning = new Planning(this.year,pMockUp.createTeachingUnits(),pCalendar.createCalendar());
-		
+		Planning planning = new Planning(this.year, pMockUp.createTeachingUnits(), pCalendar.createCalendar());
+
 		return planning;
 	}
 

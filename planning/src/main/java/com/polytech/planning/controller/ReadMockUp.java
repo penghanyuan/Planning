@@ -39,18 +39,18 @@ public class ReadMockUp extends ReadFile {
 	public void readTeachingUnits() {
 		boolean notFinish = true;
 		int nbLoop = 0;
-		
+
 		while (notFinish) {
 			if ((cellIsEmpty(rowNum, colNum, sheetNum) || cellIsNumeric(rowNum, colNum, sheetNum))
-					&& (cellIsEmpty(rowNum, colNum-1, sheetNum) || cellIsNumeric(rowNum, colNum-1, sheetNum))) {
+					&& (cellIsEmpty(rowNum, colNum - 1, sheetNum) || cellIsNumeric(rowNum, colNum - 1, sheetNum))) {
 
 				System.out.println("Ligne " + rowNum + " - Colonne " + colNum);
 				nbLoop++;
 				rowNum++;
-				
+
 				if (nbLoop > 1)
 					notFinish = false;
-				
+
 				System.out.println(nbLoop);
 			} else {
 				System.out.println("Ligne " + rowNum + " - Colonne " + colNum);
@@ -61,7 +61,8 @@ public class ReadMockUp extends ReadFile {
 	}
 
 	/**
-	 * Method to read one Teaching Unit and add it in teachingUnits LinkedHashMap
+	 * Method to read one Teaching Unit and add it in teachingUnits
+	 * LinkedHashMap
 	 */
 	private void readTeachingUnit() {
 		String name = null;
@@ -69,8 +70,8 @@ public class ReadMockUp extends ReadFile {
 		int colValue = colNum;
 
 		rowNum++;
-
-		if (cellIsEmpty(rowNum, --colNum, sheetNum) || cellIsNumeric(rowNum, --colNum, sheetNum)) {
+		colNum--;
+		if (cellIsEmpty(rowNum, colNum, sheetNum) || cellIsNumeric(rowNum, colNum, sheetNum)) {
 			while (cellIsEmpty(rowNum, colNum, colNum) || cellIsNumeric(rowNum, colNum, sheetNum)) {
 				rowNum++;
 			}
@@ -103,10 +104,15 @@ public class ReadMockUp extends ReadFile {
 
 		buffer.setCourseName(readCell(rowNum, colNum, sheetNum)); // C -> name
 
-		buffer.setHoursCM(readNumericCell(rowNum, ++colNum, sheetNum)); // D -> CM
-		buffer.setHoursTD(readNumericCell(rowNum, ++colNum, sheetNum)); // E -> TD
-		buffer.setHoursTP(readNumericCell(rowNum, ++colNum, sheetNum)); // F -> TP
-		buffer.setHoursProject(readNumericCell(rowNum, ++colNum, sheetNum)); // G -> Project
+		buffer.setHoursCM(readNumericCell(rowNum, ++colNum, sheetNum)); // D ->
+																		// CM
+		buffer.setHoursTD(readNumericCell(rowNum, ++colNum, sheetNum)); // E ->
+																		// TD
+		buffer.setHoursTP(readNumericCell(rowNum, ++colNum, sheetNum)); // F ->
+																		// TP
+		buffer.setHoursProject(readNumericCell(rowNum, ++colNum, sheetNum)); // G
+																				// ->
+																				// Project
 
 		colNum = colNum + 6;
 
@@ -118,7 +124,8 @@ public class ReadMockUp extends ReadFile {
 		else
 			buffer.setMundus(false);
 
-		buffer.setTeachers(readCell(rowNum, ++colNum, sheetNum)); // N -> Teachers
+		buffer.setTeachers(readCell(rowNum, ++colNum, sheetNum)); // N ->
+																	// Teachers
 
 		colNum = colValue;
 		return buffer;
