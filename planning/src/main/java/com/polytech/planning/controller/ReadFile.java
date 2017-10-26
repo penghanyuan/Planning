@@ -109,7 +109,7 @@ public abstract class ReadFile {
 				return cellContent;
 			} else {
 				throw new NumberFormatException("La cellule ligne " + rowNum + " / colonne " + colNum + " de l'onglet "
-						+ sheetNum + ", n'est pas de type numerique");
+						+ sheetNum + ", est de type " + getCellType(rowNum, colNum, sheetNum));
 			}
 
 		} catch (NumberFormatException e) {
@@ -241,14 +241,11 @@ public abstract class ReadFile {
 		if (sheet.equals(null)) {
 			throw new NullPointerException("L'onglet " + sheetNum + " n'existe pas");
 		} else {
-			cell = row.getCell(rowNum);
-			if (cell != null) {
-				cellContent = this.readCell(rowNum, colNum, sheetNum);
-				if (cellContent == null || cellContent.equals("")) {
-					return true;
-				} else {
-					return false;
-				}
+
+			CellType type = CellType.BLANK;
+
+			if (getCellType(rowNum, colNum, sheetNum).equals(type)) {
+				return true;
 			} else {
 				return false;
 			}
@@ -265,8 +262,16 @@ public abstract class ReadFile {
 	 * @throws NullPointerException
 	 */
 	protected boolean cellIsNumeric(int rowNum, int colNum, int sheetNum) throws NullPointerException {
-		//TODO faire cette methode
-		return false;
+		Sheet sheet = wb.getSheetAt(sheetNum);
+		Row row = sheet.getRow(rowNum);
+		Cell cell = row.getCell(colNum);
+		CellType numeric = CellType.NUMERIC;
+
+		if (cell.getCellTypeEnum().equals(numeric)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -279,16 +284,24 @@ public abstract class ReadFile {
 	 * @throws NullPointerException
 	 */
 	protected boolean cellIsString(int rowNum, int colNum, int sheetNum) throws NullPointerException {
-		//TODO faire cette methode
-		return false;
-	}
-	
-	protected void getCellType(int rowNum, int colNum, int sheetNum) {
 		Sheet sheet = wb.getSheetAt(sheetNum);
 		Row row = sheet.getRow(rowNum);
 		Cell cell = row.getCell(colNum);
-		
-		System.out.println(cell.getCellTypeEnum());
+		CellType string = CellType.STRING;
+
+		if (cell.getCellTypeEnum().equals(string)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	protected CellType getCellType(int rowNum, int colNum, int sheetNum) {
+		Sheet sheet = wb.getSheetAt(sheetNum);
+		Row row = sheet.getRow(rowNum);
+		Cell cell = row.getCell(colNum);
+
+		return cell.getCellTypeEnum();
 	}
 
 	/**

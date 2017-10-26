@@ -41,35 +41,20 @@ public class ReadMockUp extends ReadFile {
 		boolean notFinish = true;
 		int nbLoop = 0;
 
-		System.out.println("Cellule " + 12 + " - " + 2);
-		System.out.println("Numeric => " + cellIsNumeric(12, 2, 1));
-		System.out.println("String => " + cellIsString(12, 2, 1));
-		System.out.println("Empty => " + cellIsEmpty(12, 2, 1));
-
-		System.out.println("\nCellule " + 9 + " - " + 2);
-		System.out.println("Numeric => " + cellIsNumeric(9, 2, 1));
-		System.out.println("String => " + cellIsString(9, 2, 1));
-		System.out.println("Empty => " + cellIsEmpty(9, 2, 1));
-		
-		System.out.println("\nCellule " + 12 + " - " + 1);
-		System.out.println("Numeric => " + cellIsNumeric(12, 1, 1));
-		System.out.println("String => " + cellIsString(12, 1, 1));
-		System.out.println("Empty => " + cellIsEmpty(12, 1, 1));
-		
-		getCellType(12, 1, 1);
-
 		while (notFinish) {
 			if ((cellIsEmpty(rowNum, colNum, sheetNum) || cellIsNumeric(rowNum, colNum, sheetNum))
 					&& (cellIsEmpty(rowNum, colNum - 1, sheetNum) || cellIsNumeric(rowNum, colNum - 1, sheetNum))) {
-				
-				System.out.println("Cellule " + rowNum + " - " + colNum + " vide ou de type numeric");
-				
+
+				System.out.println("Cellule " + rowNum + " - " + colNum + " est de type "
+						+ getCellType(rowNum, colNum, sheetNum).toString());
+
 				nbLoop++;
 				rowNum++;
 
 				if (nbLoop > 1)
 					notFinish = false;
 			} else {
+				nbLoop = 0;
 				readTeachingUnit();
 			}
 		}
@@ -87,12 +72,12 @@ public class ReadMockUp extends ReadFile {
 		colNum--;
 
 		if (cellIsEmpty(rowNum, colNum, sheetNum) || cellIsNumeric(rowNum, colNum, sheetNum)) {
-			while (cellIsEmpty(rowNum, colNum, colNum) || cellIsNumeric(rowNum, colNum, sheetNum)) {
+			while (cellIsEmpty(rowNum, colNum + 1, colNum) || cellIsNumeric(rowNum, colNum + 1, sheetNum)) {
 				rowNum++;
 			}
 		}
 
-		name = readCell(rowNum, colNum, sheetNum);
+		name = readCell(rowNum - 1, colNum, sheetNum);
 		name = ToolBox.capitalize(name);
 
 		colNum = colValue;
@@ -104,9 +89,12 @@ public class ReadMockUp extends ReadFile {
 			System.out.println(name);
 			System.out.println(ToolBox.listToString(listCourses));
 
+			rowNum--;
+
 		} catch (InvalidValue e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	/**
@@ -138,7 +126,6 @@ public class ReadMockUp extends ReadFile {
 			buffer.setMundus(false);
 
 		buffer.setTeachers(readCell(rowNum, ++colNum, sheetNum)); // N ->
-																	// Teachers
 
 		colNum = colValue;
 		return buffer;
@@ -155,14 +142,17 @@ public class ReadMockUp extends ReadFile {
 		List<OriginalCourse> courses = new ArrayList<OriginalCourse>();
 
 		if (rowNum >= 0 && colNum >= 0) {
-			while (blankLines < 2) {
-				if (!cellIsEmpty(rowNum, colNum, sheetNum)) {
+			while (blankLines < 1) {
+				if (cellIsEmpty(rowNum, colNum, sheetNum)) {
+					blankLines++;
+					rowDiff++;
+				} else if (cellIsNumeric(rowNum, colNum, sheetNum)) {
+					blankLines++;
+					rowDiff++;
+				} else {
 					blankLines = 0;
 					courses.add(readCourse());
 					rowDiff = 0;
-				} else {
-					blankLines++;
-					rowDiff++;
 				}
 				rowNum++;
 			}
