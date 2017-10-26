@@ -37,13 +37,27 @@ public class ReadMockUp extends ReadFile {
 	 * Method to read all teaching units
 	 */
 	public void readTeachingUnits() {
-		System.out.println("Ligne " + rowNum + " - Colonne " + colNum);
-		System.out.println(readCell(rowNum, colNum - 1, sheetNum));
+		boolean notFinish = true;
+		int nbLoop = 0;
+		
+		while (notFinish) {
+			if ((cellIsEmpty(rowNum, colNum, sheetNum) || cellIsNumeric(rowNum, colNum, sheetNum))
+					&& (cellIsEmpty(rowNum, colNum-1, sheetNum) || cellIsNumeric(rowNum, colNum-1, sheetNum))) {
 
-		readTeachingUnit();
-
-		System.out.println(readCell(rowNum, colNum - 1, sheetNum));
-		System.out.println("Ligne " + rowNum + " - Colonne " + colNum);
+				System.out.println("Ligne " + rowNum + " - Colonne " + colNum);
+				nbLoop++;
+				rowNum++;
+				
+				if (nbLoop > 1)
+					notFinish = false;
+				
+				System.out.println(nbLoop);
+			} else {
+				System.out.println("Ligne " + rowNum + " - Colonne " + colNum);
+				readTeachingUnit();
+			}
+			System.out.println(notFinish);
+		}
 	}
 
 	/**
