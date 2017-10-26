@@ -98,7 +98,6 @@ public class ParserCalendarTest {
 			originalCalendar.addFreeDays("Nuit de l'info", freeDay3, "2");
 
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

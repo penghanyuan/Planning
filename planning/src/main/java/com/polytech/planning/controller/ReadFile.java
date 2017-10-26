@@ -265,6 +265,7 @@ public abstract class ReadFile {
 	 * @throws NullPointerException
 	 */
 	protected boolean cellIsNumeric(int rowNum, int colNum, int sheetNum) throws NullPointerException {
+		//TODO faire cette methode
 		return false;
 	}
 
@@ -278,7 +279,16 @@ public abstract class ReadFile {
 	 * @throws NullPointerException
 	 */
 	protected boolean cellIsString(int rowNum, int colNum, int sheetNum) throws NullPointerException {
+		//TODO faire cette methode
 		return false;
+	}
+	
+	protected void getCellType(int rowNum, int colNum, int sheetNum) {
+		Sheet sheet = wb.getSheetAt(sheetNum);
+		Row row = sheet.getRow(rowNum);
+		Cell cell = row.getCell(colNum);
+		
+		System.out.println(cell.getCellTypeEnum());
 	}
 
 	/**

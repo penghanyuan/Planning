@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.omg.CORBA.DynAnyPackage.InvalidValue;
 
 import com.polytech.planning.model.OriginalCourse;
@@ -40,29 +41,42 @@ public class ReadMockUp extends ReadFile {
 		boolean notFinish = true;
 		int nbLoop = 0;
 
+		System.out.println("Cellule " + 12 + " - " + 2);
+		System.out.println("Numeric => " + cellIsNumeric(12, 2, 1));
+		System.out.println("String => " + cellIsString(12, 2, 1));
+		System.out.println("Empty => " + cellIsEmpty(12, 2, 1));
+
+		System.out.println("\nCellule " + 9 + " - " + 2);
+		System.out.println("Numeric => " + cellIsNumeric(9, 2, 1));
+		System.out.println("String => " + cellIsString(9, 2, 1));
+		System.out.println("Empty => " + cellIsEmpty(9, 2, 1));
+		
+		System.out.println("\nCellule " + 12 + " - " + 1);
+		System.out.println("Numeric => " + cellIsNumeric(12, 1, 1));
+		System.out.println("String => " + cellIsString(12, 1, 1));
+		System.out.println("Empty => " + cellIsEmpty(12, 1, 1));
+		
+		getCellType(12, 1, 1);
+
 		while (notFinish) {
 			if ((cellIsEmpty(rowNum, colNum, sheetNum) || cellIsNumeric(rowNum, colNum, sheetNum))
 					&& (cellIsEmpty(rowNum, colNum - 1, sheetNum) || cellIsNumeric(rowNum, colNum - 1, sheetNum))) {
-
-				System.out.println("Ligne " + rowNum + " - Colonne " + colNum);
+				
+				System.out.println("Cellule " + rowNum + " - " + colNum + " vide ou de type numeric");
+				
 				nbLoop++;
 				rowNum++;
 
 				if (nbLoop > 1)
 					notFinish = false;
-
-				System.out.println(nbLoop);
 			} else {
-				System.out.println("Ligne " + rowNum + " - Colonne " + colNum);
 				readTeachingUnit();
 			}
-			System.out.println(notFinish);
 		}
 	}
 
 	/**
-	 * Method to read one Teaching Unit and add it in teachingUnits
-	 * LinkedHashMap
+	 * Method to read one Teaching Unit and add it in teachingUnits LinkedHashMap
 	 */
 	private void readTeachingUnit() {
 		String name = null;
@@ -71,6 +85,7 @@ public class ReadMockUp extends ReadFile {
 
 		rowNum++;
 		colNum--;
+
 		if (cellIsEmpty(rowNum, colNum, sheetNum) || cellIsNumeric(rowNum, colNum, sheetNum)) {
 			while (cellIsEmpty(rowNum, colNum, colNum) || cellIsNumeric(rowNum, colNum, sheetNum)) {
 				rowNum++;
@@ -85,7 +100,10 @@ public class ReadMockUp extends ReadFile {
 		try {
 			listCourses = readCourses();
 			teachingUnits.put(name, listCourses);
+
+			System.out.println(name);
 			System.out.println(ToolBox.listToString(listCourses));
+
 		} catch (InvalidValue e) {
 			e.printStackTrace();
 		}
@@ -104,15 +122,10 @@ public class ReadMockUp extends ReadFile {
 
 		buffer.setCourseName(readCell(rowNum, colNum, sheetNum)); // C -> name
 
-		buffer.setHoursCM(readNumericCell(rowNum, ++colNum, sheetNum)); // D ->
-																		// CM
-		buffer.setHoursTD(readNumericCell(rowNum, ++colNum, sheetNum)); // E ->
-																		// TD
-		buffer.setHoursTP(readNumericCell(rowNum, ++colNum, sheetNum)); // F ->
-																		// TP
-		buffer.setHoursProject(readNumericCell(rowNum, ++colNum, sheetNum)); // G
-																				// ->
-																				// Project
+		buffer.setHoursCM(readNumericCell(rowNum, ++colNum, sheetNum)); // D -> CM
+		buffer.setHoursTD(readNumericCell(rowNum, ++colNum, sheetNum)); // E -> TD
+		buffer.setHoursTP(readNumericCell(rowNum, ++colNum, sheetNum)); // F -> TP
+		buffer.setHoursProject(readNumericCell(rowNum, ++colNum, sheetNum)); // G -> Project
 
 		colNum = colNum + 6;
 
