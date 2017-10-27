@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.polytech.planning.controller.ParserMockUp;
+import com.polytech.planning.controller.ReadMockUp;
 import com.polytech.planning.model.Teacher;
 
 /**
@@ -19,9 +20,10 @@ public class ParserMockUpTest {
 	private static String inputTeachers;
 	private static List<Teacher> expected;
 	private static Teacher teacherOne;
-
+	private static ReadMockUp readMockUp;
 	@BeforeClass
 	public static void init() {
+		readMockUp = new ReadMockUp("Maquette.xlsx", 1);
 		inputTeachers = "C.Tacquard,16hCM, 20hTD x3gr + Mundus, 16hTP x3gr + Mundus; M. Martineau,12hTP x3gr + Mundus";
 		expected = new ArrayList<Teacher>();
 
@@ -39,6 +41,7 @@ public class ParserMockUpTest {
 		teacher2.setTPMundus(true);
 
 		expected.add(teacher2);
+		
 	}
 
 	@Test
@@ -54,5 +57,13 @@ public class ParserMockUpTest {
 		while (expectedIt.hasNext()) {
 			Assert.assertTrue(outputIt.next().equals(expectedIt.next()));
 		}
+	}
+	
+	@Test
+	public void testWithReadFile(){
+		readMockUp.readTeachingUnits();
+		ParserMockUp parser = new ParserMockUp(readMockUp.getTeachingUnits());
+		System.out.println(parser.createTeachingUnits().get(0).getName());
+		
 	}
 }

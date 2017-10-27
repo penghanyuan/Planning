@@ -12,7 +12,7 @@ public class ReadMockUpTest {
 
 	@BeforeClass
 	public static void init() {
-		readMockUp = new ReadMockUp("Maquette.xlsx", 1);
+		readMockUp = new ReadMockUp("Maquette.xlsx", 3);
 		// expectedTeachingUnit = new OriginalTeachingUnit();
 		// expectedTeachingUnit.setName(null);
 	}

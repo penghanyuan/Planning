@@ -14,7 +14,7 @@ import com.polytech.planning.model.TeachingUnit;
 public class ParserMockUp {
 
 	private LinkedHashMap<String, List<OriginalCourse>> originalCourses;
-	
+
 	// add calendar
 
 	public ParserMockUp() {
@@ -70,6 +70,7 @@ public class ParserMockUp {
 				c.setListTeachers(this.createTeachers(oc.getTeachers()));
 			}
 			coursesList.add(c);
+	//		System.out.println("Courses after parser :" + c.getName());
 		}
 		if (coursesList.isEmpty())
 			return null;
@@ -93,14 +94,14 @@ public class ParserMockUp {
 		}
 
 		for (String teacherName : teacherAndCourses.keySet()) {
-			//System.out.println(teacherName.trim());
+			// System.out.println(teacherName.trim());
 			Teacher teacher = new Teacher(teacherName.trim());
 
 			String[] tempTeacher = teacherAndCourses.get(teacherName);
 			for (int i = 1; i < tempTeacher.length; i++) {
 				String regCM = ".*CM.*", regTD = ".*TD.*", regTP = ".*TP.*", regMundus = ".*Mundus.*";
 
-				//System.out.println(tempTeacher[i].trim());
+				// System.out.println(tempTeacher[i].trim());
 				String tempTeacherNoSpace = tempTeacher[i].trim();
 				if (tempTeacherNoSpace.matches(regCM)) {
 					// CM
@@ -108,7 +109,7 @@ public class ParserMockUp {
 					Matcher matcher = pattern.matcher(tempTeacherNoSpace);
 					if (matcher.find()) {
 						int hoursCM = Integer.parseInt(matcher.group(1));
-						//System.out.println(hoursCM);
+						// System.out.println(hoursCM);
 						teacher.setHoursCM(hoursCM);
 					}
 
@@ -119,7 +120,7 @@ public class ParserMockUp {
 					Matcher matcher = pattern.matcher(tempTeacherNoSpace);
 					if (matcher.find()) {
 						int hoursTD = Integer.parseInt(matcher.group(1));
-						//System.out.println(hoursTD);
+						// System.out.println(hoursTD);
 						teacher.setHoursTD(hoursTD);
 					}
 					if (tempTeacherNoSpace.matches(".*Mundus.*")) {
@@ -133,7 +134,7 @@ public class ParserMockUp {
 					Matcher matcher = pattern.matcher(tempTeacherNoSpace);
 					if (matcher.find()) {
 						int hoursTP = Integer.parseInt(matcher.group(1));
-						//System.out.println(hoursTP);
+						// System.out.println(hoursTP);
 						teacher.setHoursTP(hoursTP);
 					}
 					if (tempTeacherNoSpace.matches(".*Mundus.*")) {
@@ -142,10 +143,10 @@ public class ParserMockUp {
 				}
 			}
 			teachers.add(teacher);
+		//	System.out.println("Teacher after parser :" + teacher.getName());
 		}
 
 		return teachers;
 	}
-
 
 }

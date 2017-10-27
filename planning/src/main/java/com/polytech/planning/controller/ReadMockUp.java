@@ -42,6 +42,7 @@ public class ReadMockUp extends ReadFile {
 		int nbLoop = 0;
 
 		while (notFinish) {
+			
 			if ((cellIsEmpty(rowNum, colNum, sheetNum) || cellIsNumeric(rowNum, colNum, sheetNum))
 					&& (cellIsEmpty(rowNum, colNum - 1, sheetNum) || cellIsNumeric(rowNum, colNum - 1, sheetNum))) {
 
@@ -50,11 +51,12 @@ public class ReadMockUp extends ReadFile {
 
 				nbLoop++;
 				rowNum++;
-
+				
 				if (nbLoop > 1)
 					notFinish = false;
 			} else {
 				nbLoop = 0;
+				System.out.println("in readeus rowNum: " + (rowNum) + ", colNum:" + colNum);
 				readTeachingUnit();
 			}
 		}
@@ -77,10 +79,13 @@ public class ReadMockUp extends ReadFile {
 				rowNum++;
 			}
 		}
-		System.out.println("rowNum: " + rowNum + ", colNum:" + colNum);
-
+		
+		
 		name = readCell(rowNum - 1, colNum, sheetNum);
-
+		
+		System.out.println("rowNum: " + (rowNum - 1) + ", colNum:" + colNum);
+		System.out.println("name is : " + name);
+		
 		name = ToolBox.capitalize(name);
 		colNum = colValue;
 
@@ -91,7 +96,7 @@ public class ReadMockUp extends ReadFile {
 			System.out.println("name: " + name);
 			System.out.println(ToolBox.listToString(listCourses));
 
-			rowNum--;
+			//rowNum--;
 
 		} catch (InvalidValue e) {
 			e.printStackTrace();
@@ -166,9 +171,13 @@ public class ReadMockUp extends ReadFile {
 		} else {
 			throw new InvalidValue("Les coordonnées ne peuvent pas être inferieurs à 0");
 		}
-
-		rowNum = rowNum - rowDiff;
+		
+		System.out.println("rowNum: " + (rowNum ) + ", rowDiff:" + rowDiff);
+		//rowNum = rowNum - rowDiff;
 		return courses;
 	}
-
+	
+	public LinkedHashMap<String, List<OriginalCourse>> getTeachingUnits(){
+		return this.teachingUnits;
+	}
 }
