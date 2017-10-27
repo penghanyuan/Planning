@@ -61,7 +61,8 @@ public class ReadMockUp extends ReadFile {
 	}
 
 	/**
-	 * Method to read one Teaching Unit and add it in teachingUnits LinkedHashMap
+	 * Method to read one Teaching Unit and add it in teachingUnits
+	 * LinkedHashMap
 	 */
 	private void readTeachingUnit() {
 		String name = null;
@@ -76,11 +77,13 @@ public class ReadMockUp extends ReadFile {
 				rowNum++;
 			}
 		}
-
+		System.out.println("rowNum: " + rowNum + ", colNum:" + colNum);
 		name = readCell(rowNum - 1, colNum, sheetNum);
-		name = ToolBox.capitalize(name);
+		if(!name.equalsIgnoreCase("")){
+			name = ToolBox.capitalize(name);
 
-		colNum = colValue;
+			colNum = colValue;
+		}	
 
 		try {
 			listCourses = readCourses();
@@ -110,10 +113,15 @@ public class ReadMockUp extends ReadFile {
 
 		buffer.setCourseName(readCell(rowNum, colNum, sheetNum)); // C -> name
 
-		buffer.setHoursCM(readNumericCell(rowNum, ++colNum, sheetNum)); // D -> CM
-		buffer.setHoursTD(readNumericCell(rowNum, ++colNum, sheetNum)); // E -> TD
-		buffer.setHoursTP(readNumericCell(rowNum, ++colNum, sheetNum)); // F -> TP
-		buffer.setHoursProject(readNumericCell(rowNum, ++colNum, sheetNum)); // G -> Project
+		buffer.setHoursCM(readNumericCell(rowNum, ++colNum, sheetNum)); // D ->
+																		// CM
+		buffer.setHoursTD(readNumericCell(rowNum, ++colNum, sheetNum)); // E ->
+																		// TD
+		buffer.setHoursTP(readNumericCell(rowNum, ++colNum, sheetNum)); // F ->
+																		// TP
+		buffer.setHoursProject(readNumericCell(rowNum, ++colNum, sheetNum)); // G
+																				// ->
+																				// Project
 
 		colNum = colNum + 6;
 

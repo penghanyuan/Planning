@@ -103,7 +103,10 @@ public abstract class ReadFile {
 			Cell cell = row.getCell(colNum);
 
 			Double cellContent = null;
-
+			if(cell.getCellTypeEnum()==CellType.BLANK){
+				cellContent = 0.0;
+				return cellContent;
+			}
 			if (cell.getCellTypeEnum() == CellType.NUMERIC) {
 				cellContent = cell.getNumericCellValue();
 				return cellContent;
