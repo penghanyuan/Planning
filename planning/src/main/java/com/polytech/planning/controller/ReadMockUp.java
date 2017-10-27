@@ -78,18 +78,17 @@ public class ReadMockUp extends ReadFile {
 			}
 		}
 		System.out.println("rowNum: " + rowNum + ", colNum:" + colNum);
-		name = readCell(rowNum - 1, colNum, sheetNum);
-		if(!name.equalsIgnoreCase("")){
-			name = ToolBox.capitalize(name);
 
-			colNum = colValue;
-		}	
+		name = readCell(rowNum - 1, colNum, sheetNum);
+
+		name = ToolBox.capitalize(name);
+		colNum = colValue;
 
 		try {
 			listCourses = readCourses();
 			teachingUnits.put(name, listCourses);
 
-			System.out.println(name);
+			System.out.println("name: " + name);
 			System.out.println(ToolBox.listToString(listCourses));
 
 			rowNum--;

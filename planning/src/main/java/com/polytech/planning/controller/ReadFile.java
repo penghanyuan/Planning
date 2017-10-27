@@ -58,7 +58,8 @@ public abstract class ReadFile {
 			Row row = sheet.getRow(rowNum);
 
 			Cell cell = row.getCell(colNum);
-
+			//Cell nestCell = sheet.getRow(rowNum + 1).getCell(colNum);
+			//System.out.println("row " + (rowNum + 1) + ",type: " + nestCell.getCellTypeEnum().toString());
 			String cellContent;
 			if (cell != null) {
 				cellContent = formatter.formatCellValue(cell);
@@ -103,7 +104,7 @@ public abstract class ReadFile {
 			Cell cell = row.getCell(colNum);
 
 			Double cellContent = null;
-			if(cell.getCellTypeEnum()==CellType.BLANK){
+			if (cell.getCellTypeEnum() == CellType.BLANK) {
 				cellContent = 0.0;
 				return cellContent;
 			}
@@ -312,8 +313,8 @@ public abstract class ReadFile {
 	 * 
 	 * @param sheetNb
 	 *            Number of the sheet to be readed
-	 * @return A tqble with two values, the first the row number and the second the
-	 *         column number of the first non-empty cell
+	 * @return A tqble with two values, the first the row number and the second
+	 *         the column number of the first non-empty cell
 	 */
 	public int[] getFirstCellNotEmpty(int sheetNb) {
 		int[] coordonates = new int[2];
@@ -343,8 +344,8 @@ public abstract class ReadFile {
 	 *            Number of the sheet to be readed
 	 * @param content
 	 *            the search String
-	 * @return A tqble with two values, the first the row number and the second the
-	 *         column number of the first content find
+	 * @return A tqble with two values, the first the row number and the second
+	 *         the column number of the first content find
 	 */
 	public int[] searchContent(int sheetNb, String content) throws NullPointerException {
 		int[] coordonates = new int[2];
