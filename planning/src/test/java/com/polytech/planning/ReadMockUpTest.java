@@ -2,8 +2,6 @@ package com.polytech.planning;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.omg.CORBA.DynAnyPackage.InvalidValue;
-
 import com.polytech.planning.controller.ReadMockUp;
 
 public class ReadMockUpTest {
@@ -12,7 +10,7 @@ public class ReadMockUpTest {
 
 	@BeforeClass
 	public static void init() {
-		readMockUp = new ReadMockUp("Maquette.xlsx", 3);
+		readMockUp = new ReadMockUp("Maquette.xlsx", 1);
 		// expectedTeachingUnit = new OriginalTeachingUnit();
 		// expectedTeachingUnit.setName(null);
 	}

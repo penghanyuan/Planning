@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.Cell;
 import org.omg.CORBA.DynAnyPackage.InvalidValue;
 
 import com.polytech.planning.model.OriginalCourse;
@@ -15,6 +14,15 @@ public class ReadMockUp extends ReadFile {
 	private int sheetNum;
 	private int rowNum;
 	private int colNum;
+
+	private int colTitleTU;
+	private int colCourseName;
+	private int colCM;
+	private int colTD;
+	private int colTP;
+	private int colProject;
+	private int colMundus;
+	private int colTeachers;
 
 	/**
 	 * Constructor
@@ -31,6 +39,18 @@ public class ReadMockUp extends ReadFile {
 		this.rowNum = coordinates[0];
 		this.colNum = coordinates[1];
 
+		this.colCourseName = coordinates[1];
+		this.colTitleTU = coordinates[1] - 1;
+
+		this.colCM = getColNum(sheetNum, "Cours", false);
+		this.colTD = getColNum(sheetNum, "TD", false);
+		this.colTP = getColNum(sheetNum, "TP", false);
+
+		this.colProject = getColNum(sheetNum, "Projet", false);
+		this.colMundus = getColNum(sheetNum, "Mundus", false);
+
+		this.colTeachers = getColNum(sheetNum, "Affectation enseignement et responsabilité UE", true);
+
 		teachingUnits = new LinkedHashMap<String, List<OriginalCourse>>();
 	}
 
@@ -42,7 +62,7 @@ public class ReadMockUp extends ReadFile {
 		int nbLoop = 0;
 
 		while (notFinish) {
-			
+
 			if ((cellIsEmpty(rowNum, colNum, sheetNum) || cellIsNumeric(rowNum, colNum, sheetNum))
 					&& (cellIsEmpty(rowNum, colNum - 1, sheetNum) || cellIsNumeric(rowNum, colNum - 1, sheetNum))) {
 
@@ -51,20 +71,18 @@ public class ReadMockUp extends ReadFile {
 
 				nbLoop++;
 				rowNum++;
-				
+
 				if (nbLoop > 1)
 					notFinish = false;
 			} else {
 				nbLoop = 0;
-				System.out.println("in readeus rowNum: " + (rowNum) + ", colNum:" + colNum);
 				readTeachingUnit();
 			}
 		}
 	}
 
 	/**
-	 * Method to read one Teaching Unit and add it in teachingUnits
-	 * LinkedHashMap
+	 * Method to read one Teaching Unit and add it in teachingUnits LinkedHashMap
 	 */
 	private void readTeachingUnit() {
 		String name = null;
@@ -79,13 +97,12 @@ public class ReadMockUp extends ReadFile {
 				rowNum++;
 			}
 		}
-		
-		
+
 		name = readCell(rowNum - 1, colNum, sheetNum);
-		
-		System.out.println("rowNum: " + (rowNum - 1) + ", colNum:" + colNum);
-		System.out.println("name is : " + name);
-		
+
+		//System.out.println("rowNum: " + (rowNum - 1) + ", colNum:" + colNum);
+		//System.out.println("name is : " + name);
+
 		name = ToolBox.capitalize(name);
 		colNum = colValue;
 
@@ -96,8 +113,6 @@ public class ReadMockUp extends ReadFile {
 			System.out.println("name: " + name);
 			System.out.println(ToolBox.listToString(listCourses));
 
-			//rowNum--;
-
 		} catch (InvalidValue e) {
 			e.printStackTrace();
 		}
@@ -106,6 +121,8 @@ public class ReadMockUp extends ReadFile {
 
 	/**
 	 * Method to read one course
+	 * 
+	 * @return
 	 */
 	private OriginalCourse readCourse() {
 		OriginalCourse buffer = new OriginalCourse();
@@ -117,15 +134,10 @@ public class ReadMockUp extends ReadFile {
 
 		buffer.setCourseName(readCell(rowNum, colNum, sheetNum)); // C -> name
 
-		buffer.setHoursCM(readNumericCell(rowNum, ++colNum, sheetNum)); // D ->
-																		// CM
-		buffer.setHoursTD(readNumericCell(rowNum, ++colNum, sheetNum)); // E ->
-																		// TD
-		buffer.setHoursTP(readNumericCell(rowNum, ++colNum, sheetNum)); // F ->
-																		// TP
-		buffer.setHoursProject(readNumericCell(rowNum, ++colNum, sheetNum)); // G
-																				// ->
-																				// Project
+		buffer.setHoursCM(readNumericCell(rowNum, ++colNum, sheetNum)); // D -> CM
+		buffer.setHoursTD(readNumericCell(rowNum, ++colNum, sheetNum)); // E -> TD
+		buffer.setHoursTP(readNumericCell(rowNum, ++colNum, sheetNum)); // F -> TP
+		buffer.setHoursProject(readNumericCell(rowNum, ++colNum, sheetNum)); // G -> Project
 
 		colNum = colNum + 6;
 
@@ -146,6 +158,7 @@ public class ReadMockUp extends ReadFile {
 	/**
 	 * Method to read all courses in a Teaching Unit
 	 * 
+	 * @return
 	 * @throws InvalidValue
 	 */
 	public List<OriginalCourse> readCourses() throws InvalidValue {
@@ -171,13 +184,19 @@ public class ReadMockUp extends ReadFile {
 		} else {
 			throw new InvalidValue("Les coordonnées ne peuvent pas être inferieurs à 0");
 		}
-		
-		System.out.println("rowNum: " + (rowNum ) + ", rowDiff:" + rowDiff);
-		//rowNum = rowNum - rowDiff;
+
+		System.out.println("rowNum: " + (rowNum) + ", rowDiff:" + rowDiff);
+		// rowNum = rowNum - rowDiff;
 		return courses;
 	}
-	
-	public LinkedHashMap<String, List<OriginalCourse>> getTeachingUnits(){
+
+	/**
+	 * Method to get the list of teaching units
+	 * 
+	 * @return the list of teaching units in a LinkedHashMap with the name of the
+	 *         teaching units and the list of courses present in this teaching unit.
+	 */
+	public LinkedHashMap<String, List<OriginalCourse>> getTeachingUnits() {
 		return this.teachingUnits;
 	}
 }

@@ -23,6 +23,8 @@ public abstract class ReadFile {
 	private File file;
 
 	/**
+	 * Constructor
+	 * 
 	 * @param filePath
 	 *            full path of the file to read
 	 */
@@ -40,6 +42,8 @@ public abstract class ReadFile {
 	}
 
 	/**
+	 * To read a string cell
+	 * 
 	 * @param rowNum
 	 *            Number of row to be readed
 	 * @param colNum
@@ -58,8 +62,9 @@ public abstract class ReadFile {
 			Row row = sheet.getRow(rowNum);
 
 			Cell cell = row.getCell(colNum);
-			//Cell nestCell = sheet.getRow(rowNum + 1).getCell(colNum);
-			//System.out.println("row " + (rowNum + 1) + ",type: " + nestCell.getCellTypeEnum().toString());
+			// Cell nestCell = sheet.getRow(rowNum + 1).getCell(colNum);
+			// System.out.println("row " + (rowNum + 1) + ",type: " +
+			// nestCell.getCellTypeEnum().toString());
 			String cellContent;
 			if (cell != null) {
 				cellContent = formatter.formatCellValue(cell);
@@ -81,6 +86,8 @@ public abstract class ReadFile {
 	}
 
 	/**
+	 * To read a numeric cell
+	 * 
 	 * @param rowNum
 	 * @param colNum
 	 * @param sheetNum
@@ -124,6 +131,8 @@ public abstract class ReadFile {
 	}
 
 	/**
+	 * To read a cell with type date
+	 * 
 	 * @param rowNum
 	 *            Number of row to be readed
 	 * @param colNum
@@ -165,6 +174,8 @@ public abstract class ReadFile {
 	}
 
 	/**
+	 * To read a row
+	 * 
 	 * @param rowNb
 	 *            Number of row to be readed
 	 * @param sheetNb
@@ -199,6 +210,8 @@ public abstract class ReadFile {
 	}
 
 	/**
+	 * To know if a row id empty
+	 * 
 	 * @param rowNb
 	 *            Number of row to be readed
 	 * @param sheetNb
@@ -228,6 +241,8 @@ public abstract class ReadFile {
 	}
 
 	/**
+	 * To know if a cell is empty
+	 * 
 	 * @param colNum
 	 *            Number of column to be readed
 	 * @param rowNum
@@ -237,10 +252,10 @@ public abstract class ReadFile {
 	 */
 	protected boolean cellIsEmpty(int rowNum, int colNum, int sheetNum) throws NullPointerException {
 		Sheet sheet = wb.getSheetAt(sheetNum);
-		Row row = sheet.getRow(rowNum);
-		Cell cell;
-
-		String cellContent;
+		// Row row = sheet.getRow(rowNum);
+		// Cell cell;
+		//
+		// String cellContent;
 
 		if (sheet.equals(null)) {
 			throw new NullPointerException("L'onglet " + sheetNum + " n'existe pas");
@@ -300,6 +315,14 @@ public abstract class ReadFile {
 		}
 	}
 
+	/**
+	 * To know the cell type
+	 * 
+	 * @param rowNum
+	 * @param colNum
+	 * @param sheetNum
+	 * @return
+	 */
 	protected CellType getCellType(int rowNum, int colNum, int sheetNum) {
 		Sheet sheet = wb.getSheetAt(sheetNum);
 		Row row = sheet.getRow(rowNum);
@@ -313,8 +336,8 @@ public abstract class ReadFile {
 	 * 
 	 * @param sheetNb
 	 *            Number of the sheet to be readed
-	 * @return A tqble with two values, the first the row number and the second
-	 *         the column number of the first non-empty cell
+	 * @return A tqble with two values, the first the row number and the second the
+	 *         column number of the first non-empty cell
 	 */
 	public int[] getFirstCellNotEmpty(int sheetNb) {
 		int[] coordonates = new int[2];
@@ -344,8 +367,8 @@ public abstract class ReadFile {
 	 *            Number of the sheet to be readed
 	 * @param content
 	 *            the search String
-	 * @return A tqble with two values, the first the row number and the second
-	 *         the column number of the first content find
+	 * @return A tqble with two values, the first the row number and the second the
+	 *         column number of the first content find
 	 */
 	public int[] searchContent(int sheetNb, String content) throws NullPointerException {
 		int[] coordonates = new int[2];
@@ -374,8 +397,27 @@ public abstract class ReadFile {
 		}
 		return coordonates;
 	}
+	
+	/**
+	 * Method that allows you to find the number of the column where the text you
+	 * entered is present.
+	 * 
+	 * @param content
+	 *            the searched word
+	 * @param startWith
+	 *            a boolean to true if the text search starts with the content
+	 *            value, or a boolean to false if the search text is exactly the
+	 *            content value.
+	 * @return number of a column or -1 if the content is not found
+	 */
+	protected int getColNum(int sheetNb, String content, boolean startWith) {
+		
+		return 0;
+	}
 
 	/**
+	 * Put the text in lower case and without accents
+	 * 
 	 * @param input
 	 *            string to normalize
 	 * @return the string normalizes
