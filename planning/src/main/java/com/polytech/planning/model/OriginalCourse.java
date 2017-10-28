@@ -23,6 +23,17 @@ public class OriginalCourse {
 		this.mundus = false;
 	}
 
+	public OriginalCourse(String courseName, Double hoursCM, Double hoursTD, Double hoursTP, Double hoursProject,
+			String teachers, boolean mundus) {
+		this.courseName = courseName;
+		this.hoursCM = hoursCM;
+		this.hoursTD = hoursTD;
+		this.hoursTP = hoursTP;
+		this.hoursProject = hoursProject;
+		this.teachers = teachers;
+		this.mundus = mundus;
+	}
+
 	/**
 	 * @return the courseName
 	 */
@@ -128,18 +139,53 @@ public class OriginalCourse {
 		this.mundus = mundus;
 	}
 
+	/*
+	 * public boolean equals() { return true; }
+	 */
+
 	public String toString() {
 		String output = "";
 
-		output += "Cours -> " + courseName;
+		output += "\n\tName => " + courseName;
 		output += "\n\tCM = " + hoursCM + " | TP = " + hoursTP + " | TD = " + hoursTD + " | Project = " + hoursProject;
 
 		if (this.mundus)
 			output += " | Mundus";
 
 		output += "\n\tTeachers => " + teachers;
-		output += "\n-----------------------------------------------------------------------\n";
 
-		return output + "\n";
+		return output+"\n";
+	}
+
+	public boolean equals(OriginalCourse input) {
+		if (!input.getCourseName().equals(courseName)) {
+			return false;
+		}
+
+		if (!input.getHoursCM().equals(hoursCM)) {
+			return false;
+		}
+
+		if (!input.getHoursTD().equals(hoursTD)) {
+			return false;
+		}
+
+		if (!input.getHoursTP().equals(hoursTP)) {
+			return false;
+		}
+		
+		if (!input.getHoursProject().equals(hoursProject)) {
+			return false;
+		}
+		
+		if(input.isMundus() != mundus) {
+			return false;
+		}
+		
+		if(input.getTeachers().equals(teachers)) {
+			return false;
+		}
+
+		return true;
 	}
 }

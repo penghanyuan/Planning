@@ -1,22 +1,36 @@
 package com.polytech.planning;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import com.polytech.planning.controller.ReadMockUp;
+import com.polytech.planning.model.OriginalCourse;
+
+
 
 public class ReadMockUpTest {
 	private static ReadMockUp readMockUp;
-	// private static OriginalTeachingUnit expectedTeachingUnit;
+	private static List<OriginalCourse> listCoursesExpected;
 
 	@BeforeClass
 	public static void init() {
 		readMockUp = new ReadMockUp("Maquette.xlsx", 1);
-		// expectedTeachingUnit = new OriginalTeachingUnit();
-		// expectedTeachingUnit.setName(null);
+		OriginalCourse course = new OriginalCourse("Conception et utilisation de bases de donnée", 16.0, 28.0, 20.0, 0.0, "C.Tacquard 16hCM, 20hTD x3gr + Mundus, 16hTP x3gr + Mundus  ; M. Martineau 12hTP x3gr + Mundus",true);
+		listCoursesExpected = new ArrayList<OriginalCourse>();
+		listCoursesExpected.add(course);
 	}
 	
 	@Test
 	public void readTeachingUnits() {
 		readMockUp.readTeachingUnits();
+		List<OriginalCourse> listCourses = readMockUp.getTeachingUnits().get("Conception et utilisation de bases de donnees");
+		
+		System.out.println(readMockUp.getTeachingUnits().toString());
+		Assert.assertTrue(readMockUp.getTeachingUnits().size() == 7);
+		
+		Assert.assertTrue(listCoursesExpected.get(0).equals(listCourses.get(0)));
 	}
 }

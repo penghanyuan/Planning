@@ -64,9 +64,6 @@ public class ReadMockUp extends ReadFile {
 			if ((cellIsEmpty(rowNum, colCourseName, sheetNum) || cellIsNumeric(rowNum, colCourseName, sheetNum))
 					&& (cellIsEmpty(rowNum, colTitleTU, sheetNum) || cellIsNumeric(rowNum, colTitleTU, sheetNum))) {
 
-				//System.out.println("Cellule " + rowNum + " - " + colCourseName + " est de type "
-				//		+ getCellType(rowNum, colCourseName, sheetNum).toString());
-
 				nbLoop++;
 				rowNum++;
 
@@ -100,6 +97,9 @@ public class ReadMockUp extends ReadFile {
 		try {
 			listCourses = readCourses();
 			teachingUnits.put(name, listCourses);
+			//System.out.println("######################################################################\n# " + name
+			//		+ "\n######################################################################");
+			//System.out.println(ToolBox.listToString(listCourses));
 		} catch (InvalidValue e) {
 			e.printStackTrace();
 		}
@@ -109,7 +109,7 @@ public class ReadMockUp extends ReadFile {
 	/**
 	 * Method to read one course
 	 * 
-	 * @return
+	 * @return one OriginalCourse object
 	 */
 	private OriginalCourse readCourse() {
 		OriginalCourse buffer = new OriginalCourse();
@@ -145,7 +145,7 @@ public class ReadMockUp extends ReadFile {
 	/**
 	 * Method to read all courses in a Teaching Unit
 	 * 
-	 * @return
+	 * @return a list of courses
 	 * @throws InvalidValue
 	 */
 	public List<OriginalCourse> readCourses() throws InvalidValue {

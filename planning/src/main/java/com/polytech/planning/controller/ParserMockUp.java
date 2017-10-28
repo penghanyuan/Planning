@@ -83,6 +83,7 @@ public class ParserMockUp {
 	 * @param oriTeachers
 	 * @return
 	 */
+	@SuppressWarnings("unused")
 	public List<Teacher> createTeachers(String oriTeachers) {
 		List<Teacher> teachers = new ArrayList<Teacher>();
 

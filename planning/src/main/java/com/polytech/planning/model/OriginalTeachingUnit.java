@@ -48,17 +48,30 @@ public class OriginalTeachingUnit {
 	public void setCourses(List<OriginalCourse> courses) {
 		this.courses = courses;
 	}
-	
+
+	public String toString() {
+		String teachingUnit = "";
+
+		teachingUnit += "Unité d'enseignement : " + name;
+		teachingUnit += courses.toString();
+
+		return teachingUnit;
+	}
+
+	/**
+	 * 
+	 * @param obj
+	 * @return true if the input object is equals
+	 */
 	public boolean equals(OriginalTeachingUnit obj) {
-		if(!obj.getName().equals(getName())) {
+		if (!obj.getName().equals(getName())) {
 			return false;
 		}
-		
-		if(obj.getCourses().size() != getCourses().size()) {
+
+		if (obj.getCourses().size() != getCourses().size()) {
 			return false;
 		}
-		
-		
+
 		return true;
 	}
 }
