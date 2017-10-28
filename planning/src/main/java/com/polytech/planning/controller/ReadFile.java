@@ -370,7 +370,7 @@ public abstract class ReadFile {
 	 * @return A tqble with two values, the first the row number and the second the
 	 *         column number of the first content find
 	 */
-	public int[] searchContent(int sheetNb, String content) throws NullPointerException {
+	public int[] searchContent(int sheetNb, String content, boolean startWith) throws NullPointerException {
 		int[] coordonates = new int[2];
 		String buffer;
 		coordonates[0] = -1;
@@ -388,31 +388,22 @@ public abstract class ReadFile {
 				if (cell.getCellTypeEnum() == CellType.STRING) {
 					buffer = cell.getRichStringCellValue().getString().trim().toUpperCase();
 					buffer = normalizeText(buffer);
-					if (buffer.equals(content)) {
-						coordonates[0] = cell.getRowIndex();
-						coordonates[1] = cell.getColumnIndex();
+					if(startWith) {
+						if (buffer.startsWith(content)) {
+							coordonates[0] = cell.getRowIndex();
+							coordonates[1] = cell.getColumnIndex();
+						}
+					} else {
+						if (buffer.equals(content)) {
+							coordonates[0] = cell.getRowIndex();
+							coordonates[1] = cell.getColumnIndex();
+						}
 					}
+					
 				}
 			}
 		}
 		return coordonates;
-	}
-	
-	/**
-	 * Method that allows you to find the number of the column where the text you
-	 * entered is present.
-	 * 
-	 * @param content
-	 *            the searched word
-	 * @param startWith
-	 *            a boolean to true if the text search starts with the content
-	 *            value, or a boolean to false if the search text is exactly the
-	 *            content value.
-	 * @return number of a column or -1 if the content is not found
-	 */
-	protected int getColNum(int sheetNb, String content, boolean startWith) {
-		
-		return 0;
 	}
 
 	/**

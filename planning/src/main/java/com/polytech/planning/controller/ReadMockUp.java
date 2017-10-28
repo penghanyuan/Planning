@@ -13,7 +13,6 @@ public class ReadMockUp extends ReadFile {
 	private LinkedHashMap<String, List<OriginalCourse>> teachingUnits;
 	private int sheetNum;
 	private int rowNum;
-	private int colNum;
 
 	private int colTitleTU;
 	private int colCourseName;
@@ -33,23 +32,22 @@ public class ReadMockUp extends ReadFile {
 	public ReadMockUp(String filePath, int sheetNum) {
 		super(filePath);
 		String searchString = "Unité d'enseignement";
-		int[] coordinates = searchContent(sheetNum, searchString);
+		int[] coordinates = searchContent(sheetNum, searchString, false);
 
 		this.sheetNum = sheetNum;
 		this.rowNum = coordinates[0];
-		this.colNum = coordinates[1];
 
 		this.colCourseName = coordinates[1];
 		this.colTitleTU = coordinates[1] - 1;
 
-		this.colCM = getColNum(sheetNum, "Cours", false);
-		this.colTD = getColNum(sheetNum, "TD", false);
-		this.colTP = getColNum(sheetNum, "TP", false);
+		this.colCM = searchContent(sheetNum, "Cours", false)[1];
+		this.colTD = searchContent(sheetNum, "TD", false)[1];
+		this.colTP = searchContent(sheetNum, "TP", false)[1];
 
-		this.colProject = getColNum(sheetNum, "Projet", false);
-		this.colMundus = getColNum(sheetNum, "Mundus", false);
+		this.colProject = searchContent(sheetNum, "Projet", false)[1];
+		this.colMundus = searchContent(sheetNum, "Mundus", false)[1];
 
-		this.colTeachers = getColNum(sheetNum, "Affectation enseignement et responsabilité UE", true);
+		this.colTeachers = searchContent(sheetNum, "Affectation enseignement et responsabilité UE", true)[1];
 
 		teachingUnits = new LinkedHashMap<String, List<OriginalCourse>>();
 	}
@@ -63,11 +61,11 @@ public class ReadMockUp extends ReadFile {
 
 		while (notFinish) {
 
-			if ((cellIsEmpty(rowNum, colNum, sheetNum) || cellIsNumeric(rowNum, colNum, sheetNum))
-					&& (cellIsEmpty(rowNum, colNum - 1, sheetNum) || cellIsNumeric(rowNum, colNum - 1, sheetNum))) {
+			if ((cellIsEmpty(rowNum, colCourseName, sheetNum) || cellIsNumeric(rowNum, colCourseName, sheetNum))
+					&& (cellIsEmpty(rowNum, colTitleTU, sheetNum) || cellIsNumeric(rowNum, colTitleTU, sheetNum))) {
 
-				System.out.println("Cellule " + rowNum + " - " + colNum + " est de type "
-						+ getCellType(rowNum, colNum, sheetNum).toString());
+				//System.out.println("Cellule " + rowNum + " - " + colCourseName + " est de type "
+				//		+ getCellType(rowNum, colCourseName, sheetNum).toString());
 
 				nbLoop++;
 				rowNum++;
@@ -87,32 +85,21 @@ public class ReadMockUp extends ReadFile {
 	private void readTeachingUnit() {
 		String name = null;
 		List<OriginalCourse> listCourses;
-		int colValue = colNum;
 
 		rowNum++;
-		colNum--;
 
-		if (cellIsEmpty(rowNum, colNum, sheetNum) || cellIsNumeric(rowNum, colNum, sheetNum)) {
-			while (cellIsEmpty(rowNum, colNum + 1, colNum) || cellIsNumeric(rowNum, colNum + 1, sheetNum)) {
+		if (cellIsEmpty(rowNum, colTitleTU, sheetNum) || cellIsNumeric(rowNum, colTitleTU, sheetNum)) {
+			while (cellIsEmpty(rowNum, colCourseName, sheetNum) || cellIsNumeric(rowNum, colCourseName, sheetNum)) {
 				rowNum++;
 			}
 		}
 
-		name = readCell(rowNum - 1, colNum, sheetNum);
-
-		//System.out.println("rowNum: " + (rowNum - 1) + ", colNum:" + colNum);
-		//System.out.println("name is : " + name);
-
+		name = readCell(rowNum - 1, colTitleTU, sheetNum);
 		name = ToolBox.capitalize(name);
-		colNum = colValue;
 
 		try {
 			listCourses = readCourses();
 			teachingUnits.put(name, listCourses);
-
-			System.out.println("name: " + name);
-			System.out.println(ToolBox.listToString(listCourses));
-
 		} catch (InvalidValue e) {
 			e.printStackTrace();
 		}
@@ -128,30 +115,30 @@ public class ReadMockUp extends ReadFile {
 		OriginalCourse buffer = new OriginalCourse();
 		String mundus = "Mundus";
 		String readMundus;
-		int colValue = colNum;
 
 		mundus = normalizeText(mundus);
 
-		buffer.setCourseName(readCell(rowNum, colNum, sheetNum)); // C -> name
+		buffer.setCourseName(readCell(rowNum, colCourseName, sheetNum)); // C -> name
 
-		buffer.setHoursCM(readNumericCell(rowNum, ++colNum, sheetNum)); // D -> CM
-		buffer.setHoursTD(readNumericCell(rowNum, ++colNum, sheetNum)); // E -> TD
-		buffer.setHoursTP(readNumericCell(rowNum, ++colNum, sheetNum)); // F -> TP
-		buffer.setHoursProject(readNumericCell(rowNum, ++colNum, sheetNum)); // G -> Project
+		buffer.setHoursCM(readNumericCell(rowNum, colCM, sheetNum)); // D -> CM
+		buffer.setHoursTD(readNumericCell(rowNum, colTD, sheetNum)); // E -> TD
+		buffer.setHoursTP(readNumericCell(rowNum, colTP, sheetNum)); // F -> TP
 
-		colNum = colNum + 6;
+		if (colProject != -1) {
+			buffer.setHoursProject(readNumericCell(rowNum, colProject, sheetNum)); // G -> Project
+		}
 
-		readMundus = readCell(rowNum, colNum, sheetNum); // M -> Mundus
-		readMundus = normalizeText(readMundus);
+		if (colMundus != -1) {
+			readMundus = readCell(rowNum, colMundus, sheetNum); // M -> Mundus
+			readMundus = normalizeText(readMundus);
+			if (readMundus.equals(mundus))
+				buffer.setMundus(true);
+			else
+				buffer.setMundus(false);
+		}
 
-		if (readMundus.equals(mundus))
-			buffer.setMundus(true);
-		else
-			buffer.setMundus(false);
+		buffer.setTeachers(readCell(rowNum, colTeachers, sheetNum)); // N -> Teachers
 
-		buffer.setTeachers(readCell(rowNum, ++colNum, sheetNum)); // N ->
-
-		colNum = colValue;
 		return buffer;
 	}
 
@@ -163,30 +150,23 @@ public class ReadMockUp extends ReadFile {
 	 */
 	public List<OriginalCourse> readCourses() throws InvalidValue {
 		int blankLines = 0;
-		int rowDiff = 0;
 		List<OriginalCourse> courses = new ArrayList<OriginalCourse>();
 
-		if (rowNum >= 0 && colNum >= 0) {
+		if (rowNum >= 0 && colCourseName >= 0) {
 			while (blankLines < 1) {
-				if (cellIsEmpty(rowNum, colNum, sheetNum)) {
+				if (cellIsEmpty(rowNum, colCourseName, sheetNum)) {
 					blankLines++;
-					rowDiff++;
-				} else if (cellIsNumeric(rowNum, colNum, sheetNum)) {
+				} else if (cellIsNumeric(rowNum, colCourseName, sheetNum)) {
 					blankLines++;
-					rowDiff++;
 				} else {
 					blankLines = 0;
 					courses.add(readCourse());
-					rowDiff = 0;
 				}
 				rowNum++;
 			}
 		} else {
 			throw new InvalidValue("Les coordonnées ne peuvent pas être inferieurs à 0");
 		}
-
-		System.out.println("rowNum: " + (rowNum) + ", rowDiff:" + rowDiff);
-		// rowNum = rowNum - rowDiff;
 		return courses;
 	}
 

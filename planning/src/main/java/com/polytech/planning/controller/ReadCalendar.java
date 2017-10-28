@@ -29,7 +29,7 @@ public class ReadCalendar extends ReadFile {
 	private void readSemester(int sheetNum, String name) throws NameNotFoundException {
 		String nameSemester;
 		Date[] dates = new Date[2];
-		int[] coordinate = searchContent(sheetNum, name);
+		int[] coordinate = searchContent(sheetNum, name, false);
 
 		if (coordinate[0] != -1 || coordinate[1] != -1) {
 			// Name
@@ -95,7 +95,7 @@ public class ReadCalendar extends ReadFile {
 		boolean emptyRow = false;
 		this.calendar.clearHolidays();
 
-		int[] coordonates = searchContent(sheetNum, searchString);
+		int[] coordonates = searchContent(sheetNum, searchString, false);
 
 		int rowNum = 1 + coordonates[0];
 		int colNum = coordonates[1];
@@ -130,7 +130,7 @@ public class ReadCalendar extends ReadFile {
 		boolean emptyRow = false;
 		this.calendar.clearFreeDays();
 
-		int[] coordonates = searchContent(sheetNum, searchString);
+		int[] coordonates = searchContent(sheetNum, searchString, false);
 
 		int rowNum = 1 + coordonates[0];
 		int colNum = coordonates[1];
