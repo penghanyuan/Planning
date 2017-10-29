@@ -78,11 +78,11 @@ public class ReadCalendarTest {
 
 	@Test
 	public void testSearchContent() {
-		int[] coordonates1 = readCalendar.searchContent(0, "S8");
-		int[] coordonates2 = readCalendar.searchContent(2, "Nuit de l'info");
-		int[] coordonates3 = readCalendar.searchContent(0, "Date de fin");
-		int[] coordonates4 = readCalendar.searchContent(0, "Non présent dans le document");
-		int[] coordonates5 = readCalendar.searchContent(0, "DATé Dè fiN");
+		int[] coordonates1 = readCalendar.searchContent(0, "S8", false);
+		int[] coordonates2 = readCalendar.searchContent(2, "Nuit de l'info", false);
+		int[] coordonates3 = readCalendar.searchContent(0, "Date de fin", false);
+		int[] coordonates4 = readCalendar.searchContent(0, "Non présent dans le document", false);
+		int[] coordonates5 = readCalendar.searchContent(0, "DATé Dè fiN", false);
 
 		Assert.assertEquals(5, coordonates1[0]); // Ligne
 		Assert.assertEquals(2, coordonates1[1]); // Colonne
