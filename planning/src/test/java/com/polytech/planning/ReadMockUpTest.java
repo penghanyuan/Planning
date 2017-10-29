@@ -10,7 +10,6 @@ import com.polytech.planning.controller.ReadMockUp;
 import com.polytech.planning.model.OriginalCourse;
 
 
-
 public class ReadMockUpTest {
 	private static ReadMockUp readMockUp;
 	private static List<OriginalCourse> listCoursesExpected;

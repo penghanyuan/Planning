@@ -5,7 +5,7 @@ import org.apache.poi.xssf.usermodel.*;
 
 public final class StylesLib {
 
-	public static XSSFCellStyle baseStyle(XSSFWorkbook wb) {
+	public static CellStyle baseStyle(XSSFWorkbook wb) {
 		// create font
 		Font font = wb.createFont();
 		font.setFontHeightInPoints((short) 12);
@@ -15,14 +15,39 @@ public final class StylesLib {
 		font.setItalic(false);
 		
 		// Create cell style
-		XSSFCellStyle cellStyle = wb.createCellStyle();
+		CellStyle cellStyle = wb.createCellStyle();
         cellStyle.setAlignment(HorizontalAlignment.LEFT);
         cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);	
-		//cellStyle.setFillBackgroundColor(IndexedColors.AQUA.getIndex());
-		//cellStyle.setFillForegroundColor(IndexedColors.ORANGE.getIndex());
 		
 		// Setting font to style
 		cellStyle.setFont(font);
+
+		return cellStyle;
+	}
+	
+	public static CellStyle cmStyle(XSSFWorkbook wb) {
+		CellStyle cellStyle = baseStyle(wb);
+		cellStyle.setAlignment(HorizontalAlignment.CENTER);
+		cellStyle.setFillForegroundColor(IndexedColors.TURQUOISE.getIndex());
+		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+		return cellStyle;
+	}
+	
+	public static CellStyle tdStyle(XSSFWorkbook wb) {
+		CellStyle cellStyle = baseStyle(wb);
+		cellStyle.setAlignment(HorizontalAlignment.CENTER);
+		cellStyle.setFillForegroundColor(IndexedColors.BRIGHT_GREEN1.getIndex());
+		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+		return cellStyle;
+	}
+	
+	public static CellStyle tpStyle(XSSFWorkbook wb) {
+		CellStyle cellStyle = baseStyle(wb);
+		cellStyle.setAlignment(HorizontalAlignment.CENTER);
+		cellStyle.setFillForegroundColor(IndexedColors.YELLOW1.getIndex());
+		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
 
 		return cellStyle;
 	}
