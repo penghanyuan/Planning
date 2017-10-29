@@ -139,10 +139,6 @@ public class OriginalCourse {
 		this.mundus = mundus;
 	}
 
-	/*
-	 * public boolean equals() { return true; }
-	 */
-
 	public String toString() {
 		String output = "";
 
