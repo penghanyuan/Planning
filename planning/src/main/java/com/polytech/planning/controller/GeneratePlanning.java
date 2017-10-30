@@ -15,6 +15,7 @@ public class GeneratePlanning {
 		this.year = year;
 	}
 
+	@SuppressWarnings("unused")
 	public Planning setPlanning() {
 		ReadCalendar readCalendar = null;
 		ReadMockUp readMockUp = null;
