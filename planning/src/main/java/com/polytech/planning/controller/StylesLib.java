@@ -13,6 +13,12 @@ public final class StylesLib {
 	private static XSSFColor weekNumBg;
 	private static XSSFColor holidaysBg;
 
+	/**
+	 * Default style for cells
+	 * 
+	 * @param wb
+	 * @return
+	 */
 	public static XSSFCellStyle baseStyle(XSSFWorkbook wb) {
 		// Define color palette
 		cmBg = new XSSFColor(new java.awt.Color(33, 150, 243, 0)); // #2196F3
@@ -43,6 +49,12 @@ public final class StylesLib {
 		return cellStyle;
 	}
 
+	/**
+	 * Style for classroom type cells
+	 * 
+	 * @param wb
+	 * @return
+	 */
 	public static XSSFCellStyle cmStyle(XSSFWorkbook wb) {
 		XSSFCellStyle cellStyle = baseStyle(wb);
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
@@ -52,6 +64,12 @@ public final class StylesLib {
 		return cellStyle;
 	}
 
+	/**
+	 * Style for supervised work cells
+	 * 
+	 * @param wb
+	 * @return
+	 */
 	public static XSSFCellStyle tdStyle(XSSFWorkbook wb) {
 		XSSFCellStyle cellStyle = baseStyle(wb);
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
@@ -61,6 +79,12 @@ public final class StylesLib {
 		return cellStyle;
 	}
 
+	/**
+	 * Style for practical work cells
+	 * 
+	 * @param wb
+	 * @return
+	 */
 	public static XSSFCellStyle tpStyle(XSSFWorkbook wb) {
 		XSSFCellStyle cellStyle = baseStyle(wb);
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
@@ -70,6 +94,12 @@ public final class StylesLib {
 		return cellStyle;
 	}
 
+	/**
+	 * Style for continuous control and terminal proof cells
+	 * 
+	 * @param wb
+	 * @return
+	 */
 	public static XSSFCellStyle ccStyle(XSSFWorkbook wb) {
 		XSSFCellStyle cellStyle = baseStyle(wb);
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
@@ -79,6 +109,12 @@ public final class StylesLib {
 		return cellStyle;
 	}
 
+	/**
+	 * Style for cells of type number of week
+	 * 
+	 * @param wb
+	 * @return
+	 */
 	public static XSSFCellStyle weekNumStyle(XSSFWorkbook wb) {
 		XSSFCellStyle cellStyle = baseStyle(wb);
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
@@ -88,6 +124,12 @@ public final class StylesLib {
 		return cellStyle;
 	}
 
+	/**
+	 * Style for date type cells
+	 * 
+	 * @param wb
+	 * @return
+	 */
 	public static XSSFCellStyle dateStyle(XSSFWorkbook wb) {
 		XSSFCellStyle cellStyle = baseStyle(wb);
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
@@ -97,6 +139,12 @@ public final class StylesLib {
 		return cellStyle;
 	}
 
+	/**
+	 * Style for holiday cells
+	 * 
+	 * @param wb
+	 * @return
+	 */
 	public static XSSFCellStyle holidayStyle(XSSFWorkbook wb) {
 		XSSFCellStyle cellStyle = baseStyle(wb);
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
@@ -106,10 +154,17 @@ public final class StylesLib {
 		return cellStyle;
 	}
 
+	/**
+	 * Makes bold the font of the style passed in parameter
+	 * 
+	 * @param cellStyle
+	 *            style on which to put the type in bold
+	 * @return
+	 */
 	public static XSSFCellStyle setBold(XSSFCellStyle cellStyle) {
 		Font font = cellStyle.getFont();
 		font.setBold(true);
-		
+
 		cellStyle.setFont(font);
 
 		return cellStyle;
