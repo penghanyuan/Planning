@@ -12,6 +12,8 @@ public class OriginalCourse {
 	private String teachers;
 
 	private boolean mundus;
+	private boolean cc;
+	private boolean ct;
 
 	public OriginalCourse() {
 		this.courseName = null;
@@ -21,17 +23,21 @@ public class OriginalCourse {
 		this.hoursProject = null;
 		this.teachers = null;
 		this.mundus = false;
+		this.cc = false;
+		this.ct = false;
 	}
 
 	public OriginalCourse(String courseName, Double hoursCM, Double hoursTD, Double hoursTP, Double hoursProject,
-			String teachers, boolean mundus) {
-		this.courseName = courseName;
+			String teachers, boolean mundus, boolean cc, boolean ct) {
+		this.courseName = courseName.trim();
 		this.hoursCM = hoursCM;
 		this.hoursTD = hoursTD;
 		this.hoursTP = hoursTP;
 		this.hoursProject = hoursProject;
-		this.teachers = teachers;
+		this.teachers = teachers.trim();
 		this.mundus = mundus;
+		this.cc = cc;
+		this.ct = ct;
 	}
 
 	/**
@@ -46,7 +52,7 @@ public class OriginalCourse {
 	 *            the courseName to set
 	 */
 	public void setCourseName(String courseName) {
-		this.courseName = courseName;
+		this.courseName = courseName.trim();
 	}
 
 	/**
@@ -121,7 +127,7 @@ public class OriginalCourse {
 	 *            the teachers to set
 	 */
 	public void setTeachers(String teachers) {
-		this.teachers = teachers;
+		this.teachers = teachers.trim();
 	}
 
 	/**
@@ -139,6 +145,36 @@ public class OriginalCourse {
 		this.mundus = mundus;
 	}
 
+	/**
+	 * @return the cc
+	 */
+	public boolean isCc() {
+		return cc;
+	}
+
+	/**
+	 * @param cc
+	 *            the cc to set
+	 */
+	public void setCc(boolean cc) {
+		this.cc = cc;
+	}
+
+	/**
+	 * @return the ct
+	 */
+	public boolean isCt() {
+		return ct;
+	}
+
+	/**
+	 * @param ct
+	 *            the ct to set
+	 */
+	public void setCt(boolean ct) {
+		this.ct = ct;
+	}
+
 	public String toString() {
 		String output = "";
 
@@ -148,37 +184,60 @@ public class OriginalCourse {
 		if (this.mundus)
 			output += " | Mundus";
 
+		if (this.cc)
+			output += " | CC";
+
+		if (this.ct)
+			output += " | CT";
+
 		output += "\n\tTeachers => " + teachers;
 
-		return output+"\n";
+		return output + "\n";
 	}
 
 	public boolean equals(OriginalCourse input) {
 		if (!input.getCourseName().equals(courseName)) {
+			System.out.println("Cours");
 			return false;
 		}
 
 		if (!input.getHoursCM().equals(hoursCM)) {
+			System.out.println("CM");
 			return false;
 		}
 
 		if (!input.getHoursTD().equals(hoursTD)) {
+			System.out.println("TD");
 			return false;
 		}
 
 		if (!input.getHoursTP().equals(hoursTP)) {
+			System.out.println("TP");
 			return false;
 		}
-		
+
 		if (!input.getHoursProject().equals(hoursProject)) {
+			System.out.println("Projet");
 			return false;
 		}
-		
-		if(input.isMundus() != mundus) {
+
+		if (input.isMundus() != mundus) {
+			System.out.println("Mundus");
 			return false;
 		}
-		
-		if(input.getTeachers().equals(teachers)) {
+
+		if (input.isCc() != cc) {
+			System.out.println("CC => " + input.isCc() + " / " + cc);
+			return false;
+		}
+
+		if (input.isCt() != ct) {
+			System.out.println("CT => " + input.isCt() + " / " + ct);
+			return false;
+		}
+
+		if (!input.getTeachers().equals(teachers)) {
+			System.out.println("Teachers");
 			return false;
 		}
 

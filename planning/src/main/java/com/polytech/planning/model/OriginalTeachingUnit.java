@@ -68,8 +68,14 @@ public class OriginalTeachingUnit {
 			return false;
 		}
 
-		if (obj.getCourses().size() != getCourses().size()) {
+		if (obj.getCourses().size() != courses.size()) {
 			return false;
+		}
+
+		for (int i = 0; i < courses.size(); i++) {
+			if(!courses.get(i).equals(obj.getCourses().get(i))) {
+				return false;
+			}
 		}
 
 		return true;

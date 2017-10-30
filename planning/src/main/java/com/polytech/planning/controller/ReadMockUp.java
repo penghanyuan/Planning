@@ -21,6 +21,8 @@ public class ReadMockUp extends ReadFile {
 	private int colTP;
 	private int colProject;
 	private int colMundus;
+	private int colCC;
+	private int colCT;
 	private int colTeachers;
 
 	/**
@@ -43,8 +45,11 @@ public class ReadMockUp extends ReadFile {
 		this.colCM = searchContent(sheetNum, "Cours", false)[1];
 		this.colTD = searchContent(sheetNum, "TD", false)[1];
 		this.colTP = searchContent(sheetNum, "TP", false)[1];
-
 		this.colProject = searchContent(sheetNum, "Projet", false)[1];
+
+		this.colCC = searchContent(sheetNum, "CC", false)[1];
+		this.colCT = searchContent(sheetNum, "CT", false)[1];
+
 		this.colMundus = searchContent(sheetNum, "Mundus", false)[1];
 
 		this.colTeachers = searchContent(sheetNum, "Affectation enseignement et responsabilité UE", true)[1];
@@ -97,9 +102,6 @@ public class ReadMockUp extends ReadFile {
 		try {
 			listCourses = readCourses();
 			teachingUnits.put(name, listCourses);
-			//System.out.println("######################################################################\n# " + name
-			//		+ "\n######################################################################");
-			//System.out.println(ToolBox.listToString(listCourses));
 		} catch (InvalidValue e) {
 			e.printStackTrace();
 		}
@@ -128,13 +130,23 @@ public class ReadMockUp extends ReadFile {
 			buffer.setHoursProject(readNumericCell(rowNum, colProject, sheetNum)); // G -> Project
 		}
 
+		if (colCC != -1) {
+			if ((cellIsNumeric(rowNum, colCC, sheetNum) && readNumericCell(rowNum, colCC, sheetNum) != 0) || cellIsString(rowNum, colCC, sheetNum) || cellIsEmpty(rowNum, colCC, sheetNum)) {
+				buffer.setCc(true);
+			}
+		}
+
+		if (colCT != -1) {
+			if ((cellIsNumeric(rowNum, colCT, sheetNum) && readNumericCell(rowNum, colCT, sheetNum) != 0) || cellIsString(rowNum, colCT, sheetNum) || cellIsEmpty(rowNum, colCT, sheetNum)) {
+				buffer.setCt(true);
+			}
+		}
+
 		if (colMundus != -1) {
 			readMundus = readCell(rowNum, colMundus, sheetNum); // M -> Mundus
 			readMundus = normalizeText(readMundus);
 			if (readMundus.equals(mundus))
 				buffer.setMundus(true);
-			else
-				buffer.setMundus(false);
 		}
 
 		buffer.setTeachers(readCell(rowNum, colTeachers, sheetNum)); // N -> Teachers
