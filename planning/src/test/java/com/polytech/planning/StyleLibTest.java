@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.util.CellUtil;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -78,7 +79,16 @@ public class StyleLibTest {
 		
 		cellHoliday.setCellValue("Style Holiday");
 		cellHoliday.setCellStyle(StylesLib.holidayStyle(workbook));
-
+		
+		
+		Row mergedRow = sheet1.createRow(9);
+		Cell mergedCell = mergedRow.createCell(1);
+		mergedCell.setCellValue("merged");
+		StylesLib.setCellMerge(sheet1, 9, 10, 1, 1);
+		
+		Row gap = sheet1.createRow(11);
+		gap.setRowStyle(StylesLib.gapStyle(workbook));
+		
 		FileOutputStream output;
 		try {
 			output = new FileOutputStream(path);

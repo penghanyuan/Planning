@@ -1,6 +1,8 @@
 package com.polytech.planning.controller;
 
+import org.apache.poi.hssf.util.HSSFColor.HSSFColorPredefined;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.*;
 
 public final class StylesLib {
@@ -167,6 +169,33 @@ public final class StylesLib {
 
 		cellStyle.setFont(font);
 
+		return cellStyle;
+	}
+	
+	/**
+	 * set merge 
+	 * @param sheet
+	 * @param firstRow
+	 * @param lastRow
+	 * @param firstCol
+	 * @param lastCol
+	 */
+	public static void setCellMerge(Sheet sheet,int firstRow, int lastRow, int firstCol, int lastCol){
+		CellRangeAddress cellRangeAddress = new CellRangeAddress(firstRow, lastRow, firstCol, lastCol);
+		sheet.addMergedRegion(cellRangeAddress);
+	}
+	
+	/**
+	 * set the gap (which is between two teaching units) style 
+	 * @param wb
+	 * @return
+	 */
+	public static XSSFCellStyle gapStyle(XSSFWorkbook wb) {
+		XSSFCellStyle cellStyle = baseStyle(wb);
+		cellStyle.setBorderTop(BorderStyle.DOUBLE);
+		cellStyle.setBorderBottom(BorderStyle.DOUBLE);
+		cellStyle.setAlignment(HorizontalAlignment.CENTER);
+		
 		return cellStyle;
 	}
 }
