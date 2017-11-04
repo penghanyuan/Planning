@@ -65,12 +65,23 @@ public class ParserMockUp {
 			if (oc.getHoursTP() != null) {
 				c.setTotalTP(oc.getHoursTP());
 			}
-
+			if (oc.isCc()) {
+				c.setCc(true);
+			}
+			if (oc.isCt()) {
+				c.setCt(true);
+			}
+			if (oc.isMundus()) {
+				c.setMundus(true);
+			}
+			if (oc.getHoursProject() != null) {
+				c.setTotalProject(oc.getHoursProject());
+			}
 			if (oc.getTeachers() != null) {
 				c.setListTeachers(this.createTeachers(oc.getTeachers()));
 			}
 			coursesList.add(c);
-	//		System.out.println("Courses after parser :" + c.getName());
+			// System.out.println("Courses after parser :" + c.getName());
 		}
 		if (coursesList.isEmpty())
 			return null;
@@ -91,16 +102,17 @@ public class ParserMockUp {
 		LinkedHashMap<String, String[]> teacherAndCourses = new LinkedHashMap<String, String[]>();
 
 		for (int i = 0; i < teachersInits.length; i++) {
-			teacherAndCourses.put(teachersInits[i].split(",")[0], teachersInits[i].split(","));
+			teacherAndCourses.put(teachersInits[i].split(",|\\+")[0], teachersInits[i].split(",|\\+"));
 		}
 
 		for (String teacherName : teacherAndCourses.keySet()) {
-			// System.out.println(teacherName.trim());
+			//System.out.println(teacherName.trim());
 			Teacher teacher = new Teacher(teacherName.trim());
 
 			String[] tempTeacher = teacherAndCourses.get(teacherName);
 			for (int i = 1; i < tempTeacher.length; i++) {
-				String regCM = ".*CM.*", regTD = ".*TD.*", regTP = ".*TP.*", regMundus = ".*Mundus.*";
+				//System.out.println(tempTeacher[i]);
+				String regCM = ".*CM.*", regTD = ".*TD.*", regTP = ".*TP.*", regAllMundus = ".*Mundus.*";
 
 				// System.out.println(tempTeacher[i].trim());
 				String tempTeacherNoSpace = tempTeacher[i].trim();
@@ -122,10 +134,11 @@ public class ParserMockUp {
 					if (matcher.find()) {
 						int hoursTD = Integer.parseInt(matcher.group(1));
 						// System.out.println(hoursTD);
-						teacher.setHoursTD(hoursTD);
-					}
-					if (tempTeacherNoSpace.matches(".*Mundus.*")) {
-						teacher.setTDMundus(true);
+						if (tempTeacherNoSpace.matches(regAllMundus)) {
+							teacher.setTDMundus(hoursTD);
+						} else {
+							teacher.setHoursTD(hoursTD);
+						}
 					}
 
 				}
@@ -136,15 +149,23 @@ public class ParserMockUp {
 					if (matcher.find()) {
 						int hoursTP = Integer.parseInt(matcher.group(1));
 						// System.out.println(hoursTP);
-						teacher.setHoursTP(hoursTP);
+
+						if (tempTeacherNoSpace.matches(regAllMundus)) {
+							teacher.setTPMundus(hoursTP);
+						} else {
+							teacher.setHoursTP(hoursTP);
+						}
 					}
-					if (tempTeacherNoSpace.matches(".*Mundus.*")) {
-						teacher.setTPMundus(true);
-					}
+
+				}
+				
+				if(tempTeacherNoSpace.matches("^Mundus")){
+					teacher.setTDMundus(teacher.getHoursTD());
+					teacher.setTPMundus(teacher.getHoursTP());
 				}
 			}
 			teachers.add(teacher);
-		//	System.out.println("Teacher after parser :" + teacher.getName());
+			// System.out.println("Teacher after parser :" + teacher.getName());
 		}
 
 		return teachers;

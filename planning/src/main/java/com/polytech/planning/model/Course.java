@@ -14,6 +14,10 @@ public class Course {
 	private double totalTP;
 	private double totalProject;
 	
+	private boolean cc;
+	private boolean ct;
+	private boolean mundus;
+	
 	/**
 	 * Course's Constructor
 	 * @param name
@@ -21,6 +25,9 @@ public class Course {
 	public Course(String name) {
 		listTeachers = new ArrayList<Teacher>();
 		this.name = name;
+		this.cc = false;
+		this.ct = false;
+		this.mundus = false;
 	}
 
 	/**
@@ -105,5 +112,47 @@ public class Course {
 	 */
 	public void setTotalProject(double totalProject) {
 		this.totalProject = totalProject;
+	}
+
+	/**
+	 * @return the cc
+	 */
+	public boolean hasCc() {
+		return cc;
+	}
+
+	/**
+	 * @param cc the cc to set
+	 */
+	public void setCc(boolean cc) {
+		this.cc = cc;
+	}
+
+	/**
+	 * @return the ct
+	 */
+	public boolean hasCt() {
+		return ct;
+	}
+
+	/**
+	 * @param ct the ct to set
+	 */
+	public void setCt(boolean ct) {
+		this.ct = ct;
+	}
+
+	/**
+	 * @return the mundus
+	 */
+	public boolean isMundus() {
+		return mundus;
+	}
+
+	/**
+	 * @param mundus the mundus to set
+	 */
+	public void setMundus(boolean mundus) {
+		this.mundus = mundus;
 	}	
 }
