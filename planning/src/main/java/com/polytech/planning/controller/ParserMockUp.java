@@ -78,7 +78,11 @@ public class ParserMockUp {
 				c.setTotalProject(oc.getHoursProject());
 			}
 			if (oc.getTeachers() != null) {
-				c.setListTeachers(this.createTeachers(oc.getTeachers()));
+				Double[] heures = new Double[3];
+				heures[0] = oc.getHoursCM();
+				heures[1] = oc.getHoursTD();
+				heures[2] = oc.getHoursTP();
+				c.setListTeachers(this.createTeachers(oc.getTeachers(), heures));
 			}
 			coursesList.add(c);
 			// System.out.println("Courses after parser :" + c.getName());
@@ -95,30 +99,43 @@ public class ParserMockUp {
 	 * @return
 	 */
 	@SuppressWarnings("unused")
-	public List<Teacher> createTeachers(String oriTeachers) {
+	public List<Teacher> createTeachers(String oriTeachers, Double[] heures) {
+		String regCM = ".*CM.*", regTD = ".*TD.*", regTP = ".*TP.*", regAllMundus = ".*Mundus.*";
 		List<Teacher> teachers = new ArrayList<Teacher>();
 
 		String[] teachersInits = oriTeachers.split(";");
 		LinkedHashMap<String, String[]> teacherAndCourses = new LinkedHashMap<String, String[]>();
-
+		boolean fusion = false;
+		if (!oriTeachers.matches(regCM) && !oriTeachers.matches(regTD) && !oriTeachers.matches(regTP)
+				&& !oriTeachers.matches(regAllMundus)) {
+			fusion = true;
+		}
+		/*
+		 * split by '+' and ',' to get each part of the data exemple:
+		 * 
+		 */
 		for (int i = 0; i < teachersInits.length; i++) {
 			teacherAndCourses.put(teachersInits[i].split(",|\\+")[0], teachersInits[i].split(",|\\+"));
 		}
 
 		for (String teacherName : teacherAndCourses.keySet()) {
-			//System.out.println(teacherName.trim());
+
+			// System.out.println(teacherName.trim());
 			Teacher teacher = new Teacher(teacherName.trim());
 
 			String[] tempTeacher = teacherAndCourses.get(teacherName);
+			int flag = 0, flagMundus = 0;
 			for (int i = 1; i < tempTeacher.length; i++) {
-				//System.out.println(tempTeacher[i]);
-				String regCM = ".*CM.*", regTD = ".*TD.*", regTP = ".*TP.*", regAllMundus = ".*Mundus.*";
+				// System.out.println(tempTeacher[i]);
 
 				// System.out.println(tempTeacher[i].trim());
+
 				String tempTeacherNoSpace = tempTeacher[i].trim();
+
 				if (tempTeacherNoSpace.matches(regCM)) {
+					flag++;
 					// CM
-					Pattern pattern = Pattern.compile("(\\d*)(hCM)");
+					Pattern pattern = Pattern.compile("(\\d*)(h.*CM)");
 					Matcher matcher = pattern.matcher(tempTeacherNoSpace);
 					if (matcher.find()) {
 						int hoursCM = Integer.parseInt(matcher.group(1));
@@ -127,14 +144,17 @@ public class ParserMockUp {
 					}
 
 				}
+
 				if (tempTeacherNoSpace.matches(regTD)) {
+					flag++;
 					// TD
-					Pattern pattern = Pattern.compile("(\\d*)(hTD)");
+					Pattern pattern = Pattern.compile("(\\d*)(h.*TD)");
 					Matcher matcher = pattern.matcher(tempTeacherNoSpace);
 					if (matcher.find()) {
 						int hoursTD = Integer.parseInt(matcher.group(1));
 						// System.out.println(hoursTD);
 						if (tempTeacherNoSpace.matches(regAllMundus)) {
+							// this part is for mundus
 							teacher.setTDMundus(hoursTD);
 						} else {
 							teacher.setHoursTD(hoursTD);
@@ -142,15 +162,18 @@ public class ParserMockUp {
 					}
 
 				}
+
 				if (tempTeacherNoSpace.matches(regTP)) {
+					flag++;
 					// TP
-					Pattern pattern = Pattern.compile("(\\d*)(hTP)");
+					Pattern pattern = Pattern.compile("(\\d*)(h.*TP)");
 					Matcher matcher = pattern.matcher(tempTeacherNoSpace);
 					if (matcher.find()) {
 						int hoursTP = Integer.parseInt(matcher.group(1));
 						// System.out.println(hoursTP);
 
 						if (tempTeacherNoSpace.matches(regAllMundus)) {
+							// this part is for mundus
 							teacher.setTPMundus(hoursTP);
 						} else {
 							teacher.setHoursTP(hoursTP);
@@ -158,17 +181,50 @@ public class ParserMockUp {
 					}
 
 				}
-				
-				if(tempTeacherNoSpace.matches("^Mundus")){
+
+				if (tempTeacherNoSpace.matches("^Mundus")) {
+					// This teacher do all tp/td time with mundus
 					teacher.setTDMundus(teacher.getHoursTD());
 					teacher.setTPMundus(teacher.getHoursTP());
+					flagMundus++;
+				}
+			}
+			if (flag == 0) {
+				// no tp, no td, no cm
+				// means do all
+				teacher.setHoursCM(heures[0]);
+				teacher.setHoursTD(heures[1]);
+				teacher.setHoursTP(heures[2]);
+				if (flagMundus != 0) {
+					teacher.setTDMundus(heures[1]);
+					teacher.setTPMundus(heures[2]);
 				}
 			}
 			teachers.add(teacher);
+			if (fusion) {
+				teachers = this.fusionTeacher(teachers);
+			}
 			// System.out.println("Teacher after parser :" + teacher.getName());
 		}
 
 		return teachers;
 	}
 
+	private List<Teacher> fusionTeacher(List<Teacher> oriTeachers) {
+		List<Teacher> result = new ArrayList<Teacher>();
+		Teacher t = new Teacher();
+		String name = "";
+		for (Teacher teacher : oriTeachers) {
+			name = name + teacher.getName() + "/";
+		}
+		if (name != null && name != "")
+			name = name.substring(0, name.length() - 1);
+		t.setName(name);
+		t.setHoursCM(oriTeachers.get(0).getHoursCM());
+		t.setHoursTD(oriTeachers.get(0).getHoursTD());
+		t.setHoursTP(oriTeachers.get(0).getHoursTP());
+		t.setHoursProjet(oriTeachers.get(0).getHoursProjet());
+		result.add(t);
+		return result;
+	}
 }
