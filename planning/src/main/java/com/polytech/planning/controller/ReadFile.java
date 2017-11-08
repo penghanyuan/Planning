@@ -1,7 +1,10 @@
 package com.polytech.planning.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,12 +17,11 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public abstract class ReadFile {
 
-	private Workbook wb;
+	private XSSFWorkbook wb;
 	private File file;
 
 	/**
@@ -31,11 +33,10 @@ public abstract class ReadFile {
 	public ReadFile(String filePath) {
 		this.file = new File(filePath);
 		try {
-			this.wb = WorkbookFactory.create(file);
-		} catch (EncryptedDocumentException e) {
-			e.printStackTrace();
-		} catch (InvalidFormatException e) {
-			e.printStackTrace();
+			InputStream st = new FileInputStream(this.file);
+			this.wb = new XSSFWorkbook(st);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -53,9 +54,6 @@ public abstract class ReadFile {
 	 */
 	protected String readCell(int rowNum, int colNum, int sheetNum) {
 		try {
-			wb = WorkbookFactory.create(file);
-
-			// Sheet, row and cell where read the content
 			DataFormatter formatter = new DataFormatter();
 
 			Sheet sheet = wb.getSheetAt(sheetNum);
@@ -76,10 +74,6 @@ public abstract class ReadFile {
 
 		} catch (EncryptedDocumentException e) {
 			e.printStackTrace();
-		} catch (InvalidFormatException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 
 		return "";
@@ -95,15 +89,6 @@ public abstract class ReadFile {
 	 */
 	protected Double readNumericCell(int rowNum, int colNum, int sheetNum) {
 		try {
-			try {
-				wb = WorkbookFactory.create(file);
-			} catch (EncryptedDocumentException e) {
-				e.printStackTrace();
-			} catch (InvalidFormatException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 
 			Sheet sheet = wb.getSheetAt(sheetNum);
 			Row row = sheet.getRow(rowNum);
@@ -142,7 +127,6 @@ public abstract class ReadFile {
 	 */
 	protected Date readCellDate(int rowNum, int colNum, int sheetNum) {
 		try {
-			wb = WorkbookFactory.create(file);
 
 			Sheet sheet = wb.getSheetAt(sheetNum);
 			Row row = sheet.getRow(rowNum);
@@ -252,10 +236,6 @@ public abstract class ReadFile {
 	 */
 	protected boolean cellIsEmpty(int rowNum, int colNum, int sheetNum) throws NullPointerException {
 		Sheet sheet = wb.getSheetAt(sheetNum);
-		// Row row = sheet.getRow(rowNum);
-		// Cell cell;
-		//
-		// String cellContent;
 
 		if (sheet.equals(null)) {
 			throw new NullPointerException("L'onglet " + sheetNum + " n'existe pas");
@@ -388,7 +368,7 @@ public abstract class ReadFile {
 				if (cell.getCellTypeEnum() == CellType.STRING) {
 					buffer = cell.getRichStringCellValue().getString().trim().toUpperCase();
 					buffer = normalizeText(buffer);
-					if(startWith) {
+					if (startWith) {
 						if (buffer.startsWith(content)) {
 							coordonates[0] = cell.getRowIndex();
 							coordonates[1] = cell.getColumnIndex();
@@ -399,7 +379,7 @@ public abstract class ReadFile {
 							coordonates[1] = cell.getColumnIndex();
 						}
 					}
-					
+
 				}
 			}
 		}
