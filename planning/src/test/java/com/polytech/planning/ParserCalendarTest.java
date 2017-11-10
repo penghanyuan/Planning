@@ -21,6 +21,7 @@ public class ParserCalendarTest {
 	private static Calendar expected;
 	private static OriginalCalendar originalCalendar;
 
+	@SuppressWarnings("unused")
 	@BeforeClass
 	public static void init() {
 		List<Semester> semesters = new ArrayList<Semester>();
@@ -104,6 +105,7 @@ public class ParserCalendarTest {
 
 	@Test
 	public void testParserSemester() {
+		@SuppressWarnings("static-access")
 		ParserCalendar pc = new ParserCalendar(this.originalCalendar);
 		Calendar get = pc.createCalendar();
 
@@ -120,8 +122,10 @@ public class ParserCalendarTest {
 		}
 	}
 
+	@SuppressWarnings("unused")
 	@Test
 	public void testParserHoliday() {
+		@SuppressWarnings("static-access")
 		ParserCalendar pc = new ParserCalendar(this.originalCalendar);
 		Calendar get = pc.createCalendar();
 
@@ -150,6 +154,7 @@ public class ParserCalendarTest {
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	@Test
 	public void testParserFreeDay() {
 		ParserCalendar pc = new ParserCalendar(this.originalCalendar);

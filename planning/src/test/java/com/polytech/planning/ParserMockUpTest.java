@@ -4,14 +4,12 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -27,6 +25,7 @@ import com.polytech.planning.model.TeachingUnit;
  */
 public class ParserMockUpTest {
 
+	@SuppressWarnings("unused")
 	private static String inputTeachers;
 	private static List<Teacher> expected;
 	private static Teacher teacherOne;
