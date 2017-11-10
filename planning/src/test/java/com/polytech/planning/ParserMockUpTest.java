@@ -69,7 +69,7 @@ public class ParserMockUpTest {
 		headerCell = header.createCell(11);
 		headerCell.setCellValue("Teachers");
 
-		readMockUp = new ReadMockUp("Maquette.xlsx", 2);
+		readMockUp = new ReadMockUp("Maquette.xlsx", 1);
 		inputTeachers = "H. Cardot, 8hCM, 2hTD, 0hTP*3gr + Mundus; R. Ravaux, 12hCM, 4hTD Mundus, 14hTP x3gr + 20hTP Mundus ; Mostapha Darwich, 4hTD, 6hTP x3gr";
 		expected = new ArrayList<Teacher>();
 

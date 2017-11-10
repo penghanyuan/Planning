@@ -41,16 +41,16 @@ public class WriteFile {
 	public String getFilePath() {
 		return filePath;
 	}
-	
+
 	/**
 	 * 
 	 * @param startCell
 	 * @param endCell
 	 */
 	public void writeSumFormula(int[] startCell, int[] endCell[]) {
-		
+
 	}
-	
+
 	/**
 	 * 
 	 * @param coordonates
@@ -58,12 +58,11 @@ public class WriteFile {
 	 * @param content
 	 * @return
 	 */
-	public Cell writeCell(int[] coordonates, Sheet sheet, String content) {
-		Row row = sheet.createRow(coordonates[0]);
-		
-		Cell cell = row.createCell(coordonates[1]);
+	public Cell writeCell(Row row, int column, Sheet sheet, String content) {
+
+		Cell cell = row.createCell(column);
 		cell.setCellValue(content);
-		
+
 		return cell;
 	}
 

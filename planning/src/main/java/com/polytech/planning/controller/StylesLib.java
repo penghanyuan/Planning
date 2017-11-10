@@ -180,9 +180,9 @@ public final class StylesLib {
 	 * @param firstCol
 	 * @param lastCol
 	 */
-	public static void setCellMerge(Sheet sheet, int firstRow, int lastRow, int firstCol, int lastCol) {
+	public static int setCellMerge(Sheet sheet, int firstRow, int lastRow, int firstCol, int lastCol) {
 		CellRangeAddress cellRangeAddress = new CellRangeAddress(firstRow, lastRow, firstCol, lastCol);
-		sheet.addMergedRegion(cellRangeAddress);
+		return sheet.addMergedRegion(cellRangeAddress);
 	}
 
 	/**
