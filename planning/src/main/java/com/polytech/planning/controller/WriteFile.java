@@ -46,9 +46,21 @@ public class WriteFile {
 	 * 
 	 * @param startCell
 	 * @param endCell
+	 * @param coordonates
+	 * @param sheet
 	 */
-	public void writeSumFormula(int[] startCell, int[] endCell[]) {
+	public void writeSumFormula(int[] startCell, int[] endCell, int[] coordonates, Sheet sheet) {
+		int rowStart = startCell[0];
+		int colStart = startCell[1];
+		int rowEnd = endCell[0];
+		int colEnd = startCell[1];
+		String formula = ""; // SUM(colStartrowStart:colEndrowEnd)
+		writeCell();
+	}
 
+	private String getColLetter(int colNum) {
+		String value = "";
+		return value;
 	}
 
 	/**
@@ -58,9 +70,10 @@ public class WriteFile {
 	 * @param content
 	 * @return
 	 */
-	public Cell writeCell(Row row, int column, Sheet sheet, String content) {
+	public Cell writeCell(int[] coordonates, Sheet sheet, String content) {
+		Row row = sheet.createRow(coordonates[0]);
 
-		Cell cell = row.createCell(column);
+		Cell cell = row.createCell(coordonates[1]);
 		cell.setCellValue(content);
 
 		return cell;

@@ -347,7 +347,7 @@ public abstract class ReadFile {
 	 *            Number of the sheet to be readed
 	 * @param content
 	 *            the search String
-	 * @return A tqble with two values, the first the row number and the second the
+	 * @return A table with two values, the first the row number and the second the
 	 *         column number of the first content find
 	 */
 	public int[] searchContent(int sheetNb, String content, boolean startWith) throws NullPointerException {
