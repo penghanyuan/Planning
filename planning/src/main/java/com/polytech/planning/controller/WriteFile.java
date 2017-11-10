@@ -55,12 +55,7 @@ public class WriteFile {
 		int rowEnd = endCell[0];
 		int colEnd = startCell[1];
 		String formula = ""; // SUM(colStartrowStart:colEndrowEnd)
-		writeCell();
-	}
-
-	private String getColLetter(int colNum) {
-		String value = "";
-		return value;
+		writeCell(coordonates, sheet, formula);
 	}
 
 	/**
