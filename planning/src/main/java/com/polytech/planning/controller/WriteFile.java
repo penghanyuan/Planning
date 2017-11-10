@@ -1,6 +1,9 @@
 package com.polytech.planning.controller;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -37,6 +40,31 @@ public class WriteFile {
 	 */
 	public String getFilePath() {
 		return filePath;
+	}
+	
+	/**
+	 * 
+	 * @param startCell
+	 * @param endCell
+	 */
+	public void writeSumFormula(int[] startCell, int[] endCell[]) {
+		
+	}
+	
+	/**
+	 * 
+	 * @param coordonates
+	 * @param sheet
+	 * @param content
+	 * @return
+	 */
+	public Cell writeCell(int[] coordonates, Sheet sheet, String content) {
+		Row row = sheet.createRow(coordonates[0]);
+		
+		Cell cell = row.createCell(coordonates[1]);
+		cell.setCellValue(content);
+		
+		return cell;
 	}
 
 }
