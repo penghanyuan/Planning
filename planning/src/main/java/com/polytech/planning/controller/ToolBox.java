@@ -2,6 +2,8 @@ package com.polytech.planning.controller;
 
 import java.util.List;
 
+import org.omg.DynamicAny.DynAnyPackage.InvalidValue;
+
 public final class ToolBox {
 
 	public static String listToString(List<?> list) {
@@ -18,17 +20,23 @@ public final class ToolBox {
 		return output;
 	}
 
-	public static String getColLetter(int num) {
+	public static String getColLetter(int num) throws InvalidValue {
 		String result = "";
 
-		while (num > 0) {
-			int remainder = num % 26;
-			char digit = (char) (remainder + 97);
-			result = digit + result;
-			num = (num - remainder) / 26;
+		if (num == 0) {
+			return "A";
+		} else if (num > 0) {
+			while (num > 0) {
+				int remainder = num % 26;
+				System.out.println(remainder);
+				char digit = (char) (remainder + 65);
+				result = digit + result;
+				num = (num - remainder) / 26;
+			}
+		} else {
+			throw new InvalidValue();
 		}
-		
-		result = result.toUpperCase();
+
 		return result;
 	}
 }
