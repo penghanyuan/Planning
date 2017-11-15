@@ -1,7 +1,13 @@
 package com.polytech.planning.controller;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -52,19 +58,26 @@ public class WriteFile {
 	 */
 	public void writeSumFormula(int[] startCell, int[] endCell, int[] coordonates, Sheet sheet) {
 
+		System.out.println(startCell[0] + "-" + startCell[1]);
+		System.out.println(endCell[0] + "-" + endCell[1]);
+		System.out.println(coordonates[0] + "-" + coordonates[1]);
 		// Convert column value to letter
 		try {
 			String colStartString = ToolBox.getColLetter(startCell[1]);
 			String colEndString = ToolBox.getColLetter(endCell[1]);
 
 			String formula = "SUM(" + colStartString + ++startCell[0] + ":" + colEndString + ++endCell[0] + ")"; // SUM(colStartrowStart:colEndrowEnd)
-			
+
+			Row row = createRow(coordonates, sheet);
+			Cell cell = createCell(coordonates, row, sheet);
+
+			cell.setCellType(CellType.FORMULA);
+			cell.setCellFormula(formula);
+
 			System.out.println(formula);
-			writeCell(coordonates, sheet, formula);
 		} catch (InvalidValue e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	/**
@@ -74,13 +87,104 @@ public class WriteFile {
 	 * @param content
 	 * @return
 	 */
-	public Cell writeCell(int[] coordonates, Sheet sheet, String content) {
-		Row row = sheet.createRow(coordonates[0]);
+	public Cell writeNumberCell(int[] coordonates, Sheet sheet, float content) {
+		Row row = createRow(coordonates, sheet);
+		Cell cell = createCell(coordonates, row, sheet);
 
-		Cell cell = row.createCell(coordonates[1]);
 		cell.setCellValue(content);
 
 		return cell;
+	}
+
+	/**
+	 * 
+	 * @param row
+	 * @param col
+	 * @param sheet
+	 * @param content
+	 * @return
+	 */
+	public Cell writeNumberCell(int row, int col, Sheet sheet, float content) {
+		int[] coordonates = { row, col };
+		return writeNumberCell(coordonates, sheet, content);
+	}
+
+	/**
+	 * 
+	 * @param coordonates
+	 * @param sheet
+	 * @param content
+	 * @return
+	 */
+	public Cell writeStringCell(int[] coordonates, Sheet sheet, String content) {
+		Row row = createRow(coordonates, sheet);
+		Cell cell = createCell(coordonates, row, sheet);
+
+		cell.setCellValue(content);
+
+		return cell;
+	}
+
+	/**
+	 * 
+	 * @param row
+	 * @param col
+	 * @param sheet
+	 * @param content
+	 * @return
+	 */
+	public Cell writeStringCell(int row, int col, Sheet sheet, String content) {
+		int[] coordonates = { row, col };
+		return writeStringCell(coordonates, sheet, content);
+	}
+
+	/**
+	 * 
+	 * @param coordonates
+	 * @param sheet
+	 * @return
+	 */
+	private Row createRow(int[] coordonates, Sheet sheet) {
+		Row row = null;
+		if (sheet.getRow(coordonates[0]) != null) {
+			row = sheet.getRow(coordonates[0]);
+		} else {
+			row = sheet.createRow(coordonates[0]);
+		}
+		return row;
+	}
+
+	/**
+	 * 
+	 * @param coordonates
+	 * @param row
+	 * @param sheet
+	 * @return
+	 */
+	private Cell createCell(int[] coordonates, Row row, Sheet sheet) {
+		Cell cell = null;
+		if(row.getCell(coordonates[1]) != null) {
+			cell = row.getCell(coordonates[1]);
+		} else {
+			cell = row.createCell(coordonates[1]);
+		}
+		return cell;
+	}
+
+	/**
+	 * 
+	 */
+	public void generateFile() {
+		FileOutputStream output;
+		try {
+			output = new FileOutputStream(filePath);
+			workbook.write(output);
+			output.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
