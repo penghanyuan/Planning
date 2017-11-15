@@ -22,7 +22,7 @@ public final class ToolBox {
 
 	public static String getColLetter(int num) throws InvalidValue {
 		String result = "";
-
+		
 		if (num == 0) {
 			return "A";
 		} else if (num > 0) {

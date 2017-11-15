@@ -6,6 +6,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.omg.DynamicAny.DynAnyPackage.InvalidValue;
 
 public class WriteFile {
 
@@ -50,12 +51,20 @@ public class WriteFile {
 	 * @param sheet
 	 */
 	public void writeSumFormula(int[] startCell, int[] endCell, int[] coordonates, Sheet sheet) {
-		int rowStart = startCell[0];
-		int colStart = startCell[1];
-		int rowEnd = endCell[0];
-		int colEnd = startCell[1];
-		String formula = ""; // SUM(colStartrowStart:colEndrowEnd)
-		writeCell(coordonates, sheet, formula);
+
+		// Convert column value to letter
+		try {
+			String colStartString = ToolBox.getColLetter(startCell[1]);
+			String colEndString = ToolBox.getColLetter(endCell[1]);
+
+			String formula = "SUM(" + colStartString + ++startCell[0] + ":" + colEndString + ++endCell[0] + ")"; // SUM(colStartrowStart:colEndrowEnd)
+			
+			System.out.println(formula);
+			writeCell(coordonates, sheet, formula);
+		} catch (InvalidValue e) {
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
