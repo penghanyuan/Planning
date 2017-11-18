@@ -26,7 +26,7 @@ public class GeneratePlanning {
 		readCalendar.readHolidays(1);
 		readCalendar.readFreeDays(2);
 
-		readMockUp = new ReadMockUp(this.filePathMockUp, 1);
+		readMockUp = new ReadMockUp(this.filePathMockUp, 2);
 		readMockUp.readTeachingUnits();
 		ParserMockUp pMockUp = new ParserMockUp(readMockUp.getTeachingUnits());
 		ParserCalendar pCalendar = new ParserCalendar(readCalendar.getCalendar());

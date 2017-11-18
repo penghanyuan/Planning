@@ -74,18 +74,67 @@ public class WritePlanning extends WriteFile {
 		int courseEndRow = courseStartRow;
 		Row nowRow, lastRow = sheet.createRow(courseStartRow);
 		for (Course course : teachingUnit.getListCourses()) {
+			for (Teacher t : course.getListTeachers()) {
+				System.out.println(t.getName());
+			}
 
 			nowRow = this.writeTeachers(courseStartRow, sheet, course);
 
 			courseEndRow = nowRow.getRowNum();
-			int indexMerge = 0;
 			if (courseStartRow < courseEndRow) {
-				indexMerge = StylesLib.setCellMerge(sheet, courseStartRow, courseEndRow, 1, 1);
+				StylesLib.setCellMerge(sheet, courseStartRow, courseEndRow, 1, 1);
 			}
+
 			this.writeCourse(sheet.getRow(courseStartRow), sheet, course.getName());
-			courseStartRow = nowRow.getRowNum() + 1;
-			// courseEndRow = courseStartRow;
+			courseStartRow = courseEndRow + 1;
+
+			// test mundus
+			if (course.isMundus()) {
+				nowRow = this.writeMundusTeachers(courseStartRow, sheet, course);
+				courseEndRow = nowRow.getRowNum();
+				if (courseStartRow < courseEndRow) {
+					StylesLib.setCellMerge(sheet, courseStartRow, courseEndRow, 1, 1);
+				}
+
+				this.writeCourse(sheet.getRow(courseStartRow), sheet, course.getName() + "_mundus");
+				courseStartRow = courseEndRow + 1;
+			}
+
 			lastRow = nowRow;
+		}
+		return lastRow;
+	}
+
+	private Row writeMundusTeachers(int teacherStartRow, Sheet sheet, Course course) {
+		int teacherEndRow = teacherStartRow;
+		Row lastRow = null;
+		for (Teacher teacher : course.getListTeachers()) {
+
+			if (teacher.getTDMundus() != 0) {
+				Row row = sheet.createRow(teacherEndRow);
+				Cell cell = super.writeCell(row, 7, sheet, "TD");
+				cell.setCellStyle(StylesLib.tdStyle((XSSFWorkbook) workbook));
+
+				this.writeTeacher(row, sheet, teacher.getName());
+				teacherEndRow++;
+				lastRow = row;
+
+			}
+			if (teacher.getTPMundus() != 0) {
+
+				Row row = sheet.createRow(teacherEndRow);
+				Cell cell = super.writeCell(row, 7, sheet, "TP");
+				cell.setCellStyle(StylesLib.tpStyle((XSSFWorkbook) workbook));
+
+				this.writeTeacher(row, sheet, teacher.getName());
+				teacherEndRow++;
+				lastRow = row;
+
+			}
+
+			if (teacherStartRow < teacherEndRow - 1)
+				StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow - 1, 2, 2);
+			teacherStartRow = teacherEndRow;
 		}
 		return lastRow;
 	}
@@ -99,7 +148,7 @@ public class WritePlanning extends WriteFile {
 				Row row = sheet.createRow(teacherEndRow);
 				Cell cell = super.writeCell(row, 7, sheet, "CM");
 				cell.setCellStyle(StylesLib.cmStyle((XSSFWorkbook) workbook));
-				
+
 				this.writeTeacher(row, sheet, teacher.getName());
 				teacherEndRow++;
 				lastRow = row;
@@ -110,11 +159,11 @@ public class WritePlanning extends WriteFile {
 				Row row = sheet.createRow(teacherEndRow);
 				Cell cell = super.writeCell(row, 7, sheet, "TD");
 				cell.setCellStyle(StylesLib.tdStyle((XSSFWorkbook) workbook));
-				
+
 				this.writeTeacher(row, sheet, teacher.getName());
 				teacherEndRow++;
 				lastRow = row;
-				
+
 			}
 			if (teacher.getHoursTP() != 0) {
 
@@ -125,11 +174,12 @@ public class WritePlanning extends WriteFile {
 				this.writeTeacher(row, sheet, teacher.getName());
 				teacherEndRow++;
 				lastRow = row;
-				
+
 			}
 			// il reste mundus
-			
-			if (teacher.getHoursCM() == 0 && teacher.getHoursTD() == 0 && teacher.getHoursTP() == 0) {
+
+			if (teacher.getHoursCM() == 0 && teacher.getHoursTD() == 0 && teacher.getHoursTP() == 0
+					&& teacher.getTDMundus() == 0 && teacher.getTPMundus() == 0) {
 
 				Row row = sheet.createRow(teacherEndRow);
 

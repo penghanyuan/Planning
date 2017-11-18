@@ -106,8 +106,7 @@ public class ParserMockUp {
 		String[] teachersInits = oriTeachers.split(";");
 		LinkedHashMap<String, String[]> teacherAndCourses = new LinkedHashMap<String, String[]>();
 		boolean fusion = false;
-		if (!oriTeachers.matches(regCM) && !oriTeachers.matches(regTD) && !oriTeachers.matches(regTP)
-				&& !oriTeachers.matches(regAllMundus)) {
+		if (!oriTeachers.matches(regCM) && !oriTeachers.matches(regTD) && !oriTeachers.matches(regTP)) {
 			fusion = true;
 		}
 		/*
@@ -225,6 +224,16 @@ public class ParserMockUp {
 		t.setHoursTP(oriTeachers.get(0).getHoursTP());
 		t.setHoursProjet(oriTeachers.get(0).getHoursProjet());
 		result.add(t);
+
+		for (Teacher teacher : oriTeachers) {
+			if (teacher.getTDMundus() != 0 || teacher.getTPMundus() != 0) {
+				Teacher tmundus = new Teacher();
+				tmundus.setName(teacher.getName());
+				tmundus.setTDMundus(teacher.getTDMundus());
+				tmundus.setTPMundus(teacher.getTPMundus());
+				result.add(tmundus);
+			}
+		}
 		return result;
 	}
 }
