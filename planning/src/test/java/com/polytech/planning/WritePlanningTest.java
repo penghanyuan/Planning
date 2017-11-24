@@ -9,14 +9,21 @@ import com.polytech.planning.controller.WritePlanning;
 public class WritePlanningTest {
 	private static WritePlanning wp;
 	private static GeneratePlanning gp;
+
 	@BeforeClass
-	public static void init(){
-		gp = new GeneratePlanning("2017/2018","Maquette.xlsx","Calendar.xlsx");
-		wp = new WritePlanning(gp.setPlanning(), "TestWriteTeachingUnits.xlsx");
-		
+	public static void init() {
+		gp = new GeneratePlanning("2017/2018", "Maquette.xlsx", "Calendar.xlsx");
+		try {
+			wp = new WritePlanning(gp.getPlanningByYear("DI3"), "DI3", "TestWriteTeachingUnits.xlsx");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
+
 	@Test
-	public void testWriteTeachingUnit(){
+	public void testWriteTeachingUnit() {
 		wp.createFile();
 	}
 }

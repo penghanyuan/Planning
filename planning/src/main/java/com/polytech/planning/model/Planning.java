@@ -4,6 +4,9 @@ import java.util.List;
 
 public class Planning {
 
+	/**
+	 * for example: 2017/2018
+	 */
 	private String year;
 
 	private List<TeachingUnit> teachingUnits;

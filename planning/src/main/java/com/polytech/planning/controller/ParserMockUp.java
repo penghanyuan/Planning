@@ -106,7 +106,8 @@ public class ParserMockUp {
 		String[] teachersInits = oriTeachers.split(";");
 		LinkedHashMap<String, String[]> teacherAndCourses = new LinkedHashMap<String, String[]>();
 		boolean fusion = false;
-		if (!oriTeachers.matches(regCM) && !oriTeachers.matches(regTD) && !oriTeachers.matches(regTP)) {
+		if (!oriTeachers.matches(regCM) && !oriTeachers.matches(regTD) && !oriTeachers.matches(regTP)
+				&& !oriTeachers.matches(regAllMundus)) {
 			fusion = true;
 		}
 		/*
