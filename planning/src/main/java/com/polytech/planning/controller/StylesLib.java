@@ -211,8 +211,4 @@ public final class StylesLib {
 		sheet.setColumnWidth(column, 32*256);
 		return sheet;
 	}
-	
-	public static void rowContentHeight(Sheet sheet, int row) {
-		sheet.setDefaultRowHeightInPoints(24);
-	}
 }

@@ -24,6 +24,7 @@ public class WritePlanning extends WriteFile {
 	private Workbook workbook;
 	private String year;
 	private HashMap<String, Sheet> sheets;
+	private int lastWritenRow; // derniere ligne ecrite
 
 	/**
 	 * Constructor
@@ -33,6 +34,7 @@ public class WritePlanning extends WriteFile {
 	 */
 	public WritePlanning(List<Planning> plannings, String year, String filePath) throws Exception {
 		super(filePath);
+		this.lastWritenRow = 0;
 		if (plannings == null || plannings.isEmpty())
 			throw new Exception("Error: Planning is empty!");
 		this.plannings = plannings;
@@ -66,7 +68,7 @@ public class WritePlanning extends WriteFile {
 
 	public void writeTeachingUnits(Planning planning) {
 		List<TeachingUnit> teachingUnits = planning.getTeachingUnits();
-		int courseStartRow = 17, teachingUnitStartRow = 17;
+		int courseStartRow = lastWritenRow, teachingUnitStartRow = lastWritenRow;
 		int lastRow;
 		Sheet sheet = this.workbook.createSheet("Planning " + planning.getCalendar().getName());
 		sheets.put(planning.getCalendar().getName(), sheet);
@@ -245,6 +247,10 @@ public class WritePlanning extends WriteFile {
 			cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 		}
 
+	}
+	
+	private void writeIntroPart() {
+		
 	}
 
 	private void writeTeachingUnit(int row, Sheet sheet, String content) {
