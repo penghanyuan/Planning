@@ -33,7 +33,7 @@ public final class StylesLib {
 
 		// create font
 		Font font = wb.createFont();
-		font.setFontHeightInPoints((short) 12);
+		font.setFontHeightInPoints((short) 11);
 		font.setFontName("Arial");
 		font.setColor(IndexedColors.BLACK.getIndex());
 		font.setBold(false);
@@ -201,8 +201,18 @@ public final class StylesLib {
 		return cellStyle;
 	}
 	
+	/**
+	 * 
+	 * @param sheet
+	 * @param column
+	 * @return
+	 */
 	public static Sheet columTitleWidth(Sheet sheet, int column) {
 		sheet.setColumnWidth(column, 32*256);
 		return sheet;
+	}
+	
+	public static void rowContentHeight(Sheet sheet, int row) {
+		sheet.setDefaultRowHeightInPoints(32);
 	}
 }
