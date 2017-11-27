@@ -213,6 +213,6 @@ public final class StylesLib {
 	}
 	
 	public static void rowContentHeight(Sheet sheet, int row) {
-		sheet.setDefaultRowHeightInPoints(32);
+		sheet.setDefaultRowHeightInPoints(24);
 	}
 }
