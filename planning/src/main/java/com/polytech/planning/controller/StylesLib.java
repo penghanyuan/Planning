@@ -43,6 +43,7 @@ public final class StylesLib {
 		XSSFCellStyle cellStyle = wb.createCellStyle();
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
 		cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
+		cellStyle.setWrapText(true); //Set wordwrap
 
 		// Setting font to style
 		cellStyle.setFont(font);
