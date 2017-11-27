@@ -193,10 +193,15 @@ public final class StylesLib {
 	 */
 	public static XSSFCellStyle gapStyle(XSSFWorkbook wb) {
 		XSSFCellStyle cellStyle = baseStyle(wb);
-		cellStyle.setBorderTop(BorderStyle.DOUBLE);
-		cellStyle.setBorderBottom(BorderStyle.DOUBLE);
+		cellStyle.setBorderTop(BorderStyle.THIN);
+		cellStyle.setBorderBottom(BorderStyle.THIN);
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
 
 		return cellStyle;
+	}
+	
+	public static Sheet columTitleWidth(Sheet sheet, int column) {
+		sheet.setColumnWidth(column, 24*256);
+		return sheet;
 	}
 }
