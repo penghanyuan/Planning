@@ -201,7 +201,7 @@ public final class StylesLib {
 	}
 	
 	public static Sheet columTitleWidth(Sheet sheet, int column) {
-		sheet.setColumnWidth(column, 24*256);
+		sheet.setColumnWidth(column, 32*256);
 		return sheet;
 	}
 }
