@@ -137,6 +137,7 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.tdStyle((XSSFWorkbook) workbook));
 
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
+				this.writeHoursPut(teacherEndRow, sheet, teacher.getTDMundus());
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, true);
 				teacherEndRow++;
@@ -150,6 +151,7 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.tpStyle((XSSFWorkbook) workbook));
 
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
+				this.writeHoursPut(teacherEndRow, sheet, teacher.getTPMundus());
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, true);
 				teacherEndRow++;
@@ -179,7 +181,7 @@ public class WritePlanning extends WriteFile {
 				// Row row = sheet.createRow(teacherEndRow);
 				Cell cell = super.writeStringCell(teacherEndRow, 9, sheet, "CM");
 				cell.setCellStyle(StylesLib.cmStyle((XSSFWorkbook) workbook));
-
+				this.writeHoursPut(teacherEndRow, sheet, teacher.getHoursCM());
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
@@ -187,12 +189,13 @@ public class WritePlanning extends WriteFile {
 				lastRow = teacherEndRow;
 
 			}
+
 			if (teacher.getHoursTD() != 0) {
 
 				// Row row = sheet.createRow(teacherEndRow);
 				Cell cell = super.writeStringCell(teacherEndRow, 9, sheet, "TD");
 				cell.setCellStyle(StylesLib.tdStyle((XSSFWorkbook) workbook));
-
+				this.writeHoursPut(teacherEndRow, sheet, teacher.getHoursTD());
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
@@ -204,10 +207,11 @@ public class WritePlanning extends WriteFile {
 
 				// Row row = sheet.createRow(teacherEndRow);
 				Cell cell = super.writeStringCell(teacherEndRow, 9, sheet, "TP");
-				super.writeNumberCell(teacherEndRow, 5, sheet, (float) teacher.getHoursTP());
+
 				cell.setCellStyle(StylesLib.tpStyle((XSSFWorkbook) workbook));
 
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
+				this.writeHoursPut(teacherEndRow, sheet, teacher.getHoursTP());
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
 				teacherEndRow++;
@@ -230,12 +234,25 @@ public class WritePlanning extends WriteFile {
 
 			if (teacherStartRow < teacherEndRow - 1) {
 				StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow - 1, 2, 2);
-				// StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow
-				// - 1, 3, 3);
-				// StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow
-				// - 1, 4, 4);
 			}
 			teacherStartRow = teacherEndRow;
+		}
+		if (course.hasCt() || course.hasCc()) {
+			if (course.hasCt() && course.hasCc()) {
+				Cell cell = super.writeStringCell(teacherEndRow++, 9, sheet, "CC/CT");
+				cell.setCellStyle(StylesLib.ccStyle((XSSFWorkbook) workbook));
+				
+			} else if (course.hasCt()) {
+				Cell cell = super.writeStringCell(teacherEndRow++, 9, sheet, "CT");
+				cell.setCellStyle(StylesLib.ccStyle((XSSFWorkbook) workbook));
+			} else{
+				Cell cell = super.writeStringCell(teacherEndRow++, 9, sheet, "CC");
+				cell.setCellStyle(StylesLib.ccStyle((XSSFWorkbook) workbook));
+			}
+			
+			lastRow = teacherEndRow;
+			if(!course.getListTeachers().isEmpty())
+				this.writeTeacher(teacherEndRow, sheet, course.getListTeachers().get(0).getName());
 		}
 		return lastRow;
 	}
@@ -311,6 +328,11 @@ public class WritePlanning extends WriteFile {
 	private void writeTeacher(int row, Sheet sheet, String content) {
 		Cell cell = super.writeStringCell(row, 2, sheet, content);
 		StylesLib.columTitleWidth(sheet, 2);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+	}
+
+	private void writeHoursPut(int row, Sheet sheet, double content) {
+		Cell cell = super.writeNumberCell(row, 5, sheet, (float) content);
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 	}
 }
