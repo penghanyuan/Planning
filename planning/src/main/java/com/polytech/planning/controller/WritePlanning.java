@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -22,6 +23,7 @@ public class WritePlanning extends WriteFile {
 	private List<Planning> plannings;
 	private Workbook workbook;
 	private String year;
+	private HashMap<String, Sheet> sheets;
 
 	/**
 	 * Constructor
@@ -36,6 +38,7 @@ public class WritePlanning extends WriteFile {
 		this.plannings = plannings;
 		this.year = year;
 		this.workbook = super.getWorkbook();
+		this.sheets = new HashMap<String, Sheet>();
 	}
 
 	/**
@@ -45,7 +48,6 @@ public class WritePlanning extends WriteFile {
 	 */
 	public void createFile() {
 		// System.out.println(planning.getTeachingUnits().isEmpty());
-		List<Sheet> sheets = new ArrayList<Sheet>();
 		for (Planning planning : this.plannings) {
 			this.writeTeachingUnits(planning);
 		}
@@ -67,6 +69,7 @@ public class WritePlanning extends WriteFile {
 		int courseStartRow = 17, teachingUnitStartRow = 17;
 		int lastRow;
 		Sheet sheet = this.workbook.createSheet("Planning " + planning.getCalendar().getName());
+		sheets.put(planning.getCalendar().getName(), sheet);
 		for (TeachingUnit teachingUnit : teachingUnits) {
 
 			lastRow = this.writeCourses(courseStartRow, sheet, teachingUnit) - 1;
@@ -106,7 +109,7 @@ public class WritePlanning extends WriteFile {
 					StylesLib.setCellMerge(sheet, courseStartRow, courseEndRow, 1, 1);
 				}
 
-				this.writeCourse(courseStartRow, sheet, course.getName() + "_mundus");		
+				this.writeCourse(courseStartRow, sheet, course.getName() + "_mundus");
 				courseStartRow = courseEndRow + 1;
 			}
 
@@ -126,7 +129,7 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.tdStyle((XSSFWorkbook) workbook));
 
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
-				if(this.year.equalsIgnoreCase("DI3"))
+				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, true);
 				teacherEndRow++;
 				lastRow = teacherEndRow;
@@ -139,19 +142,21 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.tpStyle((XSSFWorkbook) workbook));
 
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
-				if(this.year.equalsIgnoreCase("DI3"))
+				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, true);
 				teacherEndRow++;
 				lastRow = teacherEndRow;
 
 			}
 
-			if (teacherStartRow < teacherEndRow - 1){
+			if (teacherStartRow < teacherEndRow - 1) {
 				StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow - 1, 2, 2);
-				//StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow - 1, 3, 3);
-				//StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow - 1, 4, 4);
+				// StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow
+				// - 1, 3, 3);
+				// StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow
+				// - 1, 4, 4);
 			}
-				
+
 			teacherStartRow = teacherEndRow;
 		}
 		return lastRow;
@@ -168,7 +173,7 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.cmStyle((XSSFWorkbook) workbook));
 
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
-				if(this.year.equalsIgnoreCase("DI3"))
+				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
 				teacherEndRow++;
 				lastRow = teacherEndRow;
@@ -181,7 +186,7 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.tdStyle((XSSFWorkbook) workbook));
 
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
-				if(this.year.equalsIgnoreCase("DI3"))
+				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
 				teacherEndRow++;
 				lastRow = teacherEndRow;
@@ -191,10 +196,11 @@ public class WritePlanning extends WriteFile {
 
 				// Row row = sheet.createRow(teacherEndRow);
 				Cell cell = super.writeStringCell(teacherEndRow, 9, sheet, "TP");
+				super.writeNumberCell(teacherEndRow, 5, sheet, (float) teacher.getHoursTP());
 				cell.setCellStyle(StylesLib.tpStyle((XSSFWorkbook) workbook));
 
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
-				if(this.year.equalsIgnoreCase("DI3"))
+				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
 				teacherEndRow++;
 				lastRow = teacherEndRow;
@@ -208,16 +214,18 @@ public class WritePlanning extends WriteFile {
 				// Row row = sheet.createRow(teacherEndRow);
 
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
-				if(this.year.equalsIgnoreCase("DI3"))
+				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
 				teacherEndRow++;
 				lastRow = teacherEndRow;
 			}
 
-			if (teacherStartRow < teacherEndRow - 1){	
+			if (teacherStartRow < teacherEndRow - 1) {
 				StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow - 1, 2, 2);
-				//StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow - 1, 3, 3);
-				//StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow - 1, 4, 4);
+				// StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow
+				// - 1, 3, 3);
+				// StylesLib.setCellMerge(sheet, teacherStartRow, teacherEndRow
+				// - 1, 4, 4);
 			}
 			teacherStartRow = teacherEndRow;
 		}
@@ -241,16 +249,19 @@ public class WritePlanning extends WriteFile {
 
 	private void writeTeachingUnit(int row, Sheet sheet, String content) {
 		Cell cell = super.writeStringCell(row, 0, sheet, content);
+		StylesLib.columTitleWidth(sheet, 0);
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 	}
 
 	private void writeCourse(int row, Sheet sheet, String content) {
 		Cell cell = super.writeStringCell(row, 1, sheet, content);
+		StylesLib.columTitleWidth(sheet, 1);
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 	}
 
 	private void writeTeacher(int row, Sheet sheet, String content) {
 		Cell cell = super.writeStringCell(row, 2, sheet, content);
+		StylesLib.columTitleWidth(sheet, 2);
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 	}
 }
