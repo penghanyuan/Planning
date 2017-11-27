@@ -56,7 +56,7 @@ public class WriteFile {
 	 * @param coordonates
 	 * @param sheet
 	 */
-	public void writeSumFormula(int[] startCell, int[] endCell, int[] coordonates, Sheet sheet) {
+	public Cell writeSumFormula(int[] startCell, int[] endCell, int[] coordonates, Sheet sheet) {
 
 		System.out.println(startCell[0] + "-" + startCell[1]);
 		System.out.println(endCell[0] + "-" + endCell[1]);
@@ -73,11 +73,31 @@ public class WriteFile {
 
 			cell.setCellType(CellType.FORMULA);
 			cell.setCellFormula(formula);
-
-			System.out.println(formula);
+			
+			return cell;
 		} catch (InvalidValue e) {
 			e.printStackTrace();
 		}
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param formula
+	 * @param rowNum
+	 * @param colNum
+	 * @param sheet
+	 */
+	public Cell writeFormula(String formula, int rowNum, int colNum, Sheet sheet) {
+		int[] coordonates = { rowNum, colNum };
+
+		Row row = createRow(coordonates, sheet);
+		Cell cell = createCell(coordonates, row, sheet);
+
+		cell.setCellType(CellType.FORMULA);
+		cell.setCellFormula(formula);
+		
+		return cell;
 	}
 
 	/**
@@ -163,7 +183,7 @@ public class WriteFile {
 	 */
 	private Cell createCell(int[] coordonates, Row row, Sheet sheet) {
 		Cell cell = null;
-		if(row.getCell(coordonates[1]) != null) {
+		if (row.getCell(coordonates[1]) != null) {
 			cell = row.getCell(coordonates[1]);
 		} else {
 			cell = row.createCell(coordonates[1]);

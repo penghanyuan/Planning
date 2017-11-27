@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -53,7 +54,7 @@ public class WritePlanning extends WriteFile {
 		for (Planning planning : this.plannings) {
 			Sheet sheet = this.workbook.createSheet("Planning " + planning.getCalendar().getName());
 			sheets.put(planning.getCalendar().getName(), sheet);
-			
+
 			this.writeIntroPart(planning);
 			this.writeTeachingUnits(planning);
 		}
@@ -74,15 +75,17 @@ public class WritePlanning extends WriteFile {
 		List<TeachingUnit> teachingUnits = planning.getTeachingUnits();
 		int courseStartRow = lastWritenRow, teachingUnitStartRow = lastWritenRow;
 		int lastRow;
-		
+
 		for (TeachingUnit teachingUnit : teachingUnits) {
 
 			lastRow = this.writeCourses(courseStartRow, sheets.get(planning.getCalendar().getName()), teachingUnit) - 1;
 			// Row row = sheet.createRow(courseEndRow);
 
 			if (teachingUnitStartRow < lastRow)
-				StylesLib.setCellMerge(sheets.get(planning.getCalendar().getName()), teachingUnitStartRow, lastRow, 0, 0);
-			this.writeTeachingUnit(teachingUnitStartRow, sheets.get(planning.getCalendar().getName()), teachingUnit.getName());
+				StylesLib.setCellMerge(sheets.get(planning.getCalendar().getName()), teachingUnitStartRow, lastRow, 0,
+						0);
+			this.writeTeachingUnit(teachingUnitStartRow, sheets.get(planning.getCalendar().getName()),
+					teachingUnit.getName());
 			teachingUnitStartRow = lastRow + 1;
 			courseStartRow = teachingUnitStartRow;
 		}
@@ -254,7 +257,42 @@ public class WritePlanning extends WriteFile {
 
 	private void writeIntroPart(Planning planning) {
 
-		this.lastWritenRow = 17;
+		// ligne 3 col 0 Année
+		lastWritenRow = 2;
+		String calName = planning.getCalendar().getName();
+		Cell cell = super.writeStringCell(lastWritenRow, 0, sheets.get(calName), this.year + " " + calName);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		
+		cell = super.writeFormula("TODAY()", lastWritenRow, 1, sheets.get(calName));
+		cell.setCellStyle(StylesLib.dateFormatStyle((XSSFWorkbook) workbook));
+
+		lastWritenRow++;
+		cell = super.writeStringCell(lastWritenRow, 0, sheets.get(calName), planning.getYear());
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		lastWritenRow++;
+
+		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Disponibilité / étudiant (h)");
+		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+		
+		lastWritenRow++;
+
+		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Créneaux disponibles");
+		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+		
+		lastWritenRow++;
+
+		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Créneaux utilisés");
+		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+		
+
+		lastWritenRow++;
+		lastWritenRow++;
+		
+		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Synthèse volume travail / étudiant (h)");
+		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+		
+		lastWritenRow++;
 
 	}
 

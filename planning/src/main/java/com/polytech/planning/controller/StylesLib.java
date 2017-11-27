@@ -50,6 +50,15 @@ public final class StylesLib {
 
 		return cellStyle;
 	}
+	
+	public static XSSFCellStyle baseBorderStyle(XSSFWorkbook wb) {
+		XSSFCellStyle cellStyle = baseStyle(wb);
+		cellStyle.setBorderTop(BorderStyle.THIN);
+		cellStyle.setBorderBottom(BorderStyle.THIN);
+		cellStyle.setBorderLeft(BorderStyle.THIN);
+		cellStyle.setBorderRight(BorderStyle.THIN);
+		return cellStyle;
+	}
 
 	/**
 	 * Style for classroom type cells
@@ -169,6 +178,13 @@ public final class StylesLib {
 
 		cellStyle.setFont(font);
 
+		return cellStyle;
+	}
+	
+	public static XSSFCellStyle dateFormatStyle(XSSFWorkbook wb) {
+		XSSFCellStyle cellStyle = baseStyle(wb);
+		XSSFDataFormat df = wb.createDataFormat();
+		cellStyle.setDataFormat(df.getFormat("dd/m/yyyy"));
 		return cellStyle;
 	}
 
