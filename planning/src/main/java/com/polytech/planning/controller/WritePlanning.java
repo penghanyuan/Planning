@@ -51,6 +51,10 @@ public class WritePlanning extends WriteFile {
 	public void createFile() {
 		// System.out.println(planning.getTeachingUnits().isEmpty());
 		for (Planning planning : this.plannings) {
+			Sheet sheet = this.workbook.createSheet("Planning " + planning.getCalendar().getName());
+			sheets.put(planning.getCalendar().getName(), sheet);
+			
+			this.writeIntroPart(planning);
 			this.writeTeachingUnits(planning);
 		}
 
@@ -70,16 +74,15 @@ public class WritePlanning extends WriteFile {
 		List<TeachingUnit> teachingUnits = planning.getTeachingUnits();
 		int courseStartRow = lastWritenRow, teachingUnitStartRow = lastWritenRow;
 		int lastRow;
-		Sheet sheet = this.workbook.createSheet("Planning " + planning.getCalendar().getName());
-		sheets.put(planning.getCalendar().getName(), sheet);
+		
 		for (TeachingUnit teachingUnit : teachingUnits) {
 
-			lastRow = this.writeCourses(courseStartRow, sheet, teachingUnit) - 1;
+			lastRow = this.writeCourses(courseStartRow, sheets.get(planning.getCalendar().getName()), teachingUnit) - 1;
 			// Row row = sheet.createRow(courseEndRow);
 
 			if (teachingUnitStartRow < lastRow)
-				StylesLib.setCellMerge(sheet, teachingUnitStartRow, lastRow, 0, 0);
-			this.writeTeachingUnit(teachingUnitStartRow, sheet, teachingUnit.getName());
+				StylesLib.setCellMerge(sheets.get(planning.getCalendar().getName()), teachingUnitStartRow, lastRow, 0, 0);
+			this.writeTeachingUnit(teachingUnitStartRow, sheets.get(planning.getCalendar().getName()), teachingUnit.getName());
 			teachingUnitStartRow = lastRow + 1;
 			courseStartRow = teachingUnitStartRow;
 		}
@@ -248,9 +251,11 @@ public class WritePlanning extends WriteFile {
 		}
 
 	}
-	
-	private void writeIntroPart() {
-		
+
+	private void writeIntroPart(Planning planning) {
+
+		this.lastWritenRow = 17;
+
 	}
 
 	private void writeTeachingUnit(int row, Sheet sheet, String content) {
