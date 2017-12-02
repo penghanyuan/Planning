@@ -26,6 +26,8 @@ public class WritePlanning extends WriteFile {
 	private String year;
 	private HashMap<String, Sheet> sheets;
 	private int lastWritenRow; // derniere ligne ecrite
+	private int[] lastTURow;// 0=> last row of teaching unit in sheet1, 1=> ...
+							// in sheet 2
 
 	/**
 	 * Constructor
@@ -42,6 +44,7 @@ public class WritePlanning extends WriteFile {
 		this.year = year;
 		this.workbook = super.getWorkbook();
 		this.sheets = new HashMap<String, Sheet>();
+		this.lastTURow = new int[2];
 	}
 
 	/**
@@ -51,12 +54,14 @@ public class WritePlanning extends WriteFile {
 	 */
 	public void createFile() {
 		// System.out.println(planning.getTeachingUnits().isEmpty());
+		int i = 0;
 		for (Planning planning : this.plannings) {
 			Sheet sheet = this.workbook.createSheet("Planning " + planning.getCalendar().getName());
 			sheets.put(planning.getCalendar().getName(), sheet);
 
 			this.writeIntroPart(planning);
-			this.writeTeachingUnits(planning);
+			this.lastTURow[i] = this.writeTeachingUnits(planning);
+			System.out.println(this.lastTURow[i]);
 		}
 
 		FileOutputStream output;
@@ -71,7 +76,7 @@ public class WritePlanning extends WriteFile {
 		}
 	}
 
-	public void writeTeachingUnits(Planning planning) {
+	public int writeTeachingUnits(Planning planning) {
 		List<TeachingUnit> teachingUnits = planning.getTeachingUnits();
 		int courseStartRow = lastWritenRow, teachingUnitStartRow = lastWritenRow;
 		int lastRow;
@@ -89,6 +94,8 @@ public class WritePlanning extends WriteFile {
 			teachingUnitStartRow = lastRow + 1;
 			courseStartRow = teachingUnitStartRow;
 		}
+
+		return teachingUnitStartRow - 1;
 	}
 
 	public int writeCourses(int courseStartRow, Sheet sheet, TeachingUnit teachingUnit) {
@@ -239,20 +246,37 @@ public class WritePlanning extends WriteFile {
 		}
 		if (course.hasCt() || course.hasCc()) {
 			if (course.hasCt() && course.hasCc()) {
-				Cell cell = super.writeStringCell(teacherEndRow++, 9, sheet, "CC/CT");
+				Cell cell = super.writeStringCell(teacherEndRow, 9, sheet, "CC/CT");
 				cell.setCellStyle(StylesLib.ccStyle((XSSFWorkbook) workbook));
-				
+				cell = super.writeNumberCell(teacherEndRow, 7, sheet, 4);
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				cell = super.writeNumberCell(teacherEndRow, 6, sheet, 0);
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				teacherEndRow++;
+
 			} else if (course.hasCt()) {
-				Cell cell = super.writeStringCell(teacherEndRow++, 9, sheet, "CT");
+				Cell cell = super.writeStringCell(teacherEndRow, 9, sheet, "CT");
 				cell.setCellStyle(StylesLib.ccStyle((XSSFWorkbook) workbook));
-			} else{
-				Cell cell = super.writeStringCell(teacherEndRow++, 9, sheet, "CC");
+				cell = super.writeNumberCell(teacherEndRow, 7, sheet, 2);
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				cell = super.writeNumberCell(teacherEndRow, 6, sheet, 0);
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				teacherEndRow++;
+			} else {
+				Cell cell = super.writeStringCell(teacherEndRow, 9, sheet, "CC");
 				cell.setCellStyle(StylesLib.ccStyle((XSSFWorkbook) workbook));
+				cell = super.writeNumberCell(teacherEndRow, 6, sheet, 2);
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				cell = super.writeNumberCell(teacherEndRow, 7, sheet, 0);
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				teacherEndRow++;
 			}
-			
+
+			if (!course.getListTeachers().isEmpty()) {
+				this.writeTeacher(teacherEndRow - 1, sheet, course.getListTeachers().get(0).getName());
+			}
+
 			lastRow = teacherEndRow;
-			if(!course.getListTeachers().isEmpty())
-				this.writeTeacher(teacherEndRow, sheet, course.getListTeachers().get(0).getName());
 		}
 		return lastRow;
 	}
@@ -279,7 +303,7 @@ public class WritePlanning extends WriteFile {
 		String calName = planning.getCalendar().getName();
 		Cell cell = super.writeStringCell(lastWritenRow, 0, sheets.get(calName), this.year + " " + calName);
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
-		
+
 		cell = super.writeFormula("TODAY()", lastWritenRow, 1, sheets.get(calName));
 		cell.setCellStyle(StylesLib.dateFormatStyle((XSSFWorkbook) workbook));
 
@@ -291,24 +315,23 @@ public class WritePlanning extends WriteFile {
 
 		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Disponibilité / étudiant (h)");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
-		
+
 		lastWritenRow++;
 
 		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Créneaux disponibles");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
-		
+
 		lastWritenRow++;
 
 		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Créneaux utilisés");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
-		
 
 		lastWritenRow++;
 		lastWritenRow++;
-		
+
 		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Synthèse volume travail / étudiant (h)");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
-		
+
 		lastWritenRow++;
 
 	}
