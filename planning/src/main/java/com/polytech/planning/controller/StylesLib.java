@@ -142,7 +142,7 @@ public final class StylesLib {
 	 * @return
 	 */
 	public static XSSFCellStyle dateStyle(XSSFWorkbook wb) {
-		XSSFCellStyle cellStyle = baseStyle(wb);
+		XSSFCellStyle cellStyle = dateFormatStyle(wb);
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
 		cellStyle.setFillForegroundColor(dateBg);
 		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);

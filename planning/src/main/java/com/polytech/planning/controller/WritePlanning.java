@@ -4,7 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -14,8 +16,10 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.polytech.planning.model.Calendar;
 import com.polytech.planning.model.Course;
 import com.polytech.planning.model.Planning;
+import com.polytech.planning.model.Semester;
 import com.polytech.planning.model.Teacher;
 import com.polytech.planning.model.TeachingUnit;
 
@@ -61,9 +65,10 @@ public class WritePlanning extends WriteFile {
 
 			this.writeIntroPart(planning);
 			this.lastTURow[i] = this.writeTeachingUnits(planning);
-			System.out.println(this.lastTURow[i]);
+			this.writeWeeks(planning, i);
+			i++;
 		}
-
+		System.out.println(this.lastTURow[0] + "," + this.lastTURow[1]);
 		FileOutputStream output;
 		try {
 			output = new FileOutputStream(super.getFilePath());
@@ -357,5 +362,51 @@ public class WritePlanning extends WriteFile {
 	private void writeHoursPut(int row, Sheet sheet, double content) {
 		Cell cell = super.writeNumberCell(row, 5, sheet, (float) content);
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+	}
+
+	private void writeWeeks(Planning planning, int numSemester) {
+		Calendar calendar = planning.getCalendar();
+		Semester semester = calendar.getListSemester().get(numSemester);
+		Date startDate = semester.getStartDate();
+		Date endDate = semester.getEndDate();
+
+		LinkedHashMap<Integer, String> dates = ToolBox.getBetweenDates(startDate, endDate);
+		String calName = planning.getCalendar().getName();
+		int i = 11;
+		for (Integer key : dates.keySet()) {
+
+			StylesLib.setCellMerge(sheets.get(calName), lastWritenRow - 5, lastWritenRow - 5, i, i + 2);
+			StylesLib.setCellMerge(sheets.get(calName), lastWritenRow - 4, lastWritenRow - 4, i, i + 2);
+			// write weeks
+			Cell cell1 = super.writeStringCell(lastWritenRow - 4, i, sheets.get(calName), dates.get(key));
+			// write num of week
+			Cell cell2 = super.writeNumberCell(lastWritenRow - 5, i, sheets.get(calName), key);
+			if (!ToolBox.isHoliday(dates.get(key), semester.getListHoliday())) {
+				// write cm,td,tp
+				Cell cell3 = super.writeStringCell(lastWritenRow - 2, i, sheets.get(calName), "CM");
+				Cell cell4 = super.writeStringCell(lastWritenRow - 2, i + 1, sheets.get(calName), "TD");
+				Cell cell5 = super.writeStringCell(lastWritenRow - 2, i + 2, sheets.get(calName), "TP");
+				cell3.setCellStyle(StylesLib.cmStyle((XSSFWorkbook) workbook));
+				cell4.setCellStyle(StylesLib.tdStyle((XSSFWorkbook) workbook));
+				cell5.setCellStyle(StylesLib.tpStyle((XSSFWorkbook) workbook));
+				cell1.setCellStyle(StylesLib.dateStyle((XSSFWorkbook) workbook));
+				cell2.setCellStyle(StylesLib.weekNumStyle((XSSFWorkbook) workbook));
+			} else {
+				cell1.setCellStyle(StylesLib.holidayStyle((XSSFWorkbook) workbook));
+				cell2.setCellStyle(StylesLib.holidayStyle((XSSFWorkbook) workbook));
+			}
+			//set style
+			sheets.get(calName).setColumnWidth(i, 60 * 20);
+			sheets.get(calName).setColumnWidth(i + 1, 60 * 20);
+			sheets.get(calName).setColumnWidth(i + 2, 60 * 20);
+			i += 3;
+
+			//
+		}
+
+	}
+
+	private void writeWeek(int row, Sheet sheet, String string) {
+
 	}
 }
