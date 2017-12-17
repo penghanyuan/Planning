@@ -382,6 +382,7 @@ public class WritePlanning extends WriteFile {
 			// write num of week
 			Cell cell2 = super.writeNumberCell(lastWritenRow - 5, i, sheets.get(calName), key);
 			if (!ToolBox.isHoliday(dates.get(key), semester.getListHoliday())) {
+				this.writeSummary(i, sheets.get(calName), numSemester);
 				// write cm,td,tp
 				Cell cell3 = super.writeStringCell(lastWritenRow - 2, i, sheets.get(calName), "CM");
 				Cell cell4 = super.writeStringCell(lastWritenRow - 2, i + 1, sheets.get(calName), "TD");
@@ -395,7 +396,7 @@ public class WritePlanning extends WriteFile {
 				cell1.setCellStyle(StylesLib.holidayStyle((XSSFWorkbook) workbook));
 				cell2.setCellStyle(StylesLib.holidayStyle((XSSFWorkbook) workbook));
 			}
-			//set style
+			// set style
 			sheets.get(calName).setColumnWidth(i, 60 * 20);
 			sheets.get(calName).setColumnWidth(i + 1, 60 * 20);
 			sheets.get(calName).setColumnWidth(i + 2, 60 * 20);
@@ -406,7 +407,53 @@ public class WritePlanning extends WriteFile {
 
 	}
 
-	private void writeWeek(int row, Sheet sheet, String string) {
+	private void writeSummary(int col, Sheet sheet, int numSemester) {
+		String rowStrStart, rowStrEnd;
+		String totalColStart, totalColEnd;
+		
+		
+		// total
+		totalColStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow - 7);
+		totalColEnd = ToolBox.excelColIndexToStr(col + 3) + (this.lastWritenRow - 7);
+		StylesLib.setCellMerge(sheet, lastWritenRow - 7, lastWritenRow - 7, col, col + 2);
+		Cell cell4_1 = super.writeFormula("SUM(" + totalColStart + ":" + totalColEnd + ")", lastWritenRow - 7, col,
+				sheet);
+		// each part
+		Cell cell1 = super.writeStringCell(lastWritenRow - 9, col, sheet, "CM");
+		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow + 1);
+		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester]);
+		Cell cell1_1 = super.writeFormula("SUM(" + rowStrStart + ":" + rowStrEnd + ")", lastWritenRow - 8, col++,
+				sheet);
 
+		// each part
+		Cell cell2 = super.writeStringCell(lastWritenRow - 9, col, sheet, "TD");
+		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow + 1);
+		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester]);
+		Cell cell2_1 = super.writeFormula("SUM(" + rowStrStart + ":" + rowStrEnd + ")", lastWritenRow - 8, col++,
+				sheet);
+
+		// each part
+		Cell cell3 = super.writeStringCell(lastWritenRow - 9, col, sheet, "TP");
+		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow + 1);
+		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester]);
+		Cell cell3_1 = super.writeFormula("SUM(" + rowStrStart + ":" + rowStrEnd + ")", lastWritenRow - 8, col++,
+				sheet);
+
+		cell1.setCellStyle(StylesLib.cmStyle((XSSFWorkbook) workbook));
+		cell2.setCellStyle(StylesLib.tdStyle((XSSFWorkbook) workbook));
+		cell3.setCellStyle(StylesLib.tpStyle((XSSFWorkbook) workbook));
+
+		cell1_1.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell2_1.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell3_1.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell4_1.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		
+		/*=(J10/Paramétrage!$C$5)+(IF(MOD(K10,Paramétrage!$C$5*Paramétrage!$E$2),
+		 * (ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2),0)+1)*Paramétrage!$E$2,
+		 * ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2)*Paramétrage!$E$2,0)))
+		 * +(IF(MOD(L10,Paramétrage!$C$5*Paramétrage!$F$2),
+		 * (ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2),0)+1)*Paramétrage!$E$2,
+		 * ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2)*Paramétrage!$F$2,0)))
+		 */
 	}
 }

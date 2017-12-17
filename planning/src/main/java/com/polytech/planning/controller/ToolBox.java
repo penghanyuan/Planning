@@ -82,4 +82,20 @@ public final class ToolBox {
 		return false;
 
 	}
+
+	public static String excelColIndexToStr(int columnIndex) {
+		if (columnIndex <= 0) {
+			return null;
+		}
+		String columnStr = "";
+		columnIndex--;
+		do {
+			if (columnStr.length() > 0) {
+				columnIndex--;
+			}
+			columnStr = ((char) (columnIndex % 26 + (int) 'A')) + columnStr;
+			columnIndex = (int) ((columnIndex - columnIndex % 26) / 26);
+		} while (columnIndex > 0);
+		return columnStr;
+	}
 }
