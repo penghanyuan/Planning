@@ -257,6 +257,8 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 				cell = super.writeNumberCell(teacherEndRow, 6, sheet, 0);
 				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				if (this.year.equalsIgnoreCase("DI3"))
+					this.writeBooleanDI3(teacherEndRow, sheet, false);
 				teacherEndRow++;
 
 			} else if (course.hasCt()) {
@@ -266,6 +268,8 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 				cell = super.writeNumberCell(teacherEndRow, 6, sheet, 0);
 				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				if (this.year.equalsIgnoreCase("DI3"))
+					this.writeBooleanDI3(teacherEndRow, sheet, false);
 				teacherEndRow++;
 			} else {
 				Cell cell = super.writeStringCell(teacherEndRow, 9, sheet, "CC");
@@ -274,6 +278,8 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 				cell = super.writeNumberCell(teacherEndRow, 7, sheet, 0);
 				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				if (this.year.equalsIgnoreCase("DI3"))
+					this.writeBooleanDI3(teacherEndRow, sheet, false);
 				teacherEndRow++;
 			}
 
@@ -381,7 +387,9 @@ public class WritePlanning extends WriteFile {
 			Cell cell1 = super.writeStringCell(lastWritenRow - 4, i, sheets.get(calName), dates.get(key));
 			// write num of week
 			Cell cell2 = super.writeNumberCell(lastWritenRow - 5, i, sheets.get(calName), key);
-			if (!ToolBox.isHoliday(dates.get(key), semester.getListHoliday())) {
+			
+			if (!ToolBox.isHoliday(dates.get(key), semester.getListHoliday())) {//if not holiday
+				//write summary
 				this.writeSummary(i, sheets.get(calName), numSemester);
 				// write cm,td,tp
 				Cell cell3 = super.writeStringCell(lastWritenRow - 2, i, sheets.get(calName), "CM");
@@ -410,8 +418,7 @@ public class WritePlanning extends WriteFile {
 	private void writeSummary(int col, Sheet sheet, int numSemester) {
 		String rowStrStart, rowStrEnd;
 		String totalColStart, totalColEnd;
-		
-		
+
 		// total
 		totalColStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow - 7);
 		totalColEnd = ToolBox.excelColIndexToStr(col + 3) + (this.lastWritenRow - 7);
@@ -421,22 +428,38 @@ public class WritePlanning extends WriteFile {
 		// each part
 		Cell cell1 = super.writeStringCell(lastWritenRow - 9, col, sheet, "CM");
 		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow + 1);
-		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester]);
-		Cell cell1_1 = super.writeFormula("SUM(" + rowStrStart + ":" + rowStrEnd + ")", lastWritenRow - 8, col++,
+		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester] + 1);
+
+		// generate variable
+		String array1 = rowStrStart + ":" + rowStrEnd;
+		String array2_1 = ToolBox.excelColIndexToStr(4) + (this.lastWritenRow + 1) + ":" + ToolBox.excelColIndexToStr(4)
+				+ (this.lastTURow[numSemester] + 1);
+		// write SUMPRODUCT()
+		Cell cell1_1 = super.writeFormula("SUMPRODUCT(" + array1 + "," + array2_1 + ")", lastWritenRow - 8, col++,
 				sheet);
 
 		// each part
 		Cell cell2 = super.writeStringCell(lastWritenRow - 9, col, sheet, "TD");
 		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow + 1);
-		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester]);
-		Cell cell2_1 = super.writeFormula("SUM(" + rowStrStart + ":" + rowStrEnd + ")", lastWritenRow - 8, col++,
+		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester] + 1);
+		// generate variable
+		array1 = rowStrStart + ":" + rowStrEnd;
+		array2_1 = ToolBox.excelColIndexToStr(4) + (this.lastWritenRow + 1) + ":" + ToolBox.excelColIndexToStr(4)
+				+ (this.lastTURow[numSemester] + 1);
+		// write SUMPRODUCT()
+		Cell cell2_1 = super.writeFormula("SUMPRODUCT(" + array1 + "," + array2_1 + ")", lastWritenRow - 8, col++,
 				sheet);
 
 		// each part
 		Cell cell3 = super.writeStringCell(lastWritenRow - 9, col, sheet, "TP");
 		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow + 1);
-		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester]);
-		Cell cell3_1 = super.writeFormula("SUM(" + rowStrStart + ":" + rowStrEnd + ")", lastWritenRow - 8, col++,
+		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester] + 1);
+		// generate variable
+		array1 = rowStrStart + ":" + rowStrEnd;
+		array2_1 = ToolBox.excelColIndexToStr(4) + (this.lastWritenRow + 1) + ":" + ToolBox.excelColIndexToStr(4)
+				+ (this.lastTURow[numSemester] + 1);
+		// write SUMPRODUCT()
+		Cell cell3_1 = super.writeFormula("SUMPRODUCT(" + array1 + "," + array2_1 + ")", lastWritenRow - 8, col++,
 				sheet);
 
 		cell1.setCellStyle(StylesLib.cmStyle((XSSFWorkbook) workbook));
@@ -447,13 +470,18 @@ public class WritePlanning extends WriteFile {
 		cell2_1.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 		cell3_1.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 		cell4_1.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
-		
-		/*=(J10/Paramétrage!$C$5)+(IF(MOD(K10,Paramétrage!$C$5*Paramétrage!$E$2),
-		 * (ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2),0)+1)*Paramétrage!$E$2,
-		 * ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2)*Paramétrage!$E$2,0)))
-		 * +(IF(MOD(L10,Paramétrage!$C$5*Paramétrage!$F$2),
-		 * (ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2),0)+1)*Paramétrage!$E$2,
-		 * ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2)*Paramétrage!$F$2,0)))
+
+		/*
+		 * =(J10/Paramétrage!$C$5)+(IF(MOD(K10,Paramétrage!$C$5*Paramétrage!$E$2
+		 * ),
+		 * (ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2),0)+1)*Paramétrage!
+		 * $E$2,
+		 * ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2)*Paramétrage!$E$2,0)
+		 * )) +(IF(MOD(L10,Paramétrage!$C$5*Paramétrage!$F$2),
+		 * (ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2),0)+1)*Paramétrage!
+		 * $E$2,
+		 * ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2)*Paramétrage!$F$2,0)
+		 * ))
 		 */
 	}
 }
