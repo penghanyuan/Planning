@@ -10,7 +10,9 @@ import java.util.List;
 
 import org.omg.DynamicAny.DynAnyPackage.InvalidValue;
 
+import com.polytech.planning.model.Course;
 import com.polytech.planning.model.Holiday;
+import com.polytech.planning.model.TeachingUnit;
 
 public final class ToolBox {
 
@@ -97,5 +99,25 @@ public final class ToolBox {
 			columnIndex = (int) ((columnIndex - columnIndex % 26) / 26);
 		} while (columnIndex > 0);
 		return columnStr;
+	}
+
+	public static void checkCourseType(List<TeachingUnit> teachingUnits) {
+		for (TeachingUnit tu : teachingUnits) {
+			if (tu.getName().toUpperCase().matches(".*PARCOURS ASR.*")) {
+				for (Course c : tu.getListCourses()) {
+					c.setType("ASR");
+				}
+			}
+			else if (tu.getName().toUpperCase().matches(".*PARCOURS SI.*")) {
+				for (Course c : tu.getListCourses()) {
+					c.setType("SI");
+				}
+			}
+			else{
+				for (Course c : tu.getListCourses()) {
+					c.setType("ALL");
+				}
+			}
+		}
 	}
 }

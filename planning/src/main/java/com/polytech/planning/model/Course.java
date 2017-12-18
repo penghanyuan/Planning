@@ -17,6 +17,7 @@ public class Course {
 	private boolean cc;
 	private boolean ct;
 	private boolean mundus;
+	private String type; // ASR or SI
 	
 	/**
 	 * Course's Constructor
@@ -154,5 +155,19 @@ public class Course {
 	 */
 	public void setMundus(boolean mundus) {
 		this.mundus = mundus;
+	}
+
+	/**
+	 * @return the type
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * @param type the type to set
+	 */
+	public void setType(String type) {
+		this.type = type;
 	}	
 }
