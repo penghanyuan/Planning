@@ -10,7 +10,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{Table des mati\`eres\markboth {Table des mati\`eres}{Table des mati\`eres}}{i}{chapter*.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{I\hspace {1em}UML}{1}{part.1}
+\contentsline {part}{I\hspace {1em}Titre de la partie 1}{1}{part.1}
 \defcounter {refsection}{0}\relax 
 \select@language {english}
 \defcounter {refsection}{0}\relax 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.13)  18 DEC 2017 17:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.13)  18 DEC 2017 17:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2618,59 +2618,59 @@ File: english.lbx 2016/12/05 v3.7 biblatex localization (PK/JW/AB)
 )
 \openout1 = `Rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 21.
-LaTeX Font Info:    Try loading font information for OML+jkp on input line 21.
+LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 23.
+LaTeX Font Info:    Try loading font information for OML+jkp on input line 23.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/omljkp.fd
 File: omljkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 21.
-LaTeX Font Info:    Try loading font information for OMS+jkp on input line 21.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 23.
+LaTeX Font Info:    Try loading font information for OMS+jkp on input line 23.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/omsjkp.fd
 File: omsjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 21.
-LaTeX Font Info:    Try loading font information for OMX+jkp on input line 21.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 23.
+LaTeX Font Info:    Try loading font information for OMX+jkp on input line 23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/omxjkp.fd
 File: omxjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 21.
-LaTeX Font Info:    Try loading font information for U+jkpexa on input line 21.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 23.
+LaTeX Font Info:    Try loading font information for U+jkpexa on input line 23.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/ujkpexa.fd
 File: ujkpexa.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 21.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 21.
-LaTeX Font Info:    ... okay on input line 21.
-LaTeX Font Info:    Try loading font information for T1+jkpf on input line 21.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Try loading font information for T1+jkpf on input line 23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/t1jkpf.fd
 File: t1jkpf.fd 2007/01/24 Fontinst v1.928 font definitions for T1/jkpf.
 )
-LaTeX Info: Redefining \degres on input line 21.
-LaTeX Info: Redefining \dots on input line 21.
+LaTeX Info: Redefining \degres on input line 23.
+LaTeX Info: Redefining \dots on input line 23.
 Package frenchb.ldf Info: Setting StandardItemizeEnv=true for
 (frenchb.ldf)             compatibility with enumitem package,
-(frenchb.ldf)             reported on input line 21.
-LaTeX Info: Redefining \up on input line 21.
+(frenchb.ldf)             reported on input line 23.
+LaTeX Info: Redefining \up on input line 23.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -2714,9 +2714,9 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Rapport.bbl' not found.
 No file Rapport.bbl.
-Package biblatex Info: Reference section=0 on input line 21.
-Package biblatex Info: Reference segment=0 on input line 21.
-LaTeX Info: Redefining \microtypecontext on input line 21.
+Package biblatex Info: Reference section=0 on input line 23.
+Package biblatex Info: Reference segment=0 on input line 23.
+LaTeX Info: Redefining \microtypecontext on input line 23.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -2769,7 +2769,7 @@ ABD: EveryShipout initializing macros
 Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-Package hyperref Info: Link coloring ON on input line 21.
+Package hyperref Info: Link coloring ON on input line 23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -2779,9 +2779,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count487
 )
-LaTeX Info: Redefining \ref on input line 21.
-LaTeX Info: Redefining \pageref on input line 21.
-LaTeX Info: Redefining \nameref on input line 21.
+LaTeX Info: Redefining \ref on input line 23.
+LaTeX Info: Redefining \pageref on input line 23.
+LaTeX Info: Redefining \nameref on input line 23.
 
 
 Package pageslts Warning: Package pdfpages detected.
@@ -2831,18 +2831,18 @@ Package caption Info: End \AtBeginDocument code.
 File: polytech/polytech.pdf Graphic file (type pdf)
 
 <use polytech/polytech.pdf>
-Package pdftex.def Info: polytech/polytech.pdf used on input line 21.
+Package pdftex.def Info: polytech/polytech.pdf used on input line 23.
 (pdftex.def)             Requested size: 306.2564pt x 95.25526pt.
  <polytech/univ.pdf, id=8, 133.3289pt x 99.73561pt>
 File: polytech/univ.pdf Graphic file (type pdf)
 
 <use polytech/univ.pdf>
-Package pdftex.def Info: polytech/univ.pdf used on input line 21.
+Package pdftex.def Info: polytech/univ.pdf used on input line 23.
 (pdftex.def)             Requested size: 133.32857pt x 99.73535pt.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/jkpf/b/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Try loading font information for T1+jkptt on input line 21.
+LaTeX Font Info:    Try loading font information for T1+jkptt on input line 23.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/t1jkptt.fd
@@ -2852,7 +2852,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `jkptt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OT1+jkpf on input line 21.
+LaTeX Font Info:    Try loading font information for OT1+jkpf on input line 23.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/ot1jkpf.fd
@@ -2862,13 +2862,13 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `jkpf' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for U+jkpmia on input line 21.
+LaTeX Font Info:    Try loading font information for U+jkpmia on input line 23.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/ujkpmia.fd
 File: ujkpmia.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 21.
+LaTeX Font Info:    Try loading font information for U+msa on input line 23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -2876,7 +2876,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 21.
+LaTeX Font Info:    Try loading font information for U+msb on input line 23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -2884,13 +2884,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+jkpsyc on input line 21.
+LaTeX Font Info:    Try loading font information for U+jkpsyc on input line 23.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/ujkpsyc.fd
 File: ujkpsyc.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 21.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 23.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 Package microtype Info: Character `029' is missing
@@ -2937,7 +2937,7 @@ Package microtype Info: Character `029' is missing
 \c@pagesLTS.current.local.arabic=\count502
 
 
-Package biblatex Warning: Type 'online' not found on input line 24.
+Package biblatex Warning: Type 'online' not found on input line 26.
 
 No file Rapport.gls.
 No file Rapport.acr.
@@ -2983,8 +2983,8 @@ No file Rapport.ind.
 
 ] 
 AED: pageslts setting LastPage 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 24.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 24.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 26.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 26.
 \c@pagesLTS.arabic.1.local.count=\count503
 
 AED: pageslts setting VeryLastPage via AfterLastShipout 
@@ -2996,12 +2996,12 @@ Package pageslts Info: Total number of pages is odd.
 
 
 (./Rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 24.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 24.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 26.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 26.
 Package logreq Info: Writing requests to 'Rapport.run.xml'.
 \openout1 = `Rapport.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 24.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 26.
  )
 (\end occurred inside a group at level 1)
 
@@ -3027,7 +3027,7 @@ ve/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/
 mf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2017/texmf-dist/
 fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on Rapport.pdf (7 pages, 94176 bytes).
+Output written on Rapport.pdf (7 pages, 94202 bytes).
 PDF statistics:
  158 PDF objects out of 1000 (max. 8388607)
  122 compressed objects within 2 object streams
