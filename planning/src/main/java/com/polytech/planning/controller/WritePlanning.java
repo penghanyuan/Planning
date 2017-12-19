@@ -3,17 +3,15 @@ package com.polytech.planning.controller;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.polytech.planning.model.Calendar;
@@ -31,7 +29,11 @@ public class WritePlanning extends WriteFile {
 	private HashMap<String, Sheet> sheets;
 	private int lastWritenRow; // derniere ligne ecrite
 	private int[] lastTURow;// 0=> last row of teaching unit in sheet1, 1=> ...
-							// in sheet 2
+	private nameYear nameYear;
+
+	private enum nameYear {
+		DI3, DI4, DI5;
+	}
 
 	/**
 	 * Constructor
@@ -49,6 +51,8 @@ public class WritePlanning extends WriteFile {
 		this.workbook = super.getWorkbook();
 		this.sheets = new HashMap<String, Sheet>();
 		this.lastTURow = new int[2];
+
+		this.nameYear = nameYear.valueOf(year); // surround with try/catch
 	}
 
 	/**
@@ -197,7 +201,7 @@ public class WritePlanning extends WriteFile {
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
-				if (this.year.equalsIgnoreCase("DI4")||this.year.equalsIgnoreCase("DI5"))
+				if (this.year.equalsIgnoreCase("DI4") || this.year.equalsIgnoreCase("DI5"))
 					this.writeBooleanDI4(teacherEndRow, sheet, course.getType());
 				teacherEndRow++;
 				lastRow = teacherEndRow;
@@ -213,7 +217,7 @@ public class WritePlanning extends WriteFile {
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
-				if (this.year.equalsIgnoreCase("DI4")||this.year.equalsIgnoreCase("DI5"))
+				if (this.year.equalsIgnoreCase("DI4") || this.year.equalsIgnoreCase("DI5"))
 					this.writeBooleanDI4(teacherEndRow, sheet, course.getType());
 				teacherEndRow++;
 				lastRow = teacherEndRow;
@@ -230,7 +234,7 @@ public class WritePlanning extends WriteFile {
 				this.writeHoursPut(teacherEndRow, sheet, teacher.getHoursTP());
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
-				if (this.year.equalsIgnoreCase("DI4")||this.year.equalsIgnoreCase("DI5"))
+				if (this.year.equalsIgnoreCase("DI4") || this.year.equalsIgnoreCase("DI5"))
 					this.writeBooleanDI4(teacherEndRow, sheet, course.getType());
 				teacherEndRow++;
 				lastRow = teacherEndRow;
@@ -246,7 +250,7 @@ public class WritePlanning extends WriteFile {
 				this.writeTeacher(teacherEndRow, sheet, teacher.getName());
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
-				if (this.year.equalsIgnoreCase("DI4")||this.year.equalsIgnoreCase("DI5"))
+				if (this.year.equalsIgnoreCase("DI4") || this.year.equalsIgnoreCase("DI5"))
 					this.writeBooleanDI4(teacherEndRow, sheet, course.getType());
 				teacherEndRow++;
 				lastRow = teacherEndRow;
@@ -267,7 +271,7 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
-				if (this.year.equalsIgnoreCase("DI4")||this.year.equalsIgnoreCase("DI5"))
+				if (this.year.equalsIgnoreCase("DI4") || this.year.equalsIgnoreCase("DI5"))
 					this.writeBooleanDI4(teacherEndRow, sheet, course.getType());
 				teacherEndRow++;
 
@@ -280,7 +284,7 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
-				if (this.year.equalsIgnoreCase("DI4")||this.year.equalsIgnoreCase("DI5"))
+				if (this.year.equalsIgnoreCase("DI4") || this.year.equalsIgnoreCase("DI5"))
 					this.writeBooleanDI4(teacherEndRow, sheet, course.getType());
 				teacherEndRow++;
 			} else {
@@ -292,7 +296,7 @@ public class WritePlanning extends WriteFile {
 				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 				if (this.year.equalsIgnoreCase("DI3"))
 					this.writeBooleanDI3(teacherEndRow, sheet, false);
-				if (this.year.equalsIgnoreCase("DI4")||this.year.equalsIgnoreCase("DI5"))
+				if (this.year.equalsIgnoreCase("DI4") || this.year.equalsIgnoreCase("DI5"))
 					this.writeBooleanDI4(teacherEndRow, sheet, course.getType());
 				teacherEndRow++;
 			}
@@ -342,43 +346,82 @@ public class WritePlanning extends WriteFile {
 	}
 
 	private void writeIntroPart(Planning planning) {
-
-		// ligne 3 col 0 Année
 		lastWritenRow = 2;
 		String calName = planning.getCalendar().getName();
-		Cell cell = super.writeStringCell(lastWritenRow, 0, sheets.get(calName), this.year + " " + calName);
+		Sheet sheet = sheets.get(calName);
+		Cell cell = super.writeStringCell(lastWritenRow, 0, sheet, this.year + " " + calName);
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 
-		cell = super.writeFormula("TODAY()", lastWritenRow, 1, sheets.get(calName));
+		cell = super.writeFormula("TODAY()", lastWritenRow, 1, sheet);
 		cell.setCellStyle(StylesLib.dateFormatStyle((XSSFWorkbook) workbook));
 
 		lastWritenRow++;
-		cell = super.writeStringCell(lastWritenRow, 0, sheets.get(calName), planning.getYear());
+		cell = super.writeStringCell(lastWritenRow, 0, sheet, planning.getYear());
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 
 		lastWritenRow++;
 
-		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Disponibilité / étudiant (h)");
+		cell = super.writeStringCell(lastWritenRow, 2, sheet, "Disponibilité / étudiant (h)");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 
 		lastWritenRow++;
 
-		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Créneaux disponibles");
+		cell = super.writeStringCell(lastWritenRow, 2, sheet, "Créneaux disponibles");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 
 		lastWritenRow++;
 
-		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Créneaux utilisés");
+		cell = super.writeStringCell(lastWritenRow, 2, sheet, "Créneaux utilisés");
+		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+
+		lastWritenRow += 4;
+
+		StylesLib.setCellMerge(sheet, lastWritenRow - 2, lastWritenRow, 2, 2);
+
+		cell = super.writeStringCell(lastWritenRow - 2, 2, sheet, "Synthèse volume travail / étudiant (h)");
+		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+
+		lastWritenRow += 2;
+
+		cell = super.writeStringCell(lastWritenRow, 2, sheet, "N° semaine");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 
 		lastWritenRow++;
-		lastWritenRow++;
 
-		cell = super.writeStringCell(lastWritenRow, 2, sheets.get(calName), "Synthèse volume travail / étudiant (h)");
+		cell = super.writeStringCell(lastWritenRow, 2, sheet, "Date semaine");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 
-		lastWritenRow++;
+		lastWritenRow += 2;
 
+		StylesLib.setCellMerge(sheet, lastWritenRow, lastWritenRow, 5, 7);
+		cell = super.writeStringCell(lastWritenRow, 5, sheet, "Heures à placer");
+		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+
+		switch (nameYear) {
+
+		case DI3:
+			// TODO Ajouter colonnes mundus
+			break;
+
+		case DI4:
+
+			cell = super.writeStringCell(lastWritenRow, 3, sheet, "SI");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+
+			cell = super.writeStringCell(lastWritenRow, 4, sheet, "ASR");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+
+			break;
+			
+		case DI5:
+			// TODO Ajouter colonnes pour les options
+			break;
+			
+		default:
+			break;
+		}
+
+		lastWritenRow++;
 	}
 
 	private void writeTeachingUnit(int row, Sheet sheet, String content) {
@@ -508,16 +551,12 @@ public class WritePlanning extends WriteFile {
 		cell4_1.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 
 		/*
-		 * =(J10/Paramétrage!$C$5)+(IF(MOD(K10,Paramétrage!$C$5*Paramétrage!$E$2
-		 * ),
-		 * (ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2),0)+1)*Paramétrage!
-		 * $E$2,
-		 * ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2)*Paramétrage!$E$2,0)
-		 * )) +(IF(MOD(L10,Paramétrage!$C$5*Paramétrage!$F$2),
-		 * (ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2),0)+1)*Paramétrage!
-		 * $E$2,
-		 * ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2)*Paramétrage!$F$2,0)
-		 * ))
+		 * =(J10/Paramétrage!$C$5)+(IF(MOD(K10,Paramétrage!$C$5*Paramétrage!$E$2 ),
+		 * (ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2),0)+1)*Paramétrage! $E$2,
+		 * ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2)*Paramétrage!$E$2,0) ))
+		 * +(IF(MOD(L10,Paramétrage!$C$5*Paramétrage!$F$2),
+		 * (ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2),0)+1)*Paramétrage! $E$2,
+		 * ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2)*Paramétrage!$F$2,0) ))
 		 */
 	}
 }

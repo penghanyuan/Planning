@@ -16,7 +16,6 @@ public class WritePlanningTest {
 		try {
 			wp = new WritePlanning(gp.getPlanningByYear("DI4"), "DI4", "TestWriteTeachingUnits.xlsx");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
