@@ -2,6 +2,7 @@ package com.polytech.planning.controller;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.RegionUtil;
 import org.apache.poi.xssf.usermodel.*;
 
 public final class StylesLib {
@@ -43,14 +44,20 @@ public final class StylesLib {
 		XSSFCellStyle cellStyle = wb.createCellStyle();
 		cellStyle.setAlignment(HorizontalAlignment.CENTER);
 		cellStyle.setVerticalAlignment(VerticalAlignment.CENTER);
-		cellStyle.setWrapText(true); //Set wordwrap
+		cellStyle.setWrapText(true); // Set wordwrap
 
 		// Setting font to style
 		cellStyle.setFont(font);
 
 		return cellStyle;
 	}
-	
+
+	/**
+	 * set border style
+	 * 
+	 * @param wb
+	 * @return
+	 */
 	public static XSSFCellStyle baseBorderStyle(XSSFWorkbook wb) {
 		XSSFCellStyle cellStyle = baseStyle(wb);
 		cellStyle.setBorderTop(BorderStyle.THIN);
@@ -58,6 +65,25 @@ public final class StylesLib {
 		cellStyle.setBorderLeft(BorderStyle.THIN);
 		cellStyle.setBorderRight(BorderStyle.THIN);
 		return cellStyle;
+	}
+
+	/**
+	 * set Border For Merged Cell
+	 * 
+	 * @param wb
+	 * @return
+	 */
+	public static void addBorderForMergedCell(Sheet sheet, int rowStart, int rowEnd,
+			int colStart, int colEnd) {
+		CellRangeAddress brodercell = new CellRangeAddress(rowStart, rowEnd, colStart, colEnd);
+		setBorderForMergeCell(BorderStyle.THIN, brodercell, sheet);
+	}
+
+	private static void setBorderForMergeCell(BorderStyle i, CellRangeAddress cellRangeTitle, Sheet sheet) {
+		RegionUtil.setBorderBottom(i, cellRangeTitle, sheet);
+		RegionUtil.setBorderLeft(i, cellRangeTitle, sheet);
+		RegionUtil.setBorderRight(i, cellRangeTitle, sheet);
+		RegionUtil.setBorderTop(i, cellRangeTitle, sheet);
 	}
 
 	/**
@@ -180,7 +206,7 @@ public final class StylesLib {
 
 		return cellStyle;
 	}
-	
+
 	public static XSSFCellStyle dateFormatStyle(XSSFWorkbook wb) {
 		XSSFCellStyle cellStyle = baseStyle(wb);
 		XSSFDataFormat df = wb.createDataFormat();
@@ -216,7 +242,7 @@ public final class StylesLib {
 
 		return cellStyle;
 	}
-	
+
 	/**
 	 * 
 	 * @param sheet
@@ -224,7 +250,7 @@ public final class StylesLib {
 	 * @return
 	 */
 	public static Sheet columTitleWidth(Sheet sheet, int column) {
-		sheet.setColumnWidth(column, 32*256);
+		sheet.setColumnWidth(column, 32 * 256);
 		return sheet;
 	}
 }

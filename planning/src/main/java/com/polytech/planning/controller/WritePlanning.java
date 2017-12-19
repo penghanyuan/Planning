@@ -380,6 +380,7 @@ public class WritePlanning extends WriteFile {
 
 		cell = super.writeStringCell(lastWritenRow - 2, 2, sheet, "Synthèse volume travail / étudiant (h)");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+		StylesLib.addBorderForMergedCell(sheet, lastWritenRow - 2, lastWritenRow, 2, 2);
 
 		lastWritenRow += 2;
 
@@ -391,11 +392,12 @@ public class WritePlanning extends WriteFile {
 		cell = super.writeStringCell(lastWritenRow, 2, sheet, "Date semaine");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 
-		lastWritenRow += 2;
+		lastWritenRow += 3;
 
 		StylesLib.setCellMerge(sheet, lastWritenRow, lastWritenRow, 5, 7);
 		cell = super.writeStringCell(lastWritenRow, 5, sheet, "Heures à placer");
-		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		StylesLib.addBorderForMergedCell(sheet, lastWritenRow, lastWritenRow, 5, 7);
 
 		switch (nameYear) {
 
@@ -412,11 +414,11 @@ public class WritePlanning extends WriteFile {
 			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 
 			break;
-			
+
 		case DI5:
 			// TODO Ajouter colonnes pour les options
 			break;
-			
+
 		default:
 			break;
 		}
@@ -551,12 +553,16 @@ public class WritePlanning extends WriteFile {
 		cell4_1.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 
 		/*
-		 * =(J10/Paramétrage!$C$5)+(IF(MOD(K10,Paramétrage!$C$5*Paramétrage!$E$2 ),
-		 * (ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2),0)+1)*Paramétrage! $E$2,
-		 * ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2)*Paramétrage!$E$2,0) ))
-		 * +(IF(MOD(L10,Paramétrage!$C$5*Paramétrage!$F$2),
-		 * (ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2),0)+1)*Paramétrage! $E$2,
-		 * ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2)*Paramétrage!$F$2,0) ))
+		 * =(J10/Paramétrage!$C$5)+(IF(MOD(K10,Paramétrage!$C$5*Paramétrage!$E$2
+		 * ),
+		 * (ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2),0)+1)*Paramétrage!
+		 * $E$2,
+		 * ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2)*Paramétrage!$E$2,0)
+		 * )) +(IF(MOD(L10,Paramétrage!$C$5*Paramétrage!$F$2),
+		 * (ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2),0)+1)*Paramétrage!
+		 * $E$2,
+		 * ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2)*Paramétrage!$F$2,0)
+		 * ))
 		 */
 	}
 }
