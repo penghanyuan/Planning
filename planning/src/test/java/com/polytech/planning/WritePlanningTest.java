@@ -14,7 +14,7 @@ public class WritePlanningTest {
 	public static void init() {
 		gp = new GeneratePlanning("2017/2018", "Maquette.xlsx", "Calendar.xlsx");
 		try {
-			wp = new WritePlanning(gp.getPlanningByYear("DI4"), "DI4", "TestWriteTeachingUnits.xlsx");
+			wp = new WritePlanning(gp.getPlanningByYear("DI3"), "DI3", "TestWriteTeachingUnits.xlsx");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

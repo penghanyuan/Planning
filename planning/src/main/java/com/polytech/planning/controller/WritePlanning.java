@@ -403,6 +403,11 @@ public class WritePlanning extends WriteFile {
 
 		case DI3:
 			// TODO Ajouter colonnes mundus
+			cell = super.writeStringCell(lastWritenRow, 3, sheet, "DI3");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+
+			cell = super.writeStringCell(lastWritenRow, 4, sheet, "MUNDUS");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 			break;
 
 		case DI4:
