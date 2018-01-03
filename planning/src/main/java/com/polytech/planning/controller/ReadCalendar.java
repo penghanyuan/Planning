@@ -3,11 +3,14 @@ package com.polytech.planning.controller;
 import java.util.Date;
 import javax.naming.NameNotFoundException;
 
+import org.apache.xmlbeans.impl.piccolo.io.FileFormatException;
+
 import com.polytech.planning.model.OriginalCalendar;
 
 public class ReadCalendar extends ReadFile {
 
 	private OriginalCalendar calendar;
+	private String filePath;
 
 	/**
 	 * @param filePath
@@ -15,6 +18,7 @@ public class ReadCalendar extends ReadFile {
 	 */
 	public ReadCalendar(String filePath) {
 		super(filePath);
+		this.filePath = filePath;
 		calendar = new OriginalCalendar();
 	}
 
@@ -96,6 +100,14 @@ public class ReadCalendar extends ReadFile {
 		this.calendar.clearHolidays();
 
 		int[] coordonates = searchContent(sheetNum, searchString, false);
+		
+		if(coordonates[0] == -1 || coordonates[1] == -1) {
+			try {
+				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau des vacances.");
+			} catch (FileFormatException e) {
+				e.printStackTrace();
+			}
+		}
 
 		int rowNum = 1 + coordonates[0];
 		int colNum = coordonates[1];
@@ -131,6 +143,14 @@ public class ReadCalendar extends ReadFile {
 		this.calendar.clearFreeDays();
 
 		int[] coordonates = searchContent(sheetNum, searchString, false);
+		
+		if(coordonates[0] == -1 || coordonates[1] == -1) {
+			try {
+				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau des jours libres.");
+			} catch (FileFormatException e) {
+				e.printStackTrace();
+			}
+		}
 
 		int rowNum = 1 + coordonates[0];
 		int colNum = coordonates[1];

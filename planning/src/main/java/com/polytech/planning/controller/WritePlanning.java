@@ -11,7 +11,6 @@ import java.util.List;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.polytech.planning.model.Calendar;
@@ -41,6 +40,7 @@ public class WritePlanning extends WriteFile {
 	 * @param filePath
 	 * @throws Exception
 	 */
+	@SuppressWarnings("static-access")
 	public WritePlanning(List<Planning> plannings, String year, String filePath) throws Exception {
 		super(filePath);
 		this.lastWritenRow = 0;

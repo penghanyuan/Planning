@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import org.apache.xmlbeans.impl.piccolo.io.FileFormatException;
 import org.omg.CORBA.DynAnyPackage.InvalidValue;
 
 import com.polytech.planning.model.OriginalCourse;
@@ -35,6 +36,14 @@ public class ReadMockUp extends ReadFile {
 		super(filePath);
 		String searchString = "Unité d'enseignement";
 		int[] coordinates = searchContent(sheetNum, searchString, false);
+		
+		if(coordinates[0] == -1 || coordinates[1] == -1) {
+			try {
+				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'Unité d'enseignement'.");
+			} catch (FileFormatException e) {
+				e.printStackTrace();
+			}
+		}
 
 		this.sheetNum = sheetNum;
 		this.rowNum = coordinates[0];
@@ -43,16 +52,76 @@ public class ReadMockUp extends ReadFile {
 		this.colTitleTU = coordinates[1] - 1;
 
 		this.colCM = searchContent(sheetNum, "Cours", false)[1];
+		if(coordinates[0] == -1 || coordinates[1] == -1) {
+			try {
+				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'Cours'.");
+			} catch (FileFormatException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		this.colTD = searchContent(sheetNum, "TD", false)[1];
+		if(coordinates[0] == -1 || coordinates[1] == -1) {
+			try {
+				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'TD'.");
+			} catch (FileFormatException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		this.colTP = searchContent(sheetNum, "TP", false)[1];
+		if(coordinates[0] == -1 || coordinates[1] == -1) {
+			try {
+				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'TP'.");
+			} catch (FileFormatException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		this.colProject = searchContent(sheetNum, "Projet", false)[1];
+		if(coordinates[0] == -1 || coordinates[1] == -1) {
+			try {
+				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'Projet'.");
+			} catch (FileFormatException e) {
+				e.printStackTrace();
+			}
+		}
 
 		this.colCC = searchContent(sheetNum, "CC", false)[1];
+		if(coordinates[0] == -1 || coordinates[1] == -1) {
+			try {
+				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'CC'.");
+			} catch (FileFormatException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		this.colCT = searchContent(sheetNum, "CT", false)[1];
+		if(coordinates[0] == -1 || coordinates[1] == -1) {
+			try {
+				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'CT'.");
+			} catch (FileFormatException e) {
+				e.printStackTrace();
+			}
+		}
 
 		this.colMundus = searchContent(sheetNum, "Mundus", false)[1];
+		if(coordinates[0] == -1 || coordinates[1] == -1) {
+			try {
+				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'Mundus'.");
+			} catch (FileFormatException e) {
+				e.printStackTrace();
+			}
+		}
 
 		this.colTeachers = searchContent(sheetNum, "Affectation enseignement et responsabilité UE", true)[1];
+		if(coordinates[0] == -1 || coordinates[1] == -1) {
+			try {
+				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'Affectation enseignement et responsabilité UE'.");
+			} catch (FileFormatException e) {
+				e.printStackTrace();
+			}
+		}
 
 		teachingUnits = new LinkedHashMap<String, List<OriginalCourse>>();
 	}
