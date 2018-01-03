@@ -1,0 +1,44 @@
+.
+├── main
+│   └── java
+│       └── com
+│           └── polytech
+│               └── planning
+│                   ├── App.java
+│                   ├── controller
+│                   │   ├── GeneratePlanning.java
+│                   │   ├── ParserCalendar.java
+│                   │   ├── ParserMockUp.java
+│                   │   ├── ReadCalendar.java
+│                   │   ├── ReadFile.java
+│                   │   ├── ReadMockUp.java
+│                   │   ├── StylesLib.java
+│                   │   ├── ToolBox.java
+│                   │   ├── WriteFile.java
+│                   │   └── WritePlanning.java
+│                   ├── model
+│                   │   ├── Calendar.java
+│                   │   ├── Course.java
+│                   │   ├── FreeDay.java
+│                   │   ├── Holiday.java
+│                   │   ├── OriginalCalendar.java
+│                   │   ├── OriginalCourse.java
+│                   │   ├── OriginalTeachingUnit.java
+│                   │   ├── Planning.java
+│                   │   ├── Semester.java
+│                   │   ├── Teacher.java
+│                   │   └── TeachingUnit.java
+│                   └── view
+└── test
+    └── java
+        └── com
+            └── polytech
+                └── planning
+                    ├── ParserCalendarTest.java
+                    ├── ParserMockUpTest.java
+                    ├── ReadCalendarTest.java
+                    ├── ReadMockUpTest.java
+                    ├── StyleLibTest.java
+                    ├── ToolBoxTest.java
+                    ├── WriteFileTest.java
+                    └── WritePlanningTest.java

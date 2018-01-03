@@ -10,7 +10,25 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{Table des mati\`eres\markboth {Table des mati\`eres}{Table des mati\`eres}}{i}{chapter*.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{I\hspace {1em}Titre de la partie 1}{1}{part.1}
+\contentsline {part}{I\hspace {1em}Introduction}{1}{part.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Pr\IeC {\'e}sentation du projet}{1}{section.0.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{II\hspace {1em}Environnement de d\IeC {\'e}veloppement}{2}{part.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2}Outils de gestion de projet}{2}{section.0.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{III\hspace {1em}\IeC {\'E}tude de projet}{3}{part.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Analyse des besoins}{3}{section.0.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Sp\IeC {\'e}cifications Fonctionnelles}{3}{section.0.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5}Mod\IeC {\'e}lisation}{3}{section.0.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1}UML}{3}{subsection.0.5.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2}D\IeC {\'e}finitions des classes}{3}{subsection.0.5.2}
 \defcounter {refsection}{0}\relax 
 \select@language {english}
 \defcounter {refsection}{0}\relax 
