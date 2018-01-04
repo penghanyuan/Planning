@@ -11,7 +11,6 @@ import java.util.List;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.polytech.planning.model.Calendar;
@@ -41,6 +40,7 @@ public class WritePlanning extends WriteFile {
 	 * @param filePath
 	 * @throws Exception
 	 */
+	@SuppressWarnings("static-access")
 	public WritePlanning(List<Planning> plannings, String year, String filePath) throws Exception {
 		super(filePath);
 		this.lastWritenRow = 0;
@@ -402,7 +402,6 @@ public class WritePlanning extends WriteFile {
 		switch (nameYear) {
 
 		case DI3:
-			// TODO Ajouter colonnes mundus
 			cell = super.writeStringCell(lastWritenRow, 3, sheet, "DI3");
 			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 
@@ -422,6 +421,12 @@ public class WritePlanning extends WriteFile {
 
 		case DI5:
 			// TODO Ajouter colonnes pour les options
+			cell = super.writeStringCell(lastWritenRow, 3, sheet, "SI");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+
+			cell = super.writeStringCell(lastWritenRow, 4, sheet, "ASR");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+			
 			break;
 
 		default:
