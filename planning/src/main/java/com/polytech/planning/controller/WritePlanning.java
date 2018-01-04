@@ -402,7 +402,6 @@ public class WritePlanning extends WriteFile {
 		switch (nameYear) {
 
 		case DI3:
-			// TODO Ajouter colonnes mundus
 			cell = super.writeStringCell(lastWritenRow, 3, sheet, "DI3");
 			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 
@@ -422,6 +421,12 @@ public class WritePlanning extends WriteFile {
 
 		case DI5:
 			// TODO Ajouter colonnes pour les options
+			cell = super.writeStringCell(lastWritenRow, 3, sheet, "SI");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+
+			cell = super.writeStringCell(lastWritenRow, 4, sheet, "ASR");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+			
 			break;
 
 		default:
