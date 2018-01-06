@@ -1,16 +1,52 @@
-= Générateur de fond de planing: Manuel d'utilisation
+= Générateur de fond de planning: Manuel d'utilisation
 :author: H. Peng / S. Deluce 
 :doctype: letter
 :encoding: utf-8
 :icons: font
 :lang: fr
-:description: Generateur de fond de planing
+:description: Générateur de fond de planning
 :toc-title: Sommaire
 :toc: left
-:toclevels: 3
+:toclevels: 2
 :localdir: ./
 :imagesdir:  {localdir}img
 
-== Commande
-
 == Format des fichiers
+
+Le générateur de fond de planning prend en entrée deux fichiers.
+Le premier fichier contient la *maquette des enseignements* de l'année.
+Le second contient le *calendrier de l'année* avec les dates des semestres, les dates des vacances et les jours libres. (Jours fériés et créneaux libres)
+
+=== Maquette
+
+=== Calendrier
+
+== Utilisation
+
+.Commande help
+[source, bash]
+....
+------------------------------------------------------------
+The format of command is:
+java -jar planning-generator.jar <school_year> <-di3|-di4|-di5|-all> <path_of_maquette> <path_of_calendar>
+------------------------------------------------------------
+Explication:
+	 <school_year> : format-> yearStart/yearEnd
+		 Obligatory, the school year of the planning. eg. 2017/2018
+
+	 <-di3|-di4|-di5|-all> :
+		 Obligatory, the year of the planning you want to generate.
+			 -di3: for DI3
+			 -di4: for DI4
+			 -di5: for DI5
+			 -all: for all three years
+
+	 <path_of_maquette> :
+		 Obligatory, the file path of the maquette
+
+	 <path_of_calendar> :
+		 Obligatory, the file path of the calendar
+
+Note: the planning will be genereted at the same place with planning-generator.jar
+The name of the file will be 'Planning Année <year> DI <school_year_start> - <school_year_end>.xlsx'
+....
