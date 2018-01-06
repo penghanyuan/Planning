@@ -1,0 +1,16 @@
+= Générateur de fond de planing: Manuel d'utilisation
+:author: H. Peng / S. Deluce 
+:doctype: letter
+:encoding: utf-8
+:icons: font
+:lang: fr
+:description: Generateur de fond de planing
+:toc-title: Sommaire
+:toc: left
+:toclevels: 3
+:localdir: ./
+:imagesdir:  {localdir}img
+
+== Commande
+
+== Format des fichiers
