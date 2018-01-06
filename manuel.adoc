@@ -10,6 +10,7 @@
 :toclevels: 2
 :localdir: ./
 :imagesdir:  {localdir}img
+:genplanning: générateur de planning
 
 == Format des fichiers
 
@@ -18,6 +19,29 @@ Le premier fichier contient la *maquette des enseignements* de l'année.
 Le second contient le *calendrier de l'année* avec les dates des semestres, les dates des vacances et les jours libres. (Jours fériés et créneaux libres)
 
 === Maquette
+
+==== Structure du fichier maquette
+
+La structure du fichier maquette n'est pas strict, le nom des colonnes doit être comme sur la capture d'écran. 
+
+====
+NOTE: Le {genplanning} n'est pas sensible à la case, ni aux accents.
+====
+
+.Capture du fichier maquette
+image:header.png[Entête du ficher maquette]
+
+Le seul point important est la disposition des titre des unités d'enseignement, ils doivent être décalés d'une colonne à gauche par rapport à la colonne portant le nom "UNITE D'ENSEIGNEMENT".
+
+==== Format de l'affectations des enseignements
+
+====
+Prénom Nom, {heures_de_CM, heures_de_TD*[Nombre_de_groupe (+ Mundus)], heures_de_TP*[Nombre_de_groupe (+ Mundus)]} ; ...
+
+WARNING: Les virgules sont très importantes, elles sont utilisées pour parser le fichier.
+
+"H. Cardot, 8hCM, 2hTD, 0hTP*3gr + Mundus; R. Ravaux 12hCM,  4hTD Mundus, 14hTP x3gr + 20hTP Mundus ; Mostapha Darwich, 4hTD, 6hTP x3gr"
+====
 
 === Calendrier
 
