@@ -12,6 +12,11 @@ public class Planning {
 	private List<TeachingUnit> teachingUnits;
 	private Calendar calendar;
 
+	private float totalCM;
+	private float totalTD;
+	private float totalTP;
+	private float totalProject;
+
 	/**
 	 * @param year
 	 * @param teachingUnits
@@ -21,6 +26,12 @@ public class Planning {
 		this.year = year;
 		this.teachingUnits = teachingUnits;
 		this.calendar = calendar;
+		for (TeachingUnit t : teachingUnits) {
+			totalCM += t.getTotalCM();
+			totalTD += t.getTotalTD();
+			totalTP += t.getTotalTP();
+			totalProject += t.getTotalProject();
+		}
 	}
 
 	/**
@@ -51,6 +62,12 @@ public class Planning {
 	 */
 	public void setTeachingUnits(List<TeachingUnit> teachingUnits) {
 		this.teachingUnits = teachingUnits;
+		for (TeachingUnit t : teachingUnits) {
+			totalCM += t.getTotalCM();
+			totalTD += t.getTotalTD();
+			totalTP += t.getTotalTP();
+			totalProject += t.getTotalProject();
+		}
 	}
 
 	/**
@@ -61,10 +78,39 @@ public class Planning {
 	}
 
 	/**
-	 * @param calendar the calendar to set
+	 * @param calendar
+	 *            the calendar to set
 	 */
 	public void setCalendar(Calendar calendar) {
 		this.calendar = calendar;
+	}
+
+	/**
+	 * @return the totalCM
+	 */
+	public float getTotalCM() {
+		return totalCM;
+	}
+
+	/**
+	 * @return the totalTD
+	 */
+	public float getTotalTD() {
+		return totalTD;
+	}
+
+	/**
+	 * @return the totalTP
+	 */
+	public float getTotalTP() {
+		return totalTP;
+	}
+
+	/**
+	 * @return the totalProjet
+	 */
+	public float getTotalProject() {
+		return totalProject;
 	}
 
 }

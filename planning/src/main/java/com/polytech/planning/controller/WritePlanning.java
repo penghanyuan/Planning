@@ -9,12 +9,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.polytech.planning.model.Calendar;
 import com.polytech.planning.model.Course;
+import com.polytech.planning.model.FreeDay;
 import com.polytech.planning.model.Planning;
 import com.polytech.planning.model.Semester;
 import com.polytech.planning.model.Teacher;
@@ -29,6 +31,7 @@ public class WritePlanning extends WriteFile {
 	private int lastWritenRow; // derniere ligne ecrite
 	private int[] lastTURow;// 0=> last row of teaching unit in sheet1, 1=> ...
 	private nameYear nameYear;
+	private int[] numCol;
 
 	private enum nameYear {
 		DI3, DI4, DI5;
@@ -51,7 +54,7 @@ public class WritePlanning extends WriteFile {
 		this.workbook = super.getWorkbook();
 		this.sheets = new HashMap<String, Sheet>();
 		this.lastTURow = new int[2];
-
+		this.numCol = new int[2];
 		this.nameYear = nameYear.valueOf(year); // surround with try/catch
 	}
 
@@ -61,7 +64,9 @@ public class WritePlanning extends WriteFile {
 	 * @param planning
 	 */
 	public void createFile() {
-		// System.out.println(planning.getTeachingUnits().isEmpty());
+		Sheet para = this.workbook.createSheet("Paramétrage");
+		sheets.put("Paramétrage", para);
+		this.writeParametrage();
 		int i = 0;
 		for (Planning planning : this.plannings) {
 			Sheet sheet = this.workbook.createSheet("Planning " + planning.getCalendar().getName());
@@ -70,9 +75,9 @@ public class WritePlanning extends WriteFile {
 			this.writeIntroPart(planning);
 			this.lastTURow[i] = this.writeTeachingUnits(planning);
 			this.writeWeeks(planning, i);
+			this.writeEmptyCells(sheet, i);
 			i++;
 		}
-		System.out.println(this.lastTURow[0] + "," + this.lastTURow[1]);
 		FileOutputStream output;
 		try {
 			output = new FileOutputStream(super.getFilePath());
@@ -82,6 +87,155 @@ public class WritePlanning extends WriteFile {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+
+	}
+
+	private void writeParametrage() {
+		Sheet sheet = sheets.get("Paramétrage");
+		float numDays = 0, numSlots = 0, numGroupTD = 0, numGroupTP = 0, totalCM = 0, totalTD = 0, totalTP = 0;
+		// first table
+		Cell cell = super.writeStringCell(0, 1, sheet, "Semestre");
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		cell = super.writeStringCell(0, 2, sheet, "Nombre de jours disponibles");
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		cell = super.writeStringCell(0, 3, sheet, "Nombre de créneaux  par jour");
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		cell = super.writeStringCell(0, 4, sheet, "Nombre de groupes de TD");
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		cell = super.writeStringCell(0, 5, sheet, "Nombre de groupes de TP");
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		cell = super.writeStringCell(0, 6, sheet, "Volume horaire max / étudiant / semaine");
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		cell = super.writeStringCell(0, 7, sheet, "Nombre de créneaux disponibles / semaine");
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		StylesLib.setCellMerge(sheet, 1, 2, 0, 0);
+		int yearNum = 3;
+		switch (nameYear) {
+		case DI3:
+			yearNum = 3;
+			numDays = 4.5f;
+			numSlots = 4f;
+			numGroupTD = 3;
+			numGroupTP = 3;
+			break;
+		case DI4:
+			yearNum = 4;
+			numDays = 4.5f;
+			numSlots = 4f;
+			numGroupTD = 3;
+			numGroupTP = 3;
+			break;
+		case DI5:
+			yearNum = 5;
+			numDays = 3;
+			numSlots = 4;
+			numGroupTD = 2;
+			numGroupTP = 2;
+			break;
+
+		}
+		cell = super.writeStringCell(1, 0, sheet, "Année " + yearNum);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		cell = super.writeStringCell(1, 1, sheet, plannings.get(0).getCalendar().getName());
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell = super.writeNumberCell(1, 2, sheet, numDays);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell = super.writeNumberCell(1, 3, sheet, numSlots);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell = super.writeNumberCell(1, 4, sheet, numGroupTD);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell = super.writeNumberCell(1, 5, sheet, numGroupTP);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell = super.writeFormula("C2*D2*C5", 1, 6, sheet);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell = super.writeFormula("C2*D2", 1, 7, sheet);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		cell = super.writeStringCell(2, 1, sheet, plannings.get(1).getCalendar().getName());
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell = super.writeNumberCell(2, 2, sheet, numDays);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell = super.writeNumberCell(2, 3, sheet, numSlots);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell = super.writeNumberCell(2, 4, sheet, numGroupTD);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell = super.writeNumberCell(2, 5, sheet, numGroupTP);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		cell = super.writeFormula("C3*D3*C5", 2, 6, sheet);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell = super.writeFormula("C3*D3", 2, 7, sheet);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		// second table
+		StylesLib.setCellMerge(sheet, 4, 4, 0, 1);
+		cell = super.writeStringCell(4, 0, sheet, "Durée d'un créneau (h)");
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		cell = super.writeNumberCell(4, 2, sheet, 2f);
+		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+		// third table
+		if (this.year.equals("DI5")) {
+			return;
+		} else {
+			cell = super.writeStringCell(6, 0, sheet, "Volume maquettes / étudiant (heures à planifier)");
+
+			cell = super.writeStringCell(7, 3, sheet, "CM");
+			cell.setCellStyle(StylesLib.cmStyle((XSSFWorkbook) workbook));
+			cell = super.writeStringCell(7, 4, sheet, "TD");
+			cell.setCellStyle(StylesLib.tdStyle((XSSFWorkbook) workbook));
+			cell = super.writeStringCell(7, 5, sheet, "TP");
+			cell.setCellStyle(StylesLib.tpStyle((XSSFWorkbook) workbook));
+			cell = super.writeStringCell(7, 6, sheet, "Projet");
+			cell.setCellStyle(StylesLib.ccStyle((XSSFWorkbook) workbook));
+			cell = super.writeStringCell(7, 7, sheet, "Cumul heures / étudiant");
+
+			StylesLib.setCellMerge(sheet, 8, 9, 0, 0);
+			cell = super.writeStringCell(8, 0, sheet, "Année " + yearNum);
+			cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+			StylesLib.setCellMerge(sheet, 8, 8, 1, 2);
+			cell = super.writeStringCell(8, 1, sheet, plannings.get(0).getCalendar().getName());
+			cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+			StylesLib.setCellMerge(sheet, 9, 9, 1, 2);
+			cell = super.writeStringCell(9, 1, sheet, plannings.get(1).getCalendar().getName());
+			cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+
+			if (this.year.equals("DI3") || this.year.equals("DI4")) {
+				// s5
+				cell = super.writeNumberCell(8, 3, sheet, plannings.get(0).getTotalCM());
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				cell = super.writeNumberCell(8, 4, sheet, plannings.get(0).getTotalTD());
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				cell = super.writeNumberCell(8, 5, sheet, plannings.get(0).getTotalTP());
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				cell = super.writeNumberCell(8, 6, sheet, plannings.get(0).getTotalProject());
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				cell = super.writeFormula("SUM(D9:G9)", 8, 7, sheet);
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				// s6
+				cell = super.writeNumberCell(9, 3, sheet, plannings.get(1).getTotalCM());
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				cell = super.writeNumberCell(9, 4, sheet, plannings.get(1).getTotalTD());
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				cell = super.writeNumberCell(9, 5, sheet, plannings.get(1).getTotalTP());
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				cell = super.writeNumberCell(9, 6, sheet, plannings.get(1).getTotalProject());
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				cell = super.writeFormula("SUM(D10:G10)", 9, 7, sheet);
+				cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+			}
 		}
 	}
 
@@ -100,8 +254,11 @@ public class WritePlanning extends WriteFile {
 						0);
 			this.writeTeachingUnit(teachingUnitStartRow, sheets.get(planning.getCalendar().getName()),
 					teachingUnit.getName());
-			teachingUnitStartRow = lastRow + 1;
+			teachingUnitStartRow = lastRow + 2;
 			courseStartRow = teachingUnitStartRow;
+			StylesLib.setCellMerge(sheets.get(planning.getCalendar().getName()), teachingUnitStartRow - 1,
+					teachingUnitStartRow - 1, 0, 10);
+
 		}
 
 		return teachingUnitStartRow - 1;
@@ -111,9 +268,6 @@ public class WritePlanning extends WriteFile {
 		int courseEndRow = courseStartRow;
 		int nowRow, lastRow = courseStartRow;
 		for (Course course : teachingUnit.getListCourses()) {
-			for (Teacher t : course.getListTeachers()) {
-				System.out.println(t.getName());
-			}
 
 			nowRow = this.writeTeachers(courseStartRow, sheet, course);
 
@@ -376,13 +530,64 @@ public class WritePlanning extends WriteFile {
 
 		lastWritenRow += 4;
 
-		StylesLib.setCellMerge(sheet, lastWritenRow - 2, lastWritenRow, 2, 2);
+		StylesLib.setCellMerge(sheet, lastWritenRow - 2, lastWritenRow + 3, 2, 2);
 
 		cell = super.writeStringCell(lastWritenRow - 2, 2, sheet, "Synthèse volume travail / étudiant (h)");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
-		StylesLib.addBorderForMergedCell(sheet, lastWritenRow - 2, lastWritenRow, 2, 2);
+		StylesLib.addBorderForMergedCell(sheet, lastWritenRow - 2, lastWritenRow + 3, 2, 2);
 
-		lastWritenRow += 2;
+		// write two different total
+		switch (nameYear) {
+
+		case DI3:
+			// Mundus
+			StylesLib.setCellMerge(sheet, lastWritenRow - 1, lastWritenRow, 4, 7);
+			cell = super.writeStringCell(lastWritenRow - 1, 4, sheet, "Total Tr. Com. + MUNDUS");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+			StylesLib.addBorderForMergedCell(sheet, lastWritenRow - 1, lastWritenRow, 4, 7);
+
+			// DI3
+			StylesLib.setCellMerge(sheet, lastWritenRow + 2, lastWritenRow + 3, 4, 7);
+			cell = super.writeStringCell(lastWritenRow + 2, 4, sheet, "Total Tr. Com. + DI3");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+			StylesLib.addBorderForMergedCell(sheet, lastWritenRow + 2, lastWritenRow + 3, 4, 7);
+			break;
+
+		case DI4:
+
+			// SI
+			StylesLib.setCellMerge(sheet, lastWritenRow - 1, lastWritenRow, 4, 7);
+			cell = super.writeStringCell(lastWritenRow - 1, 4, sheet, "Total Tr. Com. + SI");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+			StylesLib.addBorderForMergedCell(sheet, lastWritenRow - 1, lastWritenRow, 4, 7);
+
+			// ASR
+			StylesLib.setCellMerge(sheet, lastWritenRow + 2, lastWritenRow + 3, 4, 7);
+			cell = super.writeStringCell(lastWritenRow + 2, 4, sheet, "Total Tr. Com. + ASR");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+			StylesLib.addBorderForMergedCell(sheet, lastWritenRow + 2, lastWritenRow + 3, 4, 7);
+
+			break;
+
+		case DI5:
+			// SI
+			StylesLib.setCellMerge(sheet, lastWritenRow - 1, lastWritenRow, 4, 7);
+			cell = super.writeStringCell(lastWritenRow - 1, 4, sheet, "Total Tr. Com. + SI");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+			StylesLib.addBorderForMergedCell(sheet, lastWritenRow - 1, lastWritenRow, 4, 7);
+
+			// ASR
+			StylesLib.setCellMerge(sheet, lastWritenRow + 2, lastWritenRow + 3, 4, 7);
+			cell = super.writeStringCell(lastWritenRow + 2, 4, sheet, "Total Tr. Com. + ASR");
+			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+			StylesLib.addBorderForMergedCell(sheet, lastWritenRow + 2, lastWritenRow + 3, 4, 7);
+			break;
+
+		default:
+			break;
+		}
+
+		lastWritenRow += 5;
 
 		cell = super.writeStringCell(lastWritenRow, 2, sheet, "N° semaine");
 		cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
@@ -459,6 +664,12 @@ public class WritePlanning extends WriteFile {
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 	}
 
+	/**
+	 * write weeks
+	 * 
+	 * @param planning
+	 * @param numSemester
+	 */
 	private void writeWeeks(Planning planning, int numSemester) {
 		Calendar calendar = planning.getCalendar();
 		Semester semester = calendar.getListSemester().get(numSemester);
@@ -480,8 +691,12 @@ public class WritePlanning extends WriteFile {
 			if (!ToolBox.isHoliday(dates.get(key), semester.getListHoliday())) {// if
 																				// not
 																				// holiday
-				// write summary
-				this.writeSummary(i, sheets.get(calName), numSemester);
+				this.writeAvailable(calendar, i, sheets.get(calName), numSemester, key);
+				// write summary MUNDUS/SI
+				this.writeSummary(i, sheets.get(calName), numSemester, 0);
+				// write summary DI3/ASR
+				this.writeSummary(i, sheets.get(calName), numSemester, 1);
+
 				// write cm,td,tp
 				Cell cell3 = super.writeStringCell(lastWritenRow - 2, i, sheets.get(calName), "CM");
 				Cell cell4 = super.writeStringCell(lastWritenRow - 2, i + 1, sheets.get(calName), "TD");
@@ -503,55 +718,72 @@ public class WritePlanning extends WriteFile {
 
 			//
 		}
+		this.numCol[numSemester] = dates.size() * 3 + 11;
 
 	}
 
-	private void writeSummary(int col, Sheet sheet, int numSemester) {
+	/**
+	 * write summary
+	 * 
+	 * @param col
+	 * @param sheet
+	 * @param numSemester
+	 * @param type
+	 *            0 => SI/MUNDUS, 1=>ASR?DI3
+	 */
+	private void writeSummary(int col, Sheet sheet, int numSemester, int type) {
 		String rowStrStart, rowStrEnd;
 		String totalColStart, totalColEnd;
+		int startRow = 0, line = 4;
+		switch (type) {
+		case 0:
+			startRow = this.lastWritenRow - 3;
+			line = 5;
+			break;
+		case 1:
+			startRow = this.lastWritenRow;
+			line = 4;
+			break;
+		}
 
 		// total
-		totalColStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow - 7);
-		totalColEnd = ToolBox.excelColIndexToStr(col + 3) + (this.lastWritenRow - 7);
-		StylesLib.setCellMerge(sheet, lastWritenRow - 7, lastWritenRow - 7, col, col + 2);
-		Cell cell4_1 = super.writeFormula("SUM(" + totalColStart + ":" + totalColEnd + ")", lastWritenRow - 7, col,
-				sheet);
-		// each part
-		Cell cell1 = super.writeStringCell(lastWritenRow - 9, col, sheet, "CM");
-		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow + 1);
+		totalColStart = ToolBox.excelColIndexToStr(col + 1) + (startRow - 7);
+		totalColEnd = ToolBox.excelColIndexToStr(col + 3) + (startRow - 7);
+		StylesLib.setCellMerge(sheet, startRow - 7, startRow - 7, col, col + 2);
+		Cell cell4_1 = super.writeFormula("SUM(" + totalColStart + ":" + totalColEnd + ")", startRow - 7, col, sheet);
+		// each part CM
+		Cell cell1 = super.writeStringCell(startRow - 9, col, sheet, "CM");
+		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (lastWritenRow + 1);
 		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester] + 1);
 
 		// generate variable
 		String array1 = rowStrStart + ":" + rowStrEnd;
-		String array2_1 = ToolBox.excelColIndexToStr(4) + (this.lastWritenRow + 1) + ":" + ToolBox.excelColIndexToStr(4)
-				+ (this.lastTURow[numSemester] + 1);
+		String array2_1 = ToolBox.excelColIndexToStr(line) + (lastWritenRow + 1) + ":"
+				+ ToolBox.excelColIndexToStr(line) + (this.lastTURow[numSemester] + 1);
 		// write SUMPRODUCT()
-		Cell cell1_1 = super.writeFormula("SUMPRODUCT(" + array1 + "," + array2_1 + ")", lastWritenRow - 8, col++,
-				sheet);
+		Cell cell1_1 = super.writeFormula("SUMPRODUCT(" + array1 + "," + array2_1 + ")", startRow - 8, col++, sheet);
 
-		// each part
-		Cell cell2 = super.writeStringCell(lastWritenRow - 9, col, sheet, "TD");
-		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow + 1);
+		// each part TD
+		Cell cell2 = super.writeStringCell(startRow - 9, col, sheet, "TD");
+		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (lastWritenRow + 1);
 		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester] + 1);
 		// generate variable
 		array1 = rowStrStart + ":" + rowStrEnd;
-		array2_1 = ToolBox.excelColIndexToStr(4) + (this.lastWritenRow + 1) + ":" + ToolBox.excelColIndexToStr(4)
+		array2_1 = ToolBox.excelColIndexToStr(line) + (lastWritenRow + 1) + ":" + ToolBox.excelColIndexToStr(line)
 				+ (this.lastTURow[numSemester] + 1);
 		// write SUMPRODUCT()
-		Cell cell2_1 = super.writeFormula("SUMPRODUCT(" + array1 + "," + array2_1 + ")", lastWritenRow - 8, col++,
-				sheet);
+		Cell cell2_1 = super.writeFormula("SUMPRODUCT(" + array1 + "," + array2_1 + ")", startRow - 8, col++, sheet);
 
-		// each part
-		Cell cell3 = super.writeStringCell(lastWritenRow - 9, col, sheet, "TP");
-		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (this.lastWritenRow + 1);
+		// each part TP
+		Cell cell3 = super.writeStringCell(startRow - 9, col, sheet, "TP");
+		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (lastWritenRow + 1);
 		rowStrEnd = ToolBox.excelColIndexToStr(col + 1) + (this.lastTURow[numSemester] + 1);
 		// generate variable
 		array1 = rowStrStart + ":" + rowStrEnd;
-		array2_1 = ToolBox.excelColIndexToStr(4) + (this.lastWritenRow + 1) + ":" + ToolBox.excelColIndexToStr(4)
+		array2_1 = ToolBox.excelColIndexToStr(line) + (lastWritenRow + 1) + ":" + ToolBox.excelColIndexToStr(line)
 				+ (this.lastTURow[numSemester] + 1);
 		// write SUMPRODUCT()
-		Cell cell3_1 = super.writeFormula("SUMPRODUCT(" + array1 + "," + array2_1 + ")", lastWritenRow - 8, col++,
-				sheet);
+		Cell cell3_1 = super.writeFormula("SUMPRODUCT(" + array1 + "," + array2_1 + ")", startRow - 8, col++, sheet);
 
 		cell1.setCellStyle(StylesLib.cmStyle((XSSFWorkbook) workbook));
 		cell2.setCellStyle(StylesLib.tdStyle((XSSFWorkbook) workbook));
@@ -563,8 +795,8 @@ public class WritePlanning extends WriteFile {
 		cell4_1.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 
 		/*
-		 * =(J10/Paramétrage!$C$5)+(IF(MOD(K10,Paramétrage!$C$5*Paramétrage!$E$2
-		 * ),
+		 * "("+c1+"/Paramétrage!$C$5)+(IF(MOD(K10,Paramétrage!$C$5*Paramétrage!
+		 * $E$2 ),
 		 * (ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2),0)+1)*Paramétrage!
 		 * $E$2,
 		 * ROUNDDOWN(K10/(Paramétrage!$C$5*Paramétrage!$E$2)*Paramétrage!$E$2,0)
@@ -572,7 +804,103 @@ public class WritePlanning extends WriteFile {
 		 * (ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2),0)+1)*Paramétrage!
 		 * $E$2,
 		 * ROUNDDOWN(L10/(Paramétrage!$C$5*Paramétrage!$F$2)*Paramétrage!$F$2,0)
-		 * ))
+		 * ))"
 		 */
+	}
+
+	/**
+	 * write available time
+	 * 
+	 * @param planning
+	 * @param numSemester
+	 */
+	private void writeAvailable(Calendar calendar, int col, Sheet sheet, int numSemester, int weekNum) {
+		Semester semester = calendar.getListSemester().get(numSemester);
+		String rowStrStart, rowStrEnd;
+		String freeDayName = "";
+		int startRow = this.lastWritenRow - 16;
+		String totalSlot = "Paramétrage!$H$2", avaiableSlot = "Paramétrage!$H$2";
+
+		for (FreeDay fd : semester.getListFreeDays()) {
+			if (ToolBox.freeDayInWeek(weekNum, fd.getDate())) {
+				avaiableSlot = avaiableSlot + "-" + fd.getTimeslot();
+				freeDayName += fd.getName();
+				StylesLib.setCellMerge(sheet, startRow - 2, startRow - 1, col, col + 2);
+				Cell cellName = super.writeStringCell(startRow - 2, col, sheet, freeDayName);
+				cellName.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+				StylesLib.addBorderForMergedCell(sheet, startRow - 2, startRow - 1, col, col + 2);
+			}
+		}
+
+		StylesLib.setCellMerge(sheet, startRow, startRow, col, col + 2);
+		StylesLib.setCellMerge(sheet, startRow + 1, startRow + 1, col, col + 2);
+		StylesLib.setCellMerge(sheet, startRow + 2, startRow + 2, col, col + 2);
+
+		rowStrStart = ToolBox.excelColIndexToStr(col + 1) + (startRow + 2);
+		// line 3
+		String c1, c2, c3;
+		c1 = ToolBox.excelColIndexToStr(col + 1) + (startRow + 9);
+		c2 = ToolBox.excelColIndexToStr(col + 2) + (startRow + 9);
+		c3 = ToolBox.excelColIndexToStr(col + 3) + (startRow + 9);
+		String forlume = "(" + c1 + "/Paramétrage!$C$5)+(IF(MOD(" + c2
+				+ ",Paramétrage!$C$5*Paramétrage!$E$2),(ROUNDDOWN(" + c2
+				+ "/(Paramétrage!$C$5*Paramétrage!$E$2),0)+1)*Paramétrage!$E$2,ROUNDDOWN(" + c2
+				+ "/(Paramétrage!$C$5*Paramétrage!$E$2)*Paramétrage!$E$2,0))) +(IF(MOD(" + c3
+				+ ",Paramétrage!$C$5*Paramétrage!$F$2),(ROUNDDOWN(" + c3
+				+ "/(Paramétrage!$C$5*Paramétrage!$F$2),0)+1)*Paramétrage!$E$2,ROUNDDOWN(" + c3
+				+ "/(Paramétrage!$C$5*Paramétrage!$F$2)*Paramétrage!$F$2,0)))";
+
+		Cell cell1 = super.writeFormula(rowStrStart + "*Paramétrage!$C$5", startRow, col, sheet);
+		Cell cell2 = super.writeFormula(avaiableSlot, startRow + 1, col, sheet);
+		Cell cell3 = super.writeFormula(forlume, startRow + 2, col, sheet);
+
+		cell1.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell2.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		cell3.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
+		StylesLib.addBorderForMergedCell(sheet, startRow, startRow, col, col + 2);
+		StylesLib.addBorderForMergedCell(sheet, startRow + 1, startRow + 1, col, col + 2);
+		StylesLib.addBorderForMergedCell(sheet, startRow + 2, startRow + 2, col, col + 2);
+
+	}
+
+	private void writeEmptyCells(Sheet sheet, int numSemester) {
+		int startRow, endRow, startCol = 9, endCol;
+
+		String rowStr;
+		startRow = this.lastWritenRow;
+		endRow = this.lastTURow[numSemester] - 1;
+		endCol = this.numCol[numSemester] - 1;
+		Cell cellRow = null, cellCol = null;
+		for (int i = startRow; i <= endRow; i++) {
+			if (sheet.getRow(i) == null)
+				continue;
+			cellRow = sheet.getRow(i).getCell(startCol);
+			if (cellRow == null) {
+				continue;
+			}
+			if (cellRow.getCellTypeEnum() == CellType.STRING) {
+				rowStr = cellRow.getRichStringCellValue().getString().trim().toUpperCase();
+				for (int j = 11; j <= endCol; j++) {
+					Cell cellEmpty = sheet.getRow(i).createCell(j);
+					cellEmpty.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
+					cellCol = sheet.getRow(startRow - 2).getCell(j);
+					if (cellCol == null) {
+						cellEmpty.setCellStyle(StylesLib.holidayBorderStyle((XSSFWorkbook) workbook));
+					} else {
+						String colStr = cellCol.getRichStringCellValue().getString().trim().toUpperCase();
+
+						if (rowStr.equals(colStr) && rowStr.equals("CM")) {
+							cellEmpty.setCellStyle(StylesLib.cmBorderStyle((XSSFWorkbook) workbook));
+						}
+						if (rowStr.equals(colStr) && rowStr.equals("TD")) {
+							cellEmpty.setCellStyle(StylesLib.tdBorderStyle((XSSFWorkbook) workbook));
+						}
+						if (rowStr.equals(colStr) && rowStr.equals("TP")) {
+							cellEmpty.setCellStyle(StylesLib.tpBorderStyle((XSSFWorkbook) workbook));
+						}
+					}
+				}
+			}
+		}
 	}
 }

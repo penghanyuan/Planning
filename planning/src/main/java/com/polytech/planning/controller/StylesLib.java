@@ -1,5 +1,7 @@
 package com.polytech.planning.controller;
 
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.RegionUtil;
@@ -10,6 +12,8 @@ public final class StylesLib {
 	private static XSSFColor cmBg;
 	private static XSSFColor tdBg;
 	private static XSSFColor tpBg;
+	private static XSSFColor asrBg;
+	private static XSSFColor siBg;
 	private static XSSFColor ccEtBg;
 	private static XSSFColor dateBg;
 	private static XSSFColor weekNumBg;
@@ -27,6 +31,8 @@ public final class StylesLib {
 		tdBg = new XSSFColor(new java.awt.Color(139, 195, 74, 0)); // #8BC34A
 		tpBg = new XSSFColor(new java.awt.Color(255, 193, 7, 0)); // #FFC107
 		ccEtBg = new XSSFColor(new java.awt.Color(244, 67, 54, 0)); // #F44336
+		siBg = new XSSFColor(new java.awt.Color(0, 117, 169, 0));
+		asrBg = new XSSFColor(new java.awt.Color(50, 117, 108, 0));
 
 		dateBg = new XSSFColor(new java.awt.Color(189, 189, 189, 0)); // #BDBDBD
 		weekNumBg = new XSSFColor(new java.awt.Color(224, 224, 224, 0)); // #E0E0E0
@@ -73,8 +79,7 @@ public final class StylesLib {
 	 * @param wb
 	 * @return
 	 */
-	public static void addBorderForMergedCell(Sheet sheet, int rowStart, int rowEnd,
-			int colStart, int colEnd) {
+	public static void addBorderForMergedCell(Sheet sheet, int rowStart, int rowEnd, int colStart, int colEnd) {
 		CellRangeAddress brodercell = new CellRangeAddress(rowStart, rowEnd, colStart, colEnd);
 		setBorderForMergeCell(BorderStyle.THIN, brodercell, sheet);
 	}
@@ -145,6 +150,66 @@ public final class StylesLib {
 
 		return cellStyle;
 	}
+	
+	/**
+	 * Style for classroom type cells with border
+	 * 
+	 * @param wb
+	 * @return
+	 */
+	public static XSSFCellStyle cmBorderStyle(XSSFWorkbook wb) {
+		XSSFCellStyle cellStyle = baseBorderStyle(wb);
+		cellStyle.setAlignment(HorizontalAlignment.CENTER);
+		cellStyle.setFillForegroundColor(cmBg);
+		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+		return cellStyle;
+	}
+
+	/**
+	 * Style for supervised work cells with border
+	 * 
+	 * @param wb
+	 * @return
+	 */
+	public static XSSFCellStyle tdBorderStyle(XSSFWorkbook wb) {
+		XSSFCellStyle cellStyle = baseBorderStyle(wb);
+		cellStyle.setAlignment(HorizontalAlignment.CENTER);
+		cellStyle.setFillForegroundColor(tdBg);
+		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+		return cellStyle;
+	}
+
+	/**
+	 * Style for practical work cells with border
+	 * 
+	 * @param wb
+	 * @return
+	 */
+	public static XSSFCellStyle tpBorderStyle(XSSFWorkbook wb) {
+		XSSFCellStyle cellStyle = baseBorderStyle(wb);
+		cellStyle.setAlignment(HorizontalAlignment.CENTER);
+		cellStyle.setFillForegroundColor(tpBg);
+		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+		return cellStyle;
+	}
+
+	/**
+	 * Style for continuous control and terminal proof cells with border
+	 * 
+	 * @param wb
+	 * @return
+	 */
+	public static XSSFCellStyle ccBorderStyle(XSSFWorkbook wb) {
+		XSSFCellStyle cellStyle = baseBorderStyle(wb);
+		cellStyle.setAlignment(HorizontalAlignment.CENTER);
+		cellStyle.setFillForegroundColor(ccEtBg);
+		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+		return cellStyle;
+	}
 
 	/**
 	 * Style for cells of type number of week
@@ -191,6 +256,20 @@ public final class StylesLib {
 		return cellStyle;
 	}
 
+	/**
+	 * Style for holiday cells with border
+	 * 
+	 * @param wb
+	 * @return
+	 */
+	public static XSSFCellStyle holidayBorderStyle(XSSFWorkbook wb) {
+		XSSFCellStyle cellStyle = baseBorderStyle(wb);
+		cellStyle.setAlignment(HorizontalAlignment.CENTER);
+		cellStyle.setFillForegroundColor(holidaysBg);
+		cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+		return cellStyle;
+	}
 	/**
 	 * Makes bold the font of the style passed in parameter
 	 * 

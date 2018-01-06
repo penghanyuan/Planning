@@ -62,6 +62,19 @@ public final class ToolBox {
 		return result;
 	}
 
+	/**
+	 * test if freeday is in this week
+	 */
+	public static boolean freeDayInWeek(int weekNum, Date date) {
+		LinkedHashMap<Integer, String> result = new LinkedHashMap<Integer, String>();
+		Calendar tempStart = Calendar.getInstance();
+		tempStart.setTime(date);
+		if (tempStart.get(Calendar.WEEK_OF_YEAR) == weekNum) {
+			return true;
+		}
+		return false;
+	}
+
 	public static boolean isHoliday(String string, List<Holiday> holiday) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yy");
 		Date date;
@@ -106,13 +119,11 @@ public final class ToolBox {
 				for (Course c : tu.getListCourses()) {
 					c.setType("ASR");
 				}
-			}
-			else if (tu.getName().toUpperCase().matches(".*PARCOURS SI.*")) {
+			} else if (tu.getName().toUpperCase().matches(".*PARCOURS SI.*")) {
 				for (Course c : tu.getListCourses()) {
 					c.setType("SI");
 				}
-			}
-			else{
+			} else {
 				for (Course c : tu.getListCourses()) {
 					c.setType("ALL");
 				}
