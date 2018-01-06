@@ -1,17 +1,20 @@
 package com.polytech.planning;
 
+import com.ploytech.planning.view.MainView;
 import com.polytech.planning.controller.GeneratePlanning;
 import com.polytech.planning.controller.WritePlanning;
 
 public class App {
 	public static void main(String[] args) {
-		WritePlanning wp = null;
-		GeneratePlanning gp = new GeneratePlanning("2017/2018", "Maquette.xlsx", "Calendar.xlsx");
+//		for(int i = 0;i<args.length;i++){
+//			System.out.println(args[i]);
+//		}
+		
+		MainView mainView= new MainView(args);
 		try {
-			wp = new WritePlanning(gp.getPlanningByYear("DI3"), "DI3", "Planning Année 3 DI 2017-2018.xlsx");
-			wp.createFile();
+			mainView.parseCommand();
 		} catch (Exception e) {
-			System.out.println(e.getMessage());;
+			System.out.println(e.getMessage());
 		}
 		
 	}

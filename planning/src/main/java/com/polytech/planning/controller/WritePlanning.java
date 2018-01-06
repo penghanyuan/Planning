@@ -64,6 +64,7 @@ public class WritePlanning extends WriteFile {
 	 * @param planning
 	 */
 	public void createFile() {
+		System.out.println("Writing data into file...");
 		Sheet para = this.workbook.createSheet("Paramétrage");
 		sheets.put("Paramétrage", para);
 		this.writeParametrage();
@@ -557,13 +558,13 @@ public class WritePlanning extends WriteFile {
 
 			// SI
 			StylesLib.setCellMerge(sheet, lastWritenRow - 1, lastWritenRow, 4, 7);
-			cell = super.writeStringCell(lastWritenRow - 1, 4, sheet, "Total Tr. Com. + SI");
+			cell = super.writeStringCell(lastWritenRow - 1, 4, sheet, "Total Tr. Com. + ASR");
 			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 			StylesLib.addBorderForMergedCell(sheet, lastWritenRow - 1, lastWritenRow, 4, 7);
 
 			// ASR
 			StylesLib.setCellMerge(sheet, lastWritenRow + 2, lastWritenRow + 3, 4, 7);
-			cell = super.writeStringCell(lastWritenRow + 2, 4, sheet, "Total Tr. Com. + ASR");
+			cell = super.writeStringCell(lastWritenRow + 2, 4, sheet, "Total Tr. Com. + SI");
 			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 			StylesLib.addBorderForMergedCell(sheet, lastWritenRow + 2, lastWritenRow + 3, 4, 7);
 
@@ -572,13 +573,13 @@ public class WritePlanning extends WriteFile {
 		case DI5:
 			// SI
 			StylesLib.setCellMerge(sheet, lastWritenRow - 1, lastWritenRow, 4, 7);
-			cell = super.writeStringCell(lastWritenRow - 1, 4, sheet, "Total Tr. Com. + SI");
+			cell = super.writeStringCell(lastWritenRow - 1, 4, sheet, "Total Tr. Com. + ASR");
 			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 			StylesLib.addBorderForMergedCell(sheet, lastWritenRow - 1, lastWritenRow, 4, 7);
 
 			// ASR
 			StylesLib.setCellMerge(sheet, lastWritenRow + 2, lastWritenRow + 3, 4, 7);
-			cell = super.writeStringCell(lastWritenRow + 2, 4, sheet, "Total Tr. Com. + ASR");
+			cell = super.writeStringCell(lastWritenRow + 2, 4, sheet, "Total Tr. Com. + SI");
 			cell.setCellStyle(StylesLib.baseBorderStyle((XSSFWorkbook) workbook));
 			StylesLib.addBorderForMergedCell(sheet, lastWritenRow + 2, lastWritenRow + 3, 4, 7);
 			break;

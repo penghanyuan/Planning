@@ -23,6 +23,7 @@ public class GeneratePlanning {
 
 	private LinkedHashMap<String, List<Planning>> setPlannings() {
 		LinkedHashMap<String, List<Planning>> plannings = new LinkedHashMap<String, List<Planning>>();
+		System.out.println("Reading Calendar...");
 		ReadCalendar readCalendar = new ReadCalendar(this.filePathCalender);
 		ReadMockUp readMockUp = null;
 		List<Planning> planningDI3 = new ArrayList<Planning>();
@@ -34,8 +35,10 @@ public class GeneratePlanning {
 		readCalendar.readFreeDays(2);
 
 		// DI3 S5
+		System.out.println("Reading MockUp...");
 		readMockUp = new ReadMockUp(this.filePathMockUp, 1);
 		readMockUp.readTeachingUnits();
+		System.out.println("Parsing data...");
 		ParserMockUp pMockUp = new ParserMockUp(readMockUp.getTeachingUnits());
 		ParserCalendar pCalendar = new ParserCalendar(readCalendar.getCalendar());
 		Planning planning = new Planning(this.year, pMockUp.createTeachingUnits(), pCalendar.createCalendar());
