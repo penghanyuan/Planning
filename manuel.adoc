@@ -22,32 +22,56 @@ Le second contient le *calendrier de l'année* avec les dates des semestres, les
 
 ==== Structure du fichier maquette
 
-La structure du fichier maquette n'est pas strict, le nom des colonnes doit être comme sur la capture d'écran. 
+La structure du fichier maquette n'est pas strict, mais il y a plusieurs choses à respecter.
+Les colonnes doivent être nommés comme sur l'image ci-dessous. 
 
 ====
 NOTE: Le {genplanning} n'est pas sensible à la case, ni aux accents.
 ====
 
-.Capture du fichier maquette
+Tous les titres de colonnes ne sont pas important, voici la liste de celles utilisés par le {genplanning} :
+
+* *<annéeDébut>-<annéeFin>* (_Doit être juste à gauche de "Unité d'enseignement"_)
+* *Unité d'enseignement*
+* *Cours*
+* *TD*
+* *TP*
+* *Projet*
+* *Affectations des enseignements*
+
+.Entête du fichier maquette
 image:header.png[Entête du ficher maquette]
 
-Le seul point important est la disposition des titre des unités d'enseignement, ils doivent être décalés d'une colonne à gauche par rapport à la colonne portant le nom "UNITE D'ENSEIGNEMENT".
+Le seul point important est la disposition des titre des unités d'enseignement, ils doivent être décalés d'une colonne à gauche par rapport à la colonne portant le nom "_Unité d'enseignement_".
 
 ==== Format de l'affectations des enseignements
 
+Nous allons voir dans cette partie comment formater le contenue de la "_Affectations des enseignements_".
+Les lignes qui sont au même niveau que le nom de l'Unité d'enseignement n'est pas importante car les données présentes dans ces cases ne seront pas lu par le {genplanning}.
+Les lignes en face des nom de matières, quand à elles ont un format particulier.
+
+.Structure du contenue
+[source,txt]
+....
+<nomEnseignant>, <x>hCM, <y>hTD x<nbGroupes>gr (+ Mundus)>, <z>hTP x<nbGroupes> (+ Mundus)
+....
+
+Dans certain cas, il y a plusieurs enseignants pour une seule matière.
+Pour renseigner plusieurs enseigants, il faut les séparer par un *;*.
+Comme sur l'exemple ci-dessous.
+
+.Exemple de données pour la colonne "_Affectations des enseignements_"
+image:header-affectation.png[Entête pour l'Affectations des enseignements, 400]
+
 ====
-Prénom Nom, {heures_de_CM, heures_de_TD*[Nombre_de_groupe (+ Mundus)], heures_de_TP*[Nombre_de_groupe (+ Mundus)]} ; ...
-
-WARNING: Les virgules sont très importantes, elles sont utilisées pour parser le fichier.
-
-"H. Cardot, 8hCM, 2hTD, 0hTP*3gr + Mundus; R. Ravaux 12hCM,  4hTD Mundus, 14hTP x3gr + 20hTP Mundus ; Mostapha Darwich, 4hTD, 6hTP x3gr"
+WARNING: Les *virgules* sont très importantes, elles sont utilisées lors de la lecture du fichier par le {genplanning}.
 ====
 
 === Calendrier
 
 == Utilisation
 
-.Commande help
+.Commande + help
 [source, bash]
 ....
 ------------------------------------------------------------
