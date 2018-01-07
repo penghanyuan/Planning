@@ -61,6 +61,14 @@ public class MainView {
 
 		}
 	}
+	/**
+	 * excute the command
+	 * @param school_year
+	 * @param annee
+	 * @param maquette_path
+	 * @param calendar_path
+	 * @param file_name
+	 */
 
 	private void excuteCommand(String school_year, String annee, String maquette_path, String calendar_path,
 			String file_name) {
@@ -75,7 +83,10 @@ public class MainView {
 			System.out.println(e.getMessage());
 		}
 	}
-
+	
+	/**
+	 * offer help information for user
+	 */
 	private void help() {
 		System.out.println("------------------------------------------------------------");
 		System.out.println("The format of command is:");

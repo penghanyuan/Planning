@@ -72,8 +72,8 @@ public final class StylesLib {
 	}
 
 	/**
-	 * set Border For Merged Cell
 	 * 
+	 * set Border For Merged Cell 
 	 * @param wb
 	 * @return
 	 */
@@ -81,7 +81,13 @@ public final class StylesLib {
 		CellRangeAddress brodercell = new CellRangeAddress(rowStart, rowEnd, colStart, colEnd);
 		setBorderForMergeCell(BorderStyle.THIN, brodercell, sheet);
 	}
-
+	
+	/**
+	 * used by addBorderForMergedCell()
+	 * @param i
+	 * @param cellRangeTitle
+	 * @param sheet
+	 */
 	private static void setBorderForMergeCell(BorderStyle i, CellRangeAddress cellRangeTitle, Sheet sheet) {
 		RegionUtil.setBorderBottom(i, cellRangeTitle, sheet);
 		RegionUtil.setBorderLeft(i, cellRangeTitle, sheet);

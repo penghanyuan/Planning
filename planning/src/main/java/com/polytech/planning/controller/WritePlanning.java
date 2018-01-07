@@ -91,7 +91,10 @@ public class WritePlanning extends WriteFile {
 		}
 
 	}
-
+	
+	/**
+	 * write the first sheet "Paramétrage" of planning
+	 */
 	private void writeParametrage() {
 		Sheet sheet = sheets.get("Paramétrage");
 		float numDays = 0, numSlots = 0, numGroupTD = 0, numGroupTP = 0, totalCM = 0, totalTD = 0, totalTP = 0;
@@ -239,7 +242,12 @@ public class WritePlanning extends WriteFile {
 			}
 		}
 	}
-
+	
+	/**
+	 * write all teaching units into sheet
+	 * @param planning
+	 * @return
+	 */
 	public int writeTeachingUnits(Planning planning) {
 		List<TeachingUnit> teachingUnits = planning.getTeachingUnits();
 		ToolBox.checkCourseType(teachingUnits);
@@ -264,7 +272,14 @@ public class WritePlanning extends WriteFile {
 
 		return teachingUnitStartRow - 1;
 	}
-
+	
+	/**
+	 * write courses of one teaching unit into a sheet
+	 * @param courseStartRow
+	 * @param sheet
+	 * @param teachingUnit
+	 * @return
+	 */
 	public int writeCourses(int courseStartRow, Sheet sheet, TeachingUnit teachingUnit) {
 		int courseEndRow = courseStartRow;
 		int nowRow, lastRow = courseStartRow;
@@ -296,7 +311,14 @@ public class WritePlanning extends WriteFile {
 		}
 		return lastRow;
 	}
-
+	
+	/**
+	 * write MUNDUS course's teachers
+	 * @param teacherStartRow
+	 * @param sheet
+	 * @param course
+	 * @return
+	 */
 	private int writeMundusTeachers(int teacherStartRow, Sheet sheet, Course course) {
 		int teacherEndRow = teacherStartRow;
 		int lastRow = 0;
@@ -342,7 +364,14 @@ public class WritePlanning extends WriteFile {
 		}
 		return lastRow;
 	}
-
+	
+	/**
+	 * write teachers for all courses (except for MUNDUS course)
+	 * @param teacherStartRow
+	 * @param sheet
+	 * @param course
+	 * @return
+	 */
 	private int writeTeachers(int teacherStartRow, Sheet sheet, Course course) {
 		int teacherEndRow = teacherStartRow;
 		int lastRow = 0;
@@ -464,7 +493,13 @@ public class WritePlanning extends WriteFile {
 		}
 		return lastRow;
 	}
-
+	
+	/**
+	 * write column DI3 for planning of DI3
+	 * @param row
+	 * @param sheet
+	 * @param mundus
+	 */
 	private void writeBooleanDI3(int row, Sheet sheet, Boolean mundus) {
 		if (mundus) {
 			Cell cell = super.writeNumberCell(row, 4, sheet, 1);
@@ -479,7 +514,13 @@ public class WritePlanning extends WriteFile {
 		}
 
 	}
-
+	
+	/**
+	 * write column ASR or SI for DI4&DI5
+	 * @param row
+	 * @param sheet
+	 * @param type
+	 */
 	private void writeBooleanDI4(int row, Sheet sheet, String type) {
 		if (type.equalsIgnoreCase("ASR")) {// right ASR
 			Cell cell = super.writeNumberCell(row, 4, sheet, 1);
@@ -499,7 +540,11 @@ public class WritePlanning extends WriteFile {
 		}
 
 	}
-
+	
+	/**
+	 * write the introduction part of planning
+	 * @param planning
+	 */
 	private void writeIntroPart(Planning planning) {
 		lastWritenRow = 2;
 		String calName = planning.getCalendar().getName();
@@ -641,25 +686,49 @@ public class WritePlanning extends WriteFile {
 
 		lastWritenRow++;
 	}
-
+	
+	/**
+	 * write one teaching unit
+	 * @param row
+	 * @param sheet
+	 * @param content
+	 */
 	private void writeTeachingUnit(int row, Sheet sheet, String content) {
 		Cell cell = super.writeStringCell(row, 0, sheet, content);
 		StylesLib.columTitleWidth(sheet, 0);
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 	}
-
+	
+	/**
+	 * write one course
+	 * @param row
+	 * @param sheet
+	 * @param content
+	 */
 	private void writeCourse(int row, Sheet sheet, String content) {
 		Cell cell = super.writeStringCell(row, 1, sheet, content);
 		StylesLib.columTitleWidth(sheet, 1);
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 	}
-
+	
+	/**
+	 * write one teacher
+	 * @param row
+	 * @param sheet
+	 * @param content
+	 */
 	private void writeTeacher(int row, Sheet sheet, String content) {
 		Cell cell = super.writeStringCell(row, 2, sheet, content);
 		StylesLib.columTitleWidth(sheet, 2);
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
 	}
-
+	
+	/**
+	 * write hours to be put
+	 * @param row
+	 * @param sheet
+	 * @param content
+	 */
 	private void writeHoursPut(int row, Sheet sheet, double content) {
 		Cell cell = super.writeNumberCell(row, 5, sheet, (float) content);
 		cell.setCellStyle(StylesLib.baseStyle((XSSFWorkbook) workbook));
@@ -863,7 +932,12 @@ public class WritePlanning extends WriteFile {
 		StylesLib.addBorderForMergedCell(sheet, startRow + 2, startRow + 2, col, col + 2);
 
 	}
-
+	
+	/**
+	 * set style for cell that will be put hour
+	 * @param sheet
+	 * @param numSemester
+	 */
 	private void writeEmptyCells(Sheet sheet, int numSemester) {
 		int startRow, endRow, startCol = 9, endCol;
 

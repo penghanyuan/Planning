@@ -7,6 +7,11 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
+/**
+ * Class for store original information of calendar
+ * To be parsed by class ParserCalendar
+ *
+ */
 public class OriginalCalendar {
 
 	private LinkedHashMap<String, Date[]> semesters;

@@ -27,8 +27,8 @@ public class ParserCalendar {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * create semesters
+	 * @return list of semester
 	 */
 	private List<Semester> createSemester() {
 		List<Semester> semesters = new ArrayList<Semester>();
@@ -56,8 +56,8 @@ public class ParserCalendar {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * createFreeDays
+	 * @return list of freedays
 	 */
 	private List<FreeDay> createFreeDays() {
 		List<FreeDay> freeDays = new ArrayList<FreeDay>();
@@ -81,8 +81,8 @@ public class ParserCalendar {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * createHolidays
+	 * @return list of holiday
 	 */
 	private List<Holiday> createHolidays() {
 		List<Holiday> holidays = new ArrayList<Holiday>();
@@ -102,7 +102,7 @@ public class ParserCalendar {
 	}
 	/**
 	 * 
-	 * @return
+	 * @return object calendar
 	 */
 	public Calendar createCalendar() {
 		Calendar calendar = new Calendar();

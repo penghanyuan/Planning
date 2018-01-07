@@ -48,7 +48,13 @@ public final class ToolBox {
 
 		return result;
 	}
-
+	
+	/**
+	 * get list of date between begin and end
+	 * @param begin
+	 * @param end
+	 * @return
+	 */
 	public static LinkedHashMap<Integer, String> getBetweenDates(Date begin, Date end) {
 		LinkedHashMap<Integer, String> result = new LinkedHashMap<Integer, String>();
 		Calendar tempStart = Calendar.getInstance();
@@ -74,7 +80,13 @@ public final class ToolBox {
 		}
 		return false;
 	}
-
+	
+	/**
+	 * test a date is a holiday or not
+	 * @param string
+	 * @param holiday
+	 * @return
+	 */
 	public static boolean isHoliday(String string, List<Holiday> holiday) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yy");
 		Date date;
@@ -96,7 +108,12 @@ public final class ToolBox {
 		return false;
 
 	}
-
+	
+	/**
+	 * convert from numberIndex to excel format index like AC...
+	 * @param columnIndex
+	 * @return
+	 */
 	public static String excelColIndexToStr(int columnIndex) {
 		if (columnIndex <= 0) {
 			return null;
@@ -112,7 +129,11 @@ public final class ToolBox {
 		} while (columnIndex > 0);
 		return columnStr;
 	}
-
+	
+	/**
+	 * check a course is ASR or SI
+	 * @param teachingUnits
+	 */
 	public static void checkCourseType(List<TeachingUnit> teachingUnits) {
 		for (TeachingUnit tu : teachingUnits) {
 			if (tu.getName().toUpperCase().matches(".*PARCOURS ASR.*")) {

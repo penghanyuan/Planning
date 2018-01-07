@@ -1,5 +1,10 @@
 package com.polytech.planning.model;
 
+/**
+ * Class for store original information of course
+ * To be parsed by class ParserMockUp
+ *
+ */
 public class OriginalCourse {
 
 	private String courseName;

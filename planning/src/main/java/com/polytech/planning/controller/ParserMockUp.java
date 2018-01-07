@@ -14,9 +14,7 @@ import com.polytech.planning.model.TeachingUnit;
 public class ParserMockUp {
 
 	private LinkedHashMap<String, List<OriginalCourse>> originalCourses;
-
-	// add calendar
-
+	
 	public ParserMockUp() {
 		this.originalCourses = new LinkedHashMap<String, List<OriginalCourse>>();
 	}
@@ -29,8 +27,8 @@ public class ParserMockUp {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * create list of teaching units
+	 * @return list of teaching units
 	 */
 	public List<TeachingUnit> createTeachingUnits() {
 		List<TeachingUnit> teachingUnits = new ArrayList<TeachingUnit>();
@@ -96,8 +94,8 @@ public class ParserMockUp {
 	/**
 	 * 
 	 * @param oriTeachers
-	 * @return
-	 */
+	 * @return list of teachers
+	 */ 
 	@SuppressWarnings("unused")
 	public List<Teacher> createTeachers(String oriTeachers, Double[] heures) {
 		String regCM = ".*CM.*", regTD = ".*TD.*", regTP = ".*TP.*", regAllMundus = ".*Mundus.*";
@@ -209,6 +207,12 @@ public class ParserMockUp {
 
 		return teachers;
 	}
+	/**
+	 * create list of teacher seperated by "/" for a same course
+	 * eg.N. Monmarché / P. Gaucher / Y. Kergosien for DI3 S5
+	 * @param oriTeachers
+	 * @return
+	 */
 
 	private List<Teacher> fusionTeacher(List<Teacher> oriTeachers) {
 		List<Teacher> result = new ArrayList<Teacher>();
