@@ -35,95 +35,96 @@ public class ReadMockUp extends ReadFile {
 	public ReadMockUp(String filePath, int sheetNum) {
 		super(filePath);
 		String searchString = "Unité d'enseignement";
-		int[] coordinates = searchContent(sheetNum, searchString, false);
-		
-		if(coordinates[0] == -1 || coordinates[1] == -1) {
-			try {
-				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'Unité d'enseignement'.");
-			} catch (FileFormatException e) {
-				e.printStackTrace();
+
+		try {
+
+			int[] coordinates = searchContent(sheetNum, searchString, false);
+
+			if (coordinates[0] == -1 || coordinates[1] == -1) {
+				try {
+					throw new FileFormatException("Le formats du fichier " + filePath
+							+ " n'est pas valide. Il manque le terme 'Unité d'enseignement'.");
+				} catch (FileFormatException e) {
+					e.printStackTrace();
+				}
 			}
+
+			this.sheetNum = sheetNum;
+			this.rowNum = coordinates[0];
+
+			this.colCourseName = coordinates[1];
+			this.colTitleTU = coordinates[1] - 1;
+
+			getColNumbers(filePath, sheetNum);
+
+			teachingUnits = new LinkedHashMap<String, List<OriginalCourse>>();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	private void getColNumbers(String filePath, int sheetNum) throws FileFormatException {
+		String sheetName = null;
+		try {
+			sheetName = getSheetName(sheetNum);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
-		this.sheetNum = sheetNum;
-		this.rowNum = coordinates[0];
+		if (sheetName != null) {
+			this.colCM = searchContent(sheetNum, "Cours", false)[1];
+			if (this.colCM == -1) {
+				throw new FileFormatException("Le formats du fichier " + filePath + " n'est pas valide sur l'onglet "
+						+ sheetName + ". Il manque le terme 'Cours'.");
+			}
 
-		this.colCourseName = coordinates[1];
-		this.colTitleTU = coordinates[1] - 1;
+			this.colTD = searchContent(sheetNum, "TD", false)[1];
+			if (this.colTD == -1) {
+				throw new FileFormatException("Le formats du fichier " + filePath + " n'est pas valide sur l'onglet "
+						+ sheetName + ". Il manque le terme 'TD'.");
+			}
 
-		this.colCM = searchContent(sheetNum, "Cours", false)[1];
-		if(coordinates[0] == -1 || coordinates[1] == -1) {
-			try {
-				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'Cours'.");
-			} catch (FileFormatException e) {
-				e.printStackTrace();
+			this.colTP = searchContent(sheetNum, "TP", false)[1];
+			if (this.colTP == -1) {
+				throw new FileFormatException("Le formats du fichier " + filePath + " n'est pas valide sur l'onglet "
+						+ sheetName + ". Il manque le terme 'TP'.");
 			}
-		}
-		
-		this.colTD = searchContent(sheetNum, "TD", false)[1];
-		if(coordinates[0] == -1 || coordinates[1] == -1) {
-			try {
-				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'TD'.");
-			} catch (FileFormatException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		this.colTP = searchContent(sheetNum, "TP", false)[1];
-		if(coordinates[0] == -1 || coordinates[1] == -1) {
-			try {
-				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'TP'.");
-			} catch (FileFormatException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		this.colProject = searchContent(sheetNum, "Projet", false)[1];
-		if(coordinates[0] == -1 || coordinates[1] == -1) {
-			try {
-				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'Projet'.");
-			} catch (FileFormatException e) {
-				e.printStackTrace();
-			}
-		}
 
-		this.colCC = searchContent(sheetNum, "CC", false)[1];
-		if(coordinates[0] == -1 || coordinates[1] == -1) {
-			try {
-				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'CC'.");
-			} catch (FileFormatException e) {
-				e.printStackTrace();
+			this.colCC = searchContent(sheetNum, "CC", false)[1];
+			if (this.colCC == -1) {
+				throw new FileFormatException("Le formats du fichier " + filePath + " n'est pas valide sur l'onglet "
+						+ sheetName + ". Il manque le terme 'CC'.");
 			}
-		}
-		
-		this.colCT = searchContent(sheetNum, "CT", false)[1];
-		if(coordinates[0] == -1 || coordinates[1] == -1) {
-			try {
-				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'CT'.");
-			} catch (FileFormatException e) {
-				e.printStackTrace();
-			}
-		}
 
-		this.colMundus = searchContent(sheetNum, "Mundus", false)[1];
-		if(coordinates[0] == -1 || coordinates[1] == -1) {
-			try {
-				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'Mundus'.");
-			} catch (FileFormatException e) {
-				e.printStackTrace();
+			this.colCT = searchContent(sheetNum, "CT", false)[1];
+			if (this.colCT == -1) {
+				throw new FileFormatException("Le formats du fichier " + filePath + " n'est pas valide sur l'onglet "
+						+ sheetName + ". Il manque le terme 'CT'.");
+			}
+
+			this.colTeachers = searchContent(sheetNum, "Affectation enseignement et responsabilité UE", true)[1];
+			if (this.colTeachers == -1) {
+				throw new FileFormatException("Le formats du fichier " + filePath + " n'est pas valide sur l'onglet "
+						+ sheetName + ". Il manque le terme 'Affectation enseignement et responsabilité UE'.");
+			}
+
+			if (sheetNum == 1 || sheetNum == 2) { // Mundus uniquement pour 3A
+				this.colMundus = searchContent(sheetNum, "Mundus", false)[1];
+				if (this.colMundus == -1) {
+					throw new FileFormatException("Le formats du fichier " + filePath
+							+ " n'est pas valide sur l'onglet " + sheetName + ". Il manque le terme 'Mundus'.");
+				}
+			}
+
+			if (sheetNum != 5 && sheetNum != 6) { // Pas de projet pour la 5A
+				this.colProject = searchContent(sheetNum, "Projet", false)[1];
+				if (this.colProject == -1) {
+					System.out.println(sheetNum);
+					throw new FileFormatException("Le formats du fichier " + filePath
+							+ " n'est pas valide sur l'onglet " + sheetName + ". Il manque le terme 'Projet'.");
+				}
 			}
 		}
-
-		this.colTeachers = searchContent(sheetNum, "Affectation enseignement et responsabilité UE", true)[1];
-		if(coordinates[0] == -1 || coordinates[1] == -1) {
-			try {
-				throw new FileFormatException("Le formats du fichier "+ filePath +" n'est pas valide au niveau de la maquette. Il manque le terme 'Affectation enseignement et responsabilité UE'.");
-			} catch (FileFormatException e) {
-				e.printStackTrace();
-			}
-		}
-
-		teachingUnits = new LinkedHashMap<String, List<OriginalCourse>>();
 	}
 
 	/**
@@ -200,13 +201,15 @@ public class ReadMockUp extends ReadFile {
 		}
 
 		if (colCC != -1) {
-			if ((cellIsNumeric(rowNum, colCC, sheetNum) && readNumericCell(rowNum, colCC, sheetNum) != 0) || cellIsString(rowNum, colCC, sheetNum) || cellIsEmpty(rowNum, colCC, sheetNum)) {
+			if ((cellIsNumeric(rowNum, colCC, sheetNum) && readNumericCell(rowNum, colCC, sheetNum) != 0)
+					|| cellIsString(rowNum, colCC, sheetNum) || cellIsEmpty(rowNum, colCC, sheetNum)) {
 				buffer.setCc(true);
 			}
 		}
 
 		if (colCT != -1) {
-			if ((cellIsNumeric(rowNum, colCT, sheetNum) && readNumericCell(rowNum, colCT, sheetNum) != 0) || cellIsString(rowNum, colCT, sheetNum) || cellIsEmpty(rowNum, colCT, sheetNum)) {
+			if ((cellIsNumeric(rowNum, colCT, sheetNum) && readNumericCell(rowNum, colCT, sheetNum) != 0)
+					|| cellIsString(rowNum, colCT, sheetNum) || cellIsEmpty(rowNum, colCT, sheetNum)) {
 				buffer.setCt(true);
 			}
 		}

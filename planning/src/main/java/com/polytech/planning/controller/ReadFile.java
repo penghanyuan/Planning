@@ -43,6 +43,22 @@ public abstract class ReadFile {
 	}
 
 	/**
+	 * To get sheet name
+	 * 
+	 * @param sheetNum
+	 *            Number of the sheet
+	 * @return the name of the sheet
+	 * @throws Exception
+	 */
+	public String getSheetName(int sheetNum) throws Exception {
+		if (this.wb.getSheetAt(sheetNum) != null) {
+			return this.wb.getSheetName(sheetNum);
+		} else {
+			throw new Exception("Cet onglet n'existe pas. (" + sheetNum + 1 + ")");
+		}
+	}
+
+	/**
 	 * To read a string cell
 	 * 
 	 * @param rowNum
