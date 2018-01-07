@@ -24,17 +24,17 @@ Le second contient le *calendrier de l'année* avec les dates des semestres, les
 
 La structure du fichier maquette n'est pas strict, mais il y a plusieurs choses à respecter.
 
-* La première feuille ne doit pas être utilisée pour y mettre la maquette d'un semestre.
+====
+WARNING: La position des onglets est importante, elle est utilisée pour indiquer les
+semestres. L'ordre est *[La première feuille - S5 - S6 - S7 - S8 - S9 - S10]*
+====
+
 * Il doit y avoir une feuille par semestre, soit deux feuilles par années.
 * Le titre des feuilles n'est pas utilisé par le {genplanning}.
 * Les colonnes doivent être nommés comme sur l'image ci-dessous.
 
 ====
 NOTE: Le {genplanning} n'est pas sensible à la case, ni aux accents.
-====
-====
-NOTE: La position des onglets est importante, elle est utilisée pour indiquer les
-semesteres. L'ordre est *[La première feuille - S5 - S6 - S7 - S8 - S9 - S10]*
 ====
 
 Tous les titres de colonnes ne sont pas important, voici la liste de celles utilisés par le {genplanning} :
