@@ -41,6 +41,8 @@ Tous les titres de colonnes ne sont pas important, voici la liste de celles util
 * *TD*
 * *TP*
 * *Projet*
+* *CC*
+* *CT*
 * *Affectations des enseignements*
 
 .Entête du fichier maquette
