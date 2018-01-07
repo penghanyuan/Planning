@@ -23,7 +23,11 @@ Le second contient le *calendrier de l'année* avec les dates des semestres, les
 ==== Structure du fichier maquette
 
 La structure du fichier maquette n'est pas strict, mais il y a plusieurs choses à respecter.
-Les colonnes doivent être nommés comme sur l'image ci-dessous. 
+
+* La première feuille ne doit pas être utilisée pour y mettre la maquette d'un semestre.
+* Il doit y avoir une feuille par semestre, soit deux feuilles par années.
+* Le titre des feuilles n'est pas utilisé par le {genplanning}.
+* Les colonnes doivent être nommés comme sur l'image ci-dessous. 
 
 ====
 NOTE: Le {genplanning} n'est pas sensible à la case, ni aux accents.
@@ -57,14 +61,14 @@ Les lignes en face des nom de matières, quand à elles ont un format particulie
 ....
 
 Dans certain cas, il y a plusieurs enseignants pour une seule matière.
-Pour renseigner plusieurs enseigants, il faut les séparer par un *;*.
+Pour renseigner plusieurs enseignants, il faut les séparer par un *;*.
 Comme sur l'exemple ci-dessous.
 
 .Exemple de données pour la colonne "_Affectations des enseignements_"
 image:header-affectation.png[Entête pour l'Affectations des enseignements, 400]
 
 ====
-WARNING: Les *virgules* sont très importantes, elles sont utilisées lors de la lecture du fichier par le {genplanning}.
+WARNING: Les *virgules* sont très importantes, elles sont utilisées lors de la lecture du fichier par le {genplanning} comme caractère de séparation.
 ====
 
 === Calendrier
