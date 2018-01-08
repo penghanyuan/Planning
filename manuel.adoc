@@ -7,16 +7,18 @@
 :description: Générateur de fond de planning
 :toc-title: Sommaire
 :toc: left
-:toclevels: 2
+:toclevels: 3
 :localdir: ./
 :imagesdir:  {localdir}img
-:genplanning: générateur de planning
+:genplanning: générateur de fond de planning
 
 == Format des fichiers
 
-Le générateur de fond de planning prend en entrée deux fichiers.
+Le {genplanning} prend en entrée deux fichiers.
 Le premier fichier contient la *maquette des enseignements* de l'année.
 Le second contient le *calendrier de l'année* avec les dates des semestres, les dates des vacances et les jours libres. (Jours fériés et créneaux libres)
+
+// Les fichiers d'entrés doivent êtres des *.xlsx
 
 === Maquette
 
@@ -40,8 +42,8 @@ NOTE: Le {genplanning} n'est pas sensible à la case, ni aux accents.
 Tous les titres de colonnes ne sont pas important, voici la liste de celles utilisés par le {genplanning} :
 
 // c'est pas lu, parler du decalage pour le nom des cours
-* *<annéeDébut>-<annéeFin>* (_Doit être juste à gauche de "Unité d'enseignement"_)
-* *Unité d'enseignement*
+//* *<annéeDébut>-<annéeFin>* (_Doit être juste à gauche de "Unité d'enseignement"_)
+* *Unité d'enseignement* (_Doit être décalé d'une colonne à droite par rapport au nom d'une Unité d'enseignement et dans cette colonne se trouvera le nom des matières_)
 * *Cours*
 * *TD*
 * *TP*
@@ -81,11 +83,60 @@ WARNING: Les *virgules* sont très importantes, elles sont utilisées lors de la
 === Calendrier
 ==== Structure du fichier calendrier
 La structure du fichier calendrier est simple.
+Il y trois feuilles dans le fichier calendrier. Ils sont *[Semestres - Vacances - Jours libres]*.
 
-* Il y trois feuilles dans le fichier calendrier. Ils sont *[Semestres - Vacances - Jours libres]*.
-* Le titre des feuilles n'est pas utilisé par le {genplanning}. Mais l'ordre est important.
+====
+WARNING: Le titre des feuilles n'est pas utilisé par le {genplanning}. Mais l'*ordre est important*.
+====
+
+==== Semestres
+
+Le {genplanning} utilise le nom des semestres (S5, S6, S7, S8, S9, S10), ils doivent êtres suivi de la date de début du semestre puis par la date de fin. Le titre  des colonnes n'est pas utilisé.
+
+====
+WARNING: Le format des dates doit être *jj/mm/yyyy*.
+====
+
+//TODO Refaire les screen shot sur excel
+.Présentation des semestres
+image:semestres.png[Semestres, 400]
+
+==== Vacances
+
+Pour les vacances, l'élément utilisé par le {genplanning} est le titre de la colonne du nom des vacances qui doit être "*Nom*".
+Le nom de la période de vacances doit être suivi par la date de début puis par la date de fin.
+
+====
+WARNING: Le format des dates doit être *jj/mm/yyyy*.
+====
+
+//TODO Refaire les screen shot sur excel
+.Présentation des vacances
+image:vacances.png[Semestres,450]
+
+==== Jours libres
+
+Comme pour les vacances, le titre de la colonne des noms des jours libres, doit être "*Nom*". Le nom du jour libre doit être directement suivi par la date, puis par le nombre de créneaux (_un créneau équivaut à 2 heures_).
+
+====
+WARNING: Le format des dates doit être *jj/mm/yyyy*.
+====
+
+//TODO Refaire les screen shot sur excel
+.Présentation des jours libres
+image:jours-libres.png[Semestres,450]
 
 == Utilisation
+
+Pour utiliser le {genplanning}, il faut que https://www.java.com/fr/download/linux_manual.jsp[Java JRE 8] soit installé.
+
+
+La commande pour utiliser le {genplanning} est :
+
+[source, bash]
+....
+java -jar planning-generator.jar < annéeEtude > < -di3 | -di4 | -di5 | -all > < fichierMaquette > < fichierCalendrier >
+....
 
 .Commande + help
 [source, bash]
