@@ -18,7 +18,9 @@ Le {genplanning} prend en entrée deux fichiers.
 Le premier fichier contient la *maquette des enseignements* de l'année.
 Le second contient le *calendrier de l'année* avec les dates des semestres, les dates des vacances et les jours libres. (Jours fériés et créneaux libres)
 
-// Les fichiers d'entrés doivent êtres des *.xlsx
+====
+WARNING: Les fichiers d'entrés doivent êtres des fichiers excel de type -> *.xlsx*
+====
 
 === Maquette
 
@@ -97,9 +99,11 @@ Le {genplanning} utilise le nom des semestres (S5, S6, S7, S8, S9, S10), ils doi
 WARNING: Le format des dates doit être *jj/mm/yyyy*.
 ====
 
+<<<
+
 //TODO Refaire les screen shot sur excel
 .Présentation des semestres
-image:semestres.png[Semestres, 400]
+image:semestres.png[Semestres, 380]
 
 ==== Vacances
 
@@ -138,30 +142,28 @@ La commande pour utiliser le {genplanning} est :
 java -jar planning-generator.jar < annéeEtude > < -di3 | -di4 | -di5 | -all > < fichierMaquette > < fichierCalendrier >
 ....
 
-.Commande + help
+====
+WARNING: Tous les paramètres sont *obligatoires*.
+====
+
+. < *annéeEtude* > => Ce paramètre est la année d'étude "_annéeDébut/annéeFin_".
+. < *-di3* | *-di4* | *-di5* | *-all* > => Le second paramètre permet de choisir pour quelle niveau va être généré le fond de planning.
+. < *fichierMaquette* > => Ici doit être renseigné le chemin d'accès complet au *fichier maquette*. 
+. < *fichierCalendrier* > => Le dernier paramètre permet de renseigner le chemin complet du *fichier calendrier*.
+
+Nous avons ajouté une commande permettant d'avoir de l'aide.
+
+.Commande d'aide
 [source, bash]
 ....
-------------------------------------------------------------
-The format of command is:
-java -jar planning-generator.jar <school_year> <-di3|-di4|-di5|-all> <path_of_maquette> <path_of_calendar>
-------------------------------------------------------------
-Explication:
-	 <school_year> : format-> yearStart/yearEnd
-		 Obligatory, the school year of the planning. eg. 2017/2018
-
-	 <-di3|-di4|-di5|-all> :
-		 Obligatory, the year of the planning you want to generate.
-			 -di3: for DI3
-			 -di4: for DI4
-			 -di5: for DI5
-			 -all: for all three years
-
-	 <path_of_maquette> :
-		 Obligatory, the file path of the maquette
-
-	 <path_of_calendar> :
-		 Obligatory, the file path of the calendar
-
-Note: the planning will be genereted at the same place with planning-generator.jar
-The name of the file will be 'Planning Année <year> DI <school_year_start> - <school_year_end>.xlsx'
+java -jar planning-generator.jar -h
 ....
+
+Le fichier généré portera le nom suivant :
+
+[source, bash]
+....
+Planning Année <niveau> DI <annéeDébut> - <annéeFin>.xlsx
+....
+
+Il se trouvera au meme endroit que le *jar*.
