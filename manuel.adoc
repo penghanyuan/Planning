@@ -39,6 +39,7 @@ NOTE: Le {genplanning} n'est pas sensible à la case, ni aux accents.
 
 Tous les titres de colonnes ne sont pas important, voici la liste de celles utilisés par le {genplanning} :
 
+// c'est pas lu, parler du decalage pour le nom des cours
 * *<annéeDébut>-<annéeFin>* (_Doit être juste à gauche de "Unité d'enseignement"_)
 * *Unité d'enseignement*
 * *Cours*
