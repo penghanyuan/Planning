@@ -78,6 +78,11 @@ WARNING: Les *virgules* sont très importantes, elles sont utilisées lors de la
 ====
 
 === Calendrier
+==== Structure du fichier calendrier
+La structure du fichier calendrier est simple.
+
+* Il y trois feuilles dans le fichier calendrier. Ils sont *[Semestres - Vacances - Jours libres]*.
+* Le titre des feuilles n'est pas utilisé par le {genplanning}. Mais l'ordre est important.
 
 == Utilisation
 
