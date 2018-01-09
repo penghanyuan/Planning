@@ -1,4 +1,5 @@
 \documentclass{polytech/polytech}
+\usepackage{pdfpages}
 % zone du préambule
 \typereport{ppgldi4}
 
@@ -12,12 +13,16 @@
 
 \academicsupervisor[di]{Christophe}{Lenté}{christophe.lente@univ-tours.fr}
 
-\resume{Ceci est le résumé du rapport en quelques lignes.}
+\resume{Le programme devra créer un fond de planning en Excel afin de faciliter la création des emplois	du temps. Grossièrement, le fond de de planning se présente comme un quadrillage avec en ligne les cours (CM, TD, TP) et en colonne les semaines. Des formules de calculs sont ajoutées à certaines cases afin de comptabiliser les heures placées. Le programme prendra en entrée un fichier excel (ou au pire csv) contenant une maquette et les enseignants affectés. Il fournira en sortie un fichier excel.}
 \motcle{Java}
+\motcle{Excel}
 \motcle{Apache POI}
 
 \abstract{This is an example of an abstract for the report.}
-\keyword{example}
+\keyword{Java}
+\keyword{Excel}
+\keyword{Apache POI}
+
 
 % zone du préambule
 \begin{document}
@@ -37,6 +42,7 @@
 	Expliquer les fonctions principales du projets … (formules, mise en formes)
 	
 	\section{Spécifications Fonctionnelles}
+	
 	\section{Modélisation}
 	Expliquer notre choix de design pattern.
 	
@@ -44,6 +50,35 @@
 	
 	\subsection{Définitions des classes}
 	
+	\part{Planification}
+	
+	\section{Découpage en taches}
+	
+	\section{Répartition des tâches}
+	
+	Nous avons choisi de se diviser le travail par classes.
+	Avec des points régulier pour expliquer l'avancé de notre travail, et partager nos remarques et
+	interrogations
+	
 	\part{Implémentation}
 	
+	Expliquer notre choix, formules, documentation, ...
+	
+	\section{Organisation}
+	
+	\subsection{Organisation des fichiers}
+	
+	Nous avons commencé par développer les modèles, puis les contrôleurs pour finir avec la vue.
+	Tests unitaires ont étés réalisés après l'écriture de chaques méthodes de chaques classes.
+	
+	\section{Tests et validation}
+	
+	\section{Documentation}
+	
+	Classes documentés pour évolutivité, ...
+	
+	\part{Annexes}
+	
+	\section{Manuel d'utilisation}
+	\includepdf[pages=3-, offset=0 0]{../manuel.pdf}
 \end{document}
