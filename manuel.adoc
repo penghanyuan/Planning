@@ -166,4 +166,6 @@ Le fichier généré portera le nom suivant :
 Planning Année <niveau> DI <annéeDébut> - <annéeFin>.xlsx
 ....
 
-Il se trouvera au meme endroit que le *jar*.
+====
+IMPORTANT: Les fichiers générés se trouveront au même endroit que le *jar*.
+====
