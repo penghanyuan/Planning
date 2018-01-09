@@ -10,49 +10,49 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{Table des mati\`eres\markboth {Table des mati\`eres}{Table des mati\`eres}}{i}{chapter*.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{I\hspace {1em}Introduction}{1}{part.1}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Pr\IeC {\'e}sentation du projet}{1}{section.0.1}
+\contentsline {section}{\numberline {1}Pr\IeC {\'e}sentation du projet}{1}{section.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{II\hspace {1em}Environnement de d\IeC {\'e}veloppement}{2}{part.2}
+\contentsline {chapter}{\numberline {2}Environnement de d\IeC {\'e}veloppement}{2}{chapter.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Language de programmation}{2}{section.0.2}
+\contentsline {section}{\numberline {1}Language de programmation}{2}{section.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Outils de gestion de projet}{2}{section.0.3}
+\contentsline {section}{\numberline {2}Outils de gestion de projet}{2}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{III\hspace {1em}\IeC {\'E}tude de projet}{3}{part.3}
+\contentsline {chapter}{\numberline {3}\IeC {\'E}tude de projet}{3}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Analyse des besoins}{3}{section.0.4}
+\contentsline {section}{\numberline {1}Analyse des besoins}{3}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Sp\IeC {\'e}cifications Fonctionnelles}{3}{section.0.5}
+\contentsline {section}{\numberline {2}Sp\IeC {\'e}cifications Fonctionnelles}{3}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Mod\IeC {\'e}lisation}{3}{section.0.6}
+\contentsline {section}{\numberline {3}Mod\IeC {\'e}lisation}{3}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}UML}{3}{subsection.0.6.1}
+\contentsline {subsection}{\numberline {3.1}UML}{3}{subsection.3.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}D\IeC {\'e}finitions des classes}{3}{subsection.0.6.2}
+\contentsline {subsection}{\numberline {3.2}D\IeC {\'e}finitions des classes}{3}{subsection.3.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{IV\hspace {1em}Planification}{4}{part.4}
+\contentsline {chapter}{\numberline {4}Planification}{4}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}D\IeC {\'e}coupage en taches}{4}{section.0.7}
+\contentsline {section}{\numberline {1}D\IeC {\'e}coupage en taches}{4}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}R\IeC {\'e}partition des t\IeC {\^a}ches}{4}{section.0.8}
+\contentsline {section}{\numberline {2}R\IeC {\'e}partition des t\IeC {\^a}ches}{4}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{V\hspace {1em}Impl\IeC {\'e}mentation}{5}{part.5}
+\contentsline {chapter}{\numberline {5}Impl\IeC {\'e}mentation}{5}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}Organisation}{5}{section.0.9}
+\contentsline {section}{\numberline {1}Organisation}{5}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {9.1}Organisation des fichiers}{5}{subsection.0.9.1}
+\contentsline {subsection}{\numberline {1.1}Organisation des fichiers}{5}{subsection.5.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}Tests et validation}{5}{section.0.10}
+\contentsline {section}{\numberline {2}Tests et validation}{5}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {10.1}R\IeC {\'e}sultat d'ex\IeC {\'e}cution}{5}{subsection.0.10.1}
+\contentsline {subsection}{\numberline {2.1}R\IeC {\'e}sultat d'ex\IeC {\'e}cution}{5}{subsection.5.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}Documentation}{5}{section.0.11}
+\contentsline {section}{\numberline {3}Documentation}{5}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{VI\hspace {1em}Annexes}{6}{part.6}
+\contentsline {chapter}{\numberline {6}Annexes}{6}{chapter.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}Manuel d'utilisation}{6}{section.0.12}
+\contentsline {section}{\numberline {1}Manuel d'utilisation}{6}{section.6.1}
 \defcounter {refsection}{0}\relax 
 \select@language {english}
 \defcounter {refsection}{0}\relax 
