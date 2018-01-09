@@ -14,7 +14,7 @@ import com.polytech.planning.model.TeachingUnit;
 public class ParserMockUp {
 
 	private LinkedHashMap<String, List<OriginalCourse>> originalCourses;
-	
+
 	public ParserMockUp() {
 		this.originalCourses = new LinkedHashMap<String, List<OriginalCourse>>();
 	}
@@ -28,6 +28,7 @@ public class ParserMockUp {
 
 	/**
 	 * create list of teaching units
+	 * 
 	 * @return list of teaching units
 	 */
 	public List<TeachingUnit> createTeachingUnits() {
@@ -76,11 +77,12 @@ public class ParserMockUp {
 				c.setTotalProject(oc.getHoursProject());
 			}
 			if (oc.getTeachers() != null) {
-				Double[] heures = new Double[3];
-				heures[0] = oc.getHoursCM();
-				heures[1] = oc.getHoursTD();
-				heures[2] = oc.getHoursTP();
-				c.setListTeachers(this.createTeachers(oc.getTeachers(), heures));
+				try {
+					c.setListTeachers(this.createTeachers(oc.getTeachers(), oc));
+				} catch (Exception e) {
+					System.out.println(e.getMessage());
+					System.exit(0);
+				}
 			}
 			coursesList.add(c);
 			// System.out.println("Courses after parser :" + c.getName());
@@ -95,9 +97,13 @@ public class ParserMockUp {
 	 * 
 	 * @param oriTeachers
 	 * @return list of teachers
-	 */ 
-	@SuppressWarnings("unused")
-	public List<Teacher> createTeachers(String oriTeachers, Double[] heures) {
+	 * @throws Exception
+	 */
+	public List<Teacher> createTeachers(String oriTeachers, OriginalCourse oc) throws Exception {
+		Double[] heures = new Double[3];
+		heures[0] = oc.getHoursCM();
+		heures[1] = oc.getHoursTD();
+		heures[2] = oc.getHoursTP();
 		String regCM = ".*CM.*", regTD = ".*TD.*", regTP = ".*TP.*", regAllMundus = ".*Mundus.*";
 		List<Teacher> teachers = new ArrayList<Teacher>();
 
@@ -117,16 +123,14 @@ public class ParserMockUp {
 		}
 
 		for (String teacherName : teacherAndCourses.keySet()) {
-
+			// parser each teacher's course
 			// System.out.println(teacherName.trim());
 			Teacher teacher = new Teacher(teacherName.trim());
 
 			String[] tempTeacher = teacherAndCourses.get(teacherName);
-			int flag = 0, flagMundus = 0;
+			int flag = 0, flagMundus = 0, flaggp = 0;
 			for (int i = 1; i < tempTeacher.length; i++) {
 				// System.out.println(tempTeacher[i]);
-
-				// System.out.println(tempTeacher[i].trim());
 
 				String tempTeacherNoSpace = tempTeacher[i].trim();
 
@@ -186,16 +190,42 @@ public class ParserMockUp {
 					teacher.setTPMundus(teacher.getHoursTP());
 					flagMundus++;
 				}
+				if (tempTeacherNoSpace.matches(".*gr.*") && flag == 0) {
+					flaggp++;
+				}
 			}
 			if (flag == 0) {
 				// no tp, no td, no cm
 				// means do all
-				teacher.setHoursCM(heures[0]);
-				teacher.setHoursTD(heures[1]);
-				teacher.setHoursTP(heures[2]);
-				if (flagMundus != 0) {
+				if (flagMundus != 0 && flaggp == 0) {
+					// only for mundus
 					teacher.setTDMundus(heures[1]);
 					teacher.setTPMundus(heures[2]);
+				} else if (flagMundus != 0 && flaggp != 0) {
+					// for mundus and di3
+					teacher.setHoursCM(heures[0]);
+					teacher.setHoursTD(heures[1]);
+					teacher.setHoursTP(heures[2]);
+					teacher.setTDMundus(heures[1]);
+					teacher.setTPMundus(heures[2]);
+				} else if (flagMundus == 0 && flaggp != 0) {
+					// for di3
+					teacher.setHoursCM(heures[0]);
+					teacher.setHoursTD(heures[1]);
+					teacher.setHoursTP(heures[2]);
+				} else {
+					if (oc.isMundus()) {
+						teacher.setHoursCM(heures[0]);
+						teacher.setHoursTD(heures[1]);
+						teacher.setHoursTP(heures[2]);
+						teacher.setTDMundus(heures[1]);
+						teacher.setTPMundus(heures[2]);
+					} else {
+						// for di3
+						teacher.setHoursCM(heures[0]);
+						teacher.setHoursTD(heures[1]);
+						teacher.setHoursTP(heures[2]);
+					}
 				}
 			}
 			teachers.add(teacher);
@@ -205,11 +235,40 @@ public class ParserMockUp {
 			// System.out.println("Teacher after parser :" + teacher.getName());
 		}
 
+		// verify mundus course
+		if (oc.isMundus() && (oc.getHoursTD() != 0 || oc.getHoursTP() != 0)) {
+			int hasMundusTeaceher = 0;
+			for (Teacher t : teachers) {
+				if (t.getTDMundus() != 0 || t.getTPMundus() != 0) {
+					hasMundusTeaceher++;
+				}
+			}
+			if (hasMundusTeaceher == 0) {
+				throw new Exception("This course <" + oc.getCourseName()
+						+ "> has td/tp, and it's a Mundus type course.\nNeed a teacher for mundus group.");
+			}
+
+		}
+		// verify di3 course
+		if (oc.getHoursTD() != 0 || oc.getHoursTP() != 0) {
+			int hasDiTeacher = 0;
+			for (Teacher t : teachers) {
+				if (t.getHoursTD() != 0 || t.getHoursTP() != 0) {
+					hasDiTeacher++;
+				}
+			}
+			if (hasDiTeacher == 0) {
+				throw new Exception("This course has td/tp,\nNeed a teacher for tp/td group.");
+			}
+
+		}
 		return teachers;
 	}
+
 	/**
-	 * create list of teacher seperated by "/" for a same course
-	 * eg.N. Monmarché / P. Gaucher / Y. Kergosien for DI3 S5
+	 * create list of teacher seperated by "/" for a same course eg.N. Monmarché
+	 * / P. Gaucher / Y. Kergosien for DI3 S5
+	 * 
 	 * @param oriTeachers
 	 * @return
 	 */

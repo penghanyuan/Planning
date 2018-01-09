@@ -44,7 +44,6 @@ public class Teacher {
 		return name;
 	}
 
-
 	/**
 	 * @param name
 	 *            the name to set
@@ -52,8 +51,6 @@ public class Teacher {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 
 	public String toString() {
 		double tdMundus = TDMundus;
@@ -64,25 +61,27 @@ public class Teacher {
 		buffer += " TD -> " + hoursTD + " hours " + tdMundus + "\n";
 		buffer += " TP -> " + hoursTP + " hours " + tpMundus + "\n";
 		buffer += " Pr -> " + hoursProjet + " hours\n";
+		buffer += " TD Mundus -> " + tdMundus + " hours\n";
+		buffer += " TP Mundus -> " + tpMundus + " hours\n";
 		buffer += "----------------------------------\n";
 
 		return buffer;
 	}
-	
+
 	public boolean equals(Teacher input) {
-		if(!name.equals(input.getName())) {
+		if (!name.equals(input.getName())) {
 			return false;
-		} else if(hoursCM != input.getHoursCM()) {
+		} else if (hoursCM != input.getHoursCM()) {
 			return false;
-		} else if(hoursTD != input.getHoursTD()) {
+		} else if (hoursTD != input.getHoursTD()) {
 			return false;
-		} else if(hoursTP != input.getHoursTP()) {
+		} else if (hoursTP != input.getHoursTP()) {
 			return false;
-		} else if(hoursProjet != input.getHoursProjet()) {
+		} else if (hoursProjet != input.getHoursProjet()) {
 			return false;
-		} else if(TDMundus != input.getTDMundus()) {
+		} else if (TDMundus != input.getTDMundus()) {
 			return false;
-		} else if(TPMundus != input.getTPMundus()) {
+		} else if (TPMundus != input.getTPMundus()) {
 			return false;
 		}
 
@@ -97,7 +96,8 @@ public class Teacher {
 	}
 
 	/**
-	 * @param hoursCM the hoursCM to set
+	 * @param hoursCM
+	 *            the hoursCM to set
 	 */
 	public void setHoursCM(double hoursCM) {
 		this.hoursCM = hoursCM;
@@ -111,7 +111,8 @@ public class Teacher {
 	}
 
 	/**
-	 * @param hoursTD the hoursTD to set
+	 * @param hoursTD
+	 *            the hoursTD to set
 	 */
 	public void setHoursTD(double hoursTD) {
 		this.hoursTD = hoursTD;
@@ -125,7 +126,8 @@ public class Teacher {
 	}
 
 	/**
-	 * @param hoursTP the hoursTP to set
+	 * @param hoursTP
+	 *            the hoursTP to set
 	 */
 	public void setHoursTP(double hoursTP) {
 		this.hoursTP = hoursTP;
@@ -139,7 +141,8 @@ public class Teacher {
 	}
 
 	/**
-	 * @param hoursProjet the hoursProjet to set
+	 * @param hoursProjet
+	 *            the hoursProjet to set
 	 */
 	public void setHoursProjet(double hoursProjet) {
 		this.hoursProjet = hoursProjet;
@@ -153,7 +156,8 @@ public class Teacher {
 	}
 
 	/**
-	 * @param tDMundus the tDMundus to set
+	 * @param tDMundus
+	 *            the tDMundus to set
 	 */
 	public void setTDMundus(double tDMundus) {
 		TDMundus = tDMundus;
@@ -167,7 +171,8 @@ public class Teacher {
 	}
 
 	/**
-	 * @param tPMundus the tPMundus to set
+	 * @param tPMundus
+	 *            the tPMundus to set
 	 */
 	public void setTPMundus(double tPMundus) {
 		TPMundus = tPMundus;
