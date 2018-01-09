@@ -8,9 +8,10 @@ public class App {
 //			System.out.println(args[i]);
 //		}
 		
-		MainView mainView= new MainView(args);
+		
 		try {
-			mainView.parseCommand();
+			MainView mainView= new MainView(args);
+			mainView.createMainView();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

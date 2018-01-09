@@ -31,11 +31,12 @@
 	\section{Présentation du projet}
 	L’objectif de projet est de développer un programme qui devra créer un fond de planning en Excel afin de faciliter la création des emplois du temps. Grossièrement, le fond de de planning se présente comme un quadrillage avec en ligne les cours (CM, TD, TP) et en colonne les semaines. Des formules de calculs sont ajoutées à certaines cases afin de comptabiliser les heures placées. Le programme prendra en entrée un fichier excel (ou au pire csv) contenant une maquette et les enseignants affectés. Il fournira en sortie un fichier excel.
 	\part{Environnement de développement}
-	Nous avons utilisé Java (version 1.8) comme langage de programmation car il a une performance satisfaisable sur tous les systèmes et nous avons choisi IDE eclipse pour développer le programme car il satisfait nos besoins. Nous pouvons faire le développement et aussi les tests unitaires simplement avec eclipse et Java.
+	\section{Language de programmation}
+	Nous avons utilisé Java (version 1.8) comme langage de programmation car il a une performance satisfaisable sur tous les systèmes et nous avons choisi IDE Eclipse pour développer le programme car il satisfait nos besoins. Nous pouvons faire le développement et aussi les tests unitaires simplement avec Eclipse et Java.
 
 	\section{Outils de gestion de projet}
 	Pour travailler sur les mêmes versions du code, nous gérons les versions de notre code source et de synchroniser les diverses modifications avec le GitLab.
-	
+
 	Car nous utilisons plusieurs bibliothèques pour réaliser lecture et écriture d'un fichier excel et pour réaliser les tests unitaires facilement, on utilise Apache Maven pour la gestion de dépendances. Maven utilise un fichier .xml sous le nom de " Project Object Model (POM) " afin de décrire un projet logiciel, ses dépendances avec des modules externes.
 
 	Nous utilisons Trello pour gestion les tâches de notre projet.
@@ -49,10 +50,10 @@
 	\section{Spécifications Fonctionnelles}
 
 	\section{Modélisation}
-	Expliquer notre choix de design pattern.
+	Nous utilisons l'architecture MVC (Modèle-vue-contrôleur) pour notre projet. La partie contrôleur est utilisée pour lire les données d'entrée, analyser les donnée et générer le planning. La partie modèle est utilisée pour stoker les données qu'on a lit et qu'on utilisera pour le planning. La partie vue est utilisée pour permettre les utilisateurs saisissent les commandes.
 
 	\subsection{UML}
-
+	
 	\subsection{Définitions des classes}
 
 	\part{Planification}
@@ -77,7 +78,8 @@
 	Tests unitaires ont étés réalisés après l'écriture de chaques méthodes de chaques classes.
 
 	\section{Tests et validation}
-
+	\subsection{Résultat d'exécution}
+	\includegraphics[width=\textwidth]{./img/excution_result.png}
 	\section{Documentation}
 
 	Classes documentés pour évolutivité, ...

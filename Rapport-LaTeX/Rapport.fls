@@ -695,6 +695,9 @@ INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/kpfonts/jkpbne.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/vf/public/kpfonts/jkpfbn8t.vf
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/kpfonts/jkpbn8r.tfm
 INPUT /usr/local/texlive/2017/texmf-dist/fonts/tfm/public/kpfonts/jkpbne.tfm
+INPUT ./img/excution_result.png
+INPUT ./img/excution_result.png
+INPUT ./img/excution_result.png
 INPUT ../manuel.pdf
 INPUT ../manuel.pdf
 INPUT ../manuel.pdf
