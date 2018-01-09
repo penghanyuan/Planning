@@ -36,7 +36,7 @@
 	\chapter{Environnement de développement}
 	\section{Language de programmation}
 	Nous avons utilisé Java (version 1.8) comme langage de programmation car il a une performance satisfaisante sur tous les systèmes et c'est aussi la dernière version stable.
-	Nous avons choisi comme IDE Eclipse pour développer le programme, car c'est un outil que nous avions tous les deux déjà utilisé.
+	Nous avons choisi comme IDE \href{http://www.eclipse.org}{Eclipse} pour développer le programme, car c'est un outil que nous avions tous les deux déjà utilisé.
 	Eclipse nous permet aussi simplement de mettre en place des tests unitaires, a l'aide de JUnit.
 
 	\clearpage
@@ -55,14 +55,20 @@
 
 	\chapter{Étude de projet}
 	\section{Analyse des besoins}
+	
 	Expliquer les fonctions principales du projets … (formules, mise en formes)
 
 	\section{Spécifications Fonctionnelles}
 
 	\section{Modélisation}
-	Nous utilisons l'architecture MVC (Modèle-vue-contrôleur) pour notre projet. La partie contrôleur est utilisée pour lire les données d'entrée, analyser les donnée et générer le planning. La partie modèle est utilisée pour stoker les données qu'on a lit et qu'on utilisera pour le planning. La partie vue est utilisée pour permettre les utilisateurs saisissent les commandes.
+	
+	Nous avons fais le choix d'utiliser l'architecture MVC (Modèle-vue-contrôleur) pour notre projet.
+	La partie contrôleur est utilisée pour lire les données d'entrée, analyser les donnée et générer le planning. 
+	La partie modèle est utilisée pour stoker les données qu'on a lit et qu'on utilisera pour le planning.
+	La partie vue est utilisée pour permettre les utilisateurs saisissent les commandes pour la génération des fond de planning.
 
 	\subsection{UML}
+	\includegraphics[width=\textwidth]{./img/Diagram.png}
 
 	\subsection{Définitions des classes}
 
@@ -79,6 +85,11 @@
 	\chapter{Implémentation}
 
 	Expliquer notre choix, formules, documentation, ...
+	
+	%choix des librairies
+	http://jexcelapi.sourceforge.net
+	
+	http://poi.apache.org/spreadsheet/index.html
 
 	\section{Organisation}
 
