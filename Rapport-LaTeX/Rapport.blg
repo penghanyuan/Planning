@@ -1,0 +1,9 @@
+[0] Config.pm:354> INFO - This is Biber 2.7
+[0] Config.pm:357> INFO - Logfile is 'Rapport.blg'
+[39] biber-darwin:303> INFO - === Tue Jan  9, 2018, 09:31:39
+[63] Biber.pm:359> INFO - Reading 'Rapport.bcf'
+[152] Biber.pm:835> INFO - Found 0 citekeys in bib section 0
+[165] Utils.pm:164> WARN - The file 'Rapport.bcf' does not contain any citations!
+[171] bbl.pm:608> INFO - Writing 'Rapport.bbl' with encoding 'UTF-8'
+[172] bbl.pm:712> INFO - Output to Rapport.bbl
+[172] Biber.pm:109> INFO - WARNINGS: 1
