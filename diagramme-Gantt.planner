@@ -20,32 +20,84 @@
     </calendar>
   </calendars>
   <tasks>
-    <task id="1" name="Analyse de projet" note="" work="230400" start="20170918T000000Z" end="20170927T180000Z" work-start="20170918T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
-      <task id="2" name="Analyse du besoin" note="" work="57600" start="20170918T000000Z" end="20170919T180000Z" work-start="20170918T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
-      <task id="3" name="Mod&#xE9;lisation" note="" work="86400" start="20170919T180000Z" end="20170922T180000Z" work-start="20170920T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="1" name="Analyse de projet" note="" work="288000" start="20170918T000000Z" end="20170922T180000Z" work-start="20170918T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <task id="2" name="Analyse du besoin" note="" work="115200" start="20170918T000000Z" end="20170919T180000Z" work-start="20170918T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="3" name="Mod&#xE9;lisation" note="" work="86400" start="20170919T180000Z" end="20170921T120000Z" work-start="20170920T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
         <predecessors>
           <predecessor id="1" predecessor-id="2" type="FS"/>
         </predecessors>
       </task>
-      <task id="4" name="Recherche de librairie" note="" work="57600" start="20170922T180000Z" end="20170926T180000Z" work-start="20170925T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <task id="4" name="Recherche de librairie" note="" work="57600" start="20170921T120000Z" end="20170922T120000Z" work-start="20170921T120000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
         <predecessors>
           <predecessor id="1" predecessor-id="3" type="FS"/>
         </predecessors>
       </task>
-      <task id="5" name="D&#xE9;coupage en taches" note="" work="28800" start="20170926T180000Z" end="20170927T180000Z" work-start="20170927T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+      <task id="5" name="D&#xE9;coupage en taches" note="" work="28800" start="20170922T120000Z" end="20170922T180000Z" work-start="20170922T120000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
         <predecessors>
           <predecessor id="1" predecessor-id="4" type="FS"/>
         </predecessors>
       </task>
     </task>
-    <task id="6" name="Impl&#xE9;mentation" note="" work="28800" start="20170927T180000Z" end="20170928T180000Z" work-start="20170928T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+    <task id="6" name="Impl&#xE9;mentation" note="" work="489600" start="20170922T180000Z" end="20171005T180000Z" work-start="20170925T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
       <predecessors>
         <predecessor id="1" predecessor-id="1" type="FS"/>
       </predecessors>
-      <task id="7" name="Recherche &amp; mise en place des outils" note="" work="28800" start="20170927T180000Z" end="20170928T180000Z" work-start="20170928T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="7" name="Recherche &amp; mise en place des outils" note="" work="115200" start="20170922T180000Z" end="20170926T180000Z" work-start="20170925T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+      <task id="8" name="Impl&#xE9;mentation des models" note="" work="345600" start="20170926T180000Z" end="20171004T180000Z" work-start="20170927T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="7" type="FS"/>
+        </predecessors>
+        <task id="9" name="Calendar" note="" work="57600" start="20170926T180000Z" end="20170928T180000Z" work-start="20170927T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="10" name="Holiday" note="" work="57600" start="20170928T180000Z" end="20171002T180000Z" work-start="20170929T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="9" type="FS"/>
+          </predecessors>
+        </task>
+        <task id="11" name="Semester" note="" work="57600" start="20171002T180000Z" end="20171004T180000Z" work-start="20171003T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="10" type="FS"/>
+          </predecessors>
+        </task>
+        <task id="12" name="Course" note="" work="57600" start="20170926T180000Z" end="20170928T180000Z" work-start="20170927T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work"/>
+        <task id="13" name="Teacher" note="" work="57600" start="20170928T180000Z" end="20171002T180000Z" work-start="20170929T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="12" type="FS"/>
+          </predecessors>
+        </task>
+        <task id="14" name="Teaching Unit" note="" work="57600" start="20171002T180000Z" end="20171004T180000Z" work-start="20171003T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+          <predecessors>
+            <predecessor id="1" predecessor-id="13" type="FS"/>
+          </predecessors>
+        </task>
+      </task>
+      <task id="15" name="Test des models" note="" work="28800" start="20171004T180000Z" end="20171005T180000Z" work-start="20171005T080000Z" percent-complete="0" priority="0" type="normal" scheduling="fixed-work">
+        <predecessors>
+          <predecessor id="1" predecessor-id="8" type="FS"/>
+        </predecessors>
+      </task>
     </task>
   </tasks>
   <resource-groups/>
-  <resources/>
-  <allocations/>
+  <resources>
+    <resource id="1" name="Hanyuan Pange" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
+    <resource id="2" name="St&#xE9;phane Deluce" short-name="" type="1" units="0" email="" note="" std-rate="0"/>
+  </resources>
+  <allocations>
+    <allocation task-id="14" resource-id="1" units="100"/>
+    <allocation task-id="12" resource-id="1" units="100"/>
+    <allocation task-id="13" resource-id="1" units="100"/>
+    <allocation task-id="7" resource-id="1" units="100"/>
+    <allocation task-id="5" resource-id="1" units="100"/>
+    <allocation task-id="4" resource-id="1" units="100"/>
+    <allocation task-id="3" resource-id="1" units="100"/>
+    <allocation task-id="2" resource-id="1" units="100"/>
+    <allocation task-id="11" resource-id="2" units="100"/>
+    <allocation task-id="10" resource-id="2" units="100"/>
+    <allocation task-id="9" resource-id="2" units="100"/>
+    <allocation task-id="7" resource-id="2" units="100"/>
+    <allocation task-id="5" resource-id="2" units="100"/>
+    <allocation task-id="4" resource-id="2" units="100"/>
+    <allocation task-id="3" resource-id="2" units="100"/>
+    <allocation task-id="2" resource-id="2" units="100"/>
+  </allocations>
 </project>
