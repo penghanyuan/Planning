@@ -1,8 +1,8 @@
-package com.ploytech.planning.view;
+package com.polytech.planning.view;
 
-import com.ploytech.planning.view.handler.MainViewHandler;
 import com.polytech.planning.controller.GeneratePlanning;
 import com.polytech.planning.controller.WritePlanning;
+import com.polytech.planning.view.handler.MainViewHandler;
 
 public class MainView {
 

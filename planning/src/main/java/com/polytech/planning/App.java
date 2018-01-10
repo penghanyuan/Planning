@@ -1,6 +1,6 @@
 package com.polytech.planning;
 
-import com.ploytech.planning.view.MainView;
+import com.polytech.planning.view.MainView;
 
 public class App {
 	public static void main(String[] args) {

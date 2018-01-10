@@ -1,4 +1,4 @@
-package com.ploytech.planning.view.handler;
+package com.polytech.planning.view.handler;
 
 import com.polytech.planning.controller.GeneratePlanning;
 import com.polytech.planning.controller.WritePlanning;
