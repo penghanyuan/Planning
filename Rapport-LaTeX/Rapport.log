@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.13)  10 JAN 2018 21:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.13)  10 JAN 2018 21:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3277,11 +3277,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 435.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 55763 strings out of 492995
- 999118 string characters out of 6132703
- 1594100 words of memory out of 5000000
+ 55765 strings out of 492995
+ 999139 string characters out of 6132703
+ 1593100 words of memory out of 5000000
  58014 multiletter control sequences out of 15000+600000
- 157174 words of font info for 256 fonts, out of 8000000 for 9000
+ 157399 words of font info for 258 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,19n,123p,10403b,21883s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/kpfonts/kpf
@@ -3296,7 +3296,7 @@ ve/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/
 mf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2017/texmf-dist/
 fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on Rapport.pdf (26 pages, 5285171 bytes).
+Output written on Rapport.pdf (26 pages, 5285512 bytes).
 PDF statistics:
  537 PDF objects out of 1000 (max. 8388607)
  434 compressed objects within 5 object streams
