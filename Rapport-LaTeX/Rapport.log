@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.13)  10 JAN 2018 18:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.13)  10 JAN 2018 19:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2592,8 +2592,31 @@ Package glossaries Info: Writing glossary file Rapport.acn on input line 6.
 .................................................
 . LaTeX info: "xparse/redefine-command"
 . 
-. Redefining command \part with sig. 'som' on line 3.
+. Redefining command \part with sig. 'som' on line 2.
 .................................................
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/dirtree/dirtree.sty
+Package: dirtree 2012/12/11 v0.32 package wrapper for dirtree
+
+(/usr/local/texlive/2017/texmf-dist/tex/generic/dirtree/dirtree.tex
+`dirtree' v0.32, 2012/12/11 (jcc)
+\DT@offset=\dimen337
+\DT@width=\dimen338
+\DT@sep=\dimen339
+\DT@all=\dimen340
+\DT@rulewidth=\dimen341
+\DT@dotwidth=\dimen342
+\DTbaselineskip=\dimen343
+\DT@counti=\count476
+\DT@countii=\count477
+\DT@countiii=\count478
+\DT@countiv=\count479
+\DT@indent=\dimen344
+\DT@parskip=\dimen345
+\DT@baselineskip=\dimen346
+)
+File: dirtree.tex 2012/12/11 v0.32 `dirtree' (jcc)
+)
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
@@ -2611,66 +2634,66 @@ Package biblatex Info: ... file 'english.lbx' found.
 File: english.lbx 2016/12/05 v3.7 biblatex localization (PK/JW/AB)
 )
 (./Rapport.aux
-\c@pagesLTS.Alph.1.local.cnt=\count476
-\c@pagesLTS.alph.1.local.cnt=\count477
-\c@pagesLTS.roman.1.local.cnt=\count478
-\c@pagesLTS.arabic.1.local.cnt=\count479
+\c@pagesLTS.Alph.1.local.cnt=\count480
+\c@pagesLTS.alph.1.local.cnt=\count481
+\c@pagesLTS.roman.1.local.cnt=\count482
+\c@pagesLTS.arabic.1.local.cnt=\count483
 )
 \openout1 = `Rapport.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 27.
-LaTeX Font Info:    Try loading font information for OML+jkp on input line 27.
+LaTeX Font Info:    Checking defaults for OML/jkp/m/it on input line 28.
+LaTeX Font Info:    Try loading font information for OML+jkp on input line 28.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/omljkp.fd
 File: omljkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 27.
-LaTeX Font Info:    Try loading font information for OMS+jkp on input line 27.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/jkp/m/n on input line 28.
+LaTeX Font Info:    Try loading font information for OMS+jkp on input line 28.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/omsjkp.fd
 File: omsjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 27.
-LaTeX Font Info:    Try loading font information for OMX+jkp on input line 27.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/jkp/m/n on input line 28.
+LaTeX Font Info:    Try loading font information for OMX+jkp on input line 28.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/omxjkp.fd
 File: omxjkp.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 27.
-LaTeX Font Info:    Try loading font information for U+jkpexa on input line 27.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/jkpexa/m/n on input line 28.
+LaTeX Font Info:    Try loading font information for U+jkpexa on input line 28.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/ujkpexa.fd
 File: ujkpexa.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 27.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 28.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Try loading font information for T1+jkpf on input line 27.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Try loading font information for T1+jkpf on input line 28.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/t1jkpf.fd
 File: t1jkpf.fd 2007/01/24 Fontinst v1.928 font definitions for T1/jkpf.
 )
-LaTeX Info: Redefining \degres on input line 27.
-LaTeX Info: Redefining \dots on input line 27.
+LaTeX Info: Redefining \degres on input line 28.
+LaTeX Info: Redefining \dots on input line 28.
 Package frenchb.ldf Info: Setting StandardItemizeEnv=true for
 (frenchb.ldf)             compatibility with enumitem package,
-(frenchb.ldf)             reported on input line 27.
-LaTeX Info: Redefining \up on input line 27.
+(frenchb.ldf)             reported on input line 28.
+LaTeX Info: Redefining \up on input line 28.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -2714,9 +2737,9 @@ Package biblatex Info: Data encoding 'utf8' specified.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'Rapport.bbl' found.
 (./Rapport.bbl)
-Package biblatex Info: Reference section=0 on input line 27.
-Package biblatex Info: Reference segment=0 on input line 27.
-LaTeX Info: Redefining \microtypecontext on input line 27.
+Package biblatex Info: Reference section=0 on input line 28.
+Package biblatex Info: Reference segment=0 on input line 28.
+LaTeX Info: Redefining \microtypecontext on input line 28.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -2731,20 +2754,20 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `jkpf' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-\c@lstlisting=\count480
+\c@lstlisting=\count484
 
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count481
-\scratchdimen=\dimen337
+\scratchcounter=\count485
+\scratchdimen=\dimen347
 \scratchbox=\box86
-\nofMPsegments=\count482
-\nofMParguments=\count483
+\nofMPsegments=\count486
+\nofMParguments=\count487
 \everyMPshowfont=\toks69
-\MPscratchCnt=\count484
-\MPscratchDim=\dimen338
-\MPnumerator=\count485
-\makeMPintoPDFobject=\count486
+\MPscratchCnt=\count488
+\MPscratchDim=\dimen348
+\MPnumerator=\count489
+\makeMPintoPDFobject=\count490
 \everyMPtoPDFconversion=\toks70
 ) (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -2770,7 +2793,7 @@ ABD: EveryShipout initializing macros
 Package: pdflscape 2016/05/14 v0.11 Display of landscape pages in PDF (HO)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
-Package hyperref Info: Link coloring ON on input line 27.
+Package hyperref Info: Link coloring ON on input line 28.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -2778,11 +2801,11 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count487
+\c@section@level=\count491
 )
-LaTeX Info: Redefining \ref on input line 27.
-LaTeX Info: Redefining \pageref on input line 27.
-LaTeX Info: Redefining \nameref on input line 27.
+LaTeX Info: Redefining \ref on input line 28.
+LaTeX Info: Redefining \pageref on input line 28.
+LaTeX Info: Redefining \nameref on input line 28.
 
 
 Package pageslts Warning: Package pdfpages detected.
@@ -2793,9 +2816,9 @@ Package pageslts Warning: Package pdfpages detected.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@pagesLTS.pnc.Alph=\count488
-\c@pagesLTS.double.Alph=\count489
-\c@pagesLTS.current.local.Alph=\count490
+\c@pagesLTS.pnc.Alph=\count492
+\c@pagesLTS.double.Alph=\count493
+\c@pagesLTS.current.local.Alph=\count494
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: custom
@@ -2832,18 +2855,18 @@ Package caption Info: End \AtBeginDocument code.
 File: polytech/polytech.pdf Graphic file (type pdf)
 
 <use polytech/polytech.pdf>
-Package pdftex.def Info: polytech/polytech.pdf used on input line 27.
+Package pdftex.def Info: polytech/polytech.pdf used on input line 28.
 (pdftex.def)             Requested size: 306.2564pt x 95.25526pt.
  <polytech/univ.pdf, id=8, 133.3289pt x 99.73561pt>
 File: polytech/univ.pdf Graphic file (type pdf)
 
 <use polytech/univ.pdf>
-Package pdftex.def Info: polytech/univ.pdf used on input line 27.
+Package pdftex.def Info: polytech/univ.pdf used on input line 28.
 (pdftex.def)             Requested size: 133.32857pt x 99.73535pt.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/jkpf/b/sc/10.95'.
 (microtype)             Ignoring protrusion settings for this character.
-LaTeX Font Info:    Try loading font information for T1+jkptt on input line 27.
+LaTeX Font Info:    Try loading font information for T1+jkptt on input line 28.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/t1jkptt.fd
@@ -2853,7 +2876,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `jkptt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for OT1+jkpf on input line 27.
+LaTeX Font Info:    Try loading font information for OT1+jkpf on input line 28.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/ot1jkpf.fd
@@ -2863,13 +2886,13 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `jkpf' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Try loading font information for U+jkpmia on input line 27.
+LaTeX Font Info:    Try loading font information for U+jkpmia on input line 28.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/ujkpmia.fd
 File: ujkpmia.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 27.
+LaTeX Font Info:    Try loading font information for U+msa on input line 28.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -2877,7 +2900,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 27.
+LaTeX Font Info:    Try loading font information for U+msb on input line 28.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -2885,13 +2908,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+jkpsyc on input line 27.
+LaTeX Font Info:    Try loading font information for U+jkpsyc on input line 28.
 
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/ujkpsyc.fd
 File: ujkpsyc.fd 2006/08/15 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 27.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 28.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
 Package microtype Info: Character `029' is missing
@@ -2905,10 +2928,10 @@ Package microtype Info: Character `029' is missing
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./polyt
 ech/polytech.pdf> <./polytech/univ.pdf>]
-\c@pagesLTS.Alph.1.local.count=\count491
-\c@pagesLTS.pnc.alph=\count492
-\c@pagesLTS.double.alph=\count493
-\c@pagesLTS.current.local.alph=\count494
+\c@pagesLTS.Alph.1.local.count=\count495
+\c@pagesLTS.pnc.alph=\count496
+\c@pagesLTS.double.alph=\count497
+\c@pagesLTS.current.local.alph=\count498
  [1
 
 
@@ -2917,10 +2940,10 @@ ech/polytech.pdf> <./polytech/univ.pdf>]
 ] [3
 
 ]
-\c@pagesLTS.alph.1.local.count=\count495
-\c@pagesLTS.pnc.roman=\count496
-\c@pagesLTS.double.roman=\count497
-\c@pagesLTS.current.local.roman=\count498
+\c@pagesLTS.alph.1.local.count=\count499
+\c@pagesLTS.pnc.roman=\count500
+\c@pagesLTS.double.roman=\count501
+\c@pagesLTS.current.local.roman=\count502
  (./Rapport.toc
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/jkpf/b/sc/12'.
@@ -2938,10 +2961,10 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [2]
-\c@pagesLTS.roman.1.local.count=\count499
-\c@pagesLTS.pnc.arabic=\count500
-\c@pagesLTS.double.arabic=\count501
-\c@pagesLTS.current.local.arabic=\count502
+\c@pagesLTS.roman.1.local.count=\count503
+\c@pagesLTS.pnc.arabic=\count504
+\c@pagesLTS.double.arabic=\count505
+\c@pagesLTS.current.local.arabic=\count506
 
 Chapitre 1.
 [1
@@ -2952,7 +2975,7 @@ Chapitre 2.
 <./img/trello.png, id=142, 1360.08125pt x 593.21625pt>
 File: ./img/trello.png Graphic file (type png)
  <use ./img/trello.png>
-Package pdftex.def Info: ./img/trello.png used on input line 54.
+Package pdftex.def Info: ./img/trello.png used on input line 55.
 (pdftex.def)             Requested size: 455.24411pt x 198.55894pt.
 
 * Missing: ./img/trello.pax
@@ -2960,7 +2983,7 @@ Package pdftex.def Info: ./img/trello.png used on input line 54.
 
  <./img/trello.png>]
 Chapitre 3.
-LaTeX Font Info:    Try loading font information for TS1+jkpf on input line 84.
+LaTeX Font Info:    Try loading font information for TS1+jkpf on input line 85.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/ts1jkpf.fd
 File: ts1jkpf.fd 2007/08/30 Fontinst v1.928 font definitions for TS1/jkpf.
@@ -2982,7 +3005,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [4] <./img/Diagram.png, id=176, 2208.25pt x 2738.23pt>
 File: ./img/Diagram.png Graphic file (type png)
  <use ./img/Diagram.png>
-Package pdftex.def Info: ./img/Diagram.png used on input line 157.
+Package pdftex.def Info: ./img/Diagram.png used on input line 158.
 (pdftex.def)             Requested size: 441.64218pt x 547.6363pt.
 
 * Missing: ./img/Diagram.pax
@@ -3014,7 +3037,7 @@ Chapitre 4.
 <./img/Gantt.png, id=215, 3587.4025pt x 2945.0025pt>
 File: ./img/Gantt.png Graphic file (type png)
  <use ./img/Gantt.png>
-Package pdftex.def Info: ./img/Gantt.png used on input line 301.
+Package pdftex.def Info: ./img/Gantt.png used on input line 302.
 (pdftex.def)             Requested size: 455.24411pt x 373.69661pt.
 
 * Missing: ./img/Gantt.pax
@@ -3027,20 +3050,21 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [10]
 Chapitre 5.
-<./img/excution_result.png, id=228, 905.3825pt x 256.96pt>
-File: ./img/excution_result.png Graphic file (type png)
-
-<use ./img/excution_result.png>
-Package pdftex.def Info: ./img/excution_result.png used on input line 341.
-(pdftex.def)             Requested size: 455.24411pt x 129.20503pt.
-
-* Missing: ./img/excution_result.pax
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11
 
 ]
+<./img/excution_result.png, id=232, 905.3825pt x 256.96pt>
+File: ./img/excution_result.png Graphic file (type png)
+
+<use ./img/excution_result.png>
+Package pdftex.def Info: ./img/excution_result.png used on input line 364.
+(pdftex.def)             Requested size: 455.24411pt x 129.20503pt.
+
+* Missing: ./img/excution_result.pax
+
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][]\T1/jkpf/b/sc/12 Chapitre 5.  Im-plé-men-ta-tion
  []
@@ -3050,13 +3074,13 @@ Chapitre 6.
 <../manuel.pdf, id=238, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
  <use ../manuel.pdf>
-Package pdftex.def Info: ../manuel.pdf used on input line 349.
+Package pdftex.def Info: ../manuel.pdf used on input line 373.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf>
-Package pdftex.def Info: ../manuel.pdf used on input line 349.
+Package pdftex.def Info: ../manuel.pdf used on input line 373.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
 * Missing: ../manuel.pax
@@ -3064,13 +3088,13 @@ Package pdftex.def Info: ../manuel.pdf used on input line 349.
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 373.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
@@ -3079,19 +3103,19 @@ Package pdftex.def Info: ../manuel.pdf, page3 used on input line 349.
 ]
 File: ../manuel.pdf Graphic file (type pdf)
  <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
@@ -3099,19 +3123,19 @@ Package pdftex.def Info: ../manuel.pdf, page3 used on input line 349.
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 4>
-Package pdftex.def Info: ../manuel.pdf, page4 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 4>
-Package pdftex.def Info: ../manuel.pdf, page4 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 4>
-Package pdftex.def Info: ../manuel.pdf, page4 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
@@ -3119,19 +3143,19 @@ Package pdftex.def Info: ../manuel.pdf, page4 used on input line 349.
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
@@ -3139,25 +3163,25 @@ Package pdftex.def Info: ../manuel.pdf, page5 used on input line 349.
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 6>
-Package pdftex.def Info: ../manuel.pdf, page6 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 6>
-Package pdftex.def Info: ../manuel.pdf, page6 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 6>
-Package pdftex.def Info: ../manuel.pdf, page6 used on input line 349.
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 373.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 [17 <../manuel.pdf>]
 
-Package biblatex Warning: Type 'online' not found on input line 350.
+Package biblatex Warning: Type 'online' not found on input line 374.
 
 (./Rapport.gls) (./Rapport.acr) (./Rapport.ind)
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -3202,9 +3226,9 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 ] 
 AED: pageslts setting LastPage 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 350.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 350.
-\c@pagesLTS.arabic.1.local.count=\count503
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 374.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 374.
+\c@pagesLTS.arabic.1.local.count=\count507
 
 AED: pageslts setting VeryLastPage via AfterLastShipout 
 
@@ -3215,25 +3239,25 @@ Package pageslts Info: Total number of pages is odd.
 
 
 (./Rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 350.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 350.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 374.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 374.
 Package logreq Info: Writing requests to 'Rapport.run.xml'.
 \openout1 = `Rapport.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 350.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 374.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 54161 strings out of 492995
- 978045 string characters out of 6132703
- 1591170 words of memory out of 5000000
- 56475 multiletter control sequences out of 15000+600000
- 144554 words of font info for 243 fonts, out of 8000000 for 9000
+ 54245 strings out of 492995
+ 979213 string characters out of 6132703
+ 1592100 words of memory out of 5000000
+ 56549 multiletter control sequences out of 15000+600000
+ 144978 words of font info for 246 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,19n,94p,10403b,21784s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,19n,94p,10403b,21802s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/kpfonts/kpf
 onts-expert.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc
 }</usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb></u
@@ -3246,7 +3270,7 @@ ve/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/
 mf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2017/texmf-dist/
 fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on Rapport.pdf (25 pages, 5205732 bytes).
+Output written on Rapport.pdf (25 pages, 5206980 bytes).
 PDF statistics:
  497 PDF objects out of 1000 (max. 8388607)
  395 compressed objects within 4 object streams

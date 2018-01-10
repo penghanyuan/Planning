@@ -1,4 +1,5 @@
 \documentclass{polytech/polytech}
+\usepackage{dirtree}
 % zone du préambule
 \typereport{ppgldi4}
 
@@ -334,7 +335,29 @@
 	\subsection{Organisation des fichiers}
 
 	Nous avons commencé par développer les modèles, puis les contrôleurs pour finir avec la vue.
-	Tests unitaires ont étés réalisés après l'écriture de chaques méthodes de chaques classes.
+	Tests unitaires ont étés réalisés après l'écriture de chaque méthodes de chaque classes.
+	
+	\pagebreak
+	
+	Les groupes des classes modèles, vues et contrôleurs ont chacunes étés placés dans un package, ce nous donne l'arborescence suivante :
+	
+	\dirtree{%
+		.1 .
+		.2 main/.
+		.3 java/.
+		.4 com/.
+		.5 polytech/.
+		.6 planning/.
+		.7 controller/.
+		.7 model/.
+		.7 view/.
+		.2 test/.
+		.3 java/.
+		.4 com/.
+		.5 polytech/.
+		.6 planning/.
+	} 
+
 
 	\section{Tests et validation}
 	\subsection{Résultat d'exécution}
@@ -346,5 +369,6 @@
 	\chapter{Annexes}
 
 	\section{Manuel d'utilisation}
+	Comme nous n'avions rien d'imposé pour la création du manuel utilisateur, nous avons fais le choix d'utiliser AsciiDoc.
 	\includepdf[pages=3-, offset=0 0]{../manuel.pdf}
 \end{document}
