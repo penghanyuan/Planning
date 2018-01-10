@@ -362,6 +362,17 @@
 	Après quelques essais avec les deux bibliothèques, nous avons fais le choix d'utiliser \textbf{POI Apache} pour réaliser ce projet.
 
 	\section{Organisation}
+	
+	Nous utilisons Maven pour la gestion de bibliothèques. Comme vu précédemment, nous avons choisi POI Apache pour la lecture / écriture de fichiers Excel. Pour l'ajouter à notre projet, il faut ajouter ces lignes à notre fichier pom.xml :
+	
+	\begin{lstlisting}
+	<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+	<dependency>
+	<groupId>org.apache.poi</groupId>
+	<artifactId>poi-ooxml</artifactId>
+	<version>3.17</version>
+	</dependency>
+	\end{lstlisting}
 
 	\subsection{Organisation des fichiers}
 
@@ -393,6 +404,7 @@
 	\section{Tests et validation}
 	\subsection{Résultat d'exécution}
 	\includegraphics[width=\textwidth]{./img/excution_result.png}
+	
 	\section{Documentation}
 
 	Classes documentés pour évolutivité, ...

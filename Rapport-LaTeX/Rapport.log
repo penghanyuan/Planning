@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.13)  10 JAN 2018 19:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.13)  10 JAN 2018 19:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3051,16 +3051,17 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [10]
 Chapitre 5.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (44.07993pt too wide) in paragraph at lines 338--339
+[][][][][][][][][][][][][][][][][][][][][][][][][] |
+ []
 
- [11
+[11
 
-]
-<./img/excution_result.png, id=232, 905.3825pt x 256.96pt>
+] <./img/excution_result.png, id=240, 905.3825pt x 256.96pt>
 File: ./img/excution_result.png Graphic file (type png)
 
 <use ./img/excution_result.png>
-Package pdftex.def Info: ./img/excution_result.png used on input line 364.
+Package pdftex.def Info: ./img/excution_result.png used on input line 375.
 (pdftex.def)             Requested size: 455.24411pt x 129.20503pt.
 
 * Missing: ./img/excution_result.pax
@@ -3071,30 +3072,30 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [12 <./img/excution_result.png>]
 Chapitre 6.
-<../manuel.pdf, id=238, 597.51233pt x 845.0471pt>
+<../manuel.pdf, id=246, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
  <use ../manuel.pdf>
-Package pdftex.def Info: ../manuel.pdf used on input line 373.
+Package pdftex.def Info: ../manuel.pdf used on input line 385.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf>
-Package pdftex.def Info: ../manuel.pdf used on input line 373.
+Package pdftex.def Info: ../manuel.pdf used on input line 385.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
 * Missing: ../manuel.pax
-<../manuel.pdf, id=241, page=3, 597.51233pt x 845.0471pt>
+<../manuel.pdf, id=249, page=3, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 385.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 385.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
@@ -3103,85 +3104,85 @@ Package pdftex.def Info: ../manuel.pdf, page3 used on input line 373.
 ]
 File: ../manuel.pdf Graphic file (type pdf)
  <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 385.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 385.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 385.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
-[14 <../manuel.pdf>] <../manuel.pdf, id=285, page=4, 597.51233pt x 845.0471pt>
+[14 <../manuel.pdf>] <../manuel.pdf, id=293, page=4, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 4>
-Package pdftex.def Info: ../manuel.pdf, page4 used on input line 373.
-(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
-
-* Missing: ../manuel.pax
-File: ../manuel.pdf Graphic file (type pdf)
-<use ../manuel.pdf, page 4>
-Package pdftex.def Info: ../manuel.pdf, page4 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 385.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 4>
-Package pdftex.def Info: ../manuel.pdf, page4 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 385.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
-[15 <../manuel.pdf>] <../manuel.pdf, id=298, page=5, 597.51233pt x 845.0471pt>
+File: ../manuel.pdf Graphic file (type pdf)
+<use ../manuel.pdf, page 4>
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 385.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+
+* Missing: ../manuel.pax
+[15 <../manuel.pdf>] <../manuel.pdf, id=306, page=5, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 385.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 385.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 385.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
-[16 <../manuel.pdf>] <../manuel.pdf, id=314, page=6, 597.51233pt x 845.0471pt>
+[16 <../manuel.pdf>] <../manuel.pdf, id=322, page=6, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 6>
-Package pdftex.def Info: ../manuel.pdf, page6 used on input line 373.
-(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
-
-* Missing: ../manuel.pax
-File: ../manuel.pdf Graphic file (type pdf)
-<use ../manuel.pdf, page 6>
-Package pdftex.def Info: ../manuel.pdf, page6 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 385.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 6>
-Package pdftex.def Info: ../manuel.pdf, page6 used on input line 373.
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 385.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+
+* Missing: ../manuel.pax
+File: ../manuel.pdf Graphic file (type pdf)
+<use ../manuel.pdf, page 6>
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 385.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 [17 <../manuel.pdf>]
 
-Package biblatex Warning: Type 'online' not found on input line 374.
+Package biblatex Warning: Type 'online' not found on input line 386.
 
 (./Rapport.gls) (./Rapport.acr) (./Rapport.ind)
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -3226,8 +3227,8 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 ] 
 AED: pageslts setting LastPage 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 374.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 374.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 386.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 386.
 \c@pagesLTS.arabic.1.local.count=\count507
 
 AED: pageslts setting VeryLastPage via AfterLastShipout 
@@ -3239,22 +3240,22 @@ Package pageslts Info: Total number of pages is odd.
 
 
 (./Rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 374.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 374.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 386.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 386.
 Package logreq Info: Writing requests to 'Rapport.run.xml'.
 \openout1 = `Rapport.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 374.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 386.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 54245 strings out of 492995
- 979213 string characters out of 6132703
- 1592100 words of memory out of 5000000
- 56549 multiletter control sequences out of 15000+600000
+ 54521 strings out of 492995
+ 981344 string characters out of 6132703
+ 1593100 words of memory out of 5000000
+ 56818 multiletter control sequences out of 15000+600000
  144978 words of font info for 246 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,19n,94p,10403b,21802s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -3269,11 +3270,12 @@ ve/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/
 /texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/texlive/2017/tex
 mf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2017/texmf-di
 st/fonts/type1/public/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2017/texmf-dist/
-fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on Rapport.pdf (25 pages, 5206980 bytes).
+fonts/type1/public/kpfonts/jkpsy.pfb></usr/local/texlive/2017/texmf-dist/fonts/
+type1/public/kpfonts/jkpttmn8a.pfb>
+Output written on Rapport.pdf (25 pages, 5215388 bytes).
 PDF statistics:
- 497 PDF objects out of 1000 (max. 8388607)
- 395 compressed objects within 4 object streams
- 95 named destinations out of 1000 (max. 500000)
+ 510 PDF objects out of 1000 (max. 8388607)
+ 406 compressed objects within 5 object streams
+ 102 named destinations out of 1000 (max. 500000)
  49998 words of extra memory for PDF output out of 51595 (max. 10000000)
 
