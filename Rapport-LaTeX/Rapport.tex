@@ -59,6 +59,42 @@
 	Expliquer les fonctions principales du projets … (formules, mise en formes)
 
 	\section{Spécifications Fonctionnelles}
+	
+	Le logiciel que nous allons développer devra être capable de générer un ou plusieurs fond de planning. Pour effectuer cette tâche, il devra en remplir plusieurs autres.
+	
+	\begin{enumerate}
+		\item \textbf{Lire un fichier Excel}
+		\begin{enumerate}
+			\item Rôle :  Primaire
+			\item Spécification :
+			\begin{itemize}
+				\item Entrée : Fichier Excel
+				\item Sortie : Données lues
+				\item Précondition : Fichier Excel au format valide
+				\item Postcondition :
+				\begin{itemize}[label=\textbullet, font=\LARGE]
+					\item Cette fonction a pour but récupérer les données utiles à la génération d'un fond de planning, contenue dans un fichier Excel.
+				\end{itemize}
+			\end{itemize}
+		\end{enumerate}
+		\item \textbf{Parser les données récupérés}
+		\begin{enumerate}
+			\item Rôle :  Primaire
+			\item Spécification :
+			\begin{itemize}
+				\item Entrée : Données bruts
+				\item Sortie : Données structurées
+				\item Précondition : Les données brut doivent être valide
+				\item Postcondition :
+				\begin{itemize}[label=\textbullet, font=\LARGE]
+					\item Cette fonction a pour but récupérer les données utiles à la génération d'un fond de planning, contenue dans un fichier Excel.
+				\end{itemize}
+			\end{itemize}
+		\end{enumerate}
+		\item Stocker les données
+		\item Générer un objet Planning
+		\item Créer un fichier Excel contenant le fond de planning 
+	\end{enumerate}
 
 	\section{Modélisation}
 	
