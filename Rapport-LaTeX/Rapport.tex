@@ -55,8 +55,11 @@
 
 	\chapter{Étude de projet}
 	\section{Analyse des besoins}
-
-	Expliquer les fonctions principales du projets … (formules, mise en formes)
+	
+	Le logiciel que nous allons développer devra être capable de générer un ou plusieurs fond de planning.
+	
+	Notre logiciel devra être capable de lire des fichiers des fichiers Excel de type Xlsx.
+	Il devra aussi pouvoir créer des fichier Excel de même type, avec des formules, de la mise en forme et de la mise en forme conditionnelle.	
 
 	\section{Spécifications Fonctionnelles}
 	
@@ -70,30 +73,73 @@
 			\begin{itemize}
 				\item Entrée : Fichier Excel
 				\item Sortie : Données lues
-				\item Précondition : Fichier Excel au format valide
-				\item Postcondition :
+				\item Pré-condition : Fichier Excel au format valide
+				\item Post-condition :
 				\begin{itemize}[label=\textbullet, font=\LARGE]
 					\item Cette fonction a pour but récupérer les données utiles à la génération d'un fond de planning, contenue dans un fichier Excel.
 				\end{itemize}
 			\end{itemize}
 		\end{enumerate}
-		\item \textbf{Parser les données récupérés}
+	
+		\item \textbf{Parser les données récupérés dans les fichiers Excel}
 		\begin{enumerate}
 			\item Rôle :  Primaire
 			\item Spécification :
 			\begin{itemize}
-				\item Entrée : Données bruts
+				\item Entrée : Données brutes
 				\item Sortie : Données structurées
-				\item Précondition : Les données brut doivent être valide
-				\item Postcondition :
+				\item Pré-condition : Les données brutes doivent être valides
+				\item Post-condition :
 				\begin{itemize}[label=\textbullet, font=\LARGE]
-					\item Cette fonction a pour but récupérer les données utiles à la génération d'un fond de planning, contenue dans un fichier Excel.
+					\item Cette fonction a pour but structurer les données bruts.
 				\end{itemize}
 			\end{itemize}
 		\end{enumerate}
-		\item Stocker les données
-		\item Générer un objet Planning
-		\item Créer un fichier Excel contenant le fond de planning 
+	
+		\item \textbf{Stocker les données}
+		\begin{enumerate}
+			\item Rôle :  Primaire
+			\item Spécification :
+			\begin{itemize}
+				\item Entrée : Données structurées
+				\item Sortie : Objets construis avec les données
+				\item Pré-condition : Les données brutes doivent être valides
+				\item Post-condition :
+				\begin{itemize}[label=\textbullet, font=\LARGE]
+					\item Cette fonction sera utile pour stocker les données structurées dans des objets
+				\end{itemize}
+			\end{itemize}
+		\end{enumerate}
+	
+		\item \textbf{Générer un objet Planning}
+		\begin{enumerate}
+			\item Rôle :  Primaire
+			\item Spécification :
+			\begin{itemize}
+				\item Entrée : Objets construis avec les données
+				\item Sortie : Objets planning
+				\item Pré-condition : Tous les objets doivent être présents
+				\item Post-condition : 
+				\begin{itemize}[label=\textbullet, font=\LARGE]
+					\item Cette fonction a pour un objet fond de planning complet.
+				\end{itemize}
+			\end{itemize}
+		\end{enumerate}
+	
+		\item \textbf{Créer un fichier Excel contenant le fond de planning}
+		\begin{enumerate}
+			\item Rôle :  Primaire
+			\item Spécification :
+			\begin{itemize}
+				\item Entrée : Objets planning
+				\item Sortie : Fichier Excel
+				\item Pré-condition : L'objet doit être valide
+				\item Post-condition :
+				\begin{itemize}[label=\textbullet, font=\LARGE]
+					\item Cette fonction a pour but transformer un objet planning en un fichier Excel.
+				\end{itemize}
+			\end{itemize}
+		\end{enumerate}
 	\end{enumerate}
 
 	\section{Modélisation}
@@ -143,6 +189,9 @@
 	\textbf{\textit{class Semester}}
 
 	\chapter{Planification}
+	
+	\section{Diagramme de Gantt}
+	\includegraphics[width=\textwidth]{./img/Gantt.png}
 
 	\section{Découpage en taches}
 
@@ -155,7 +204,9 @@
 	\chapter{Implémentation}
 
 	Expliquer notre choix, formules, documentation, ...
-
+	
+	\section{Choix}
+	
 	%choix des librairies
 	http://jexcelapi.sourceforge.net
 
