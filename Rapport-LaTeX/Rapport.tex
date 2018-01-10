@@ -39,11 +39,9 @@
 
 	\chapter{Environnement de développement}
 	\section{Langage de programmation}
-	%Nous avons utilisé Java (version 1.8) comme langage de programmation car il a une performance satisfaisante sur tous les systèmes et c'est aussi la dernière version stable.
 
 	Java comme langage de programmation nous à été imposé.
 	Nous avons choisi comme IDE \href{http://www.eclipse.org}{Eclipse} pour développer le programme, car c'est un outil que nous avions tous les deux déjà utilisé.
-	%Eclipse nous permet aussi simplement de mettre en place des tests unitaires, a l'aide de JUnit.
 
 	%\pagebreak
 
@@ -64,7 +62,7 @@
 
 	Le logiciel que nous allons développer devra être capable de générer un ou plusieurs fond de planning.
 
-	Notre logiciel devra être capable de lire des fichiers des fichiers Excel de type Xlsx.
+	Notre logiciel devra être capable de lire des fichiers Excel de type Xlsx.
 	Il devra aussi pouvoir créer des fichier Excel de même type, avec des formules, de la mise en forme et de la mise en forme conditionnelle.
 
 	\section{Spécifications Fonctionnelles}
@@ -148,14 +146,18 @@
 		\end{enumerate}
 	\end{enumerate}
 
-	\pagebreak
+	%\pagebreak
+	
 	\section{Modélisation}
+	
 	Nous avons fais le choix d'utiliser l'architecture MVC (Modèle-vue-contrôleur) pour notre projet.
 	La partie contrôleur est utilisée pour lire les données d'entrée, analyser les donnée et générer le planning.
 	La partie modèle est utilisée pour stoker les données qu'on a lit et qu'on utilisera pour le planning.
 	La partie vue est utilisée pour permettre les utilisateurs saisissent les commandes pour la génération des fond de planning.
+	
 	\subsection{UML}
 	\includegraphics[scale=0.2]{./img/Diagram.png}
+	
 	\pagebreak
 
 	\subsection{Définitions des classes}
@@ -336,18 +338,19 @@
 	La répartition de notre travail n'as pas forcément respecté ce calendrier, mais la quantité de travail fournie est équivalente.
 
 	\section{Répartition des tâches}
+	+++++++++++++++++++++++++++++++++++++++++++++
 
 	Nous avons choisi de se diviser le travail par classes.
 	Avec des points régulier pour expliquer l'avancé de notre travail, et partager nos remarques et
 	interrogations
+	
+	+++++++++++++++++++++++++++++++++++++++++++++
 
 	\chapter{Implémentation}
+	
+	+++++++++++++++++++++++++++++++++++++++++++++
 
 	\section{Choix de bibliothèques}
-
-	%choix des librairies
-	%http://jexcelapi.sourceforge.net
-	%http://poi.apache.org/spreadsheet/index.html
 
 	Pour réaliser la lecture et l'écriture des fichiers Excel, nous avons fais le choix d'utiliser une bibliothèque.
 	Après avoir effectué des recherches, nous avons trouvés deux bibliothèques qui pourraient répondre à nos besoins.
@@ -363,25 +366,29 @@
 
 	\section{Organisation}
 	
-	Nous utilisons Maven pour la gestion de bibliothèques. Comme vu précédemment, nous avons choisi POI Apache pour la lecture / écriture de fichiers Excel. Pour l'ajouter à notre projet, il faut ajouter ces lignes à notre fichier pom.xml :
+	%Nous utilisons Maven pour la gestion de bibliothèque.
+	Comme vu précédemment, nous avons choisis \textbf{POI Apache} comme bibliothèque pour la lecture / écriture de fichiers Excel.
+	Pour l'ajouter à notre projet, il faut ajouter ces lignes à notre fichier pom.xml.
+	Maven récupèrera automatiquement les bibliothèques renseignées dans ce fichier.
 	
-	\begin{lstlisting}
-	<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+	\begin{latexsource}
 	<dependency>
-	<groupId>org.apache.poi</groupId>
-	<artifactId>poi-ooxml</artifactId>
-	<version>3.17</version>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi-ooxml</artifactId>
+		<version>3.17</version>
 	</dependency>
-	\end{lstlisting}
+	\end{latexsource}
 
 	\subsection{Organisation des fichiers}
-
+	+++++++++++++++++++++++++++++++++++++++++++++
+	
 	Nous avons commencé par développer les modèles, puis les contrôleurs pour finir avec la vue.
-	Tests unitaires ont étés réalisés après l'écriture de chaque méthodes de chaque classes.
+	
+	+++++++++++++++++++++++++++++++++++++++++++++
+	
+	%\pagebreak
 
-	\pagebreak
-
-	Les groupes des classes modèles, vues et contrôleurs ont chacunes étés placés dans un package, ce nous donne l'arborescence suivante :
+	Les groupes des classes modèles, vues et contrôleurs ont chacunes été placés dans un package, ce nous donne l'arborescence suivante :
 
 	\dirtree{%
 		.1 .
@@ -402,16 +409,27 @@
 
 
 	\section{Tests et validation}
+	
+	Les tests unitaires ont été réalisés après l'écriture des méthodes de chaque classes.
+	Ils ont été fais de manières croisées, les méthodes écrites par l'un de nous deux ont été testés par l'autre.
+	Nous avons utilisé la bibliothèque \textbf{JUnit} pour réaliser nos tests unitaires.
+	
+	Certains tests visuels, pour le formatage des feuilles Excel sont faites visuellement.
+	Nous n'avons pa trouvé d'autres méthodes pour vérifier ceci.
+	
 	\subsection{Résultat d'exécution}
-	\includegraphics[width=\textwidth]{./img/excution_result.png}
+	\includegraphics[width=\textwidth]{./img/excution_result2.png}
 	
 	\section{Documentation}
-
-	Classes documentés pour évolutivité, ...
-
+	+++++++++++++++++++++++++++++++++++++++++++++
+	
+	Classes documentés (JavaDoc) pour évolutivité, ...
+	
+	+++++++++++++++++++++++++++++++++++++++++++++
 	\chapter{Annexes}
 
 	\section{Manuel d'utilisation}
 	Comme nous n'avions rien d'imposé pour la création du manuel utilisateur, nous avons fais le choix d'utiliser AsciiDoc.
+	
 	\includepdf[pages=3-, offset=0 0]{../manuel.pdf}
 \end{document}
