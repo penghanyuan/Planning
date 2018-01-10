@@ -146,7 +146,7 @@ java -jar planning-generator.jar < annéeEtude > < -di3 | -di4 | -di5 | -all > <
 WARNING: Tous les paramètres sont *obligatoires*.
 ====
 
-. < *annéeEtude* > => Ce paramètre est la année d'étude "_annéeDébut/annéeFin_".
+. < *annéeEtude* > => Ce paramètre est la année d'étude "*_annéeDébut/annéeFin_*". (Doit être séparé par un */*)
 . < *-di3* | *-di4* | *-di5* | *-all* > => Le second paramètre permet de choisir pour quelle niveau va être généré le fond de planning.
 . < *fichierMaquette* > => Ici doit être renseigné le chemin d'accès complet au *fichier maquette*. 
 . < *fichierCalendrier* > => Le dernier paramètre permet de renseigner le chemin complet du *fichier calendrier*.
