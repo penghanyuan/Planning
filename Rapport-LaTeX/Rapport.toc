@@ -16,52 +16,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}Environnement de d\IeC {\'e}veloppement}{2}{chapter.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Language de programmation}{2}{section.2.1}
+\contentsline {section}{\numberline {1}Langage de programmation}{2}{section.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Outils de gestion de projet}{3}{section.2.2}
+\contentsline {section}{\numberline {2}Outils de gestion de projet}{2}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}\IeC {\'E}tude de projet}{4}{chapter.3}
+\contentsline {chapter}{\numberline {3}\IeC {\'E}tude de projet}{3}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Analyse des besoins}{4}{section.3.1}
+\contentsline {section}{\numberline {1}Analyse des besoins}{3}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Sp\IeC {\'e}cifications Fonctionnelles}{4}{section.3.2}
+\contentsline {section}{\numberline {2}Sp\IeC {\'e}cifications Fonctionnelles}{3}{section.3.2}
 \defcounter {refsection}{0}\relax 
-<<<<<<< Updated upstream
-\contentsline {subsection}{\numberline {3.1}UML}{5}{subsection.3.3.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}D\IeC {\'e}finitions des classes}{6}{subsection.3.3.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2.1}Mod\IeC {\`e}le}{6}{subsubsection.3.3.2.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2.2}Contr\IeC {\^o}leur}{6}{subsubsection.3.3.2.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2.3}Vue}{6}{subsubsection.3.3.2.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Planification}{7}{chapter.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Diagramme de Gantt}{7}{section.4.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}D\IeC {\'e}coupage en taches}{8}{section.4.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}R\IeC {\'e}partition des t\IeC {\^a}ches}{8}{section.4.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Impl\IeC {\'e}mentation}{9}{chapter.5}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Choix de biblioth\IeC {\`e}ques}{9}{section.5.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Organisation}{9}{section.5.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Organisation des fichiers}{9}{subsection.5.2.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Tests et validation}{10}{section.5.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}R\IeC {\'e}sultat d'ex\IeC {\'e}cution}{10}{subsection.5.3.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Documentation}{10}{section.5.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Annexes}{11}{chapter.6}
-\defcounter {refsection}{0}\relax 
-=======
 \contentsline {section}{\numberline {3}Mod\IeC {\'e}lisation}{5}{section.3.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1}UML}{5}{subsection.3.3.1}
@@ -70,32 +34,53 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.2.1}Mod\IeC {\`e}le}{6}{subsubsection.3.3.2.1}
 \defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{class Calendar}{6}{paragraph*.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{class OriginalCalendar}{6}{paragraph*.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{class Teacher}{6}{paragraph*.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{class Course}{6}{paragraph*.8}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{class OriginalCourse}{7}{paragraph*.9}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{class TeachingUnit}{7}{paragraph*.10}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{class FreeDay}{7}{paragraph*.11}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{class Planning}{7}{paragraph*.12}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{class Holiday}{7}{paragraph*.13}
+\defcounter {refsection}{0}\relax 
+\contentsline {paragraph}{class Semester}{7}{paragraph*.14}
+\defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.2.2}Contr\IeC {\^o}leur}{8}{subsubsection.3.3.2.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.2.3}Vue}{8}{subsubsection.3.3.2.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Planification}{9}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}D\IeC {\'e}coupage en taches}{9}{section.4.1}
+\contentsline {section}{\numberline {1}Diagramme de Gantt}{9}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}R\IeC {\'e}partition des t\IeC {\^a}ches}{9}{section.4.2}
+\contentsline {section}{\numberline {2}R\IeC {\'e}partition des t\IeC {\^a}ches}{10}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Impl\IeC {\'e}mentation}{10}{chapter.5}
+\contentsline {chapter}{\numberline {5}Impl\IeC {\'e}mentation}{11}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Organisation}{10}{section.5.1}
+\contentsline {section}{\numberline {1}Choix de biblioth\IeC {\`e}ques}{11}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}Organisation des fichiers}{10}{subsection.5.1.1}
+\contentsline {section}{\numberline {2}Organisation}{11}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Tests et validation}{10}{section.5.2}
+\contentsline {subsection}{\numberline {2.1}Organisation des fichiers}{11}{subsection.5.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}R\IeC {\'e}sultat d'ex\IeC {\'e}cution}{10}{subsection.5.2.1}
+\contentsline {section}{\numberline {3}Tests et validation}{12}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Documentation}{10}{section.5.3}
+\contentsline {subsection}{\numberline {3.1}R\IeC {\'e}sultat d'ex\IeC {\'e}cution}{12}{subsection.5.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Annexes}{11}{chapter.6}
+\contentsline {section}{\numberline {4}Documentation}{12}{section.5.4}
 \defcounter {refsection}{0}\relax 
->>>>>>> Stashed changes
-\contentsline {section}{\numberline {1}Manuel d'utilisation}{11}{section.6.1}
+\contentsline {chapter}{\numberline {6}Annexes}{13}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Manuel d'utilisation}{13}{section.6.1}
 \defcounter {refsection}{0}\relax 
 \select@language {english}
 \defcounter {refsection}{0}\relax 

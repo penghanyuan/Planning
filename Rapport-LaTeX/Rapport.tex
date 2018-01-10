@@ -31,27 +31,33 @@
 	L’objectif de projet est de développer un programme qui devra créer un fond de planning en Excel afin de faciliter la création des emplois du temps.
 	Grossièrement, le fond de de planning se présente comme un quadrillage avec en ligne les cours (CM, TD, TP) et en colonne les semaines.
 	Des formules de calculs sont ajoutées à certaines cases afin de comptabiliser les heures placées.
-	Le programme prendra en entrée un fichier excel (ou au pire csv) contenant une maquette et les enseignants affectés. Il fournira en sortie un fichier excel.
+	Il est utilisé pour répartir les heures de CM, TD, TP par semestres et par enseignants.
+	
+	Le programme prendra en entrée un fichier excel contenant une maquette et les enseignants affectés. Il fournira en sortie un fichier excel.
+	Il sera possible d'ajouter un fichier d'entrée pour les éléments manquants, comme les dates rentrées, de vacances ...
 
 	\chapter{Environnement de développement}
-
-	\section{Language de programmation}
-	Nous avons utilisé Java (version 1.8) comme langage de programmation car il a une performance satisfaisante sur tous les systèmes et c'est aussi la dernière version stable.
+	\section{Langage de programmation}
+	%Nous avons utilisé Java (version 1.8) comme langage de programmation car il a une performance satisfaisante sur tous les systèmes et c'est aussi la dernière version stable.
+	
+	Java comme langage de programmation nous à été imposé.
 	Nous avons choisi comme IDE \href{http://www.eclipse.org}{Eclipse} pour développer le programme, car c'est un outil que nous avions tous les deux déjà utilisé.
-	Eclipse nous permet aussi simplement de mettre en place des tests unitaires, a l'aide de JUnit.
-	\enlargethispage*{\baselineskip}
-	\pagebreak
+	%Eclipse nous permet aussi simplement de mettre en place des tests unitaires, a l'aide de JUnit.
+
+	%\pagebreak
+
 	\section{Outils de gestion de projet}
 
+	Nous avons fais le choix d'utiliser \href{https://trello.com/}{Trello} pour gestion les tâches de notre projet.
+	Ça nous permet de voir les taches qu'ils nous reste à faire ainsi que les taches sur lesquelles travail notre binôme.
+	
+	\includegraphics[width=\textwidth]{./img/trello.png}
+	
 	Nous avons mis en place un \href{https://git-scm.com/}{Git} comme système de versionning, et nous avons fais le choix d'heberger notre code à l'aide de GitLab qui nous permet de faire des projets privés.
 	\href{https://about.gitlab.com/}{GitLab} nous permettais aussi de centraliser notre code à un même endroit.
 
 	Notre projet utilisera des bibliothèques, pour simplifier la gestion des dépendances, nous avons fait le choix d'utiliser \href{https://maven.apache.org/}{Maven} qui est un gestionnaire de dépendances pour Java.
 
-	Nous avons fais le choix d'utiliser \href{https://trello.com/}{Trello} pour gestion les tâches de notre projet.
-	Ça nous permet de voir les taches qu'ils nous reste à faire ainsi que les taches sur lesquelles travail notre binôme.
-
-	\includegraphics[width=\textwidth]{./img/trello.png}
 	\chapter{Étude de projet}
 	\section{Analyse des besoins}
 
@@ -70,10 +76,10 @@
 			\item Rôle :  Primaire
 			\item Spécification :
 			\begin{itemize}
-				\item Entrée : Fichier Excel
-				\item Sortie : Données lues
-				\item Pré-condition : Fichier Excel au format valide
-				\item Post-condition :
+				\item[-] Entrée : Fichier Excel
+				\item[-] Sortie : Données lues
+				\item[-] Pré-condition : Fichier Excel au format valide
+				\item[-] Post-condition :
 				\begin{itemize}[label=\textbullet, font=\LARGE]
 					\item Cette fonction a pour but récupérer les données utiles à la génération d'un fond de planning, contenue dans un fichier Excel.
 				\end{itemize}
@@ -85,10 +91,10 @@
 			\item Rôle :  Primaire
 			\item Spécification :
 			\begin{itemize}
-				\item Entrée : Données brutes
-				\item Sortie : Données structurées
-				\item Pré-condition : Les données brutes doivent être valides
-				\item Post-condition :
+				\item[-] Entrée : Données brutes
+				\item[-] Sortie : Données structurées
+				\item[-] Pré-condition : Les données brutes doivent être valides
+				\item[-] Post-condition :
 				\begin{itemize}[label=\textbullet, font=\LARGE]
 					\item Cette fonction a pour but structurer les données bruts.
 				\end{itemize}
@@ -100,10 +106,10 @@
 			\item Rôle :  Primaire
 			\item Spécification :
 			\begin{itemize}
-				\item Entrée : Données structurées
-				\item Sortie : Objets construis avec les données
-				\item Pré-condition : Les données brutes doivent être valides
-				\item Post-condition :
+				\item[-] Entrée : Données structurées
+				\item[-] Sortie : Objets construis avec les données
+				\item[-] Pré-condition : Les données brutes doivent être valides
+				\item[-] Post-condition :
 				\begin{itemize}[label=\textbullet, font=\LARGE]
 					\item Cette fonction sera utile pour stocker les données structurées dans des objets
 				\end{itemize}
@@ -115,10 +121,10 @@
 			\item Rôle :  Primaire
 			\item Spécification :
 			\begin{itemize}
-				\item Entrée : Objets construis avec les données
-				\item Sortie : Objets planning
-				\item Pré-condition : Tous les objets doivent être présents
-				\item Post-condition :
+				\item[-] Entrée : Objets construis avec les données
+				\item[-] Sortie : Objets planning
+				\item[-] Pré-condition : Tous les objets doivent être présents
+				\item[-] Post-condition : 
 				\begin{itemize}[label=\textbullet, font=\LARGE]
 					\item Cette fonction a pour un objet fond de planning complet.
 				\end{itemize}
@@ -130,10 +136,10 @@
 			\item Rôle :  Primaire
 			\item Spécification :
 			\begin{itemize}
-				\item Entrée : Objets planning
-				\item Sortie : Fichier Excel
-				\item Pré-condition : L'objet doit être valide
-				\item Post-condition :
+				\item[-] Entrée : Objets planning
+				\item[-] Sortie : Fichier Excel
+				\item[-] Pré-condition : L'objet doit être valide
+				\item[-] Post-condition :
 				\begin{itemize}[label=\textbullet, font=\LARGE]
 					\item Cette fonction a pour but transformer un objet planning en un fichier Excel.
 				\end{itemize}
@@ -289,16 +295,14 @@
 	\chapter{Planification}
 
 	\section{Diagramme de Gantt}
-
-	Pour mener à terme ce projet, il nous a fallu le décomposer en taches, leurs déterminer une priorité et en estimer leurs durées. Ces informations nous ont permis de réaliser un diagramme de Gantt prévisionnelle qui à été mis à jour en cours de projet.
-
+	
+	Pour mener à terme ce projet, il nous a fallu le décomposer en taches, leurs déterminer une priorité et en estimer leurs durées. Ces informations nous ont permis de réaliser un diagramme de Gantt prévisionnel qui à été mis a jour en cours de projet.
+	
 	\includegraphics[width=\textwidth]{./img/Gantt.png}
 
 	Nous avons paramétré le calendrier avec deux heures de travail par jour, avec des semaines de 5 jours.
 	La répartition de notre travail n'as pas forcément respecté ce calendrier, mais la quantité de travail fournie est équivalente.
-
-	\section{Découpage en taches}
-
+	
 	\section{Répartition des tâches}
 
 	Nous avons choisi de se diviser le travail par classes.
