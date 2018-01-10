@@ -28,34 +28,39 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1}UML}{5}{subsection.3.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}D\IeC {\'e}finitions des classes}{5}{subsection.3.3.2}
+\contentsline {subsection}{\numberline {3.2}D\IeC {\'e}finitions des classes}{6}{subsection.3.3.2}
 \defcounter {refsection}{0}\relax 
-<<<<<<< Updated upstream
-\contentsline {chapter}{\numberline {4}Planification}{6}{chapter.4}
+\contentsline {subsubsection}{\numberline {3.2.1}Mod\IeC {\`e}le}{6}{subsubsection.3.3.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Diagramme de Gantt}{6}{section.4.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Contr\IeC {\^o}leur}{6}{subsubsection.3.3.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}D\IeC {\'e}coupage en taches}{7}{section.4.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Vue}{6}{subsubsection.3.3.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}R\IeC {\'e}partition des t\IeC {\^a}ches}{7}{section.4.3}
+\contentsline {chapter}{\numberline {4}Planification}{7}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Impl\IeC {\'e}mentation}{8}{chapter.5}
+\contentsline {section}{\numberline {1}Diagramme de Gantt}{7}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Choix}{8}{section.5.1}
+\contentsline {section}{\numberline {2}D\IeC {\'e}coupage en taches}{8}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Organisation}{8}{section.5.2}
+\contentsline {section}{\numberline {3}R\IeC {\'e}partition des t\IeC {\^a}ches}{8}{section.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Organisation des fichiers}{8}{subsection.5.2.1}
+\contentsline {chapter}{\numberline {5}Impl\IeC {\'e}mentation}{9}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Tests et validation}{8}{section.5.3}
+\contentsline {section}{\numberline {1}Choix de biblioth\IeC {\`e}ques}{9}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}R\IeC {\'e}sultat d'ex\IeC {\'e}cution}{8}{subsection.5.3.1}
+\contentsline {section}{\numberline {2}Organisation}{9}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Documentation}{9}{section.5.4}
+\contentsline {subsection}{\numberline {2.1}Organisation des fichiers}{9}{subsection.5.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Annexes}{10}{chapter.6}
+\contentsline {section}{\numberline {3}Tests et validation}{10}{section.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Manuel d'utilisation}{10}{section.6.1}
+\contentsline {subsection}{\numberline {3.1}R\IeC {\'e}sultat d'ex\IeC {\'e}cution}{10}{subsection.5.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Documentation}{10}{section.5.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Annexes}{11}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1}Manuel d'utilisation}{11}{section.6.1}
 \defcounter {refsection}{0}\relax 
 \select@language {english}
 \defcounter {refsection}{0}\relax 

@@ -1,16 +1,18 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.13)  10 JAN 2018 16:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.13)  10 JAN 2018 18:02
 entering extended mode
- \write18 enabled.
- file:line:error style messages enabled.
+ restricted \write18 enabled.
  %&-line parsing enabled.
 **Rapport.tex
 (./Rapport.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (./polytech/polytech.cls
-Document Class: polytech/polytech 2017/05/02 Polytech document class by Sebastien Aupetit <aupetit@univ-tours.fr>, V2.2.5
+Document Class: polytech/polytech 2017/05/02 Polytech document class by Sebasti
+en Aupetit <aupetit@univ-tours.fr>, V2.2.5
 
-LaTeX Warning: Writing file `./latexmkrc.REMOVE_MY_EXTENSION'.
+LaTeX Warning: File `latexmkrc.REMOVE_MY_EXTENSION' already exists on the syste
+m.
+               Not generating it from this source.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/etex-pkg/etex.sty
 Package: etex 2016/08/01 v2.7 eTeX basic definition package (PEB,DPC)
@@ -701,6 +703,7 @@ Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
 Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
 Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
 Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
 Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
 Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
 Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
@@ -1320,10 +1323,12 @@ LaTeX Font Info:    Overwriting symbol font `largesymbolsA' in version `bold'
 LaTeX Font Info:    Overwriting symbol font `largesymbolsA' in version `rm'
 (Font)                  U/jkpexa/m/n --> U/jkpexa/m/n on input line 617.
 LaTeX Font Info:    Overwriting symbol font `largesymbolsA' in version `boldrm'
+
 (Font)                  U/jkpexa/m/n --> U/jkpexa/bx/n on input line 618.
 LaTeX Font Info:    Overwriting symbol font `largesymbolsA' in version `sf'
 (Font)                  U/jkpexa/m/n --> U/jkpexa/m/n on input line 619.
 LaTeX Font Info:    Overwriting symbol font `largesymbolsA' in version `boldsf'
+
 (Font)                  U/jkpexa/m/n --> U/jkpexa/bx/n on input line 620.
 LaTeX Info: Redefining \not on input line 1580.
 )
@@ -2111,7 +2116,8 @@ Package hobsub Info: Skipping package `kvsetkeys' (already loaded).
 Package hobsub Info: Skipping package `kvdefinekeys' (already loaded).
 Package hobsub Info: Skipping package `pdftexcmds' (already loaded).
 Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
-Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
 Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
 Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
 )
@@ -2152,7 +2158,8 @@ File: puenc.def 2017/03/14 v6.85a Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4374.
+Package hyperref Info: Option `bookmarksnumbered' set `true' on input line 4374
+.
 Package hyperref Info: Option `pdfnewwindow' set `true' on input line 4374.
 Package hyperref Info: Option `pdftoolbar' set `true' on input line 4374.
 Package hyperref Info: Option `pdfmenubar' set `true' on input line 4374.
@@ -2194,7 +2201,8 @@ File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 282.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
 )
 \Hy@SectionHShift=\skip116
 )
@@ -2399,9 +2407,6 @@ Package: supertabular 2004/02/20 v4.1e the supertabular environment
 \ST@toadd=\dimen327
 \ST@dimen=\dimen328
 \ST@pbox=\box83
-)) (/usr/local/texlive/2017/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
-Package: glossary-tree 2017/01/19 v4.29 (NLCT)
-\glstreeindent=\skip125
 ))
 (/usr/local/texlive/2017/texmf-dist/tex/latex/glossaries/styles/glossary-tree.s
 ty
@@ -2414,7 +2419,8 @@ Package: glossary-tree 2017/01/19 v4.29 (NLCT)
 Package: polytech/constants 2017/05/02 2.2.5 Polytech document class sub packag
 e
 ) (./polytech/references.sty
-Package: polytech/references 2017/05/02 2.2.5 Polytech document class sub package
+Package: polytech/references 2017/05/02 2.2.5 Polytech document class sub packa
+ge
 Package zref Info: New property: chapter on input line 7.
 Package zref Info: New property: chapternumber on input line 8.
 Package zref Info: New property: isappendix on input line 9.
@@ -2491,11 +2497,14 @@ Package: subfig 2005/06/28 ver: 1.3 subfig package
 Package: polytech/citingdoc 2017/05/02 2.2.5 Polytech document class sub packag
 e
 ) (./polytech/firstlastpage.sty
-Package: polytech/firstlastpage 2017/05/02 2.2.5 Polytech document class sub package
-) (./polytech/warning.sty
+Package: polytech/firstlastpage 2017/05/02 2.2.5 Polytech document class sub pa
+ckage
+)
+(./polytech/warning.sty
 Package: polytech/warning 2017/05/02 2.2.5 Polytech document class sub package
 ) (./polytech/headings.sty
 Package: polytech/headings 2017/05/02 2.2.5 Polytech document class sub package
+
 ) (./polytech/sectionning.sty
 Package: polytech/sectionning 2017/05/02 2.2.5 Polytech document class sub pack
 age
@@ -2503,7 +2512,8 @@ age
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/titlesec/block.tss
 File: block.tss 2016/03/15
-)) (./polytech/floats.sty
+))
+(./polytech/floats.sty
 Package: polytech/floats 2017/05/02 2.2.5 Polytech document class sub package
 \@float@every@figure=\toks67
 \@float@every@table=\toks68
@@ -2546,7 +2556,8 @@ File: lstlang3.sty 2015/06/04 1.6 listings language file
 )
 (/usr/local/texlive/2017/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-)) (./polytech/poster.sty
+))
+(./polytech/poster.sty
 Package: polytech/poster 2017/05/02 2.2.5 Polytech document class sub package
 \c@polytech@poster@block=\count475
 \polytechblockheightallowedoverflow=\skip134
@@ -2566,7 +2577,8 @@ Package: polytech/index 2017/05/02 2.2.5 Polytech document class sub package
 
 Writing index file Rapport.idx
 ) (./polytech/glossaries.sty
-Package: polytech/glossaries 2017/05/02 2.2.5 Polytech document class sub package
+Package: polytech/glossaries 2017/05/02 2.2.5 Polytech document class sub packa
+ge
 \glswrite=\write10
 \glo@main@file=\write11
 \openout11 = `Rapport.glo'.
@@ -2597,11 +2609,6 @@ Package biblatex Info: ... file 'english.lbx' found.
 
 (/usr/local/texlive/2017/texmf-dist/tex/latex/biblatex/lbx/english.lbx
 File: english.lbx 2016/12/05 v3.7 biblatex localization (PK/JW/AB)
-) (./Rapport.aux
-\c@pagesLTS.Alph.1.local.cnt=\count476
-\c@pagesLTS.alph.1.local.cnt=\count477
-\c@pagesLTS.roman.1.local.cnt=\count478
-\c@pagesLTS.arabic.1.local.cnt=\count479
 )
 (./Rapport.aux
 \c@pagesLTS.Alph.1.local.cnt=\count476
@@ -2745,7 +2752,8 @@ Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 (/usr/local/texlive/2017/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 438.
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
@@ -2926,7 +2934,7 @@ Package microtype Info: Character `029' is missing
 
 
 Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][]\T1/jkpf/b/sc/12 Table des ma-tiï¿½res
+ [][][][]\T1/jkpf/b/sc/12 Table des ma-tières
  []
 
 [2]
@@ -2942,9 +2950,10 @@ Chapitre 1.
 ]
 Chapitre 2.
 
-LaTeX Warning: Polytech : You are not allowed to use \newpage, \clearpage or \cleardoublepage. Command suppressed. on input line 42.
+LaTeX Warning: Polytech : You are not allowed to use \newpage, \clearpage or \c
+leardoublepage. Command suppressed. on input line 42.
 
-<./img/trello.png, id=139, 1360.08125pt x 593.21625pt>
+<./img/trello.png, id=145, 1360.08125pt x 593.21625pt>
 File: ./img/trello.png Graphic file (type png)
  <use ./img/trello.png>
 Package pdftex.def Info: ./img/trello.png used on input line 54.
@@ -2967,7 +2976,7 @@ Package microtype Info: Loading generic settings for font family
  [3
 
 ]
-<./img/Diagram.png, id=158, 2208.25pt x 2738.23pt>
+<./img/Diagram.png, id=165, 2208.25pt x 2738.23pt>
 File: ./img/Diagram.png Graphic file (type png)
  <use ./img/Diagram.png>
 Package pdftex.def Info: ./img/Diagram.png used on input line 153.
@@ -2978,240 +2987,179 @@ Package pdftex.def Info: ./img/Diagram.png used on input line 153.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-<<<<<<< Updated upstream
-=======
-]
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][]\T1/jkpf/b/sc/12 Chapitre 3.  Étude de pro-jet
+ []
+
+[4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
->>>>>>> Stashed changes
 Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][]\T1/jkpf/b/sc/12 Chapitre 3.  ï¿½tude de pro-jet
+ [][][][]\T1/jkpf/b/sc/12 Chapitre 3.  Étude de pro-jet
  []
 
-<<<<<<< Updated upstream
-[4]
-=======
-[4 <./img/Diagram.png>]
->>>>>>> Stashed changes
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][]\T1/jkpf/b/sc/12 Chapitre 3.  ï¿½tude de pro-jet
- []
-
-<<<<<<< Updated upstream
 [5 <./img/Diagram.png>]
-=======
-[5]
->>>>>>> Stashed changes
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][]\T1/jkpf/b/sc/12 Chapitre 3.  Étude de pro-jet
+ []
+
+[6]
 Chapitre 4.
-<./img/Gantt.png, id=176, 3587.4025pt x 2945.0025pt>
+<./img/Gantt.png, id=187, 3587.4025pt x 2945.0025pt>
 File: ./img/Gantt.png Graphic file (type png)
  <use ./img/Gantt.png>
-Package pdftex.def Info: ./img/Gantt.png used on input line 160.
+Package pdftex.def Info: ./img/Gantt.png used on input line 197.
 (pdftex.def)             Requested size: 455.24411pt x 373.69661pt.
 
 * Missing: ./img/Gantt.pax
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6
+[7
 
  <./img/Gantt.png>]
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][]\T1/jkpf/b/sc/12 Chapitre 4.  Pla-ni-fi-ca-tion
  []
 
-[7]
+[8]
 Chapitre 5.
-<./img/excution_result.png, id=187, 905.3825pt x 256.96pt>
+<./img/excution_result.png, id=201, 905.3825pt x 256.96pt>
 File: ./img/excution_result.png Graphic file (type png)
 
 <use ./img/excution_result.png>
-Package pdftex.def Info: ./img/excution_result.png used on input line 190.
+Package pdftex.def Info: ./img/excution_result.png used on input line 239.
 (pdftex.def)             Requested size: 455.24411pt x 129.20503pt.
 
 * Missing: ./img/excution_result.pax
-[8
 
- <./img/excution_result.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [9
+
+]
 Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][]\T1/jkpf/b/sc/12 Chapitre 5.  Im-plï¿½-men-ta-tion
+ [][][][]\T1/jkpf/b/sc/12 Chapitre 5.  Im-plé-men-ta-tion
  []
 
-[9]
+[10 <./img/excution_result.png>]
 Chapitre 6.
-<../manuel.pdf, id=197, 597.51233pt x 845.0471pt>
+<../manuel.pdf, id=211, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
  <use ../manuel.pdf>
-Package pdftex.def Info: ../manuel.pdf used on input line 198.
+Package pdftex.def Info: ../manuel.pdf used on input line 247.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf>
-Package pdftex.def Info: ../manuel.pdf used on input line 198.
+Package pdftex.def Info: ../manuel.pdf used on input line 247.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
 * Missing: ../manuel.pax
-<../manuel.pdf, id=200, page=3, 597.51233pt x 845.0471pt>
+<../manuel.pdf, id=214, page=3, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 198.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 247.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 198.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
-[10
+[11
 
 ]
 File: ../manuel.pdf Graphic file (type pdf)
  <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 198.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 198.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 198.
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
-[11 <../manuel.pdf>] <../manuel.pdf, id=242, page=4, 597.51233pt x 845.0471pt>
+[12 <../manuel.pdf>] <../manuel.pdf, id=256, page=4, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 4>
-Package pdftex.def Info: ../manuel.pdf, page4 used on input line 198.
-(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
-
-* Missing: ../manuel.pax
-File: ../manuel.pdf Graphic file (type pdf)
-<use ../manuel.pdf, page 3>
-Package pdftex.def Info: ../manuel.pdf, page3 used on input line 143.
-(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
-
-* Missing: ../manuel.pax
-[9 <../manuel.pdf>] <../manuel.pdf, id=220, page=4, 597.51233pt x 845.0471pt>
-File: ../manuel.pdf Graphic file (type pdf)
- <use ../manuel.pdf, page 4>
-Package pdftex.def Info: ../manuel.pdf, page4 used on input line 143.
-(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
->>>>>>> Stashed changes
-
-* Missing: ../manuel.pax
-File: ../manuel.pdf Graphic file (type pdf)
-<use ../manuel.pdf, page 4>
-Package pdftex.def Info: ../manuel.pdf, page4 used on input line 198.
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 4>
-Package pdftex.def Info: ../manuel.pdf, page4 used on input line 198.
-(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
-
-* Missing: ../manuel.pax
-[12 <../manuel.pdf>] <../manuel.pdf, id=255, page=5, 597.51233pt x 845.0471pt>
-File: ../manuel.pdf Graphic file (type pdf)
-
-<use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 198.
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 4>
-Package pdftex.def Info: ../manuel.pdf, page4 used on input line 143.
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
-[10 <../manuel.pdf>] <../manuel.pdf, id=233, page=5, 597.51233pt x 845.0471pt>
+[13 <../manuel.pdf>] <../manuel.pdf, id=270, page=5, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
- <use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 143.
-(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
->>>>>>> Stashed changes
 
-* Missing: ../manuel.pax
-File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 198.
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 198.
-(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
-
-* Missing: ../manuel.pax
-[13 <../manuel.pdf>] <../manuel.pdf, id=272, page=6, 597.51233pt x 845.0471pt>
-File: ../manuel.pdf Graphic file (type pdf)
-
-<use ../manuel.pdf, page 6>
-Package pdftex.def Info: ../manuel.pdf, page6 used on input line 198.
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 143.
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
-[11 <../manuel.pdf>] <../manuel.pdf, id=249, page=6, 597.51233pt x 845.0471pt>
+[14 <../manuel.pdf>] <../manuel.pdf, id=286, page=6, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
- <use ../manuel.pdf, page 6>
-Package pdftex.def Info: ../manuel.pdf, page6 used on input line 143.
-(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
->>>>>>> Stashed changes
 
-* Missing: ../manuel.pax
-File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 6>
-Package pdftex.def Info: ../manuel.pdf, page6 used on input line 198.
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 6>
-Package pdftex.def Info: ../manuel.pdf, page6 used on input line 198.
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
-
-* Missing: ../manuel.pax
-[14 <../manuel.pdf>]
-
-Package biblatex Warning: Type 'online' not found on input line 199.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 6>
-Package pdftex.def Info: ../manuel.pdf, page6 used on input line 143.
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
-[12 <../manuel.pdf>]
+[15 <../manuel.pdf>]
 
-Package biblatex Warning: Type 'online' not found on input line 144.
->>>>>>> Stashed changes
+Package biblatex Warning: Type 'online' not found on input line 248.
 
 (./Rapport.gls) (./Rapport.acr) (./Rapport.ind)
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][]\T1/jkpf/b/sc/12 Chapitre 6.  An-nexes
  []
 
-[15]
+[16]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: custom
@@ -3244,13 +3192,13 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
- [16
+ [17
 
 
 ] 
 AED: pageslts setting LastPage 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 199.
-Package atveryend Info: Executing hook `AfterLastShipout' on input line 199.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 248.
 \c@pagesLTS.arabic.1.local.count=\count503
 
 AED: pageslts setting VeryLastPage via AfterLastShipout 
@@ -3258,73 +3206,49 @@ AED: pageslts setting VeryLastPage via AfterLastShipout
 AED: pageslts setting LastPages via AfterLastShipout 
 
 
-Package pageslts Info: Total number of pages is even.
+Package pageslts Info: Total number of pages is odd.
 
 
 (./Rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 199.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 199.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
 Package logreq Info: Writing requests to 'Rapport.run.xml'.
 \openout1 = `Rapport.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 199.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 54094 strings out of 492995
- 977254 string characters out of 6132703
+ 54140 strings out of 492995
+ 977822 string characters out of 6132703
  1591169 words of memory out of 5000000
- 56457 multiletter control sequences out of 15000+600000
- 136846 words of font info for 226 fonts, out of 8000000 for 9000
+ 56470 multiletter control sequences out of 15000+600000
+ 150026 words of font info for 247 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,19n,94p,10403b,21759s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{section.2.1} has been referenced bu
 t does not exist, replaced by a fixed one
 
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
-live/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb></usr/local/texlive
-/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbne.pfb></usr/local/texlive/2017
-/texmf-dist/fonts/type1/public/kpfonts/jkpbsc8a.pfb></usr/local/texlive/2017/te
-xmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/local/texlive/2017/texmf-di
-st/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/2017/texmf-dist/
-fonts/type1/public/kpfonts/jkpmite.pfb></usr/local/texlive/2017/texmf-dist/font
-s/type1/public/kpfonts/jkpmn8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/ty
-pe1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/p
-ublic/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publ
-ic/kpfonts/jkpttmn8a.pfb>
-Output written on Rapport.pdf (22 pages, 5197099 bytes).
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/tex
+live/2017/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}</usr/local/tex
+live/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbit8a.pfb></usr/local/texliv
+e/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb></usr/local/texlive/20
+17/texmf-dist/fonts/type1/public/kpfonts/jkpbne.pfb></usr/local/texlive/2017/te
+xmf-dist/fonts/type1/public/kpfonts/jkpbsc8a.pfb></usr/local/texlive/2017/texmf
+-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/local/texlive/2017/texmf-dist/
+fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/2017/texmf-dist/fon
+ts/type1/public/kpfonts/jkpmite.pfb></usr/local/texlive/2017/texmf-dist/fonts/t
+ype1/public/kpfonts/jkpmn8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1
+/public/kpfonts/jkpmne.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/publ
+ic/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/
+kpfonts/jkpttmn8a.pfb>
+Output written on Rapport.pdf (23 pages, 5212698 bytes).
 PDF statistics:
- 445 PDF objects out of 1000 (max. 8388607)
- 345 compressed objects within 4 object streams
- 70 named destinations out of 1000 (max. 500000)
- 43838 words of extra memory for PDF output out of 51595 (max. 10000000)
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 144.
- )
-(\end occurred inside a group at level 1)
-
-### simple group (level 1) entered at line 1061 ({)
-### bottom level 
-Here is how much of TeX's memory you used:
- 54030 strings out of 492995
- 976407 string characters out of 6132703
- 1589169 words of memory out of 5000000
- 56411 multiletter control sequences out of 15000+600000
- 141286 words of font info for 225 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 62i,19n,94p,10403b,21759s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{section.2.1} has been referenced but does not exist, replaced by a fixed one
-
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbit8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbne.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbsc8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmite.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
-Output written on Rapport.pdf (20 pages, 4707511 bytes).
-PDF statistics:
- 426 PDF objects out of 1000 (max. 8388607)
- 329 compressed objects within 4 object streams
- 54 named destinations out of 1000 (max. 500000)
- 49473 words of extra memory for PDF output out of 51595 (max. 10000000)
->>>>>>> Stashed changes
+ 473 PDF objects out of 1000 (max. 8388607)
+ 371 compressed objects within 4 object streams
+ 74 named destinations out of 1000 (max. 500000)
+ 50518 words of extra memory for PDF output out of 51595 (max. 10000000)
 
