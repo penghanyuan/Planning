@@ -54,11 +54,11 @@
 	\includegraphics[width=\textwidth]{./img/trello.png}
 	\chapter{Étude de projet}
 	\section{Analyse des besoins}
-	
+
 	Le logiciel que nous allons développer devra être capable de générer un ou plusieurs fond de planning.
-	
+
 	Notre logiciel devra être capable de lire des fichiers des fichiers Excel de type Xlsx.
-	Il devra aussi pouvoir créer des fichier Excel de même type, avec des formules, de la mise en forme et de la mise en forme conditionnelle.	
+	Il devra aussi pouvoir créer des fichier Excel de même type, avec des formules, de la mise en forme et de la mise en forme conditionnelle.
 
 	\section{Spécifications Fonctionnelles}
 
@@ -79,7 +79,7 @@
 				\end{itemize}
 			\end{itemize}
 		\end{enumerate}
-	
+
 		\item \textbf{Parser les données récupérés dans les fichiers Excel}
 		\begin{enumerate}
 			\item Rôle :  Primaire
@@ -94,7 +94,7 @@
 				\end{itemize}
 			\end{itemize}
 		\end{enumerate}
-	
+
 		\item \textbf{Stocker les données}
 		\begin{enumerate}
 			\item Rôle :  Primaire
@@ -109,7 +109,7 @@
 				\end{itemize}
 			\end{itemize}
 		\end{enumerate}
-	
+
 		\item \textbf{Générer un objet Planning}
 		\begin{enumerate}
 			\item Rôle :  Primaire
@@ -118,13 +118,13 @@
 				\item Entrée : Objets construis avec les données
 				\item Sortie : Objets planning
 				\item Pré-condition : Tous les objets doivent être présents
-				\item Post-condition : 
+				\item Post-condition :
 				\begin{itemize}[label=\textbullet, font=\LARGE]
 					\item Cette fonction a pour un objet fond de planning complet.
 				\end{itemize}
 			\end{itemize}
 		\end{enumerate}
-	
+
 		\item \textbf{Créer un fichier Excel contenant le fond de planning}
 		\begin{enumerate}
 			\item Rôle :  Primaire
@@ -140,6 +140,8 @@
 			\end{itemize}
 		\end{enumerate}
 	\end{enumerate}
+
+	\pagebreak
 	\section{Modélisation}
 	Nous avons fais le choix d'utiliser l'architecture MVC (Modèle-vue-contrôleur) pour notre projet.
 	La partie contrôleur est utilisée pour lire les données d'entrée, analyser les donnée et générer le planning.
@@ -152,7 +154,7 @@
 	\subsection{Définitions des classes}
 	\subsubsection{Modèle}
 		\begin{enumerate}
-			\item \textbf{\textit{class Calendar}}
+			\item \paragraph{class Calendar}
 
 			Le but de cette classe est de stocker les informations d'un calendrier. Un calendrier représente deux semestres.
 
@@ -162,7 +164,7 @@
 					\item[-] La liste des semestres, une arrayList des semestres de l'année.
 				\end{itemize}
 
-			\item \textbf{\textit{class OriginalCalendar}}
+			\item \paragraph{class OriginalCalendar}
 
 			Le but de cette classe est de stocker les informations originaux qui sont lues à partir de fichier calendrier pour analyser.
 
@@ -173,7 +175,7 @@
 					\item[-] Un LinkedHashMap des jours libres, il stocke les informations originaux des jours libres d'une année.
 				\end{itemize}
 
-			\item \textbf{\textit{class Teacher}}
+			\item \paragraph{class Teacher}
 
 			Le but de cette classe est de stocker les informations des professeurs d'un cours.
 
@@ -188,7 +190,7 @@
 					\item[-] L'heure totale de TP pour Mundus que ce professeur fera.
 				\end{itemize}
 
-			\item \textbf{\textit{class Course}}
+			\item \paragraph{class Course}
 
 			Le but de cette classe est de stocker les informations de cours.
 			\textbf{Attributs :}
@@ -204,7 +206,9 @@
 					\item[-] Un booléen pour marquer si ce cours est un cours de type Mundus.
 					\item[-] Un string pour noter le type de ce cours est SI ou ASR.
 				\end{itemize}
-			\item \textbf{\textit{class OriginalCourse}}
+			\pagebreak
+
+			\item \paragraph{class OriginalCourse}
 
 			Le but de cette classe est de stocker les informations originaux qui sont lues à partir de fichier maquette pour analyser.
 
@@ -221,7 +225,7 @@
 					\item[-] Un booléen pour marquer si ce cours est un cours de type Mundus.
 				\end{itemize}
 
-			\item \textbf{\textit{class TeachingUnit}}
+			\item \paragraph{class TeachingUnit}
 
 			Le but de cette classe est de stocker les informations d'une unité d'enseignement (UE).
 
@@ -231,7 +235,7 @@
 					\item[-] Une liste de cours de cette UE.
 				\end{itemize}
 
-			\item \textbf{\textit{class FreeDay}}
+			\item \paragraph{class FreeDay}
 
 			Le but de cette classe est de stocker les informations d'un jour libre.
 
@@ -242,7 +246,7 @@
 					\item[-] Le nombre de créneaux
 				\end{itemize}
 
-			\item \textbf{\textit{class Planning}}
+			\item \paragraph{class Planning}
 
 			Le but de cette classe est de stocker les informations d'un planning pour l'éciture.
 
@@ -253,7 +257,7 @@
 					\item[-] Un calendrier de cette année.
 				\end{itemize}
 
-			\item \textbf{\textit{class Holiday}}
+			\item \paragraph{class Holiday}
 
 			Le but de cette classe est de stocker les informations des vacances.
 
@@ -264,7 +268,7 @@
 					\item[-] La date fin des vacances.
 				\end{itemize}
 
-			\item \textbf{\textit{class Semester}}
+			\item \paragraph{class Semester}
 
 			Le but de cette classe est de stocker les informations d'une semestre.
 
@@ -283,13 +287,13 @@
 	\subsubsection{Vue}
 
 	\chapter{Planification}
-	
+
 	\section{Diagramme de Gantt}
-	
+
 	Pour mener à terme ce projet, il nous a fallu le décomposer en taches, leurs déterminer une priorité et en estimer leurs durées. Ces informations nous ont permis de réaliser un diagramme de Gantt prévisionnelle qui à été mis à jour en cours de projet.
-	
+
 	\includegraphics[width=\textwidth]{./img/Gantt.png}
-	
+
 	Nous avons paramétré le calendrier avec deux heures de travail par jour, avec des semaines de 5 jours.
 	La répartition de notre travail n'as pas forcément respecté ce calendrier, mais la quantité de travail fournie est équivalente.
 
@@ -302,24 +306,24 @@
 	interrogations
 
 	\chapter{Implémentation}
-	
+
 	\section{Choix de bibliothèques}
-	
+
 	%choix des librairies
 	%http://jexcelapi.sourceforge.net
 	%http://poi.apache.org/spreadsheet/index.html
-	
+
 	Pour réaliser la lecture et l'écriture des fichiers Excel, nous avons fais le choix d'utiliser une bibliothèque.
 	Après avoir effectué des recherches, nous avons trouvés deux bibliothèques qui pourraient répondre à nos besoins.
-	
+
 	Le première, \href{http://jexcelapi.sourceforge.net/}{Java Excel API}, qui est un projet Open Source mis à jour pour la dernière fois en 2009.
-	
+
 	La seconde, \href{http://poi.apache.org}{POI Apache}, gratuit, mais sous licence \href{https://www.apache.org/licenses/}{Apache}.
 	Elle à été mise a jour pour la dernière fois le 15 Septembre 2017.
 	Ce n'est pas forcement gage de bonne qualité, mais ça signifie que le projet évolue et qu'il n'est pas à l'abandon.
 	Cette bibliothèque est très bien documenté, et utilisé par une large communauté.
-	
-	Après quelques essais avec les deux bibliothèques, nous avons fais le choix d'utiliser \textbf{POI Apache} pour réaliser ce projet.	
+
+	Après quelques essais avec les deux bibliothèques, nous avons fais le choix d'utiliser \textbf{POI Apache} pour réaliser ce projet.
 
 	\section{Organisation}
 
