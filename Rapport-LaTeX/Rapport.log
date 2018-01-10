@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.13)  10 JAN 2018 18:02
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.12.20)  10 JAN 2018 18:06
+>>>>>>> Stashed changes
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2949,23 +2953,37 @@ Chapitre 1.
 
 ]
 Chapitre 2.
+[2
 
+<<<<<<< Updated upstream
 LaTeX Warning: Polytech : You are not allowed to use \newpage, \clearpage or \c
 leardoublepage. Command suppressed. on input line 42.
 
 <./img/trello.png, id=145, 1360.08125pt x 593.21625pt>
+=======
+] <./img/trello.png, id=147, 1360.08125pt x 593.21625pt>
+>>>>>>> Stashed changes
 File: ./img/trello.png Graphic file (type png)
  <use ./img/trello.png>
 Package pdftex.def Info: ./img/trello.png used on input line 54.
 (pdftex.def)             Requested size: 455.24411pt x 198.55894pt.
 
 * Missing: ./img/trello.pax
-[2
 
+<<<<<<< Updated upstream
  <./img/trello.png>]
 Chapitre 3.
 LaTeX Font Info:    Try loading font information for TS1+jkpf on input line 79.
 
+=======
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][]\T1/jkpf/b/sc/12 Chapitre 2.  En-vi-ron-ne-ment de dé-ve-lop-pe-ment
+ []
+
+[3 <./img/trello.png>]
+Chapitre 3.
+LaTeX Font Info:    Try loading font information for TS1+jkpf on input line 75.
+>>>>>>> Stashed changes
 (/usr/local/texlive/2017/texmf-dist/tex/latex/kpfonts/ts1jkpf.fd
 File: ts1jkpf.fd 2007/08/30 Fontinst v1.928 font definitions for TS1/jkpf.
 )
@@ -2973,27 +2991,24 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `jkpf' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [3
+ [4
 
+<<<<<<< Updated upstream
 ]
 <./img/Diagram.png, id=165, 2208.25pt x 2738.23pt>
 File: ./img/Diagram.png Graphic file (type png)
  <use ./img/Diagram.png>
 Package pdftex.def Info: ./img/Diagram.png used on input line 153.
 (pdftex.def)             Requested size: 455.24411pt x 564.47444pt.
+=======
+] <./img/Diagram.png, id=168, 2208.25pt x 2738.23pt>
+File: ./img/Diagram.png Graphic file (type png)
+ <use ./img/Diagram.png>
+Package pdftex.def Info: ./img/Diagram.png used on input line 103.
+(pdftex.def)             Requested size: 441.64218pt x 547.6363pt.
+>>>>>>> Stashed changes
 
 * Missing: ./img/Diagram.pax
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-Underfull \hbox (badness 10000) has occurred while \output is active
- [][][][]\T1/jkpf/b/sc/12 Chapitre 3.  Étude de pro-jet
- []
-
-[4]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 
 Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][]\T1/jkpf/b/sc/12 Chapitre 3.  Étude de pro-jet
@@ -3004,6 +3019,32 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  [][][][]\T1/jkpf/b/sc/12 Chapitre 3.  Étude de pro-jet
  []
 
+<<<<<<< Updated upstream
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][]\T1/jkpf/b/sc/12 Chapitre 3.  Étude de pro-jet
+ []
+
+[4]
+=======
+[6]
+>>>>>>> Stashed changes
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][]\T1/jkpf/b/sc/12 Chapitre 3.  Étude de pro-jet
+ []
+
+<<<<<<< Updated upstream
+[5 <./img/Diagram.png>]
+=======
+[7]
+>>>>>>> Stashed changes
+Underfull \hbox (badness 10000) has occurred while \output is active
+ [][][][]\T1/jkpf/b/sc/12 Chapitre 3.  Étude de pro-jet
+ []
+
+<<<<<<< Updated upstream
 [6]
 Chapitre 4.
 <./img/Gantt.png, id=187, 3587.4025pt x 2945.0025pt>
@@ -3011,6 +3052,11 @@ File: ./img/Gantt.png Graphic file (type png)
  <use ./img/Gantt.png>
 Package pdftex.def Info: ./img/Gantt.png used on input line 197.
 (pdftex.def)             Requested size: 455.24411pt x 373.69661pt.
+=======
+[8]
+Chapitre 4.
+[9
+>>>>>>> Stashed changes
 
 * Missing: ./img/Gantt.pax
 [7
@@ -3022,6 +3068,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [8]
 Chapitre 5.
+<<<<<<< Updated upstream
 <./img/excution_result.png, id=201, 905.3825pt x 256.96pt>
 File: ./img/excution_result.png Graphic file (type png)
 
@@ -3030,6 +3077,16 @@ Package pdftex.def Info: ./img/excution_result.png used on input line 239.
 (pdftex.def)             Requested size: 455.24411pt x 129.20503pt.
 
 * Missing: ./img/excution_result.pax
+=======
+<./img/excution_result.png, id=202, 905.3825pt x 256.96pt>
+File: ./img/excution_result.png Graphic file (type png)
+ <use ./img/excution_result.png>
+Package pdftex.def Info: ./img/excution_result.png used on input line 267.
+(pdftex.def)             Requested size: 455.24411pt x 129.20503pt.
+
+* Missing: ./img/excution_result.pax
+[10
+>>>>>>> Stashed changes
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -3042,15 +3099,23 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [10 <./img/excution_result.png>]
 Chapitre 6.
+<<<<<<< Updated upstream
 <../manuel.pdf, id=211, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
  <use ../manuel.pdf>
 Package pdftex.def Info: ../manuel.pdf used on input line 247.
+=======
+<../manuel.pdf, id=208, 597.51233pt x 845.0471pt>
+File: ../manuel.pdf Graphic file (type pdf)
+ <use ../manuel.pdf>
+Package pdftex.def Info: ../manuel.pdf used on input line 275.
+>>>>>>> Stashed changes
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf>
+<<<<<<< Updated upstream
 Package pdftex.def Info: ../manuel.pdf used on input line 247.
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
@@ -3060,12 +3125,26 @@ File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 3>
 Package pdftex.def Info: ../manuel.pdf, page3 used on input line 247.
+=======
+Package pdftex.def Info: ../manuel.pdf used on input line 275.
+(pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
+
+* Missing: ../manuel.pax
+<../manuel.pdf, id=211, page=3, 597.51233pt x 845.0471pt>
+File: ../manuel.pdf Graphic file (type pdf)
+ <use ../manuel.pdf, page 3>
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 275.
+>>>>>>> Stashed changes
 (pdftex.def)             Requested size: 597.51086pt x 845.04504pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
+<<<<<<< Updated upstream
 Package pdftex.def Info: ../manuel.pdf, page3 used on input line 247.
+=======
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 275.
+>>>>>>> Stashed changes
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
@@ -3074,18 +3153,27 @@ Package pdftex.def Info: ../manuel.pdf, page3 used on input line 247.
 ]
 File: ../manuel.pdf Graphic file (type pdf)
  <use ../manuel.pdf, page 3>
+<<<<<<< Updated upstream
 Package pdftex.def Info: ../manuel.pdf, page3 used on input line 247.
+=======
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 275.
+>>>>>>> Stashed changes
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
+<<<<<<< Updated upstream
 Package pdftex.def Info: ../manuel.pdf, page3 used on input line 247.
+=======
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 275.
+>>>>>>> Stashed changes
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 3>
+<<<<<<< Updated upstream
 Package pdftex.def Info: ../manuel.pdf, page3 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
@@ -3095,11 +3183,28 @@ File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 4>
 Package pdftex.def Info: ../manuel.pdf, page4 used on input line 247.
+=======
+Package pdftex.def Info: ../manuel.pdf, page3 used on input line 275.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+
+* Missing: ../manuel.pax
+[12 <../manuel.pdf>] <../manuel.pdf, id=253, page=4, 597.51233pt x 845.0471pt>
+File: ../manuel.pdf Graphic file (type pdf)
+ <use ../manuel.pdf, page 4>
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 275.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 4>
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 275.
+>>>>>>> Stashed changes
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+
+* Missing: ../manuel.pax
+File: ../manuel.pdf Graphic file (type pdf)
+<use ../manuel.pdf, page 4>
+<<<<<<< Updated upstream
 Package pdftex.def Info: ../manuel.pdf, page4 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
@@ -3107,6 +3212,16 @@ Package pdftex.def Info: ../manuel.pdf, page4 used on input line 247.
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 4>
 Package pdftex.def Info: ../manuel.pdf, page4 used on input line 247.
+=======
+Package pdftex.def Info: ../manuel.pdf, page4 used on input line 275.
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+
+* Missing: ../manuel.pax
+[13 <../manuel.pdf>] <../manuel.pdf, id=267, page=5, 597.51233pt x 845.0471pt>
+File: ../manuel.pdf Graphic file (type pdf)
+ <use ../manuel.pdf, page 5>
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 275.
+>>>>>>> Stashed changes
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
@@ -3114,6 +3229,17 @@ Package pdftex.def Info: ../manuel.pdf, page4 used on input line 247.
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 5>
+<<<<<<< Updated upstream
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 247.
+=======
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 275.
+>>>>>>> Stashed changes
+(pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
+
+* Missing: ../manuel.pax
+File: ../manuel.pdf Graphic file (type pdf)
+<use ../manuel.pdf, page 5>
+<<<<<<< Updated upstream
 Package pdftex.def Info: ../manuel.pdf, page5 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
@@ -3121,12 +3247,16 @@ Package pdftex.def Info: ../manuel.pdf, page5 used on input line 247.
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 5>
 Package pdftex.def Info: ../manuel.pdf, page5 used on input line 247.
+=======
+Package pdftex.def Info: ../manuel.pdf, page5 used on input line 275.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
+[14 <../manuel.pdf>] <../manuel.pdf, id=283, page=6, 597.51233pt x 845.0471pt>
 File: ../manuel.pdf Graphic file (type pdf)
-<use ../manuel.pdf, page 5>
-Package pdftex.def Info: ../manuel.pdf, page5 used on input line 247.
+ <use ../manuel.pdf, page 6>
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 275.
+>>>>>>> Stashed changes
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
@@ -3134,6 +3264,7 @@ Package pdftex.def Info: ../manuel.pdf, page5 used on input line 247.
 File: ../manuel.pdf Graphic file (type pdf)
 
 <use ../manuel.pdf, page 6>
+<<<<<<< Updated upstream
 Package pdftex.def Info: ../manuel.pdf, page6 used on input line 247.
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
@@ -3141,18 +3272,29 @@ Package pdftex.def Info: ../manuel.pdf, page6 used on input line 247.
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 6>
 Package pdftex.def Info: ../manuel.pdf, page6 used on input line 247.
+=======
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 275.
+>>>>>>> Stashed changes
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 File: ../manuel.pdf Graphic file (type pdf)
 <use ../manuel.pdf, page 6>
+<<<<<<< Updated upstream
 Package pdftex.def Info: ../manuel.pdf, page6 used on input line 247.
+=======
+Package pdftex.def Info: ../manuel.pdf, page6 used on input line 275.
+>>>>>>> Stashed changes
 (pdftex.def)             Requested size: 597.53821pt x 845.08372pt.
 
 * Missing: ../manuel.pax
 [15 <../manuel.pdf>]
 
+<<<<<<< Updated upstream
 Package biblatex Warning: Type 'online' not found on input line 248.
+=======
+Package biblatex Warning: Type 'online' not found on input line 276.
+>>>>>>> Stashed changes
 
 (./Rapport.gls) (./Rapport.acr) (./Rapport.ind)
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -3197,8 +3339,13 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 ] 
 AED: pageslts setting LastPage 
+<<<<<<< Updated upstream
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 248.
 Package atveryend Info: Executing hook `AfterLastShipout' on input line 248.
+=======
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 276.
+Package atveryend Info: Executing hook `AfterLastShipout' on input line 276.
+>>>>>>> Stashed changes
 \c@pagesLTS.arabic.1.local.count=\count503
 
 AED: pageslts setting VeryLastPage via AfterLastShipout 
@@ -3210,18 +3357,28 @@ Package pageslts Info: Total number of pages is odd.
 
 
 (./Rapport.aux)
+<<<<<<< Updated upstream
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 248.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 248.
 Package logreq Info: Writing requests to 'Rapport.run.xml'.
 \openout1 = `Rapport.run.xml'.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 248.
+=======
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 276.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 276.
+Package logreq Info: Writing requests to 'Rapport.run.xml'.
+\openout1 = `Rapport.run.xml'.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 276.
+>>>>>>> Stashed changes
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
+<<<<<<< Updated upstream
  54140 strings out of 492995
  977822 string characters out of 6132703
  1591169 words of memory out of 5000000
@@ -3251,4 +3408,20 @@ PDF statistics:
  371 compressed objects within 4 object streams
  74 named destinations out of 1000 (max. 500000)
  50518 words of extra memory for PDF output out of 51595 (max. 10000000)
+=======
+ 54125 strings out of 492995
+ 977641 string characters out of 6132703
+ 1592169 words of memory out of 5000000
+ 56468 multiletter control sequences out of 15000+600000
+ 148522 words of font info for 237 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 62i,19n,94p,10403b,21841s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/kpfonts/kpfonts-expert.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbit8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbn8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbne.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpbsc8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmi.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmit8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmite.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmn8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmne.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpmsc8a.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/kpfonts/jkpttmn8a.pfb>
+Output written on Rapport.pdf (23 pages, 4714552 bytes).
+PDF statistics:
+ 463 PDF objects out of 1000 (max. 8388607)
+ 364 compressed objects within 4 object streams
+ 76 named destinations out of 1000 (max. 500000)
+ 50497 words of extra memory for PDF output out of 51595 (max. 10000000)
+>>>>>>> Stashed changes
 

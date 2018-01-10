@@ -34,13 +34,13 @@
 	Le programme prendra en entrée un fichier excel (ou au pire csv) contenant une maquette et les enseignants affectés. Il fournira en sortie un fichier excel.
 
 	\chapter{Environnement de développement}
+
 	\section{Language de programmation}
 	Nous avons utilisé Java (version 1.8) comme langage de programmation car il a une performance satisfaisante sur tous les systèmes et c'est aussi la dernière version stable.
 	Nous avons choisi comme IDE \href{http://www.eclipse.org}{Eclipse} pour développer le programme, car c'est un outil que nous avions tous les deux déjà utilisé.
 	Eclipse nous permet aussi simplement de mettre en place des tests unitaires, a l'aide de JUnit.
-
-	\clearpage
-
+	\enlargethispage*{\baselineskip}
+	\pagebreak
 	\section{Outils de gestion de projet}
 
 	Nous avons mis en place un \href{https://git-scm.com/}{Git} comme système de versionning, et nous avons fais le choix d'heberger notre code à l'aide de GitLab qui nous permet de faire des projets privés.
@@ -52,7 +52,6 @@
 	Ça nous permet de voir les taches qu'ils nous reste à faire ainsi que les taches sur lesquelles travail notre binôme.
 
 	\includegraphics[width=\textwidth]{./img/trello.png}
-
 	\chapter{Étude de projet}
 	\section{Analyse des besoins}
 	
@@ -62,9 +61,9 @@
 	Il devra aussi pouvoir créer des fichier Excel de même type, avec des formules, de la mise en forme et de la mise en forme conditionnelle.	
 
 	\section{Spécifications Fonctionnelles}
-	
+
 	Le logiciel que nous allons développer devra être capable de générer un ou plusieurs fond de planning. Pour effectuer cette tâche, il devra en remplir plusieurs autres.
-	
+
 	\begin{enumerate}
 		\item \textbf{Lire un fichier Excel}
 		\begin{enumerate}
@@ -141,52 +140,147 @@
 			\end{itemize}
 		\end{enumerate}
 	\end{enumerate}
-
 	\section{Modélisation}
-
 	Nous avons fais le choix d'utiliser l'architecture MVC (Modèle-vue-contrôleur) pour notre projet.
 	La partie contrôleur est utilisée pour lire les données d'entrée, analyser les donnée et générer le planning.
 	La partie modèle est utilisée pour stoker les données qu'on a lit et qu'on utilisera pour le planning.
 	La partie vue est utilisée pour permettre les utilisateurs saisissent les commandes pour la génération des fond de planning.
-
 	\subsection{UML}
-	\includegraphics[width=\textwidth]{./img/Diagram.png}
+	\includegraphics[scale=0.2]{./img/Diagram.png}
+	\pagebreak
 
 	\subsection{Définitions des classes}
 	\subsubsection{Modèle}
+		\begin{enumerate}
+			\item \textbf{\textit{class Calendar}}
 
+			Le but de cette classe est de stocker les informations d'un calendrier. Un calendrier représente deux semestres.
+
+			\textbf{Attributs :}
+				\begin{itemize}
+					\item[-] Le nom de calendrier, il stocke le nom de l'année.
+					\item[-] La liste des semestres, une arrayList des semestres de l'année.
+				\end{itemize}
+
+			\item \textbf{\textit{class OriginalCalendar}}
+
+			Le but de cette classe est de stocker les informations originaux qui sont lues à partir de fichier calendrier pour analyser.
+
+			\textbf{Attributs :}
+				\begin{itemize}
+					\item[-] Un LinkedHashMap des semestres, il stocke les informations originaux des semestres.
+					\item[-] Un LinkedHashMap des vacances, il stocke les informations originaux des vacances d'une année.
+					\item[-] Un LinkedHashMap des jours libres, il stocke les informations originaux des jours libres d'une année.
+				\end{itemize}
+
+			\item \textbf{\textit{class Teacher}}
+
+			Le but de cette classe est de stocker les informations des professeurs d'un cours.
+
+			\textbf{Attributs :}
+				\begin{itemize}
+					\item[-] Le nom de professeur.
+					\item[-] L'heure totale de CM que ce professeur fera.
+					\item[-] L'heure totale de TD que ce professeur fera.
+					\item[-] L'heure totale de TP que ce professeur fera.
+					\item[-] L'heure totale de Projet que ce professeur fera.
+					\item[-] L'heure totale de TD pour Mundus que ce professeur fera.
+					\item[-] L'heure totale de TP pour Mundus que ce professeur fera.
+				\end{itemize}
+
+			\item \textbf{\textit{class Course}}
+
+			Le but de cette classe est de stocker les informations de cours.
+			\textbf{Attributs :}
+				\begin{itemize}
+					\item[-] Le nom de cours;
+					\item[-] Une liste de tous les professeurs qui font ce cours.
+					\item[-] L'heure totale de CM de ce cours.
+					\item[-] L'heure totale de TD de ce cours.
+					\item[-] L'heure totale de TP de ce cours.
+					\item[-] L'heure totale de Projet de ce cours.
+					\item[-] Un booléen pour marquer si ce cours a un cc.
+					\item[-] Un booléen pour marquer si ce cours a un ct.
+					\item[-] Un booléen pour marquer si ce cours est un cours de type Mundus.
+					\item[-] Un string pour noter le type de ce cours est SI ou ASR.
+				\end{itemize}
+			\item \textbf{\textit{class OriginalCourse}}
+
+			Le but de cette classe est de stocker les informations originaux qui sont lues à partir de fichier maquette pour analyser.
+
+			\textbf{Attributs :}
+				\begin{itemize}
+					\item[-] Le nom de cours;
+					\item[-] Une chaîne de caractère de l'affectation de professeurs.
+					\item[-] L'heure totale de CM de ce cours.
+					\item[-] L'heure totale de TD de ce cours.
+					\item[-] L'heure totale de TP de ce cours.
+					\item[-] L'heure totale de Projet de ce cours.
+					\item[-] Un booléen pour marquer si ce cours a un cc.
+					\item[-] Un booléen pour marquer si ce cours a un ct.
+					\item[-] Un booléen pour marquer si ce cours est un cours de type Mundus.
+				\end{itemize}
+
+			\item \textbf{\textit{class TeachingUnit}}
+
+			Le but de cette classe est de stocker les informations d'une unité d'enseignement (UE).
+
+			\textbf{Attributs :}
+				\begin{itemize}
+					\item[-] Le nom de UE;
+					\item[-] Une liste de cours de cette UE.
+				\end{itemize}
+
+			\item \textbf{\textit{class FreeDay}}
+
+			Le but de cette classe est de stocker les informations d'un jour libre.
+
+			\textbf{Attributs :}
+				\begin{itemize}
+					\item[-] Le nom de ce jour libre.
+					\item[-] La date de ce jour.
+					\item[-] Le nombre de créneaux
+				\end{itemize}
+
+			\item \textbf{\textit{class Planning}}
+
+			Le but de cette classe est de stocker les informations d'un planning pour l'éciture.
+
+			\textbf{Attributs :}
+				\begin{itemize}
+					\item[-] L'année du planning que on veut générer.
+					\item[-] Une liste de l'unité enseignement de cette année dans un planning.
+					\item[-] Un calendrier de cette année.
+				\end{itemize}
+
+			\item \textbf{\textit{class Holiday}}
+
+			Le but de cette classe est de stocker les informations des vacances.
+
+			\textbf{Attributs :}
+				\begin{itemize}
+					\item[-] Le nom des vacances.
+					\item[-] La date début des vacances.
+					\item[-] La date fin des vacances.
+				\end{itemize}
+
+			\item \textbf{\textit{class Semester}}
+
+			Le but de cette classe est de stocker les informations d'une semestre.
+
+			\textbf{Attributs :}
+				\begin{itemize}
+					\item[-] Le nom d'une semestre, par exemple " S5 ".
+					\item[-] La date début d'une semestre.
+					\item[-] La date fin d'une semestre.
+					\item[-] Une liste de jour libre.
+					\item[-] Une liste des vacances.
+				\end{itemize}
+		\end{enumerate}
+		\pagebreak
 	\subsubsection{Contrôleur}
 
 	\subsubsection{Vue}
-	\textbf{\textit{class Calendar}}
-
-	Le but de cette classe est de stocker les informations d'un calendrier. Un calendrier représente deux semestres.
-
-	Attributs :
-	\begin{itemize}
-		\item[-] Le nom de calendrier, il stocke le nom de l'année.
-		\item[-] La liste des semestres, une arrayList des semestres de l'année.
-	\end{itemize}
-
-	\textbf{\textit{class OriginalCalendar}}
-
-	Le but de cette classe est de stocker les informations originaux qui sont lues à partir de fichier calendrier pour analyser. 
-
-	\textbf{\textit{class Teacher}}
-
-	\textbf{\textit{class Course}}
-
-	\textbf{\textit{class OriginalCourse}}
-
-	\textbf{\textit{class TeachingUnit}}
-
-	\textbf{\textit{class FreeDay}}
-
-	\textbf{\textit{class Planning}}
-
-	\textbf{\textit{class Holiday}}
-
-	\textbf{\textit{class Semester}}
 
 	\chapter{Planification}
 	
