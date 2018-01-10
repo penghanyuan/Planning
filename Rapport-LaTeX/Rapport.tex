@@ -33,14 +33,14 @@
 	Grossièrement, le fond de de planning se présente comme un quadrillage avec en ligne les cours (CM, TD, TP) et en colonne les semaines.
 	Des formules de calculs sont ajoutées à certaines cases afin de comptabiliser les heures placées.
 	Il est utilisé pour répartir les heures de CM, TD, TP par semestres et par enseignants.
-	
+
 	Le programme prendra en entrée un fichier excel contenant une maquette et les enseignants affectés. Il fournira en sortie un fichier excel.
 	Il sera possible d'ajouter un fichier d'entrée pour les éléments manquants, comme les dates rentrées, de vacances ...
 
 	\chapter{Environnement de développement}
 	\section{Langage de programmation}
 	%Nous avons utilisé Java (version 1.8) comme langage de programmation car il a une performance satisfaisante sur tous les systèmes et c'est aussi la dernière version stable.
-	
+
 	Java comme langage de programmation nous à été imposé.
 	Nous avons choisi comme IDE \href{http://www.eclipse.org}{Eclipse} pour développer le programme, car c'est un outil que nous avions tous les deux déjà utilisé.
 	%Eclipse nous permet aussi simplement de mettre en place des tests unitaires, a l'aide de JUnit.
@@ -51,9 +51,9 @@
 
 	Nous avons fais le choix d'utiliser \href{https://trello.com/}{Trello} pour gestion les tâches de notre projet.
 	Ça nous permet de voir les taches qu'ils nous reste à faire ainsi que les taches sur lesquelles travail notre binôme.
-	
+
 	\includegraphics[width=\textwidth]{./img/trello.png}
-	
+
 	Nous avons mis en place un \href{https://git-scm.com/}{Git} comme système de versionning, et nous avons fais le choix d'heberger notre code à l'aide de GitLab qui nous permet de faire des projets privés.
 	\href{https://about.gitlab.com/}{GitLab} nous permettais aussi de centraliser notre code à un même endroit.
 
@@ -125,7 +125,7 @@
 				\item[-] Entrée : Objets construis avec les données
 				\item[-] Sortie : Objets planning
 				\item[-] Pré-condition : Tous les objets doivent être présents
-				\item[-] Post-condition : 
+				\item[-] Post-condition :
 				\begin{itemize}[label=\textbullet, font=\LARGE]
 					\item Cette fonction a pour un objet fond de planning complet.
 				\end{itemize}
@@ -290,20 +290,51 @@
 		\end{enumerate}
 		\pagebreak
 	\subsubsection{Contrôleur}
+		\begin{enumerate}
+			\item \paragraph{class GeneratePlanning}
+			Le but de cette classe est de générer le planning à partir des informations stockées dans les objets Planning.
+
+			\item \paragraph{class ReadFile}
+			Le but de cette classe est de fournir les fonctions basiques pour lire le fichier maquette et le fichier calendrier.
+
+			\item \paragraph{class WriteFile}
+			Le but de cette classe est de fournir les fonctions basiques pour écrire le planning dans un fichier Excel.
+
+			\item \paragraph{class ParserCalendar}
+			Le but de cette classe est d'analyser les informations de calendrier à partir d'un objet OriginalCalendar.
+			\item \paragraph{class ReadMockUp}
+			Le but de cette classe est de lire le fichier maquette et de stocker les informations originaux d'un cours dans un objet OriginalCourse. On utilise la méthode getTeachingUnits de cette classe pour retourner un LinkedHashMap des unités d'enseignement. On utilisera ce LinkedHashMap pour analyser les informations d'une UE.
+			\item \paragraph{class WritePlanning}
+			Le but de cette classe est d'écrire les informations d'un objet planning dans un fichier Excel.
+			\item \paragraph{class ParserMockUp}
+			Le but de cette classe est d'analyser les informations de maquette à partir du . LinkedHashMap qui est fourni par la classe ReadMockUp.
+			\item \paragraph{class StylesLib}
+			Le but de cette classe est de fournir des style de cellule.
+			\item \paragraph{class ReadCalendar}
+			Le but de cette classe est de lire le fichier calendrier et de stocker les informations originaux d'un calendrier dans un objet OriginalCalendar.
+			\item \paragraph{class ToolBox}
+			Le but de cette classe est de fournir des méthodes comme vérifier le type de cours.
+		\end{enumerate}
 
 	\subsubsection{Vue}
+	\begin{enumerate}
+		\item \paragraph{class Mainview}
+		Le but de cette classe est de créer une vue pour l'utilisateur.
 
+		\item \paragraph{class MainViewHandler}
+		Le but de cette classe est de traiter les commandes qui est saisies par l'utilisateur et de faire l'exécution des commandes en appelant aux contrôleurs. 
+	\end{enumerate}
 	\chapter{Planification}
 
 	\section{Diagramme de Gantt}
-	
+
 	Pour mener à terme ce projet, il nous a fallu le décomposer en taches, leurs déterminer une priorité et en estimer leurs durées. Ces informations nous ont permis de réaliser un diagramme de Gantt prévisionnel qui à été mis a jour en cours de projet.
-	
+
 	\includegraphics[width=\textwidth]{./img/Gantt.png}
 
 	Nous avons paramétré le calendrier avec deux heures de travail par jour, avec des semaines de 5 jours.
 	La répartition de notre travail n'as pas forcément respecté ce calendrier, mais la quantité de travail fournie est équivalente.
-	
+
 	\section{Répartition des tâches}
 
 	Nous avons choisi de se diviser le travail par classes.
@@ -336,11 +367,11 @@
 
 	Nous avons commencé par développer les modèles, puis les contrôleurs pour finir avec la vue.
 	Tests unitaires ont étés réalisés après l'écriture de chaque méthodes de chaque classes.
-	
+
 	\pagebreak
-	
+
 	Les groupes des classes modèles, vues et contrôleurs ont chacunes étés placés dans un package, ce nous donne l'arborescence suivante :
-	
+
 	\dirtree{%
 		.1 .
 		.2 main/.
@@ -356,7 +387,7 @@
 		.4 com/.
 		.5 polytech/.
 		.6 planning/.
-	} 
+	}
 
 
 	\section{Tests et validation}
