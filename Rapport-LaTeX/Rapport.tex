@@ -147,17 +147,17 @@
 	\end{enumerate}
 
 	%\pagebreak
-	
+
 	\section{Modélisation}
-	
+
 	Nous avons fais le choix d'utiliser l'architecture MVC (Modèle-vue-contrôleur) pour notre projet.
 	La partie contrôleur est utilisée pour lire les données d'entrée, analyser les donnée et générer le planning.
 	La partie modèle est utilisée pour stoker les données qu'on a lit et qu'on utilisera pour le planning.
 	La partie vue est utilisée pour permettre les utilisateurs saisissent les commandes pour la génération des fond de planning.
-	
+
 	\subsection{UML}
 	\includegraphics[scale=0.2]{./img/Diagram.png}
-	
+
 	\pagebreak
 
 	\subsection{Définitions des classes}
@@ -324,7 +324,7 @@
 		Le but de cette classe est de créer une vue pour l'utilisateur.
 
 		\item \paragraph{class MainViewHandler}
-		Le but de cette classe est de traiter les commandes qui est saisies par l'utilisateur et de faire l'exécution des commandes en appelant aux contrôleurs. 
+		Le but de cette classe est de traiter les commandes qui est saisies par l'utilisateur et de faire l'exécution des commandes en appelant aux contrôleurs.
 	\end{enumerate}
 	\chapter{Planification}
 
@@ -343,11 +343,11 @@
 	Nous avons choisi de se diviser le travail par classes.
 	Avec des points régulier pour expliquer l'avancé de notre travail, et partager nos remarques et
 	interrogations
-	
+
 	+++++++++++++++++++++++++++++++++++++++++++++
 
 	\chapter{Implémentation}
-	
+
 	+++++++++++++++++++++++++++++++++++++++++++++
 
 	\section{Choix de bibliothèques}
@@ -366,12 +366,12 @@
 	Après quelques essais avec les deux bibliothèques, nous avons fais le choix d'utiliser \textbf{POI Apache} pour réaliser ce projet.
 
 	\section{Organisation}
-	
+
 	%Nous utilisons Maven pour la gestion de bibliothèque.
 	Comme vu précédemment (\ref{lib}), nous avons choisis \textbf{POI Apache} comme bibliothèque pour la lecture / écriture de fichiers Excel.
 	Pour l'ajouter à notre projet, il faut ajouter ces lignes à notre fichier pom.xml.
 	Maven récupèrera automatiquement les bibliothèques renseignées dans ce fichier.
-	
+
 	\begin{latexsource}
 	<dependency>
 		<groupId>org.apache.poi</groupId>
@@ -382,11 +382,11 @@
 
 	\subsection{Organisation des fichiers}
 	+++++++++++++++++++++++++++++++++++++++++++++
-	
+
 	Nous avons commencé par développer les modèles, puis les contrôleurs pour finir avec la vue.
-	
+
 	+++++++++++++++++++++++++++++++++++++++++++++
-	
+
 	%\pagebreak
 
 	Les groupes des classes modèles, vues et contrôleurs ont chacunes été placés dans un package, ce nous donne l'arborescence suivante :
@@ -410,27 +410,27 @@
 
 
 	\section{Tests et validation}
-	
+
 	Les tests unitaires ont été réalisés après l'écriture des méthodes de chaque classes.
 	Ils ont été fais de manières croisées, les méthodes écrites par l'un de nous deux ont été testés par l'autre.
 	Nous avons utilisé la bibliothèque \textbf{JUnit} pour réaliser nos tests unitaires.
-	
+
 	Certains tests visuels, pour le formatage des feuilles Excel sont faites visuellement.
 	Nous n'avons pa trouvé d'autres méthodes pour vérifier ceci.
-	
+
 	\subsection{Résultat d'exécution}
 	\includegraphics[width=\textwidth]{./img/excution_result2.png}
-	
+
 	\section{Documentation}
 	+++++++++++++++++++++++++++++++++++++++++++++
-	
+
 	Classes documentés (JavaDoc) pour évolutivité, ...
-	
+
 	+++++++++++++++++++++++++++++++++++++++++++++
 	\chapter{Annexes}
 
 	\section{Manuel d'utilisation}
 	Comme nous n'avions rien d'imposé pour la création du manuel utilisateur, nous avons fais le choix d'utiliser AsciiDoc.
-	
+
 	\includepdf[pages=3-, offset=0 0]{../manuel.pdf}
 \end{document}
