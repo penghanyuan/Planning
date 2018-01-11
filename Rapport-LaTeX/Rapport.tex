@@ -356,7 +356,8 @@
 	Après avoir effectué des recherches, nous avons trouvés deux bibliothèques qui pourraient répondre à nos besoins.
 
 	Le première, \href{http://jexcelapi.sourceforge.net/}{Java Excel API}, qui est un projet Open Source mis à jour pour la dernière fois en 2009.
-
+	
+	\label{lib}
 	La seconde, \href{http://poi.apache.org}{POI Apache}, gratuit, mais sous licence \href{https://www.apache.org/licenses/}{Apache}.
 	Elle à été mise a jour pour la dernière fois le 15 Septembre 2017.
 	Ce n'est pas forcement gage de bonne qualité, mais ça signifie que le projet évolue et qu'il n'est pas à l'abandon.
@@ -367,7 +368,7 @@
 	\section{Organisation}
 	
 	%Nous utilisons Maven pour la gestion de bibliothèque.
-	Comme vu précédemment, nous avons choisis \textbf{POI Apache} comme bibliothèque pour la lecture / écriture de fichiers Excel.
+	Comme vu précédemment (\ref{lib}), nous avons choisis \textbf{POI Apache} comme bibliothèque pour la lecture / écriture de fichiers Excel.
 	Pour l'ajouter à notre projet, il faut ajouter ces lignes à notre fichier pom.xml.
 	Maven récupèrera automatiquement les bibliothèques renseignées dans ce fichier.
 	
