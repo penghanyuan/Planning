@@ -53,7 +53,7 @@ public final class ToolBox {
 	 * get list of date between begin and end
 	 * @param begin
 	 * @param end
-	 * @return
+	 * @return list of date
 	 */
 	public static LinkedHashMap<Integer, String> getBetweenDates(Date begin, Date end) {
 		LinkedHashMap<Integer, String> result = new LinkedHashMap<Integer, String>();
@@ -85,7 +85,7 @@ public final class ToolBox {
 	 * test a date is a holiday or not
 	 * @param string
 	 * @param holiday
-	 * @return
+	 * @return boolean
 	 */
 	public static boolean isHoliday(String string, List<Holiday> holiday) {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yy");
@@ -112,7 +112,7 @@ public final class ToolBox {
 	/**
 	 * convert from numberIndex to excel format index like AC...
 	 * @param columnIndex
-	 * @return
+	 * @return string of column in Excel
 	 */
 	public static String excelColIndexToStr(int columnIndex) {
 		if (columnIndex <= 0) {
