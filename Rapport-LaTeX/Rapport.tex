@@ -29,13 +29,14 @@
 	% zone du contenu du document
 	\chapter{Introduction}
 	\section{Présentation du projet}
-	L’objectif de projet est de développer un programme qui devra créer un fond de planning en Excel afin de faciliter la création des emplois du temps.
+	L’objectif de ce projet est de développer un programme qui devra créer un fond de planning en Excel afin de faciliter la création des emplois du temps.
 	Grossièrement, le fond de de planning se présente comme un quadrillage avec en ligne les cours (CM, TD, TP) et en colonne les semaines.
-	Des formules de calculs sont ajoutées à certaines cases afin de comptabiliser les heures placées.
 	Il est utilisé pour répartir les heures de CM, TD, TP par semestres et par enseignants.
+	Des formules de calculs sont ajoutées à certaines cases afin de comptabiliser les heures placées.
 
-	Le programme prendra en entrée un fichier excel contenant une maquette et les enseignants affectés. Il fournira en sortie un fichier excel.
-	Il sera possible d'ajouter un fichier d'entrée pour les éléments manquants, comme les dates rentrées, de vacances ...
+	Le programme prendra en entrée un fichier Excel contenant une maquette et les enseignants affectés pour les cours d'un semestre.
+	Il fournira en sortie un fichier Excel.
+	Il sera possible d'ajouter un fichier d'entrée pour les éléments manquants, comme les dates de rentrées, de vacances ...
 
 	\chapter{Environnement de développement}
 	\section{Langage de programmation}
@@ -43,17 +44,19 @@
 	Java nous à été imposé comme langage de programmation.
 	Nous avons choisi comme IDE \href{http://www.eclipse.org}{Eclipse} pour développer le programme, car c'est un outil que nous avions tous les deux déjà utilisé.
 
-	%\pagebreak
-
 	\section{Outils de gestion de projet}
 
 	Nous avons fais le choix d'utiliser \href{https://trello.com/}{Trello} afin de gérer les tâches de notre projet.
-	Trello est un \textit{Kanban} en ligne, il nous permet de visualiser les taches qu'il nous reste à faire ainsi que les taches sur lesquelles travail notre binôme.
+	Trello est un \textit{Kanban} en ligne, il nous permet de visualiser les tâches qu'il nous reste à faire ainsi que celles sur lesquelles travail notre binôme.
 
-	\includegraphics[width=\textwidth]{./img/trello.png}
+	\begin{figure}
+		\caption{Tableau Trello}
+		\includegraphics[width=\textwidth]{./img/trello.png}
+	\end{figure}
 
-	Nous avons mis en place un \href{https://git-scm.com/}{Git} comme système de versionning, et nous avons fais le choix d'heberger notre code à l'aide de GitLab qui nous permet de faire des projets privés.
-	\href{https://about.gitlab.com/}{GitLab} nous permettais aussi de centraliser notre code à un même endroit.
+	Nous avons mis en place un \href{https://git-scm.com/}{Git} comme système de versionning, care c'est un système avec lequel nous sommes déjà familier.
+	De plus, nous avons fais le choix d'héberger notre code à l'aide de \textbf{GitLab} qui nous permet de faire des projets privés.
+	\href{https://about.gitlab.com/}{GitLab} nous permet aussi de centraliser notre code à un même endroit.
 
 	Notre projet utilisera des bibliothèques, pour simplifier la gestion des dépendances, nous avons fait le choix d'utiliser \href{https://maven.apache.org/}{Maven} qui est un gestionnaire de dépendances pour Java.
 
@@ -146,17 +149,21 @@
 		\end{enumerate}
 	\end{enumerate}
 
-	\pagebreak
-
 	\section{Modélisation}
 
 	Nous avons fais le choix d'utiliser l'architecture MVC (Modèle-vue-contrôleur) pour notre projet.
 	La partie contrôleur est utilisée pour lire les données d'entrée, analyser les donnée et générer le planning.
 	La partie modèle est utilisée pour stoker les données qu'on a lit et qu'on utilisera pour le planning.
 	La partie vue est utilisée pour permettre les utilisateurs saisissent les commandes pour la génération des fond de planning.
+	
+	\pagebreak
 
 	\subsection{UML}
-	\includegraphics[scale=0.2]{./img/Diagram.png}
+	
+	\begin{figure}
+		\caption{Diagramme de classes - UML}
+		\includegraphics[width=\textwidth]{./img/Diagram.png}
+	\end{figure}
 
 	\pagebreak
 
@@ -330,9 +337,14 @@
 
 	\section{Diagramme de Gantt}
 
-	Pour mener à terme ce projet, il nous a fallu le décomposer en taches, leurs déterminer une priorité et en estimer leurs durées. Ces informations nous ont permis de réaliser un diagramme de Gantt prévisionnel qui à été mis a jour en cours de projet.
-
-	\includegraphics[width=\textwidth]{./img/Gantt.png}
+	\paragraph{}
+	Pour mener à terme ce projet, il nous a fallu le décomposer en taches, leurs déterminer une priorité et en estimer leurs durées.
+	Ces informations nous ont permis de réaliser un diagramme de Gantt prévisionnel qui à été mis a jour en cours de projet.
+	
+	\begin{figure}
+		\caption{Diagramme de Gantt}
+		\includegraphics[width=13.5cm]{./img/Gantt.png}
+	\end{figure}
 
 	Nous avons paramétré le calendrier avec deux heures de travail par jour, avec des semaines de 5 jours.
 	La répartition de notre travail n'as pas forcément respecté ce calendrier, mais la quantité de travail fournie est équivalente.
@@ -343,7 +355,10 @@
 	
 	Durant le projet, nous avons fais des points régulier pour partager nos remarques, et nos questions.
 	
-	\includegraphics[width=\textwidth]{./img/taches-list.png}
+	\begin{figure}
+		\caption{Listing des tâches}
+		\includegraphics[width=\textwidth]{./img/taches-list.png}
+	\end{figure}
 
 	\chapter{Implémentation}
 
@@ -386,7 +401,10 @@
 
 	Les groupes des classes modèles, vues et contrôleurs ont chacunes été placés dans un package, ce nous donne l'arborescence suivante :
 
-	\includegraphics[width=8cm]{./img/folder-planning-w.png}
+	\begin{figure}
+		\caption{Organisation des dossiers}
+		\includegraphics[width=6.5cm]{./img/folder-planning-w.png}
+	\end{figure}
 
 	\section{Fichiers d'entrées}
 
@@ -421,7 +439,10 @@
 	
 	Voici une exemple de documentation sur la méthode \textit{searchContent}, présent dans la class \textit{ReadFile}.
 
-	\includegraphics[width=\textwidth]{./img/documentation.png}
+	\begin{figure}
+		\caption{Exemple de documentation}
+		\includegraphics[width=\textwidth]{./img/documentation.png}
+	\end{figure}
 	
 	\section{Tests et validation}
 	
@@ -434,13 +455,17 @@
 	
 	\subsection{Résultat d'exécution}
 	
-	+++++++++++++++++++++++++++++++++++++++++++++
+	Pour exécuter le programme, il faut utiliser cette commande :
 	
-	Expliquer la commande CF manuel
+	\begin{latexsource}
+	java -jar planning-generator.jar <startYear/endYear> < -all|-di3|-di4|-di5 > <MaquetteFile.xlsx> <CalendarFile.xlsx>
+	\end{latexsource}
+
+	\begin{figure}
+		\caption{Résultat d'exécution}
+		\includegraphics[width=15cm]{./img/excution_result2.png}
+	\end{figure}
 	
-	+++++++++++++++++++++++++++++++++++++++++++++
-	
-	\includegraphics[width=\textwidth]{./img/excution_result2.png}
 	
 	\chapter{Annexes}
 
