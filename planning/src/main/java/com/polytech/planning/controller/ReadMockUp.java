@@ -62,7 +62,13 @@ public class ReadMockUp extends ReadFile {
 			e1.printStackTrace();
 		}
 	}
-
+	
+	/**
+	 * 
+	 * @param filePath
+	 * @param sheetNum
+	 * @throws FileFormatException
+	 */
 	private void getColNumbers(String filePath, int sheetNum) throws FileFormatException {
 		String sheetName = null;
 		try {

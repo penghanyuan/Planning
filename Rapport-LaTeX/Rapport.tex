@@ -348,8 +348,6 @@
 
 	\chapter{Implémentation}
 
-	+++++++++++++++++++++++++++++++++++++++++++++
-
 	\section{Choix de bibliothèques}
 
 	Pour réaliser la lecture et l'écriture des fichiers Excel, nous avons fais le choix d'utiliser une bibliothèque.
@@ -387,10 +385,32 @@
 
 	+++++++++++++++++++++++++++++++++++++++++++++
 
-
 	Les groupes des classes modèles, vues et contrôleurs ont chacunes été placés dans un package, ce nous donne l'arborescence suivante :
 
-	\includegraphics[width=\textwidth]{./img/folder-planning.png}
+	\includegraphics[width=8cm]{./img/folder-planning-w.png}
+
+	\section{Fichiers d'entrées}
+
+	Les fichiers d'entrées sont des fichiers Excel de type .xlsx.
+
+	\subsection{Maquette}
+
+	Le fichier maquette présente les unités d'enseignements (UE) avec les cours pour chaque UE par semestres.
+	Ils sont définies par un nom et un volume horaire par type de cours.
+	Des enseignants sont attribués à des cours, il peut y en avoir plusieurs.
+	Ils peuvent être attribués à certains groupes et certain type de cours (CM, TD, TP).
+
+	\subsection{Calendrier}
+
+	Le calendrier permet de définir les dates de début et de fin de chaques semestres.
+	Il contient aussi les dates de vacances pour l'année complète ainsi que les jours libres qui sont définies par un nom une date et un créneau (correspond à 2 heures).
+
+	\section{Fichier de sortie}
+
+	Le fichier de sortie contient le planning d'une année qui est généré à partir des fichiers d'entrées.
+	Il présente les unités d'enseignements (UE) avec les cours pour chaque UE par semestres.
+	Des enseignants sont attribués à des cours. Le volume d'heure que l'enseignant fait pour chaque type de cours peut être placé par semaine dans une semestre.
+	Le volume de travail par étudiant peut être calculé par des formules.
 
 	\section{Tests et validation}
 
@@ -405,11 +425,13 @@
 	\includegraphics[width=\textwidth]{./img/excution_result2.png}
 
 	\section{Documentation}
-	+++++++++++++++++++++++++++++++++++++++++++++
+	%+++++++++++++++++++++++++++++++++++++++++++++
+	%Classes documentés (JavaDoc) pour évolutivité, ...
+	%+++++++++++++++++++++++++++++++++++++++++++++
+	Afin de rendre notre code évolutif, nous avons généré une documentation à l'aide de JavaDoc.
+	Cette documentation à pour but d'aider un éventuel dévelopeur à reprendre et comprendre le projet.
 
-	Classes documentés (JavaDoc) pour évolutivité, ...
-
-	+++++++++++++++++++++++++++++++++++++++++++++
+	\includegraphics[width=\textwidth]{./img/documentation.png}
 	\chapter{Annexes}
 
 	\section{Manuel d'utilisation}
