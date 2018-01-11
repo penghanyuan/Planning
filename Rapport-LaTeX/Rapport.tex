@@ -353,7 +353,7 @@
 
 	Nous avons fais l'analyse de projet ensemble, après avoir définie la listes des taches à effectuer pour le reste du projets, nous nous les sommes réparties de manière équitables.
 
-	Durant le projet, nous avons fais des points régulier pour partager nos remarques, et nos questions.
+	Durant le projet, nous avons fais des points réguliers pour partager nos remarques, et nos questions.
 
 	\begin{figure}
 		\caption{Listing des tâches}
@@ -424,6 +424,7 @@
 
 	\section{Analyse des données}
 	%expressions regulières
+	\label{format}
 	Les données lues doivent être analysées pour ensuite être stockées dans des objets.
 	La partie plus complexe est l'affectation de professeur, il faut analyser une chaîne de caractère pour chaque cours.
 	Nous avons utilisé les expressions régulières et des méthodes basique de class String pour analyser la chaîne de caractère.
@@ -493,22 +494,38 @@
 	\end{figure}
 
 	\chapter{Conclusion} 
+
+	Durant le projet, nous avons rencontré quelques de problèmes.
+	Comme par exemple le temps de lecture des fichiers d'entrés était anormalement long.
+	Après des recherches auprès de la documentation et de la communauté de la bibliothèque POI Apache, nous avons trouvé la solution.
 	
-	%Problemes rencontrés,  
-	%vitesse de lecture poi apache 
-	%formatage des données (uniformiser) pour simplifier l'analise 
-	%Phase de formation pour prendre en main POI Apache et d'autre outils comme maven que nous n'avions jamais utilisés auparavant 
+	Il est possible d'utiliser un fichier Excel en lecture et écriture ou seulement en lecture.
+	Le temps de lecture est divisé par 10 si on l'utilise uniquement en lecture.
 	
-	%Bonne Communication (humain) 
+	\textbf{Le code qui posait problème}
+	\begin{latexsource}
+	this.wb = WorkbookFactory.create(file);
+	\end{latexsource}
+
+	\textbf{Le code corrigé}
+	\begin{latexsource}
+	InputStream st = new FileInputStream(this.file);
+	this.wb = new XSSFWorkbook(st);
+	\end{latexsource}
 	
-	%(Technique) Nous avons essayer d'appliquer le plus possibles les bonnes pratiques de Genie Logiciel (Git, Trello, ...). Nous à permis d'appréhender de nouveaux outils comme la bibliotheque POI Apache. 
+	Nous avons aussi uniformisé le formatage des données pour l'attribution des groupes d'étudiants aux enseignants, afin de simplifier l'analyse des données présentes dans la maquette des unités d'enseignements. (\ref{format})
+	
+	Ce projet nous à permis de prendre en main de nouveau outils, sur lesquels nous nous sommes auto-formés comme par exemple Maven ou la bibliothèque POI Apache.
+	
+	Nous avons apprécié travailler ensemble, la communication à été une force au sein de notre équipe.	
+	Nous avons essayer d'appliquer le plus possibles les bonnes pratiques de Génie Logiciel (Git, Trello, Documentation, ...).
 	
 	\section{Améliorations \& Évolutions} 
 	
 	%Ajout des mises en formes conditionnel 
 	%Ajout de gestion de groupes d'options pour les DI5 
 	
-	%Grace à maven mise à jour possible des bibliothèques utilisées. 
+	%Grace à maven mise à jour possible des bibliothèques utilisées pour de future évolutions
 
 	\chapter{Annexes}
 
