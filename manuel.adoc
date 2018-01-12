@@ -1,5 +1,6 @@
 = Générateur de fond de planning: Manuel d'utilisation
-:author: H. Peng / S. Deluce
+Hanyuan Peng / Stéphane Deluce
+v 0.1.0, 10/01/2018
 :doctype: letter
 :encoding: utf-8
 :icons: font
