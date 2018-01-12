@@ -29,14 +29,13 @@
 	% zone du contenu du document
 	\chapter{Introduction}
 	\section{Présentation du projet}
-	L’objectif de ce projet est de développer un programme qui devra créer un fond de planning en Excel afin de faciliter la création des emplois du temps.
-	Grossièrement, le fond de de planning se présente comme un quadrillage avec en ligne les cours (CM, TD, TP) et en colonne les semaines.
+	L'objectif de ce projet est de développer un programme qui devra créer un fond de planning en Excel afin de faciliter la création des emplois du temps.
+	Grossièrement, le fond de planning se présente comme un quadrillage avec en ligne les cours (CM, TD, TP) et en colonne les semaines.
 	Il est utilisé pour répartir les heures de CM, TD, TP par semestres et par enseignants.
 	Des formules de calculs sont ajoutées à certaines cases afin de comptabiliser les heures placées.
-
+	
 	Le programme prendra en entrée un fichier Excel contenant une maquette et les enseignants affectés pour les cours d'un semestre.
-	Il fournira en sortie un fichier Excel.
-	Il sera possible d'ajouter un fichier d'entrée pour les éléments manquants, comme les dates de rentrées, de vacances ...
+	Il fournira en sortie un fichier Excel. Il sera possible d'ajouter un fichier d'entrée pour les éléments manquants, comme les dates de rentrées, de vacances ...
 
 	\chapter{Environnement de développement}
 	\section{Langage de programmation}
@@ -46,7 +45,7 @@
 
 	\section{Outils de gestion de projet}
 
-	Nous avons fais le choix d'utiliser \href{https://trello.com/}{Trello} afin de gérer les tâches de notre projet.
+	Nous avons fait le choix d'utiliser \href{https://trello.com/}{Trello} afin de gérer les tâches de notre projet.
 	Trello est un \textit{Kanban} en ligne, il nous permet de visualiser les tâches qu'il nous reste à faire ainsi que celles sur lesquelles travail notre binôme.
 
 	\begin{figure}
@@ -54,8 +53,8 @@
 		\includegraphics[width=\textwidth]{./img/trello.png}
 	\end{figure}
 
-	Nous avons mis en place un \href{https://git-scm.com/}{Git} comme système de versionning, car c'est un système avec lequel nous sommes déjà familier.
-	De plus, nous avons fais le choix d'héberger notre code à l'aide de \textbf{GitLab} qui nous permet de faire des projets privés.
+	Nous avons mis en place un \href{https://git-scm.com/}{Git} comme système de versionning, car c'est un système avec lequel nous sommes déjà familiers.
+	De plus, nous avons fait le choix d'héberger notre code à l'aide de \textbf{GitLab} qui nous permet de faire des projets privés.
 	\href{https://about.gitlab.com/}{GitLab} nous permet aussi de centraliser notre code à un même endroit.
 
 	Notre projet utilisera des bibliothèques, pour simplifier la gestion des dépendances, nous avons fait le choix d'utiliser \href{https://maven.apache.org/}{Maven} qui est un gestionnaire de dépendances pour Java.
@@ -63,14 +62,14 @@
 	\chapter{Étude de projet}
 	\section{Analyse des besoins}
 
-	Le logiciel que nous allons développer devra être capable de générer un ou plusieurs fond de planning.
+	Le logiciel que nous allons développer devra être capable de générer un ou plusieurs fonds de planning.
 
 	Il devra être capable de lire des fichiers Excel de type Xlsx,
 	mais aussi pouvoir créer des fichier Excel de même type, avec des formules, de la mise en forme et de la mise en forme conditionnelle.
 
 	\section{Spécifications Fonctionnelles}
 
-	Le logiciel que nous allons développer aura comme fonction de générer un ou plusieurs fond de planning. Pour effectuer cette tâche, il devra en remplir plusieurs autres.
+	Le logiciel que nous allons développer aura comme fonction de générer un ou plusieurs fonds de planning. Pour effectuer cette tâche, il devra en remplir plusieurs autres.
 
 	\begin{enumerate}
 		\item \textbf{Lire un fichier Excel}
@@ -151,8 +150,8 @@
 
 	\section{Modélisation}
 
-	Nous avons fais le choix d'utiliser l'architecture MVC (Modèle-vue-contrôleur) pour notre projet.
-	La partie contrôleur est utilisée pour lire les données d'entrée, analyser les donnée et générer le planning.
+	Nous avons fait le choix d'utiliser l'architecture MVC (Modèle-vue-contrôleur) pour notre projet.
+	La partie contrôleur est utilisée pour lire les données d'entrée, analyser les données et générer le planning.
 	La partie modèle est utilisée pour stoker les données qu'on a lit et qu'on utilisera pour le planning.
 	La partie vue est utilisée pour permettre les utilisateurs saisissent les commandes pour la génération des fond de planning.
 
@@ -338,22 +337,22 @@
 	\section{Diagramme de Gantt}
 
 	\paragraph{}
-	Pour mener à terme ce projet, il nous a fallu le décomposer en taches, leurs déterminer une priorité et en estimer leurs durées.
-	Ces informations nous ont permis de réaliser un diagramme de Gantt prévisionnel qui à été mis a jour en cours de projet.
+	Pour mener à terme ce projet, il nous a fallu le décomposer en tâches, leurs déterminer une priorité et en estimer leurs durées.
+	Ces informations nous ont permis de réaliser un diagramme de Gantt prévisionnel qui à été mis à jour en cours de projet.
 
 	\begin{figure}
 		\caption{Diagramme de Gantt}
 		\includegraphics[width=13.5cm]{./img/Gantt.png}
 	\end{figure}
 
-	Nous avons paramètre le calendrier avec deux heures de travail par jour, avec des semaines de 5 jours.
-	La répartition de notre travail n'as pas forcément respecté ce calendrier, mais la quantité de travail fournie est équivalente.
+	Nous avons paramètre le calendrier avec deux heures de travail par jour, avec des semaines de cinq jours.
+	La répartition de notre travail n'a pas forcément respecté ce calendrier, mais la quantité de travail fournit est équivalente.
 
 	\section{Répartition des tâches}
 
-	Nous avons fais l'analyse de projet ensemble, après avoir définie la listes des taches à effectuer pour le reste du projets, nous nous les sommes réparties de manière équitables.
+	Nous avons fait l'analyse de projet ensemble, après avoir définie la liste des taches à effectuer pour le reste du projet, nous nous les sommes réparties de manière équitables.
 
-	Durant le projet, nous avons fais des points réguliers pour partager nos remarques, et nos questions.
+	Durant le projet, nous avons fais des points réguliers pour partager nos remarques et nos questions.
 
 	\begin{figure}
 		\caption{Listing des tâches}
@@ -364,23 +363,23 @@
 
 	\section{Choix de bibliothèques}
 
-	Pour réaliser la lecture et l'écriture des fichiers Excel, nous avons fais le choix d'utiliser une bibliothèque.
-	Après avoir effectué des recherches, nous avons trouvés deux bibliothèques qui pourraient répondre à nos besoins.
+	Pour réaliser la lecture et l'écriture des fichiers Excel, nous avons fait le choix d'utiliser une bibliothèque.
+	Après avoir effectué des recherches, nous avons trouvé deux bibliothèques qui pourraient répondre à nos besoins.
 
 	Le première, \href{http://jexcelapi.sourceforge.net/}{Java Excel API}, qui est un projet Open Source mis à jour pour la dernière fois en 2009.
 
 	\label{lib}
 	La seconde, \href{http://poi.apache.org}{POI Apache}, gratuit, mais sous licence \href{https://www.apache.org/licenses/}{Apache}.
-	Elle à été mise a jour pour la dernière fois le 15 Septembre 2017.
+	Elle a été mise à jour pour la dernière fois le 15 Septembre 2017.
 	Ce n'est pas forcement gage de bonne qualité, mais ça signifie que le projet évolue et qu'il n'est pas à l'abandon.
-	Cette bibliothèque est très bien documenté, et utilisé par une large communauté.
+	Cette bibliothèque est très bien documenté et utilisé par une large communauté.
 
 	Après quelques essais avec les deux bibliothèques, nous avons fais le choix d'utiliser \textbf{POI Apache} pour réaliser ce projet.
 
 	\section{Organisation}
 
 	%Nous utilisons Maven pour la gestion de bibliothèque.
-	Comme vu précédemment (\ref{lib}), nous avons choisis \textbf{POI Apache} comme bibliothèque pour la lecture / écriture de fichiers Excel.
+	Tel que vu précédemment (\ref{lib}), nous avons choisi \textbf{POI Apache} comme bibliothèque pour la lecture / écriture de fichiers Excel.
 	Pour l'ajouter à notre projet, il faut ajouter ces lignes à notre fichier pom.xml.
 	Maven récupèrera automatiquement les bibliothèques renseignées dans ce fichier.
 
@@ -399,7 +398,7 @@
 	%Nous avons commencé par développer les modèles, puis les contrôleurs pour finir avec la vue.
 	%+++++++++++++++++++++++++++++++++++++++++++++
 
-	Les groupes des classes modèles, vues et contrôleurs ont chacunes été placés dans un package, ce nous donne l'arborescence suivante :
+	Les groupes des classes modèles, vues et contrôleurs, chacunes ont été placés dans un package, ce nous donne l'arborescence suivante :
 
 	\begin{figure}
 		\caption{Organisation des dossiers}
@@ -419,19 +418,18 @@
 
 	\subsection{Calendrier}
 
-	Le calendrier permet de définir les dates de début et de fin de chaques semestres.
+	Le calendrier permet de définir les dates de début et de fin de chaque semestres.
 	Il contient aussi les dates de vacances pour l'année complète ainsi que les jours libres qui sont définies par un nom une date et un créneau (correspond à 2 heures).
 
 	\section{Analyse des données}
 	%expressions regulières
 	\label{format}
 	Les données lues doivent être analysées pour ensuite être stockées dans des objets.
-	La partie plus complexe est l'affectation de professeur, il faut analyser une chaîne de caractère pour chaque cours.
-	Nous avons utilisé les expressions régulières et des méthodes basique de class String pour analyser la chaîne de caractère.
+	La partie la plus complexe est l'affectation de professeur, il faut analyser une chaîne de caractère pour chaque cours.
+	Nous avons utilisé les expressions régulières et des méthodes basiques de class String pour analyser la chaîne de caractère.
 
-	Par exemple, pour une chaîne de caractère qui contient plusieurs professeur, nous utilisons \textbf{;} pour séparer les professeurs,
-	et pour les type de cours (CM, TD, TP), nous utilisons le \textbf{,} pour les séparer.
-	Donc nous utilisons la méthode \textit{split()} pour trouver les professeurs ou les type de cours différents.
+	Par exemple, pour une chaîne de caractère qui contient plusieurs professeurs, nous utilisons \textbf{;} pour les séparer et pour les types de cours (CM, TD, TP), nous utilisons le \textbf{,} pour les séparer.
+	Donc nous utilisons la méthode \textit{split()} pour trouver les professeurs ou les types de cours différents.
 
 	Pour trouver l'heure et les groupes de chaque type de cours qu'un professeurs fait, nous avons utilisé les expressions régulières.
 	Afin d'analyser la chaîne de caractère correctement, il y a des règles à respecter:
@@ -451,9 +449,9 @@
 
 	\section{Fichier de sortie}
 
-	Le fichier de sortie contient le planning d'une année qui est généré à partir des fichiers d'entrées.
+	Le fichier de sortie contient le planning d'une année qui est générée à partir des fichiers d'entrées.
 	Il présente les unités d'enseignements (UE) avec les cours pour chaque UE par semestres.
-	Des enseignants sont attribués à des cours. Le volume d'heure que l'enseignant fait pour chaque type de cours peut être placé par semaine dans une semestre.
+	Des enseignants sont attribués à des cours. Le volume d'heure que l'enseignant fait pour chaque type de cours peut être placé par semaine dans un semestre.
 	Le volume de travail par étudiant peut être calculé par des formules.
 
 	\section{Documentation}
@@ -462,9 +460,9 @@
 	%+++++++++++++++++++++++++++++++++++++++++++++
 	Afin de rendre notre code évolutif, nous avons généré une documentation.
 	Nous avons utilisé JavaDoc.
-	Cette documentation à pour but d'aider un éventuel dévelopeur à reprendre et comprendre le projet.
+	Cette documentation a pour but d'aider un éventuel développeur à reprendre et comprendre le projet.
 
-	Voici une exemple de documentation sur la méthode \textit{searchContent}, présent dans la class \textit{ReadFile}.
+	Voici un exemple de documentation sur la méthode \textit{searchContent}, présent dans la class \textit{ReadFile}.
 
 	\begin{figure}
 		\caption{Exemple de documentation}
@@ -473,12 +471,12 @@
 
 	\section{Tests et validation}
 
-	Les tests unitaires ont été réalisés après l'écriture des méthodes de chaque classes.
+	Les tests unitaires ont été réalisés après l'écriture des méthodes de chaque classe.
 	Ils ont été fais de manières croisées, les méthodes écrites par l'un de nous deux ont été testés par l'autre.
 	Nous avons utilisé la bibliothèque \textbf{JUnit} pour réaliser nos tests unitaires.
 
 	Certains tests visuels, pour le formatage des feuilles Excel sont faites visuellement.
-	Nous n'avons pa trouvé d'autres méthodes pour vérifier ceci.
+	Nous n'avons pas trouvé d'autres méthodes pour vérifier ceci.
 
 	\subsection{Résultat d'exécution}
 
@@ -515,19 +513,18 @@
 
 	Nous avons aussi uniformisé le formatage des données pour l'attribution des groupes d'étudiants aux enseignants, afin de simplifier l'analyse des données présentes dans la maquette des unités d'enseignements. (\ref{format})
 
-	Ce projet nous à permis de prendre en main de nouveau outils, sur lesquels nous nous sommes auto-formés comme par exemple Maven ou la bibliothèque POI Apache.
+	Ce projet nous à permit de prendre en main de nouveaux outils, sur lesquels nous nous sommes auto-formés comme par exemple Maven ou la bibliothèque POI Apache.
 
-	Nous avons apprécié travailler ensemble, la communication à été une force au sein de notre équipe.
-	Nous avons essayer d'appliquer le plus possibles les bonnes pratiques de Génie Logiciel (Git, Trello, Documentation, ...).
+	Nous avons apprécié travailler ensemble, la communication a été une force au sein de notre équipe.
+	Nous avons essayé d'appliquer le plus possibles les bonnes pratiques de Génie Logiciel (Git, Trello, Documentation, ...).
 	
 	\section{Améliorations \& Évolutions} 
 	
 	Le projet en l'état, peut évoluer, pour ajouter de nouvelles fonctionnalités.
 	
 	La gestion des options pour les cinquièmes année.
-	Les DI5, ont le choix entre plusieurs options, 
 	
-	La mise en forme conditionnel afin de mettre en avant visuellement les erreurs de remplissage du fichier.
+	La mise en forme conditionnelle afin de mettre en avant visuellement les erreurs de remplissage du fichier.
 	La librairie \textbf{POI Apache} permet cette fonctionnalité.
 	
 	
