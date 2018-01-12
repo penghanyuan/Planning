@@ -54,7 +54,7 @@
 		\includegraphics[width=\textwidth]{./img/trello.png}
 	\end{figure}
 
-	Nous avons mis en place un \href{https://git-scm.com/}{Git} comme système de versionning, care c'est un système avec lequel nous sommes déjà familier.
+	Nous avons mis en place un \href{https://git-scm.com/}{Git} comme système de versionning, car c'est un système avec lequel nous sommes déjà familier.
 	De plus, nous avons fais le choix d'héberger notre code à l'aide de \textbf{GitLab} qui nous permet de faire des projets privés.
 	\href{https://about.gitlab.com/}{GitLab} nous permet aussi de centraliser notre code à un même endroit.
 
@@ -264,7 +264,7 @@
 
 			\item \paragraph{class Planning}
 
-			Le but de cette classe est de stocker les informations d'un planning pour l'éciture.
+			Le but de cette classe est de stocker les informations d'un planning pour l'écriture.
 
 			\textbf{Attributs :}
 				\begin{itemize}
@@ -493,15 +493,15 @@
 		\includegraphics[width=15cm]{./img/excution_result2.png}
 	\end{figure}
 
-	\chapter{Conclusion} 
+	\chapter{Conclusion}
 
 	Durant le projet, nous avons rencontré quelques de problèmes.
 	Comme par exemple le temps de lecture des fichiers d'entrés était anormalement long.
 	Après des recherches auprès de la documentation et de la communauté de la bibliothèque POI Apache, nous avons trouvé la solution.
-	
+
 	Il est possible d'utiliser un fichier Excel en lecture et écriture ou seulement en lecture.
 	Le temps de lecture est divisé par 10 si on l'utilise uniquement en lecture.
-	
+
 	\textbf{Le code qui posait problème}
 	\begin{latexsource}
 	this.wb = WorkbookFactory.create(file);
@@ -512,22 +512,22 @@
 	InputStream st = new FileInputStream(this.file);
 	this.wb = new XSSFWorkbook(st);
 	\end{latexsource}
-	
+
 	Nous avons aussi uniformisé le formatage des données pour l'attribution des groupes d'étudiants aux enseignants, afin de simplifier l'analyse des données présentes dans la maquette des unités d'enseignements. (\ref{format})
-	
+
 	Ce projet nous à permis de prendre en main de nouveau outils, sur lesquels nous nous sommes auto-formés comme par exemple Maven ou la bibliothèque POI Apache.
-	
-	Nous avons apprécié travailler ensemble, la communication à été une force au sein de notre équipe.	
+
+	Nous avons apprécié travailler ensemble, la communication à été une force au sein de notre équipe.
 	Nous avons essayer d'appliquer le plus possibles les bonnes pratiques de Génie Logiciel (Git, Trello, Documentation, ...).
-	
-	\section{Améliorations \& Évolutions} 
-	
+
+	\section{Améliorations \& Évolutions}
+
 	Le projet en l'état peut évoluer, pour ajouter par exemple la gestion des options pour les cinquièmes année, ou la mise en forme conditionnel afin de mettre en avant visuellement les erreurs de remplissage du fichier.
-	
-	
-	%Ajout des mises en formes conditionnel 
-	%Ajout de gestion de groupes d'options pour les DI5 
-	
+
+
+	%Ajout des mises en formes conditionnel
+	%Ajout de gestion de groupes d'options pour les DI5
+
 	%Grace à maven mise à jour possible des bibliothèques utilisées pour de future évolutions
 
 	\chapter{Annexes}
