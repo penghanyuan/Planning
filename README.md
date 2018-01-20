@@ -1,6 +1,8 @@
 Boite à outils pour la direction des études
 ===========================================
 
+[![pipeline status](https://gitlab.com/Boluge/fond-planing/badges/master/pipeline.svg)](https://gitlab.com/Boluge/fond-planing/commits/master)
+
 Création de fond de planning
 ----------------------------
 
